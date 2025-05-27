@@ -388,6 +388,7 @@
     </div>
 
 
+    <!--
     <div class="ad-fixed-box">
       <div>스탠다드 디럭스 버전 준비중(생성 가능한 경우의 수 500억 이상👇)</div>
       <a href="현재 공백" target="_blank">
@@ -395,6 +396,7 @@
              alt="썸네일" />
       </a>
     </div>
+    -->
 
 
     <!-- Info Text Below Reset Button -->
@@ -1053,7 +1055,9 @@
       for (const [id, map] of Object.entries(maps)) {
         const select = document.getElementById(id);
         if (!select) continue;
-        for (const label in map) {
+        const sortedKeys = Object.keys(map).sort((a, b) => a.localeCompare(b, 'ko'));
+
+        for (const label of sortedKeys) {
           const option = document.createElement('option');
           option.value = label;
           option.textContent = label;

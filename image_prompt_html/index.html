@@ -371,6 +371,7 @@
     </div>
 
 
+    <!--
     <div class="ad-fixed-box">
       <div>스탠다드 디럭스 버전 준비중(생성 가능한 경우의 수 500억 이상👇)</div>
       <a href="현재 공백" target="_blank">
@@ -378,6 +379,8 @@
              alt="썸네일" />
       </a>
     </div>
+    -->
+
 
 
     <!-- Info Text Below Reset Button -->
@@ -747,13 +750,13 @@
             select.appendChild(option);
           });
         } else {
-          // 객체인 경우
-          for (const label in map) {
+          // 객체: 키 기준 가나다순 정렬
+          Object.keys(map).sort((a, b) => a.localeCompare(b, 'ko')).forEach((label) => {
             const option = document.createElement('option');
             option.value = label;
             option.textContent = label;
             select.appendChild(option);
-          }
+          });
         }
       }
     }
