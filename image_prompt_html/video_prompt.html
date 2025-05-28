@@ -1274,7 +1274,9 @@
           `Emotion: ${emotion[emotionValue]}\n\n` +
 
           // fullAppearanceText
-          `${fullAppearanceText}\n\nNegative prompt: ugly, disfigured, bad anatomy, deformed, low quality, poorly drawn, blurry, oversaturated, out of focus, cropped, text, signature, watermark, fused fingers, extra limbs, missing limbs, too many fingers, too few fingers.`;
+          `${fullAppearanceText}\n\nAvoid all visual defects such as poor anatomy, disfigurement, deformations, low resolution, blurry focus, oversaturation, cropped framing, any kind of text, watermark or signature. Ensure no extra or missing limbs, no fused or unnatural fingers.`;
+
+
 
         // ─── 출력 ───────────────────────────────────────────────
         document.getElementById("output").value = prompt.trim();
