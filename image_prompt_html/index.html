@@ -345,7 +345,8 @@
         </label>
       </div>
 
-      <label>나이: <input type="number" id="age" min="23" max="40" value="28" /></label>
+      <label>나이: <input type="number" id="age" min="23" max="50" value="25" /></label>
+      <label>감정 선택: <select id="emotion"></select></label> <!-- ✅ 감정 항목 추가 -->
       <label>행동 선택: <select id="activity"></select></label>
       <label>포즈 선택: <select id="pose"></select></label>
       <label>카메라 시점: <select id="camera"></select></label>
@@ -357,6 +358,9 @@
       <label>손에 든 오브젝트: <select id="object"></select></label>
       <label>체형: <select id="body_shape"></select></label>
       <label>헤어 스타일: <select id="hairstyle"></select></label>
+      <label>원단 반응 선택: <select id="fabric_response"></select></label>
+      <!-- Rendering Translation 추가 -->
+      <label>렌더링 퀄리티 선택: <select id="rendering"></select></label>
       <button id="generatePromptButton">🎯 프롬프트 생성</button>
       <button id="randomButton">🎲 랜덤 생성</button>
       <button id="copyButton">📋 복사하기</button>
@@ -400,6 +404,43 @@
       "일본인": "Japanese woman"
     };
 
+    const emotion_translation = {
+      "슬픔": "the character's eyes glisten with sadness, movements slow and heavy",
+      "기쁨": "the character radiates joy, with bright eyes and an open expression",
+      "무표정": "the character shows no emotion, face calm and unreadable",
+      "긴장": "the character appears tense, muscles slightly rigid and breath held",
+      "평온": "the character is serene and composed, exuding calmness",
+      "분노": "the character trembles slightly, fists clenched, with an intense glare",
+      "그리움": "the character looks distant, as if recalling a memory with soft sorrow",
+      "환희": "the character appears overjoyed, movements buoyant and energetic",
+      "불안": "the character’s gaze flickers, hands fidgeting slightly in nervousness",
+      "냉소": "the character smirks faintly, eyes filled with ironic detachment",
+      "감격": "the character holds back tears of gratitude, lip trembling",
+      "허무": "the character stares blankly, drained of emotion or purpose",
+      "애절": "the character seems on the verge of tears, struggling to hold composure",
+      "몰입": "the character is entirely focused, unaware of their surroundings",
+      "경이": "the character's eyes widen in wonder, mouth slightly agape",
+      "수치심": "the character looks down, avoiding eye contact with visible shame",
+      "경멸": "the character's lips curl with contempt, eyes narrowed in disdain",
+      "자책": "the character clenches their jaw, clearly blaming themselves",
+      "기대감": "the character leans forward slightly, eyes sparkling with hope",
+      "죄책감": "the character winces inwardly, unable to face what they've done",
+      "자신감": "the character stands tall, chin slightly raised with quiet confidence",
+      "흥미로움": "the character tilts their head with curiosity, lips pursed in thought",
+      "낙담": "the character slumps slightly, shoulders heavy with disappointment",
+      "긴장 속의 차분함": "the character remains composed, but a slight tremble betrays inner tension",
+      "감정 억제": "the character fights to suppress emotions, lips pressed tight",
+      "불굴": "the character stands firm, eyes set with unwavering determination",
+      "두려움": "the character backs away slightly, breath shallow and eyes darting",
+      "외로움": "the character seems isolated, as if forgotten by the world",
+      "안도": "the character exhales slowly, shoulders lowering with relief",
+      "냉담": "the character appears emotionally distant, gaze cold and indifferent",
+      "혼란": "the character glances around with uncertainty, lips parted as if lost",
+      "상실감": "the character holds something close, as if clinging to a fading presence",
+    };
+
+
+
     const activity_description = {
       "스마트폰 확인 중": "She is checking her smartphone attentively.",
       "노트북 작업 중": "She is working on her laptop with focus.",
@@ -421,7 +462,12 @@
       "메모를 하는 중": "She is jotting down notes on a small pad.",
       "화장을 고치는 중": "She is touching up her makeup with gentle strokes.",
       "휴식을 취하는 중": "She is taking a quiet moment to relax and breathe.",
-      "데스크탑 작업 중": "She is working on a desktop computer with both hands on the keyboard, her eyes focused on the screen."
+      "데스크탑 작업 중": "She is working on a desktop computer with both hands on the keyboard, her eyes focused on the screen.",
+      "일기 쓰는 중": "She is writing quietly in her diary with focused emotion.",
+      "편지 읽는 중": "She is reading a heartfelt letter with a soft expression.",
+      "셀카 찍는 중": "She is taking a selfie with her phone, posing playfully.",
+      "향초에 불 붙이는 중": "She is lighting a scented candle slowly and gently.",
+      "스트리밍 방송 중": "She is streaming live content, focused on the camera."
     };
 
     const pose_description = {
@@ -544,6 +590,21 @@
       "하이넥 블라우스와 H라인 스커트": "a high-neck blouse tucked into a form-fitting skirt with pumps",
       "셔츠 원피스": "a belted shirt dress with long sleeves and pointed-toe flats",
       "불꽃 마법 전사 의상": "a fantasy-themed red sorceress outfit inspired by adventurous magic-wielders from 90s anime, featuring shoulder armor, black cape, and enchanted accessories...",
+      "요가복": "a stretchable yoga set with a sleeveless top and high-waisted leggings, designed for flexibility and breathability",
+      "겨울 캐주얼": "a padded parka layered over a knit sweater, with thermal leggings and fur-lined boots",
+      "봄 데이트룩": "a floral chiffon dress with puffed sleeves and white ballet flats",
+      "댄서 스타일": "a cropped hoodie over a sports bra with jogger pants and chunky sneakers, embodying a confident street dance vibe",
+      "빈티지 롱드레스": "a vintage-inspired long dress with lace trim, puff sleeves, and soft neutral tones, evoking classic elegance",
+      "카페 알바룩": "a white button-up tucked into a khaki apron skirt, paired with canvas sneakers and a headband",
+      "프렌치 시크룩": "a striped boat-neck top with high-waisted trousers, a silk scarf tied at the neck, and loafers",
+      "비 오는 날 외출복": "a waterproof trench coat with a hood, layered over cropped jeans and rain boots",
+      "모던 미니멀룩": "a solid-tone blouse tucked into wide slacks with sharp lines and leather loafers, accessorized with a clean tote bag",
+      "아이돌 무대의상": "a shimmering crop top with a pleated mini skirt, thigh-high socks, and platform heels, stage-ready and attention-grabbing",
+      "핑크 매지컬걸 의상": "a classic magical girl costume evoking the 90s cherry blossom aesthetic, with a short bell-shaped dress, oversized ribbon accents, and a star-topped magical staff",
+      "달빛 전사 매지컬 복장": "a sailor-style magical battle uniform inspired by lunar protectors, featuring a white leotard with a navy mini skirt, red bows, crescent motifs, and twin tails tied in buns",
+      "아테나 스타일 의상": "a vibrant idol-style combat costume with pink accents, pleated skirt, and sparkly fabric, reflecting a youthful fighter who blends music and psychic energy",
+      "플레어 격투복": "a modified martial arts outfit with purple capris, red sash, and sporty gloves, worn by a cheerful yet fierce female fighter from a retro-style fighting game",
+
     };
 
     const object_options = [
@@ -554,12 +615,20 @@
       "노트북",
       "데스크탑",
       "기타 오브젝트",
-      "없음"
+      "없음",
+      "랜덤",
     ];
 
     const body_shape_description = {
       "슬림형": "slim body type with a slender silhouette and minimal curves",
-      "균형형": "balanced body with even proportions between shoulders, waist, and hips"
+      "균형형": "balanced body with even proportions between shoulders, waist, and hips",
+      "글래머러스": "curvy body type with pronounced bust and hips, and a narrow waist",
+      "운동형": "athletic body type with defined muscle tone and firm structure",
+      "작고 아담한": "petite body type with shorter stature and compact proportions",
+      "풍성한": "soft body type with gentle curves and a fuller silhouette",
+      "길고 날씬한": "long-limbed body type with tall and graceful proportions",
+      "자연형": "natural body type with relaxed, unstructured proportions",
+      "둥근 실루엣": "rounded silhouette with soft transitions and subtle curves",
     };
 
     const hairstyle_description = {
@@ -572,7 +641,52 @@
         "웨이브 펌": "soft wavy perm with a light bounce",
         "깔끔한 포니테일": "clean ponytail tied high at the back",
         "올림머리 (업두)": "an elegant updo",
+        "가르마 내린 생머리": "long straight hair parted neatly down the center",
+        "앞머리 있는 단발": "short bob with full bangs covering the forehead",
+        "시스루 뱅": "straight hair with see-through bangs",
+        "하프 번": "half-up hair tied into a small top bun",
+        "양 갈래 묶음": "twin low ponytails tied loosely behind",
+        "헐렁한 땋은 머리": "loosely braided hair draping over one shoulder",
+        "귀 뒤로 넘긴 긴 머리": "long straight hair tucked behind both ears",
+        "사이드 포니테일": "low side ponytail resting over one shoulder",
+        "곱게 말린 C컬 단발": "soft C-curl bob with inward-curled ends",
+        "단정한 땋은 머리": "tight single braid tied at the back",
     };
+
+
+    const fabric_response = {
+      "몸 움직임에 따라 섬유가 반응함": "each fiber reacts to posture and motion",
+      "옷이 공기 흐름에 부드럽게 흩날림": "clothing flows gently with ambient air",
+      "주름과 텍스처가 사실적으로 변형됨": "fabric stretches and wrinkles with realism",
+      "천이 몸의 곡선을 자연스럽게 따라감": "fabric drapes naturally along body curves",
+      "옷자락이 중력과 움직임에 섬세하게 반응": "hems respond delicately to gravity and motion",
+      "천의 질감이 조명에 따라 달라보임": "texture of fabric shifts subtly with lighting",
+      "레이스나 얇은 천은 반투명하게 묘사됨": "sheer fabrics are rendered with semi-transparency",
+      "보풀이나 실밥 같은 미세한 질감 표현": "micro-textures like pilling and frayed threads are visible",
+      "섬유의 방향과 조직감이 정밀하게 드러남": "weave direction and fabric structure are precisely rendered",
+      "바람에 흔들릴 때 천의 잔잔한 진동": "gentle oscillations of fabric in light breeze",
+    };
+
+
+    const rendering_translation = {
+      "8K 초고화질 리얼": "8K ultra-realistic rendering",
+      "4K 실사 고화질": "4K photorealistic rendering",
+      "HD 영화풍": "HD cinematic rendering",
+      "애니메이션 셀 셰이딩": "anime-style cel shading",
+      "디지털 페인팅 스타일": "digital painting style",
+      "빈티지 필름 룩": "vintage film look",
+      "극사실주의 그림체": "hyperrealistic illustration style",
+      "로우파이 감성화질": "lo-fi emotional tone",
+      "페인터리 오일화": "painterly oil painting style",
+      "수채화 느낌": "watercolor painting texture",
+      "블렌더 스타일 3D": "Blender-style 3D rendering",
+      "게임 트레일러 느낌": "game cinematic trailer style",
+      "패션 잡지 스타일": "editorial fashion photography style",
+      "소프트 라이트 몽환풍": "dreamy soft light atmosphere",
+      "필름 그레인 아날로그": "analog film grain aesthetic",
+    };
+
+
 
     const activity_pose_compatibility = {
       // ✅ 손에 들고 사용하는 동작: 앉든 서든 OK
@@ -724,6 +838,7 @@
 
     function fillOptions() {
       const maps = {
+        emotion: emotion_translation,
         activity: activity_description,
         pose: pose_description,
         camera: camera_description,
@@ -734,7 +849,9 @@
         outfit: outfit_text,
         object: object_options,
         body_shape: body_shape_description,
-        hairstyle: hairstyle_description
+        hairstyle: hairstyle_description,
+        fabric_response: fabric_response,           // 여기에 추가
+        rendering: rendering_translation,            // 여기에 추가
       };
 
       for (const [id, map] of Object.entries(maps)) {
@@ -776,6 +893,7 @@
         }
 
         // 나머지 변수 값들 가져오기
+        emotionValue = document.getElementById("emotion").value;
         const activityValue = document.getElementById("activity").value;
         const poseValue = document.getElementById("pose").value;
         const cameraValue = document.getElementById("camera").value;
@@ -788,8 +906,12 @@
         const bodyShapeValue = document.getElementById("body_shape").value;
         const hairstyleValue = document.getElementById("hairstyle").value;
         const ageValue = document.getElementById("age").value;
+        // ▼ 여기에 추가 ▼
+        const fabricValue    = document.getElementById("fabric_response").value;
+        const renderingValue = document.getElementById("rendering").value;
 
         // 설명 텍스트 매핑
+        const emotion   = emotion_translation[emotionValue] || "a calm, neutral expression";
         const activity = activity_description[activityValue] || "She is sitting quietly.";
         const pose = pose_description[poseValue] || "sitting cross-legged on the floor";
         const camera = camera_description[cameraValue] || "a front-facing perspective";
@@ -802,14 +924,16 @@
         const body_shape = body_shape_description[bodyShapeValue] || "balanced body with even proportions between shoulders, waist, and hips";
         const hairstyle = hairstyle_description[hairstyleValue] || "hair unbound in natural tones and textures";
         const age = ageValue || "25";
+        const fabric    = fabric_response[fabricValue]   || "fabric drapes naturally along body curves, showing subtle weave texture";
+        const rendering = rendering_translation[renderingValue] || "8K ultra-realistic rendering with unprecedented photorealistic detail";
 
         // appearance_text 생성
         const customDetail = document.getElementById("custom_detail").value.trim();
         const customNote = customDetail ? `This instruction overrides all other rules: ${customDetail}. ` : "";
 
 
-        const appearance_text = `${body_shape}, aged ${age}, with soft-glow skin randomized between porcelain white and fair beige, ` +
-          `face within conventionally attractive East Asian types, eyes always open, either a subtle smile or a calm, neutral expression, ` +
+        const appearance_text = `${body_shape}, aged ${age}, ${emotion}, with soft-glow skin randomized between porcelain white and fair beige, ` +
+          `face within conventionally attractive East Asian types, eyes always open, ` +
           `face shape randomized (oval, round, heart-shaped, sharp jawline, V-line), ${hairstyle}, nails and toenails may or may not be polished (if so, pastel/nude/glitter).`;
 
         // visibility_note 생성
@@ -835,18 +959,9 @@
 
     ${upward_focus_note}
 
-    🎥 \U0001F3A5 8K ultra-realistic rendering with unprecedented photorealistic detail, capturing the natural nuances of every pore, subtle facial expressions, and the complex interplay between light and shadow.
-    Her skin is presented with microscopic precision, showing natural imperfections like faint scars, the translucent quality of skin over veins, and subtle variations in skin tone as it reacts to environmental changes.
-    The clothing’s fabric responds to her body movements, each fiber distinctively defined, from the stretch of tight seams to the flow of loose fabric that subtly responds to every shift in posture, as if the clothes themselves have life.
-    The lighting sources vary from warm, soft glows to cool, sharp contrasts, capturing the interplay of light on natural surfaces like wood, glass, and ceramic—each reflecting light in its own unique way, giving every surface depth and tactile quality.
-    Every texture—whether soft cotton, smooth glass, or rough stone—is rendered with tactile realism, allowing you to almost feel the texture of each object, creating a heightened sense of presence in the space.
-    Hair is intricately modeled with every strand following natural gravity, with each curve and wave interacting with light and shadow in dynamic, lifelike patterns.
-    The subject's eyes reflect the smallest environmental details, such as the glint of distant light or the minute shift in their gaze, capturing both psychological depth and realism.
-    The ambient sounds of the space seem to reverberate through the scene: the soft rustle of fabric as she moves, the faint ticking of a clock, the subtle hum of nearby electronics, and the occasional breath that escapes her lips.
-    Even the temperature of the room seems to affect the scene, with the soft sheen of sweat on her brow catching the light, indicating the warm environment, while the cool air slightly ruffles the fabric of her clothes.
-    The entire scene feels alive—not just visually but as a sensory experience that transcends what is seen, capturing the emotional and psychological state of the subject through the smallest nuances of movement, posture, and expression.
-    The hyper-realistic detail of every shadow, highlight, and reflection creates a cinematic atmosphere where the boundaries between reality and the image blur, immersing the viewer in a vivid, tactile world. Avoid all visual defects such as poor anatomy,
-    disfigurement, deformations, low resolution, blurry focus, oversaturation, cropped framing, any kind of text, watermark or signature. Ensure no extra or missing limbs, no fused or unnatural fingers.`;
+    🎥 ${rendering}.
+    ${fabric}.
+  `;
 
         // 출력
         document.getElementById("output").value = prompt.trim();
@@ -868,6 +983,7 @@
       };
 
       // 나머지 항목들 랜덤 값 설정
+      document.getElementById("emotion").value = randomValue(emotion_translation);
       document.getElementById("activity").value = randomValue(activity_description);
       document.getElementById("pose").value = randomValue(pose_description);
       document.getElementById("camera").value = randomValue(camera_description);
@@ -880,6 +996,9 @@
       document.getElementById("body_shape").value = randomValue(body_shape_description);
       document.getElementById("hairstyle").value = randomValue(hairstyle_description);
       document.getElementById("age").value = Math.floor(Math.random() * 18) + 23;
+      // ── 여기 아래에 추가 ──
+      document.getElementById("fabric_response").value = randomValue(fabric_response);
+      document.getElementById("rendering").value      = randomValue(rendering_translation);
 
       // 프롬프트 자동 생성
       generatePromptActual();
@@ -898,6 +1017,11 @@
       const randomKey = (obj) => Object.keys(obj)[Math.floor(Math.random() * Object.keys(obj).length)];
 
       let activity, pose;
+
+      // ✅ 감정 랜덤 설정 추가
+      const randomEmotion = randomKey(emotion_translation);
+      document.getElementById("emotion").value = randomEmotion;
+
 
       // ✅ 활동-포즈 충돌 회피
       while (true) {
@@ -936,6 +1060,10 @@
       setRandomFrom("object", object_options);
       setRandomFrom("body_shape", body_shape_description);
       setRandomFrom("hairstyle", hairstyle_description);
+        // ── 여기에 두 줄 추가 ──
+      setRandomFrom("fabric_response", fabric_response);
+      setRandomFrom("rendering", rendering_translation);
+
       document.getElementById("age").value = Math.floor(Math.random() * 18) + 23;
 
       generatePromptActual();
@@ -953,7 +1081,8 @@
       document.getElementById("output").value = "";
 
       // 각 선택 요소들을 기본값으로 리셋
-      document.getElementById("age").value = 28;  // 기본 나이 값 설정
+      document.getElementById("emotion").value = "";
+      document.getElementById("age").value = 25;  // 기본 나이 값 설정
       document.getElementById("activity").value = "";
       document.getElementById("pose").value = "";
       document.getElementById("camera").value = "";
