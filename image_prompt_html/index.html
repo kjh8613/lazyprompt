@@ -343,6 +343,12 @@
         <label for="nationality_japanese">
           <input type="checkbox" id="nationality_japanese"> 일본인
         </label>
+        <label for="nationality_chinese">
+          <input type="checkbox" id="nationality_chinese"> 중국인
+        </label>
+        <label for="nationality_western">
+          <input type="checkbox" id="nationality_western"> 서양인
+        </label>
       </div>
 
       <label>나이: <input type="number" id="age" min="23" max="50" value="25" /></label>
@@ -401,7 +407,9 @@
   <script>
     const nationality_description = {
       "한국인": "Korean woman",
-      "일본인": "Japanese woman"
+      "일본인": "Japanese woman",
+      "중국인": "Chinese woman",
+      "서양인": "Western woman"
     };
 
     const emotion_translation = {
@@ -880,17 +888,27 @@
 
      function generatePromptActual() {
       try {
-        let nationality = "Korean woman";  // 기본값은 한국인
 
-        // 체크박스 상태에 따라 랜덤으로 국적 선택
-        if (document.getElementById("nationality_korean").checked && document.getElementById("nationality_japanese").checked) {
-          // 둘 다 선택되었을 때는 한국인과 일본인 모두 랜덤 적용
-          nationality = Math.random() < 0.5 ? nationality_description["한국인"] : nationality_description["일본인"];
-        } else if (document.getElementById("nationality_korean").checked) {
-          nationality = nationality_description["한국인"];  // 한국인만 선택되었을 때
-        } else if (document.getElementById("nationality_japanese").checked) {
-          nationality = nationality_description["일본인"];  // 일본인만 선택되었을 때
-        }
+        // 1) 가능한 국적 키 수집
+        const candidates = [];
+        if (document.getElementById("nationality_korean").checked)  candidates.push("한국인");
+        if (document.getElementById("nationality_japanese").checked) candidates.push("일본인");
+        if (document.getElementById("nationality_chinese").checked)  candidates.push("중국인");
+        if (document.getElementById("nationality_western").checked)  candidates.push("서양인");
+
+        // 2) 선택된 게 없으면 기본키, 있으면 랜덤 추출
+        const nationalityKey = candidates.length > 0
+          ? candidates[Math.floor(Math.random() * candidates.length)]
+          : "한국인";
+
+        // 3) description 맵에서 실제 문자열 꺼내기
+        const nationality_description = {
+          "한국인": "Korean woman",
+          "일본인": "Japanese woman",
+          "중국인": "Chinese woman",
+          "서양인": "Western woman"
+        };
+        const nationality = nationality_description[nationalityKey];
 
         // 나머지 변수 값들 가져오기
         emotionValue = document.getElementById("emotion").value;
