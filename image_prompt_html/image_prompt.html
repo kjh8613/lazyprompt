@@ -384,7 +384,32 @@
           color: #222;
         "
       />
-        
+        <!-- ✅ 체크박스 UI (국적 위) -->
+        <div class="checkbox-container">
+          <label for="consistencyMode" style="
+            display: block;
+            padding: 0.75em;
+            background-color: #f0f4ff;
+            border-left: 4px solid #4a8df8;
+            border-radius: 8px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #1a1a1a;
+          ">
+            <input type="checkbox" id="consistencyMode" style="margin-right: 0.5em;">
+            <strong style="color: #285fc3;">일관성 모드</strong><br/>
+            캐릭터 외형이 고정되어<br/>
+            랜덤 생성 시에도 유지됩니다.<br/>
+            <span style="font-size: 0.85em; color: #666;">
+              시리즈 이미지 제작에 유용합니다.<br/>
+              (정확도는 향후 개선 예정)
+            </span>
+          </label>
+
+
+        </div>     
+
+
         <label>국적 선택: </label>
         <div class="checkbox-container">
           <label for="nationality_korean">
@@ -1299,6 +1324,83 @@
       ]
     };
 
+    let persistentAppearance = null; // 복장/외형 저장용 객체
+
+    function getAppearanceState() {
+      return {
+        nationality: document.getElementById("nationality")?.value,
+        body_shape: document.getElementById("body_shape")?.value,
+        hairstyle: document.getElementById("hairstyle")?.value,
+        outfit: document.getElementById("outfit")?.value,
+        age: document.getElementById("age")?.value,
+        camera: document.getElementById("camera")?.value,
+        distance: document.getElementById("distance")?.value,
+        manicure: document.getElementById("manicure")?.value,
+        foot: document.getElementById("foot")?.value,
+        fabric_response: document.getElementById("fabric_response")?.value,
+        rendering: document.getElementById("rendering")?.value,
+      };
+    }
+
+    function applyAppearanceState(state) {
+      if (!state) return;
+
+      const setSafeValue = (id, value) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.value = value;
+        } else {
+          console.warn(`[⚠️ applyAppearanceState] 요소가 존재하지 않음: #${id}`);
+        }
+      };
+
+      setSafeValue("nationality", state.nationality);
+      setSafeValue("body_shape", state.body_shape);
+      setSafeValue("hairstyle", state.hairstyle);
+      setSafeValue("outfit", state.outfit);
+      setSafeValue("age", state.age);
+      setSafeValue("camera", state.camera);
+      setSafeValue("distance", state.distance);
+      setSafeValue("manicure", state.manicure);
+      setSafeValue("foot", state.foot);
+      setSafeValue("fabric_response", state.fabric_response);
+      setSafeValue("rendering", state.rendering);
+
+    }
+
+    
+    window.addEventListener("DOMContentLoaded", function () {
+      // ✅ 일관성 모드 체크박스 동작
+      document.getElementById("consistencyMode").addEventListener("change", function () {
+        if (this.checked) {
+          persistentAppearance = getAppearanceState();
+        } else {
+          persistentAppearance = null;
+        }
+      });
+
+      // ✅ 외형 요소 변경 시 일관성 모드 자동 해제
+      const watchedFields = [
+        "nationality", "body_shape", "hairstyle", "outfit",
+        "age", "camera", "distance", "manicure", "foot", "fabric_response", "rendering",
+      ];
+
+      watchedFields.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener("change", () => {
+            if (document.getElementById("consistencyMode").checked) {
+              alert("외형 수정을 감지해 일관성 모드를 해제합니다.");
+              document.getElementById("consistencyMode").checked = false;
+              persistentAppearance = null;
+            }
+          });
+        }
+      });
+    });
+
+
+
     const dicts = {
       background: background_description,
       emotion: emotion_translation,
@@ -1349,6 +1451,17 @@
 
      function generatePromptActual() {
       try {
+        const consistencyOn = document.getElementById("consistencyMode")?.checked;
+      if (consistencyOn) {
+        if (persistentAppearance) {
+          // 저장된 외형이 있으면 그걸 그대로 적용
+          applyAppearanceState(persistentAppearance);
+        } else {
+          // 저장된 외형이 없다면 현재 상태를 저장하고 그대로 적용
+          persistentAppearance = getAppearanceState();
+          applyAppearanceState(persistentAppearance);
+        }
+      }
 
         // 1) 가능한 국적 키 수집
         const candidates = [];
@@ -1458,6 +1571,19 @@ Avoid all visual defects such as poor anatomy, disfigurement, deformations, low 
 
     // 랜덤 생성 버튼 클릭 시
     function setRandomValuesActual() {
+      const consistencyOn = document.getElementById("consistencyMode")?.checked;
+      if (consistencyOn) {
+        if (persistentAppearance) {
+          // 저장된 외형이 있으면 그걸 그대로 적용
+          applyAppearanceState(persistentAppearance);
+        } else {
+          // 저장된 외형이 없다면 현재 상태를 저장하고 그대로 적용
+          persistentAppearance = getAppearanceState();
+          applyAppearanceState(persistentAppearance);
+        }
+      }
+
+
       const randomValue = (map) => {
         if (Array.isArray(map)) {
           return map[Math.floor(Math.random() * map.length)];
@@ -1498,14 +1624,32 @@ Avoid all visual defects such as poor anatomy, disfigurement, deformations, low 
     }
 
 
-    function setRandomValuesActualSafe() {
+   function setRandomValuesActualSafe() {
+      const consistencyOn = document.getElementById("consistencyMode")?.checked;
+
+      // ✅ 1. 외형 관련만 일관성 유지
+      if (consistencyOn) {
+        if (!persistentAppearance) {
+          persistentAppearance = getAppearanceState();
+        }
+
+        // 외형 관련 필드만 수동 적용 (❗ 랜덤 필드는 건드리지 않음)
+        const fixedFields = ["nationality", "body_shape", "hairstyle", "outfit", "age", "camera", "distance", "manicure", "foot"];
+        fixedFields.forEach(id => {
+          const el = document.getElementById(id);
+          if (el && persistentAppearance[id] !== undefined) {
+            el.value = persistentAppearance[id];
+          }
+        });
+      }
+
       const randomKey = (obj) => Object.keys(obj)[Math.floor(Math.random() * Object.keys(obj).length)];
+      const randomFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-      // ✅ 1. 감정 설정
-      const emotion = randomKey(dicts.emotion);
-      setValue("emotion", emotion);
+      // ✅ 2. 감정 설정
+      setValue("emotion", randomKey(dicts.emotion));
 
-      // ✅ 2. 활동-포즈 충돌 회피
+      // ✅ 3. 활동-포즈 충돌 회피
       let activity, pose;
       while (true) {
         activity = randomKey(dicts.activity);
@@ -1518,57 +1662,61 @@ Avoid all visual defects such as poor anatomy, disfigurement, deformations, low 
       setValue("activity", activity);
       setValue("pose", pose);
 
-      // ✅ 3. 카메라-거리 충돌 회피
-      let camera, distance;
-      const cameraOptions = Object.keys(dicts.camera);
-      const distanceOptions = Object.keys(dicts.distance);
-      while (true) {
-        camera = cameraOptions[Math.floor(Math.random() * cameraOptions.length)];
-        distance = distanceOptions[Math.floor(Math.random() * distanceOptions.length)];
-        if (isCameraDistanceCompatible(camera, distance)) break;
+      // ✅ 4. 카메라-거리 충돌 회피 (일관성 OFF일 때만 랜덤)
+      if (!consistencyOn) {
+        let camera, distance;
+        const cameraOptions = Object.keys(dicts.camera);
+        const distanceOptions = Object.keys(dicts.distance);
+        while (true) {
+          camera = cameraOptions[Math.floor(Math.random() * cameraOptions.length)];
+          distance = distanceOptions[Math.floor(Math.random() * distanceOptions.length)];
+          if (isCameraDistanceCompatible(camera, distance)) break;
+        }
+        setValue("camera", camera);
+        setValue("distance", distance);
       }
-      setValue("camera", camera);
-      setValue("distance", distance);
 
-      const randomFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
-      
-      // ✅ 4. 기타 항목 랜덤 설정
+      // ✅ 5. 랜덤 대상만 랜덤 설정
       const randomItems = [
         ["background", dicts.background],
-        ["manicure", dicts.manicure],
-        ["foot", dicts.foot],
         ["lighting", dicts.lighting],
-        ["outfit", dicts.outfit],
-        ["object", object_options],  // 배열이므로 object_options 사용
-        ["body_shape", dicts.body_shape],
-        ["hairstyle", dicts.hairstyle],
+        ["object", object_options],
         ["fabric_response", dicts.fabric_response],
         ["rendering", dicts.rendering]
       ];
-
       randomItems.forEach(([id, source]) => {
-        const value = Array.isArray(source)
-          ? randomFromArray(source)
-          : randomKey(source);
+        const value = Array.isArray(source) ? randomFromArray(source) : randomKey(source);
         setValue(id, value);
       });
 
-      // ✅ 5. 나이 랜덤 설정(23~50)
-      const minAge = 23;
-      const maxAge = 50;
-      setValue("age", Math.floor(Math.random() * (maxAge - minAge + 1)) + minAge);
+      if (!consistencyOn) {
+        // 외형도 랜덤 적용
+        const appearanceItems = [
+          ["manicure", dicts.manicure],
+          ["foot", dicts.foot],
+          ["outfit", dicts.outfit],
+          ["body_shape", dicts.body_shape],
+          ["hairstyle", dicts.hairstyle]
+        ];
+        appearanceItems.forEach(([id, source]) => {
+          const value = Array.isArray(source) ? randomFromArray(source) : randomKey(source);
+          setValue(id, value);
+        });
 
-      // ✅ 6. 프롬프트 생성 호출
+        const minAge = 23;
+        const maxAge = 50;
+        setValue("age", Math.floor(Math.random() * (maxAge - minAge + 1)) + minAge);
+      }
+
+      // ✅ 6. 프롬프트 생성
       generatePromptActual();
 
-      // ✅ 헬퍼 함수 정의
+      // ✅ 내부 헬퍼
       function setValue(id, value) {
         const el = document.getElementById(id);
         if (el) el.value = value;
       }
-
     }
-
 
 
 

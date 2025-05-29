@@ -390,6 +390,32 @@
             "
           />
         </div>
+        
+        <!-- ✅ 일관성 모드 체크박스 -->
+        <!-- ✅ 체크박스 UI (국적 위) -->
+        <div class="checkbox-container">
+          <label for="consistencyMode" style="
+            display: block;
+            padding: 0.75em;
+            background-color: #f0f4ff;
+            border-left: 4px solid #4a8df8;
+            border-radius: 8px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #1a1a1a;
+          ">
+            <input type="checkbox" id="consistencyMode" style="margin-right: 0.5em;">
+            <strong style="color: #285fc3;">일관성 모드</strong><br/>
+            캐릭터 외형이 고정되어<br/>
+            랜덤 생성 시에도 유지됩니다.<br/>
+            <span style="font-size: 0.85em; color: #666;">
+              시리즈 이미지 제작에 유용합니다.<br/>
+              (정확도는 향후 개선 예정)
+            </span>
+          </label>
+        </div>
+
+
 
         <label style="font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.4rem;">국적 선택:</label>
         <div class="checkbox-container" style="display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
@@ -465,6 +491,8 @@
   </div>
 
   <script>
+
+    
     const nationality_description = {
       "한국인": "Korean woman",
       "일본인": "Japanese woman",
@@ -472,6 +500,34 @@
       "서양인": "Western woman with diverse features, typically taller build and expressive facial structure, ranging from classic European to modern cosmopolitan"
     };
 
+    // 국가를 토글하는 함수
+    function toggleNationality(nat) {
+      const checkbox = document.getElementById(nat);
+      checkbox.checked = !checkbox.checked;
+      generatePromptActual();
+    }
+
+    // 선택된 국가에 대한 프롬프트를 생성하는 함수
+    function generatePromptActual() {
+      let selectedNationalities = [];
+
+      if (document.getElementById("korean").checked) {
+        selectedNationalities.push(nationality_description["korean"]);
+      }
+      if (document.getElementById("japanese").checked) {
+        selectedNationalities.push(nationality_description["japanese"]);
+      }
+      if (document.getElementById("chinese").checked) {
+        selectedNationalities.push(nationality_description["chinese"]);
+      }
+      if (document.getElementById("western").checked) {
+        selectedNationalities.push(nationality_description["western"]);
+      }
+
+      // 선택된 항목을 출력
+      alert("Selected nationalities: " + selectedNationalities.join(", "));
+    }
+    
     const genre_tone = {
       "드라마": "a realistic emotional scene with strong character focus",
       "공포": "a dark, unsettling scene filled with fear and tension",
@@ -1346,6 +1402,97 @@
     };
 
 
+    let persistentAppearance = null; // 외형 일관성 저장용 객체
+
+    // ✅ 외형 상태 저장
+    function getAppearanceState() {
+      return {
+        nationality: document.getElementById("nationality")?.value,
+        body_shape: document.getElementById("body_shape")?.value,
+        hairstyle: document.getElementById("hairstyle")?.value,
+        outfit: document.getElementById("outfit")?.value,
+        age: document.getElementById("age")?.value,
+        camera: document.getElementById("camera")?.value,
+        distance: document.getElementById("distance")?.value,
+        manicure: document.getElementById("manicure")?.value,
+        foot: document.getElementById("foot")?.value,
+        fabric_response: document.getElementById("fabric_response")?.value,
+        rendering: document.getElementById("rendering")?.value
+      };
+    }
+
+    // ✅ 외형 상태 적용
+    function applyAppearanceState(state) {
+      if (!state) return;
+
+      const setSafeValue = (id, value) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.value = value;
+        } else {
+          console.warn(`[⚠️ applyAppearanceState] 요소가 존재하지 않음: #${id}`);
+        }
+      };
+
+      setSafeValue("nationality", state.nationality);
+      setSafeValue("body_shape", state.body_shape);
+      setSafeValue("hairstyle", state.hairstyle);
+      setSafeValue("outfit", state.outfit);
+      setSafeValue("age", state.age);
+      setSafeValue("camera", state.camera);
+      setSafeValue("distance", state.distance);
+      setSafeValue("manicure", state.manicure);
+      setSafeValue("foot", state.foot);
+      setSafeValue("fabric_response", state.fabric_response);
+      setSafeValue("rendering", state.rendering);
+    }
+
+    // ✅ DOM 로딩 후 이벤트 등록
+    window.addEventListener("DOMContentLoaded", function () {
+      // 🔵 체크박스 클릭 시 저장 or 해제
+      document.getElementById("consistencyMode").addEventListener("change", function () {
+        if (this.checked) {
+          persistentAppearance = getAppearanceState();
+        } else {
+          persistentAppearance = null;
+        }
+      });
+
+      // 🔵 외형 값 변경 시 일관성 모드 해제
+      const watchedFields = [
+        "nationality", "body_shape", "hairstyle", "outfit",
+        "age", "camera", "distance", "manicure", "foot",
+        "fabric_response", "rendering"
+      ];
+
+      watchedFields.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener("change", () => {
+            if (document.getElementById("consistencyMode").checked) {
+              alert("외형 수정을 감지해 일관성 모드를 해제합니다.");
+              document.getElementById("consistencyMode").checked = false;
+              persistentAppearance = null;
+            }
+          });
+        }
+      });
+    });
+
+    // applyConsistencyIfEnabled 함수 정의
+    function applyConsistencyIfEnabled() {
+      const consistencyOn = document.getElementById("consistencyMode")?.checked;
+      if (consistencyOn) {
+        if (!persistentAppearance) {
+          persistentAppearance = getAppearanceState();
+        } else {
+          applyAppearanceState(persistentAppearance);
+        }
+      } else {
+        persistentAppearance = null;
+      }
+    }
+
 
     function fillOptions() {
       const maps = {
@@ -1467,6 +1614,9 @@
 
     function generatePromptActual() {
       try {
+        // 일관성 모드 적용
+        applyConsistencyIfEnabled(); // 이 부분 추가
+
         // ─── 1. 체크박스 & 입력값 읽어오기 ─────────────────────────
         const natKor   = document.getElementById("nationality_korean").checked;
         const natJap   = document.getElementById("nationality_japanese").checked;
@@ -1610,6 +1760,9 @@
 
     // 랜덤 생성 버튼 클릭 시
     function setRandomValuesActual() {
+      // 일관성 모드 적용
+      applyConsistencyIfEnabled(); // 이 부분 추가
+
       const randomValue = map => {
         const keys = Object.keys(map);
         return keys[Math.floor(Math.random() * keys.length)];
@@ -1656,16 +1809,6 @@
       }
 
       // 3) 프롬프트 생성
-      generatePromptActual();
-    }
-
-
-
-
-
-    function toggleNationality(nat) {
-      const checkbox = document.getElementById(nat);
-      checkbox.checked = !checkbox.checked;
       generatePromptActual();
     }
 
