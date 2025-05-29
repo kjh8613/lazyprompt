@@ -433,26 +433,29 @@
           </label>
         </div>
 
-        <label>🎬 장르 선택: <select id="genre"></select></label>
-        <label>🏞️ 배경 선택: <select id="background"></select></label>
-        <label>⏰ 시간대 선택: <select id="time"></select></label>
-        <label>👥 등장 인물 수: <select id="character_count"></select></label>
         <label>🎂 나이(23-50): <input type="number" id="age" min="23" max="50" value="28" /></label>
-        <label>🤸‍♀️ 행동 선택: <select id="activity"></select></label>
-        <label>🧘‍♀️ 포즈 선택: <select id="pose"></select></label>
-        <label>😊 감정 선택: <select id="emotion"></select></label>
+        <label>👗 의상 스타일: <select id="outfit"></select></label>
+        <label>🧍‍♀️ 체형: <select id="body_shape"></select></label>
+        <label>👤 얼굴형: <select id="face_shape"></select></label>
+        <!-- <label>🧘‍♀️ 포즈: <select id="pose"></select></label> -->
+        <label>🤸‍♀️ 행동: <select id="activity"></select></label>
+        
         <label>📸 카메라 시점: <select id="camera"></select></label>
         <label>🔭 카메라 거리: <select id="distance"></select></label>
         <label>🎥 카메라 무빙: <select id="camera_movement"></select></label>
         <label>💡 시간대 (조명): <select id="lighting"></select></label>
-        <label>👗 의상 스타일: <select id="outfit"></select></label>
-        <label>🧍‍♀️ 체형: <select id="body_shape"></select></label>
+        
+        <label>😊 감정 선택: <select id="emotion"></select></label>
         <label>💇‍♀️ 헤어 스타일: <select id="hairstyle"></select></label>
-        <label>👤 얼굴형: <select id="face_shape"></select></label>
-        <label>🌬️ 옷감 반응: <select id="fabric_response"></select></label>
-        <label>✨ 렌더링 스타일: <select id="rendering"></select></label>
         <label>💅 손톱 스타일: <select id="manicure"></select></label>
         <label>🦶 발 스타일: <select id="foot"></select></label>
+                
+        <label>🎬 장르 선택: <select id="genre"></select></label>
+        <label>🏞️ 배경 선택: <select id="background"></select></label>
+        <label>🌬️ 옷감 반응: <select id="fabric_response"></select></label>
+        <label>✨ 렌더링 스타일: <select id="rendering"></select></label>
+        <label>⏰ 시간대 선택: <select id="time"></select></label>
+        <label>👥 등장 인물 수: <select id="character_count"></select></label>
 
         <!-- 버튼 영역 -->
         <button id="generatePromptButton">🎯 프롬프트 생성</button>
@@ -576,6 +579,7 @@
     };
 
     const background = {
+      "없음" : "a neutral, undefined background to keep focus on the subject",
       "폐공장": "an abandoned factory with rusted steel beams and broken windows",
       "해변": "a tranquil beach with gentle waves and soft golden sand",
       "붉은 숲": "a dense forest with crimson foliage and filtered sunlight",
@@ -758,7 +762,6 @@
       "보이지 않음": "no visible characters, focus on environment and atmosphere"
     };
 
-
     const character_action = {
       "걷는다": "the character is walking slowly, footsteps echoing in the space",
       "달린다": "the character is running with urgency, breath visible in the air",
@@ -852,7 +855,6 @@
       "윙크를 하며 혀를 내민다": "the character winks playfully while sticking out her tongue",
     };
 
-
     const emotion = {
       "슬픔": "the character's eyes glisten with sadness, movements slow and heavy",
       "기쁨": "the character radiates joy, with bright eyes and an open expression",
@@ -887,7 +889,6 @@
       "혼란": "the character glances around with uncertainty, lips parted as if lost",
       "상실감": "the character holds something close, as if clinging to a fading presence",
     };
-
 
     const camera_view = {
       "정면 시점": "a front-facing shot with the subject looking directly at the camera",
@@ -957,7 +958,6 @@
       "눈 속에서의 시점": "a perspective where the camera is framed by snowflakes or fog, adding a cold or surreal atmosphere"
     };
 
-
     const camera_movement = {
       "위로 올리기": "camera moves upwards, revealing the subject or a broader scene",
       "아래로 내리기": "camera moves downwards, emphasizing the subject or surroundings below",
@@ -982,13 +982,26 @@
       "틀어지게 돌리기": "camera twists or turns during a shot, creating a disorienting and dramatic effect"
     };
 
-
     const lighting = {
-      "아침 햇살": "soft, cool bluish morning light that brings a calm and fresh atmosphere",
-      "점심빛": "bright and golden midday light that creates sharp shadows and highlights",
-      "저녁 노을": "warm and soft sunset light, casting long, golden rays across the scene",
-      "새벽 빛": "dim, muted bluish-gray dawn light, creating a quiet, still atmosphere",
-      "황혼의 빛": "burnt orange twilight light that enhances the mysterious and dreamlike quality of a scene",
+      "이른 새벽 (03:00~05:00)": "very dim, cold bluish-gray predawn light with long shadows, evoking solitude and anticipation. Color temperature ~5000K.",
+      "여명 직전 (05:00~06:00)": "muted dawn light with pale blue and lavender hues filtering through mist, creating a quiet, eerie tone. ~5200K.",
+      "아침 햇살 (06:00~08:00)": "soft, cool bluish morning light with gentle contrast, ideal for calm and fresh scenes. ~5500K.",
+      "맑은 오전 (08:00~11:00)": "brilliant, crisp daylight with slight coolness and high visibility. Neutral tones and alert mood. ~5600–5800K.",
+      "정오 직전 (11:00~12:00)": "clear and direct sunlight with minimal shadow; slightly warm, evokes productivity and clarity. ~6000K.",
+      "정오 (12:00~13:00)": "bright and golden midday light directly overhead; intense and neutral. Highlights details and clarity. ~6200K.",
+      "오후 (13:00~16:00)": "even, balanced natural light with a hint of warmth, casting medium shadows. Ideal for neutral, documentary scenes. ~6000K.",
+      "늦은 오후 (16:00~18:00)": "golden, horizontally angled light with longer shadows and warm skin tones. Evokes nostalgia and softness. ~5800K.",
+      "석양 전 (18:00~19:00)": "warm and soft pre-sunset light, orange-pink glow with enhanced ambient tones. Romantic or introspective feel. ~4500–5000K.",
+      "일몰 직전 (19:00~19:30)": "vivid orange-red sunset light casting dramatic silhouettes. Cinematic and emotional tone. ~4200K.",
+      "매직아워 (19:30~20:00)": "blue hour light after sunset with a cool, surreal hue and soft gradients. Ideal for dreamlike, mysterious moods. ~4000K.",
+      "밤 (20:00~23:00)": "dark ambient lighting from artificial sources (lamps, streetlights); yellow or neutral tone. Intimate or secretive scenes.",
+      "심야 (23:00~02:00)": "low-key, dim artificial light or partial moonlight; used for silence, suspense, or introspection. ~3000–3500K.",
+      "달빛 (보름 기준)": "cold, silvery moonlight with faint shadows and emotional distance. Quiet and otherworldly tone.",
+      "촛불 조명": "very warm flickering candlelight with a golden hue, emphasizing intimacy, nostalgia, or ritual. ~1800K.",
+      "백열등": "warm indoor light from an incandescent bulb, softening edges and creating a cozy feel. ~2700K.",
+      "형광등": "cool white fluorescent lighting, often clinical or sterile in tone. Used for offices, bathrooms. ~4000–5000K.",
+      "LED 무드등": "colored or neutral tone LED mood lighting, often ambient, creative, or club-like depending on color set.",
+      "네온사인": "bright, saturated colored lighting with a synthetic glow; evokes cyberpunk, nightlife, or surreal settings.",
       "달빛": "soft, cold moonlight that brings a tranquil, ethereal atmosphere",
       "촛불 빛": "flickering warm candlelight, adding intimacy and a sense of calm to the scene",
       "형광등 조명": "cool white artificial light from fluorescent tubes, providing a clinical and harsh feel",
@@ -1008,7 +1021,6 @@
       "암흑 속 점등": "a faint light in a dark room, symbolizing hope, discovery, or quiet solitude",
     };
 
-
     const face_shape = {
       "타원형": "oval",
       "둥근형": "round",
@@ -1027,242 +1039,150 @@
       "입체적인 유선형": "sculpted U-line"
     };
 
-
     const manicure_text = {
-      "없음": "no polish",
-      "파스텔": "pastel-colored polish on nails",
-      "누드": "nude-colored polish on nails",
-      "펄": "soft glitter polish on nails",
-      "스팽글": "sparkling glitter polish on nails",
-      "크림": "creamy finish polish on nails",
-      "메탈릭": "metallic finish polish on nails",
-      "그라데이션": "gradient polish on nails",
+      "없음": "clean, unpolished nails",
       "투명 광택": "clear glossy polish on nails",
+      "파스텔": "pastel-colored polish on nails",
+      "펄": "soft glitter polish on nails",
       "프렌치팁": "classic French tip manicure",
-      "네일 아트": "artistic nail designs with small patterns",
-      "무광": "matte polish on nails",
-      "네온": "vivid neon-colored polish on nails",
-      "큐빅 포인트": "nails with tiny rhinestone or bead accents",
-      "블랙": "solid black polish on nails",
-      "하트 패턴": "nail polish with heart pattern",
-      "유리광택": "iridescent glassy polish on nails",
+      "네일 아트": "artistic nail designs or tiny decorations",
+      "맨손": "bare hands with no accessories",
+      "레이스 장갑": "hands wearing delicate lace gloves",
+      "망사 장갑": "hands wearing fishnet gloves (usually black)",
+      "가죽 장갑": "hands in tight-fitting leather gloves",
+      "반장갑": "hands wearing fingerless gloves",
+      "화이트 장갑": "hands in white gloves (clean cotton fabric)",
+      "보석 반지": "hands adorned with shiny gemstone rings",
+      "팔찌": "hands with a delicate bracelet",
+      "체인 팔찌": "hands with a metal chain bracelet",
+      "팔에 타투": "a tattoo visible on the forearm or wrist",
+      "손목에 시계": "a wristwatch on the left wrist",
     };
-
 
     const foot_text = {
-      "없음": "no footwear",
-      "랜덤": "may or may not have footwear",
-      "파스텔": "pastel-colored polish on toenails",
-      "누드": "nude-colored polish on toenails",
-      "펄": "soft glitter polish on toenails",
-      "양말": "plain white socks",
-      "스타킹": "black sheer stockings",
-      "덧양말": "thick woolen socks",
-      "체크무늬 양말": "checkered pattern socks",
-      "무릎 양말": "knee-high socks",
-      "하이힐 스타킹": "fishnet stockings with high heels",
-      "운동화 양말": "ankle socks with sneakers",
-      "슬리퍼": "flip-flops or slippers",
-      "구두": "formal shoes with socks",
-      "웨딩 스타킹": "bridal lace stockings",
-      "레깅스": "leggings, comfortable and flexible",
-      "고급 스타킹": "luxurious velvet stockings with a soft sheen",
-      "캔디 스트라이프 양말": "candy stripe socks in bright colors",
-      "펑크 양말": "punk style socks with studs or spikes",
-      "스트랩 샌들": "strappy sandals with open toes",
-      "부츠": "knee-high boots with thick soles",
-      "운동화": "sports sneakers with breathable fabric",
-      "나이트 스타킹": "nighttime stockings with glowing effects",
-      "웨지힐": "wedge heels with ankle straps",
-      "갈색 롱부츠": "brown long boots with a smooth leather finish",
-      "메리 제인 슈즈": "Mary Jane shoes with socks",
-      "오픈토 샌들": "open-toe sandals with a buckle design",
-      "플랫폼 슈즈": "platform shoes with a thick sole",
-      "털 부츠": "fuzzy boots lined with fur",
-      "하이탑 스니커즈": "high-top sneakers with laces",
-      "슬립온": "slip-on shoes with elastic sides",
-      //감성 & 상황 특화
-      "투명 젤 네일": "clear glossy polish on toenails",
-      "그라데이션 네일": "gradient polish on toenails",
-      "프렌치 네일": "French tip polish on toenails",
-      "하트 패턴 네일": "heart-patterned polish on toenails",
-      "큐빅 네일": "toenails with rhinestone accents",
+      "맨발": "bare feet without any polish or footwear",
+      "파스텔 페디큐어": "bare feet with pastel-colored polish on toenails",
+      "누드톤 페디큐어": "bare feet with nude-colored polish on toenails",
+      "펄 페디큐어": "bare feet with soft glitter polish on toenails",
+      "진한 레드 페디큐어": "bare feet with glossy red polish on toenails",
+      "프렌치 페디큐어": "bare feet with classic french pedicure on toenails",
+      "블랙 페디큐어": "bare feet with black polish on toenails",
+      "은은한 그라데이션": "bare feet with soft gradient polish on toenails",
 
-      //계절 & 실내
-      "털 실내화": "fuzzy indoor slippers with closed toes",
-      "실내 슬리퍼": "indoor slippers with soft fabric",
-      "기모 스타킹": "fleece-lined winter tights",
-      "양털 부츠": "sherpa-lined snow boots",
-      "비 오는 날 장화": "rain boots with glossy finish",
-      "해변용 샌들": "beach sandals with sandy texture",
+      "하얀 양말": "feet wearing plain white socks",
+      "체크무늬 양말": "feet wearing checkered patterned socks",
+      "무릎 양말": "feet wearing knee-high socks",
+      "스트라이프 양말": "feet wearing striped colorful socks",
+      "울 양말": "feet wearing thick woolen socks",
+      "펑크 양말": "feet wearing punk-style socks with studs or skulls",
+      "레이스 양말": "feet wearing delicate lace socks",
 
-      //문화 & 전통
-      "고무신": "traditional Korean rubber shoes",
-      "게타": "traditional Japanese wooden sandals (geta)",
-      "짚신": "woven straw sandals",
-      "토오크 샌들": "traditional Indian toe ring sandals",
+      "망사 스타킹": "feet in black fishnet stockings",
+      "반투명 스타킹": "feet in sheer black or nude stockings",
+      "레이스 스타킹": "feet in bridal lace stockings",
+      "벨벳 스타킹": "feet in luxurious velvet-textured stockings",
+      "빛나는 나이트 스타킹": "feet in dark stockings with glowing shimmer",
 
-      //감성 연출용
-      "곰돌이 슬리퍼": "bear-shaped fuzzy slippers",
-      "하트 양말": "heart-patterned cute socks",
-      "망사 스타킹": "mesh patterned stockings",
-      "에나멜 힐": "glossy enamel high heels",
-      "벗어둔 양말": "socks loosely thrown beside her on the floor",
-
-      //활동성 연출
-      "요가 양말": "yoga grip socks with open toes",
-      "러닝화": "running shoes with arch support",
-      "하이킹 부츠": "hiking boots with rugged soles"
+      "운동화 양말 + 스니커즈": "ankle socks with athletic sneakers",
+      "운동화 (맨발)": "bare feet inside sports sneakers",
+      "슬리퍼": "feet in soft indoor slippers or flip-flops",
+      "웨지힐": "feet in wedge heels with ankle straps",
+      "하이힐": "feet in high heels, toes slightly visible",
+      "오픈토 샌들": "feet in open-toe sandals with straps",
+      "스트랩 샌들": "feet in strappy sandals exposing the toes",
+      "부츠": "feet in knee-high boots with solid soles",
+      "갈색 롱부츠": "feet in long brown leather boots",
+      "플랫폼 슈즈": "feet in platform shoes with thick soles",
+      "메리 제인 슈즈": "feet in Mary Jane shoes with ankle socks",
+      "하이탑 스니커즈": "feet in high-top sneakers with laces",
+      "슬립온": "feet in slip-on canvas shoes with no laces",
     };
-
 
     const outfit = {
-      "기본 옷": "a pastel summer tank top and short, lightweight summer shorts",
-      "홈 원피스": "thin-strapped casual home dress",
-      "회사원": "a fitted blouse and office skirt",
-      "캐주얼": "an oversized t-shirt and shorts",
-      "파자마": "a soft pajama set",
-      "한복": "a traditional Korean hanbok with vibrant colors and flowing sleeves",
-      "기모노": "a traditional Japanese kimono with elegant patterns and wide sash",
-      "닌자 복장": "a traditional ninja outfit with sleek, dark matte fabric that absorbs light for ultimate stealth. The suit features intricate, flexible armor plating across the arms and legs, designed for fluid movement. It includes fingerless gloves for dexterity, lightweight arm guards for protection, and a minimalist forehead band with subtle engravings. The fabric is layered for comfort and mobility, perfect for silent movements. The suit’s practical design is enhanced by reflective accents that glow faintly in low-light conditions, making it ideal for night operations. The overall look merges ancient shinobi aesthetics with modern tactical features, giving it a timeless yet highly functional appeal.",
-      "붉은 전투 파일럿 슈트": "a striking crimson pilot suit reminiscent of classic mecha anime, designed for high-speed maneuvers and intense control in combat situations. The suit features bold symmetrical lines and a high-gloss finish that accentuates the wearer's silhouette...",
-      "화이트 바이오 슈트": "a minimalistic white and blue bio-suit often seen in futuristic space-themed animation, specifically designed for deep-space exploration and high-tech missions. The suit features soft, organic contours...",
-      "군복계 파일럿": "a sleek, high-tech pilot uniform designed for both combat and tactical use. The suit’s glowing seams provide both visual appeal and a practical energy source, while the control panel belt allows for seamless interaction with the cockpit's systems. The fabric is a mix of smooth, flexible material and tough, armor-like panels, designed to protect while offering maximum agility. The high-tech look is enhanced by a matte black finish, which absorbs light and blends into shadows, making it ideal for stealthy operations.",
-      "SF 간호복": "a biotech nurse suit designed to assist in high-pressure medical environments. The suit’s form-fitting silhouette is crafted from a flexible material that adapts to the body, while the glowing armband adjusts to the wearer’s vital signs. The material feels almost organic, with a smooth, breathable texture that keeps the wearer cool during long shifts. The subtle, futuristic design features soft, luminescent accents that indicate the suit’s advanced functionality, perfect for tending to patients in even the most sterile or hazardous conditions.",
-      "스텔스 요원": "an urban infiltration suit designed for covert missions in high-tech environments. The hooded visor seamlessly integrates with the suit, providing a fully immersive tactical interface. The suit’s material is a lightweight, breathable mesh that contours to the body, offering full range of motion while maintaining a shadow-like appearance. The fabric is reinforced with specialized fibers that mask the wearer’s presence, allowing them to blend into any urban setting while remaining undetected. The minimalistic design is both functional and highly adaptable.",
-      "메카걸": "an armored bodysuit with exposed mechanical joints and high-tech leg braces, designed for enhanced combat performance. The suit’s body is made of a durable, flexible material that allows for fluid movement, while the exposed joints showcase the intricate mechanics that power the wearer’s enhanced strength and agility. The metallic texture of the armor reflects light, giving the suit a polished, futuristic appearance. The mechanical braces allow for explosive movements, while the sleek design ensures that the wearer can maintain both defense and agility in battle.",
-      "전투 메이드": "a combat-ready maid uniform that merges traditional elegance with tactical efficiency. The reinforced bodice is crafted from high-durability fabric, offering protection while maintaining a sleek silhouette. The concealed holster and utility belt provide easy access to weapons and tools, while the skirt’s flexible material allows for swift movements. The suit’s understated yet functional design is perfect for both domestic duties and high-intensity combat, with the classic maid aesthetic giving it a unique and intimidating edge in the field.",
-      "아케이드 파일럿 슈트": "a tight, form-fitting combat suit inspired by arcade-style mech pilots, sleek and lightweight for maximum mobility. Bright modern accents and a dynamic visor complete the look...",
-      "빛의 힐러 슈트": "a futuristic support uniform inspired by celestial-themed healers in popular games. White and gold armor with angelic wings and a utility belt filled with advanced healing gear...",
-      "마더 스타일 의상": "A simple, casual outfit worn by Bong Mison (Shin-chan's mother). The outfit features a brightly colored t-shirt or blouse, often in pastel shades or floral prints, paired with comfortable pants or skirts. She often wears a simple cardigan or sweater over her clothes for a cozy, approachable look. Her look is practical yet warm, ideal for a busy mom, with comfortable shoes like flats or low heels. The outfit reflects her warm and nurturing personality, with a hint of femininity, perfect for her role as a loving mother and wife.",
-      "베이직 티셔츠와 청바지": "a classic fitted t-shirt tucked into high-waisted jeans with sneakers",
-      "후드티와 조거팬츠": "an oversized hoodie paired with soft jogger pants and casual slip-ons",
-      "니트와 롱스커트": "a cozy knit sweater with a flowy ankle-length skirt and ankle boots",
-      "반팔 티와 반바지": "a plain crew-neck tee with denim shorts and canvas shoes",
-      "크롭티와 와이드팬츠": "a short crop top with wide-leg trousers and platform sandals",
-      "체크셔츠와 레깅스": "a loose plaid shirt layered over a tank top with black leggings",
-      "심플 셔츠와 슬랙스": "a crisp white shirt tucked into slim-fit slacks with loafers",
-      "민소매 블라우스와 미디스커트": "a sleeveless blouse with a pleated midi skirt and ballet flats",
-      "라운드넥 니트와 스키니진": "a round-neck sweater with skinny jeans and flat ankle boots",
-      "심플 롱 원피스": "a monotone long dress with clean lines and minimalist sandals",
-      "린넨 셔츠와 와이드팬츠": "a loose linen shirt with wide-leg eco-fabric pants and straw sandals",
-      "자연톤 원피스": "a beige or olive-toned cotton dress with wooden-button accents",
-      "수수한 앞치마 원피스": "a natural-fiber pinafore dress layered over a light top, barefoot or in clogs",
-      "프릴 블라우스와 플레어스커트": "a ruffled blouse with a flared skirt and low heels",
-      "슬립 드레스": "a satin slip dress with a lightweight cardigan and strappy sandals",
-      "하이넥 블라우스와 H라인 스커트": "a high-neck blouse tucked into a form-fitting skirt with pumps",
-      "셔츠 원피스": "a belted shirt dress with long sleeves and pointed-toe flats",
-      "요가복": "a stretchable yoga set with a sleeveless top and high-waisted leggings, designed for flexibility and breathability",
-      "겨울 캐주얼": "a padded parka layered over a knit sweater, with thermal leggings and fur-lined boots",
-      "봄 데이트룩": "a floral chiffon dress with puffed sleeves and white ballet flats",
-      "댄서 스타일": "a cropped hoodie over a sports bra with jogger pants and chunky sneakers, embodying a confident street dance vibe",
-      "빈티지 롱드레스": "a vintage-inspired long dress with lace trim, puff sleeves, and soft neutral tones, evoking classic elegance",
-      "카페 알바룩": "a white button-up tucked into a khaki apron skirt, paired with canvas sneakers and a headband",
-      "프렌치 시크룩": "a striped boat-neck top with high-waisted trousers, a silk scarf tied at the neck, and loafers",
-      "비 오는 날 외출복": "a waterproof trench coat with a hood, layered over cropped jeans and rain boots",
-      "모던 미니멀룩": "a solid-tone blouse tucked into wide slacks with sharp lines and leather loafers, accessorized with a clean tote bag",
-      "아이돌 무대의상": "a shimmering crop top with a pleated mini skirt, thigh-high socks, and platform heels, stage-ready and attention-grabbing",
-      "핑크 매지컬걸 의상": "a classic magical girl costume evoking the 90s cherry blossom aesthetic, with a short bell-shaped dress, oversized ribbon accents, and a star-topped magical staff...",
-      "달빛 전사 매지컬 복장": "a sailor-style magical battle uniform inspired by lunar protectors, featuring a white leotard with a navy mini skirt, red bows, crescent motifs, and twin tails tied in buns...",
-      "아테나 스타일 의상": "a vibrant idol-style combat costume with pink accents, pleated skirt, and sparkly fabric, reflecting a youthful fighter who blends music and psychic energy...",
-      "플레어 격투복": "a modified martial arts outfit with purple capris, red sash, and sporty gloves, worn by a cheerful yet fierce female fighter from a retro-style fighting game...",
-      "불꽃 마법 전사 의상": "a fantasy-themed red sorceress outfit inspired by adventurous magic-wielders from 90s anime, featuring shoulder armor, black cape, and enchanted accessories...",
-      "하늘하늘 스커트와 카디건": "a flowing pastel skirt paired with a buttoned cardigan and flats",
-      "트레이닝 세트": "a matching tracksuit with zip-up jacket and drawstring pants",
-      "볼레로 니트와 슬립스커트": "a cropped bolero sweater layered over a silk slip skirt with kitten heels",
-      "노을빛 한복 드레스": "a modern hanbok dress in sunset tones with sheer sleeves and gradient silk",
-      "화사한 니트 투피스": "a vibrant knit two-piece set with a cropped top and matching midi skirt",
-      "도시형 아웃도어룩": "an urban outdoor outfit with a windbreaker, cargo pants, and hiking shoes",
-      "보이시 스트리트룩": "a graphic hoodie with baggy jeans and high-top sneakers, gender-neutral streetwear",
-      "미니멀 점프수트": "a sleeveless minimalist jumpsuit with wide legs and a waist tie",
-      "도트무늬 빈티지 원피스": "a vintage polka-dot dress with puffed sleeves and retro sandals",
-      "아카데미 스타일": "a school-inspired look with a blazer, pleated skirt, knee socks, and loafers",
-      "파티 드레스": "a glittery cocktail dress with a sweetheart neckline and stilettos",
-      "클래식 수트": "a tailored two-piece suit with a crisp shirt and Oxford shoes",
-      "패딩조끼와 니트바지": "a padded vest over a fleece top with knitted pants and sneakers",
-      "바캉스룩": "a tropical-print romper with flip-flops and a straw hat",
-      "라운지웨어": "a loose cotton lounge set with an oversized top and elastic shorts",
-      "아트스쿨 감성 룩": "a layered art-school style outfit with mismatched patterns and bold accessories",
-      "작업복 스타일": "a utility jumpsuit with visible pockets, rolled sleeves, and heavy boots",
-      "뮤직페스티벌 복장": "a fringed top with denim cut-offs, layered jewelry, and ankle boots",
-      "산책용 캐주얼": "a hoodie dress with leggings and comfortable walking shoes",
-      "연극 연습용 무대복": "a neutral-toned rehearsal outfit with flexible fabric for movement and minimalist stage presence",
-      "체육복 스타일": "a standard school gym uniform with a white tee, navy shorts, and white sneakers",
-      "시골소녀풍 원피스": "a rural-style floral dress with lace trim and straw hat, evoking countryside innocence",
-      "러닝복": "a fitted athletic running outfit with breathable mesh panels and reflective stripes",
-      "중세 농민 복장": "a simple medieval peasant dress with earth-toned layers and coarse fabric textures",
-      "사무라이풍 복장": "a kimono-style warrior outfit with wide hakama pants and a cloth belt tied at the waist",
-      "낙서 프린트 스트리트룩": "a streetwear set with graffiti-print oversized shirt, ripped jeans, and neon accessories",
-      "빈티지 스쿨걸 복장": "a retro schoolgirl outfit with a sailor-collar blouse, plaid skirt, and knee socks",
-      "보헤미안 롱스커트룩": "a bohemian layered long skirt with a tassel vest and large earrings",
-      "하프코트와 머플러 겨울룩": "a short wool coat layered over a turtleneck, with a thick muffler and gloves",
-      "스튜디오 촬영용 아트드레스": "an avant-garde art dress with asymmetrical hems, sculptural lines, and layered mesh",
-      "목장 작업복": "a utilitarian denim jumpsuit with rolled sleeves and rubber boots, slightly dirt-stained",
-      "도시 힙스터룩": "a slim-fit turtleneck with cropped trousers, round glasses, and a beanie",
-      "전통 무당 의상": "a Korean shaman costume with colorful layered hanbok and ornamental accessories",
-      "광대풍 서커스 의상": "a vintage clown costume with patchwork patterns, large buttons, and puffy sleeves",
-      "낮잠복 룩": "a loose fleece hoodie with sleep shorts and fluffy slippers, ideal for napping",
-      "디지털 아트워크 코스튬": "a futuristic bodysuit inspired by glitch art, with neon lines and digital static textures",
-      "야외 캠핑 캐주얼": "a lightweight padded jacket with cargo shorts, a bucket hat, and trail shoes",
-      "브이넥 니트와 데님 팬츠": "a V-neck knit sweater paired with classic denim jeans and ankle boots",
-      "크림 컬러 셋업": "a cream-toned matching set with a cropped jacket and midi skirt, accessorized with gold earrings",
-      "오버핏 맨투맨과 테니스 스커트": "an oversized sweatshirt with a pleated tennis skirt and white sneakers",
-      "스트라이프 티와 멜빵바지": "a striped long-sleeve tee under denim overalls with rolled cuffs",
-      "셔링 블라우스와 와이드 슬랙스": "a ruched blouse tucked into wide-leg slacks with mule heels",
-      "플리츠 미니스커트와 카디건": "a pleated mini skirt paired with a button-up cardigan and loafers",
-      "레더 자켓과 하이웨이스트 팬츠": "a cropped leather jacket over a fitted tee with high-waisted trousers and boots",
-      "플로럴 블라우스와 데님스커트": "a floral chiffon blouse with a front-slit denim skirt and sandals",
-      "슬리브리스 니트와 A라인 스커트": "a sleeveless knit top with an A-line skirt and simple flats",
-      "반팔 니트와 린넨 반바지": "a short-sleeve knit top with beige linen shorts and slide sandals",
-      "버튼업 셔츠와 데님 점프수트": "a tucked-in button-up shirt layered under a loose denim jumpsuit",
-      "심플 니트 셋업": "a ribbed knit set consisting of a slim-fit top and matching straight pants",
-      "체크 블레이저와 생지 데님": "a check-patterned blazer with raw denim and leather ankle boots",
-      "파스텔톤 맨투맨과 밴딩스커트": "a pastel crewneck sweatshirt with a comfy elastic skirt and sneakers",
-      "코튼 후디와 레깅스": "a soft cotton hoodie with sporty black leggings and dad sneakers",
-      "베이직 탱크탑과 크롭트 청바지": "a basic tank top paired with cropped jeans and open-toe sandals",
-      "단추 니트 가디건과 실키 롱스커트": "a buttoned cardigan layered over a silk long skirt with ballet flats",
-      "타이트 반팔티와 트레이닝 팬츠": "a slim-fit short sleeve tee with loose training pants and flip flops",
-      "박시핏 셔츠와 바이커 쇼츠": "a boxy oversized shirt paired with black biker shorts and canvas sneakers",
-      "심플 튜닉 원피스": "a minimalist tunic dress with short sleeves and slip-on flats",
-      "반팔 니트와 시스루 스타킹": "a lightweight short-sleeve knit top paired with a pleated mini skirt and sheer black stockings",
-      "셔츠 원피스와 망사 스타킹": "a belted shirt dress styled with patterned fishnet stockings and ankle boots",
-      "슬립 드레스와 시어 스타킹": "a silky slip dress with translucent beige stockings and kitten heels",
-      "크롭 니트와 플레어스커트 + 오버니 스타킹": "a cropped knit top with a flared mini skirt and over-the-knee stockings",
-      "민소매 블라우스와 하프팬츠 + 레이스 스타킹": "a sleeveless blouse with tailored half-pants and lace-detailed sheer stockings",
-      "반팔 셔츠와 미디스커트 + 누드 스타킹": "a short-sleeve button-up shirt with a midi skirt and nude skin-tone tights",
-      "오프숄더 티셔츠와 데님 미니스커트 + 시스루 스타킹": "an off-shoulder t-shirt with a denim mini skirt and see-through black tights",
-      "루즈핏 반팔티와 바이커 쇼츠 + 얇은 스킨레깅스": "a loose oversized t-shirt paired with biker shorts and lightweight skin-tone leggings",
-      "캡소매 원피스와 스타킹 삭스": "a cap-sleeve cotton dress with short transparent stocking-socks and Mary Jane shoes",
-      "린넨 셔츠와 H라인 스커트 + 여름용 망사 스타킹": "a linen shirt tucked into an H-line skirt with breathable mesh stockings",
-      "반팔 니트 미니원피스 + 하이삭스형 스타킹": "a short-sleeve knit mini dress paired with thigh-high stocking socks and platform heels",
-      "캉캉 원피스와 반투명 레이스 스타킹": "a layered tiered dress with soft frills, paired with semi-transparent lace stockings and strappy sandals",
-      "민소매 티셔츠와 A라인 스커트 + 도트 스타킹": "a sleeveless fitted tee with an A-line skirt and sheer dotted tights",
-      "백리스 탑과 쇼츠 + 하이웨이스트 스타킹": "a backless summer top with short denim shorts and high-waisted sheer tights peeking through",
-      "비대칭 원숄더 드레스 + 누드 롱 스타킹": "an asymmetrical one-shoulder mini dress with nude long stockings and minimalist heels",
-      "린넨 민소매 블라우스와 주름치마 + 아이보리 스타킹": "a sleeveless linen blouse with a pleated midi skirt and ivory sheer tights",
-      "짧은 니트 조끼와 블라우스, 플레어 스커트 + 망사 스타킹": "a short knitted vest over a lightweight blouse and flared skirt, matched with classic fishnet stockings",
-      "얇은 시스루 셔츠와 미니 데님 팬츠 + 시스루 스타킹": "a sheer oversized shirt over a tank and mini denim shorts, layered with translucent tights",
-      "러플 오프숄더 상의와 하이웨스트 팬츠 + 레이스 스타킹": "a ruffled off-shoulder top tucked into high-waisted shorts, worn with delicate lace tights",
-      "탱크탑과 테니스 스커트 + 패턴 스타킹": "a tight tank top paired with a pleated tennis skirt and subtle patterned tights",
-      "리넨 셋업(상의+반바지) + 무릎까지 오는 시스루 삭스": "a light linen co-ord set with translucent knee-high socks and open-back loafers",
-      "니트탑과 버뮤다 팬츠 + 스트라이프 시스루 스타킹": "a knit summer top with Bermuda shorts and sheer striped tights for an urban feminine style",
-      "오프숄더 블라우스와 하이웨스트 팬츠": "an off-shoulder blouse paired with high-waisted trousers and open-toe sandals",
-      "백리스 원피스": "a backless summer dress with a halter neckline and flowing silhouette",
-      "크롭 셔츠와 하이웨이스트 롱스커트": "a cropped button-up shirt paired with a high-waisted maxi skirt and loafers",
-      "민소매 터틀넥과 미니스커트": "a sleeveless mock-neck top tucked into a clean-line mini skirt with flats",
-      "홀터넥 탑과 와이드 팬츠": "a halter top matched with wide-leg pants and strap heels",
-      "슬릿 원피스": "a side-slit midi dress with spaghetti straps and simple ankle-strap heels",
-      "크롭 니트와 데님 쇼츠": "a short summer knit top paired with high-rise denim shorts and canvas sneakers",
-      "브이넥 티셔츠와 린넨 팬츠": "a loose V-neck tee tucked into lightweight linen pants and sandals",
-      "슬리브리스 롱드레스": "a sleeveless maxi dress with subtle back curves and delicate fabrics",
-      "오버핏 셔츠 단추 한두 개 풀린 스타일": "an oversized shirt with a couple of buttons undone, worn over cycling shorts or innerwear",
-      "등이 깊게 파인 니트": "a lightweight backless knit top layered over a bralette and wide trousers",
-      "비대칭 숄더 원피스": "an asymmetrical-shoulder dress with a clean hem and minimalist heels",
-      "캡 슬리브 니트와 플리츠 미니스커트": "a cap-sleeve fitted knit with a pleated mini skirt and over-the-ankle socks",
-      "시스루 블라우스 + 이너탑 레이어": "a semi-transparent blouse layered over a fitted camisole and paired with soft trousers",
-      "얇은 슬립탑 + 리넨 셔츠 오픈 스타일": "a soft slip top under an open linen shirt and high-rise shorts for a breezy summer look",
-    };
+      // 🔥 섹시 (21개)
+      "슬립 드레스": "a satin slip dress with delicate straps and soft drape, paired with strappy heels",
+      "백리스 탑과 쇼츠": "a backless crop top matched with short denim shorts and open-toe sandals",
+      "백리스 원피스": "a deep-back open dress revealing the spine line, paired with slim heels",
+      "홀터넥 탑과 와이드 팬츠": "a halter neck top tucked into wide-leg pants and sleek strap heels",
+      "비대칭 원숄더 드레스": "an asymmetrical one-shoulder mini dress with clean lines and minimalist heels",
+      "슬릿 원피스": "a body-hugging side-slit dress that reveals the thigh line elegantly",
+      "크롭 니트와 미니스커트": "a cropped knit sweater and pleated miniskirt combo showing midriff",
+      "탱크탑과 테니스 스커트": "a tight tank top paired with a short tennis skirt and ankle socks",
+      "민소매 터틀넥과 미니스커트": "a sleeveless mock-neck top with a form-fitting mini skirt and flats",
+      "레이스 블라우스와 쇼츠": "a sheer lace blouse paired with high-waisted shorts",
+      "튜브탑과 슬림 팬츠": "a body-hugging tube top with sleek skinny pants",
+      "오프숄더 니트와 쇼츠": "a wide off-shoulder knit top paired with short lounge shorts",
+      "슬림핏 롬퍼": "a tight-fitting romper with short legs and sleeveless design",
+      "얇은 시스루 셔츠": "a translucent shirt layered over a crop tank and shorts",
+      "비키니 탑과 데님 반바지": "a bikini top combined with distressed denim shorts",
+      "브라탑과 후드 집업": "a sports bra top under an open hoodie, worn with tight shorts",
+      "레이서백 민소매": "a racerback sleeveless top with visible upper back muscles",
+      "크롭 셔츠와 하이웨이스트 팬츠": "a front-tied crop shirt and high-rise pants combo",
+      "짧은 후드 집업과 핫팬츠": "a short zip-up hoodie worn over a sports bra and hot pants",
+      "얇은 슬리브리스 니트": "a thin sleeveless knit that clings to the upper body",
+      "니트 원피스": "a body-hugging knit dress with a ribbed texture and long sleeves",
+      "오프숄더 티셔츠와 데님 미니스커트": "an off-shoulder t-shirt with a short denim mini skirt and see-through tights",
+      "민소매 니트 원피스": "a tight ribbed sleeveless knit dress that hugs the body and shows collarbone lines",
+      "비대칭 숄더 블라우스와 쇼츠": "an asymmetrical shoulder blouse tucked into high-rise shorts",
+      "백리스 니트와 와이드 팬츠": "a backless knit top paired with soft wide-leg pants",
+      "슬립탑과 얇은 시스루 셔츠": "a satin slip tank under a translucent overshirt and high-waisted skirt",
+      "캡 소매 원피스": "a cap-sleeved fitted dress that reveals shoulder line and upper arms",
+      "셔츠 한두 개 풀린 스타일": "an oversized button-up shirt with the top buttons undone and innerwear slightly visible",
+      "얇은 슬립 드레스와 스타킹": "a silky slip dress with sheer stockings and kitten heels",
+      "오버핏 셔츠와 바이커 쇼츠": "an oversized shirt worn with short biker shorts and ankle sneakers",
+      "볼레로 니트와 슬립스커트": "a cropped bolero knit over a satin slip skirt revealing waist line",
+      "얇은 후드 집업과 탱크탑": "a thin zip-up hoodie left open over a tight tank top and shorts",
+      "시스루 블라우스와 미디스커트": "a sheer blouse with a fitted mid-length skirt and heels",
+      "레이서백 슬리브리스와 타이트 팬츠": "a racerback sleeveless top with tight fitness pants",
+      "레이스 탑과 롱 스커트": "a lace-detailed top matched with a high-slit long skirt",
+      "크롭 탱크탑과 주름 스커트": "a cropped tank top and flowy mini skirt with soft textures",
+      "숄더 컷아웃 블라우스와 스키니진": "a shoulder-cutout blouse with skinny jeans and open heels",
+      "셔링 블라우스와 미니스커트": "a ruched blouse with a body-hugging mini skirt and pumps",
+      "브라탑과 하이웨스트 슬랙스": "a cropped bra top matched with wide high-waisted slacks",
+      "시스루 블라우스와 반바지": "a transparent chiffon blouse paired with short shorts and flats",
+      "슬리브리스 티셔츠와 트레이닝 팬츠": "a fitted sleeveless tee with slim track pants and flip flops",
+      "얇은 튜브탑과 롱스커트": "a thin tube top tucked into a high-waisted flowing long skirt",
+      "데님 핫팬츠": "ultra-short frayed denim shorts hugging the hips, paired with a loose tucked-in t-shirt",
+      "슬림 핏 쇼츠": "body-contouring high-rise shorts made of stretch fabric that glides over the thighs",
+      "플레어 미니스커트": "a flowy pleated mini skirt that flutters subtly with every step",
+      "랩 스타일 스커트 팬츠": "a wrap-style short skort with asymmetrical overlap revealing dynamic leg movement",
+      "테니스 미니스커트": "a crisp white pleated tennis skirt paired with ankle socks and sneakers",
+      "하이웨이스트 쇼츠": "shorts with a cinched high waistline that elongates the leg line and defines the waist",
+      "레이스 트리밍 팬츠": "shorts with lace-trimmed hems that lightly graze the upper thighs",
+      "사이드 슬릿 스커트": "a high-slit mini skirt that opens slightly with motion, layered over mesh tights",
+      "크롭트 데님 스커트": "a cropped distressed denim mini skirt with frayed edges and visible pocket linings",
+      "스웨트 쇼츠": "soft sweat-fabric shorts with a snug elastic waistband and slightly rolled hems for casual comfort",
 
+      // 🖇 오피스/캐주얼/코스튬
+      "하이넥 블라우스와 H라인 스커트": "a high-neck blouse tucked into a pencil skirt and pumps",
+      "민소매 블라우스와 미디스커트": "a sleeveless blouse paired with a pleated midi skirt and ballet flats",
+      "반팔 티와 반바지": "a basic crew-neck tee with rolled-up denim shorts and sneakers",
+      "후드티와 조거팬츠": "an oversized hoodie with soft jogger pants and slip-ons",
+      "오버핏 맨투맨과 테니스 스커트": "an oversized sweatshirt paired with a pleated tennis skirt",
+      "핑크 매지컬걸 의상": "a magical girl outfit with short skirt, ribbons, and boots",
+      "아이돌 무대의상": "a shimmering stage outfit with crop top, mini skirt, and thigh-high socks",
+      "닌자 복장": "a sleek ninja outfit with fingerless gloves and stealthy matte finish",
+      "붉은 전투 파일럿 슈트": "a red pilot-style suit with utility straps and futuristic gloves",
+      "트렌치코트와 부츠": "a beige trench coat over a turtleneck dress with tall leather boots",
+      "프렌치 시크룩": "a striped boat-neck top with slim trousers and a silk scarf",
+      "린넨 셔츠와 H라인 스커트": "a linen shirt tucked into a clean-line pencil skirt and loafers",
+      "체크셔츠와 레깅스": "a plaid shirt over a tee paired with comfortable black leggings",
+      "도시형 아웃도어룩": "a lightweight windbreaker over cargo pants and trail shoes",
+      "한복 드레스": "a modern hanbok with flowing sleeves and pastel tones",
+      "카페 알바룩": "a tucked-in white blouse with an apron skirt and sneakers",
+      "아트스쿨 감성 룩": "a layered outfit with mismatched patterns and large tote",
+      "전투 메이드": "a tactical-style maid uniform with reinforced corset and boots",
+      "하이넥 블라우스 + H라인 스커트": "a high-neck blouse tucked into a fitted H-line skirt with modest heels",
+      "화이트 셔츠 + 슬랙스": "a crisp white button-up shirt paired with slim-fit slacks and loafers",
+      "셔츠 원피스": "a belted shirt dress with structured shoulders and pointed-toe flats",
+      "블레이저 + 미디스커트": "a structured blazer layered over a pencil midi skirt, conveying confidence",
+      "민소매 블라우스 + 미디 스커트": "a sleeveless blouse paired with a softly pleated skirt, refined and feminine",
+      "단정한 니트 + 슬랙스": "a clean round-neck knit top tucked into tailored trousers",
+      "시스루 소매 셔츠 + 슬림핏 팬츠": "a sheer-sleeved blouse matched with slim pants for a modern silhouette",
+      "타이트한 브이넥 니트 + A라인 스커트": "a body-fitting V-neck knit paired with an A-line skirt that balances the silhouette",
+      "트렌치코트 오피스룩": "a beige trench coat over business attire, with subtle heel shoes",
+      "심플 니트 투피스": "a matching knit top and midi skirt set in neutral tones, minimal yet elegant"
+    };
 
     const body_shape = {
       "슬림형": "slim body type with a slender silhouette and minimal curves",
@@ -1273,46 +1193,79 @@
       "풍성한": "soft body type with gentle curves and a fuller silhouette",
       "길고 날씬한": "long-limbed body type with tall and graceful proportions",
       "자연형": "natural body type with relaxed, unstructured proportions",
-      "둥근 실루엣": "rounded silhouette with soft transitions and subtle curves"
-    };
+      "둥근 실루엣": "rounded silhouette with soft transitions and subtle curves",
 
+      // 🔽 추가된 묘사
+      "섬세한 라인형": "delicate body type with graceful shoulder slopes and fine bone structure",
+      "허리 강조형": "hourglass body type with a sharply defined waist and flowing hips",
+      "상체 중심형": "top-heavy body type with broader shoulders and a fuller bust",
+      "하체 중심형": "bottom-heavy body type with fuller thighs and hips, and a narrower upper body",
+      "각진 실루엣": "angular body type with sharp lines, square shoulders, and a firm frame",
+      "중성형": "androgynous body type with straight lines and minimal body curvature",
+      "유연한 라인형": "fluid body type with smooth, flowing curves and a supple posture",
+      "장신형": "statuesque body type with tall height and elongated proportions",
+      "미니멀형": "minimalist body type with a lean, flat contour and subtle definition",
+      "입체적 실루엣": "dimensional body type with balanced depth and gentle muscular visibility",
+    };
 
     const hairstyle = {
-      "풀어짐 (내추럴)": "hair unbound in natural tones and textures",
-      "단정하게 묶음": "hair neatly tied back in a simple ponytail",
-      "헝클어진 듯 자연스러움": "hair loosely tousled with a casual elegance",
-      "반묶음": "hair half-tied in a soft feminine style",
-      "단발 (귀밑길이)": "short bob cut just below the ears",
-      "긴 생머리": "long straight hair flowing naturally",
-      "웨이브 펌": "soft wavy perm with a light bounce",
-      "깔끔한 포니테일": "clean ponytail tied high at the back",
-      "올림머리 (업두)": "an elegant updo",
-      "가르마 내린 생머리": "long straight hair parted neatly down the center",
-      "앞머리 있는 단발": "short bob with full bangs covering the forehead",
-      "시스루 뱅": "straight hair with see-through bangs",
-      "하프 번": "half-up hair tied into a small top bun",
-      "양 갈래 묶음": "twin low ponytails tied loosely behind",
-      "헐렁한 땋은 머리": "loosely braided hair draping over one shoulder",
-      "귀 뒤로 넘긴 긴 머리": "long straight hair tucked behind both ears",
-      "사이드 포니테일": "low side ponytail resting over one shoulder",
-      "곱게 말린 C컬 단발": "soft C-curl bob with inward-curled ends",
-      "단정한 땋은 머리": "tight single braid tied at the back"
-    };
+      // ▫️ 풀어짐 / 내추럴
+      "자연스럽게 풀어진 생머리": "long straight hair left unbound with natural movement",
+      "자연스러운 웨이브 헤어": "loose wavy hair with a casual, tousled texture",
+      "귀 뒤로 넘긴 긴 머리": "long straight hair tucked neatly behind both ears",
+      "가르마 내린 생머리": "long straight hair parted down the middle",
+      
+      // ▫️ 단발 / 숏컷
+      "귀밑 단발": "bob cut just below the ears with a clean finish",
+      "C컬 단발": "bob hairstyle curled inward softly at the ends (C-curl)",
+      "앞머리 있는 단발": "short bob with straight full bangs covering the forehead",
 
+      // ▫️ 묶음 스타일
+      "단정한 포니테일": "neatly tied ponytail at mid-height",
+      "높게 묶은 포니테일": "high ponytail tied at the crown for an energetic look",
+      "로우 포니테일": "low ponytail resting near the nape of the neck",
+      "사이드 포니테일": "pony tail tied to the side and draped over one shoulder",
+      "반묶음 스타일": "half-up hair tied in a soft feminine style, with the rest flowing freely",
+      "하프 번": "half-up hairstyle with the tied portion twisted into a small top bun",
+
+      // ▫️ 땋은 머리
+      "단정한 땋은 머리": "single tight braid tied neatly at the back",
+      "헐렁한 땋은 머리": "loosely braided hair that drapes over one shoulder",
+      "양 갈래 땋은 머리": "twin braids tied low with a youthful vibe",
+
+      // ▫️ 업스타일 / 올림머리
+      "업두 스타일": "elegant updo with hair twisted and pinned upward",
+      "정돈된 번 스타일": "tidy hair bun secured at the back of the head",
+      "느슨한 로우 번": "low bun with a slightly messy, natural finish",
+
+      // ▫️ 앞머리
+      "시스루 뱅": "fine see-through bangs that lightly cover the forehead",
+      "풀뱅": "thick straight bangs that fully cover the forehead",
+      "옆가르마 뱅": "side-parted fringe swept diagonally",
+      
+      // ▫️ 기타
+      "양 갈래 묶음": "hair split and tied into two low ponytails behind the ears",
+      "짧은 커트 헤어": "short cropped haircut with ear-length layers",
+      "자연 웨이브 반묶음": "half-up hair with loose waves for a soft and casual tone"
+    };
 
     const fabric_response = {
-      "몸 움직임에 따라 섬유가 반응함": "each fiber reacts to posture and motion",
-      "옷이 공기 흐름에 부드럽게 흩날림": "clothing flows gently with ambient air",
-      "주름과 텍스처가 사실적으로 변형됨": "fabric stretches and wrinkles with realism",
-      "천이 몸의 곡선을 자연스럽게 따라감": "fabric drapes naturally along body curves",
-      "옷자락이 중력과 움직임에 섬세하게 반응": "hems respond delicately to gravity and motion",
-      "천의 질감이 조명에 따라 달라보임": "texture of fabric shifts subtly with lighting",
-      "레이스나 얇은 천은 반투명하게 묘사됨": "sheer fabrics are rendered with semi-transparency",
-      "보풀이나 실밥 같은 미세한 질감 표현": "micro-textures like pilling and frayed threads are visible",
-      "섬유의 방향과 조직감이 정밀하게 드러남": "weave direction and fabric structure are precisely rendered",
-      "바람에 흔들릴 때 천의 잔잔한 진동": "gentle oscillations of fabric in light breeze",
+      // 🔄 동작 반응
+      "몸 움직임에 따라 천이 자연스럽게 반응": "fabric dynamically shifts and clings or loosens depending on body posture or motion",
+      "몸의 곡선을 따라 자연스럽게 흘러내림": "cloth follows the natural curves of the body, emphasizing silhouette without stiffness",
+      "움직일 때 주름과 텍스처가 자연스럽게 생성": "creases and folds appear realistically as the fabric responds to motion",
+      "옷자락이 중력과 제스처에 민감하게 반응": "hems sway subtly in response to gravity and every small movement",
+      
+      // 🌬 공기 흐름 반응
+      "공기 흐름에 부드럽게 나부낌": "fabric flows gently and continuously in ambient air movement",
+      "바람에 천이 잔잔하게 흔들림": "clothing reacts to breeze with soft, rhythmic fluttering",
+      
+      // 🌟 시각 질감 묘사
+      "섬유의 결이 조명에 따라 다르게 표현": "fabric texture appears differently depending on lighting angle and intensity",
+      "레이스나 얇은 천은 반투명 효과": "sheer materials like lace are rendered with realistic semi-transparency",
+      "천의 조직과 결이 또렷하게 표현됨": "weave direction and textile grain are precisely visible in high fidelity",
+      "보풀, 실밥 등의 미세 질감이 섬세하게 드러남": "micro-details like fraying edges or pilling are clearly rendered for realism",
     };
-
 
     const rendering_translation = {
       "심리 공포 호러" : "A ghostly girl lingers in a minimalist bedroom steeped in vintage film grain and psychological tension, evoking eerie silence and J-horror aesthetics reminiscent of *The Ring* and *A Tale of Two Sisters",
@@ -1393,13 +1346,19 @@
       "한 컷 웹툰": "single-panel webtoon format",
     };
 
-
     const distance_description = {
-      "근접": "extreme close-up shot focusing on facial detail",
-      "상반신만": "upper-body shot capturing from chest up",
-      "전신": "full-body shot showing entire figure",
-      "상반신부터 하반신까지": "medium full-body shot",
-      "길게": "wide vertical shot emphasizing height"
+      "초초근접 (5cm 이하)": "ultra extreme close-up (within 5cm) – focuses on a single detail such as fingernail texture, lip lines, or a bead of sweat. Hyper-intimate and intense.",
+      "초근접 (5~15cm)": "extreme close-up (5–15cm) – captures parts like eyes, lips, toes, fingernails. Creates emotional tension and tactile intimacy.",
+      "근접 (15~40cm)": "close-up (15–40cm) – shows the face, hands, or feet with some surrounding skin/clothing. Often used for emotional or gesture-driven frames.",
+      "상반신 근접 (50~80cm)": "tight medium shot (50–80cm) – shows head to chest or waist, often used for natural conversation or internal expression.",
+      "상반신 전체 (80~120cm)": "medium shot (80–120cm) – head to waist or hips, natural framing for interviews, expressions, and posture context.",
+      "3/4 신 (1.2~1.8m)": "three-quarter shot (1.2–1.8m) – frames from head to knees or mid-thigh, used for posing, clothing, and partial environment.",
+      "전신 기본 (2~3m)": "full-body shot (2–3m) – shows head to toe, typically used for body shape, fashion, posture, and stance clarity.",
+      "넓은 전신 (4~6m)": "wide full-body shot (4–6m) – full body with generous room above and below; allows interaction with surroundings.",
+      "초광각 전신 (7~10m)": "long full-body shot (7–10m) – subject appears relatively small; environment or background becomes dominant.",
+      "실루엣 원거리 (10~20m)": "distant silhouette shot (10–20m) – used for emotional isolation, atmosphere, or voyeuristic distance.",
+      "배경 중심 롱샷 (20m 이상)": "establishing long shot (20m or more) – subject nearly blends into background; used to show vastness or detachment.",
+      "착시 카메라 (몸에 부착)": "subjective POV – mimics eyes, shoulder, or hand-mounted camera. Used for immersion and personal involvement.",
     };
 
 
@@ -1414,7 +1373,6 @@
         outfit: document.getElementById("outfit")?.value,
         age: document.getElementById("age")?.value,
         camera: document.getElementById("camera")?.value,
-        distance: document.getElementById("distance")?.value,
         manicure: document.getElementById("manicure")?.value,
         foot: document.getElementById("foot")?.value,
         fabric_response: document.getElementById("fabric_response")?.value,
@@ -1441,7 +1399,6 @@
       setSafeValue("outfit", state.outfit);
       setSafeValue("age", state.age);
       setSafeValue("camera", state.camera);
-      setSafeValue("distance", state.distance);
       setSafeValue("manicure", state.manicure);
       setSafeValue("foot", state.foot);
       setSafeValue("fabric_response", state.fabric_response);
@@ -1462,7 +1419,7 @@
       // 🔵 외형 값 변경 시 일관성 모드 해제
       const watchedFields = [
         "nationality", "body_shape", "hairstyle", "outfit",
-        "age", "camera", "distance", "manicure", "foot",
+        "age", "camera", "manicure", "foot",
         "fabric_response", "rendering"
       ];
 
@@ -1502,7 +1459,7 @@
         time: time,
         character_count: character_count_dict,
         activity: character_action,
-        pose: character_action,
+        /*pose: character_action,*/
         emotion: emotion,
         camera: camera_view,
         distance: distance_description,
@@ -1630,7 +1587,7 @@
         const characterCountValue = document.getElementById("character_count").value;
         const ageValue            = document.getElementById("age").value;
         const activityValue       = document.getElementById("activity").value;
-        const poseValue           = document.getElementById("pose").value;
+        /*const poseValue           = document.getElementById("pose").value;*/
         const emotionValue        = document.getElementById("emotion").value;
         const cameraValue         = document.getElementById("camera").value;
         const distanceValue       = document.getElementById("distance").value;
@@ -1665,8 +1622,8 @@
         // ─── 3. 맵에서 설명 가져오기 ───────────────────────────────
         const activityDesc    = character_action[activityValue]
                                  || "the character is sitting quietly";
-        const poseDesc        = character_action[poseValue]
-                                 || "sitting cross-legged on the floor";
+        /*const poseDesc        = character_action[poseValue]
+                                 || "sitting cross-legged on the floor";*/
         const cameraDesc      = camera_view[cameraValue]
                                  || "a front-facing perspective";
         const distanceDesc    = distance_description[distanceValue]
@@ -1775,7 +1732,7 @@
       document.getElementById("time").value = randomValue(time);
       document.getElementById("character_count").value = randomValue(character_count_dict);
       document.getElementById("activity").value = randomValue(character_action);
-      document.getElementById("pose").value = randomValue(character_action);
+      /*document.getElementById("pose").value = randomValue(character_action);*/
       document.getElementById("emotion").value = randomValue(emotion);
       document.getElementById("camera").value = randomValue(camera_view);
       document.getElementById("distance").value = randomValue(distance_description);
@@ -1828,7 +1785,7 @@
       // 각 선택 요소들을 기본값으로 리셋
       document.getElementById("age").value = 28;  // 기본 나이 값 설정
       document.getElementById("activity").value = "";
-      document.getElementById("pose").value = "";
+      /*document.getElementById("pose").value = "";*/
       document.getElementById("camera").value = "";
       document.getElementById("distance").value = "";
       document.getElementById("manicure").value = "없음";  // 기본값 설정
