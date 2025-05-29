@@ -1508,7 +1508,7 @@
       for (const [id, map] of Object.entries(maps)) {
         const select = document.getElementById(id);
         if (!select) continue;
-        const sortedKeys = Object.keys(map).sort((a, b) => a.localeCompare(b, 'ko'));
+        const sortedKeys = Object.keys(map);
 
         for (const label of sortedKeys) {
           const option = document.createElement('option');
