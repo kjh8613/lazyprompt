@@ -402,6 +402,7 @@
         </div>
 
         <label>나이(23-50): <input type="number" id="age" min="23" max="50" value="25" /></label>
+        <label>배경: <select id="background"></select></label> <!-- ✅ 감정 항목 추가 -->
         <label>감정 선택: <select id="emotion"></select></label> <!-- ✅ 감정 항목 추가 -->
         <label>행동 선택: <select id="activity"></select></label>
         <label>포즈 선택: <select id="pose"></select></label>
@@ -460,7 +461,7 @@
       "서양인": "Western woman"
     };
 
-    const background = {
+    const background_description = {
       "폐공장": "an abandoned factory with rusted steel beams and broken windows",
       "해변": "a tranquil beach with gentle waves and soft golden sand",
       "붉은 숲": "a dense forest with crimson foliage and filtered sunlight",
@@ -599,6 +600,30 @@
       "버스정류장 벤치": "a bench at a bus stop under a flickering timetable screen",
       "택시 안 조명 아래": "inside a taxi at night with dashboard lights and city blur",
       "햇빛 드는 식물 선반 옆": "beside a sunlit plant shelf with leafy shadows on the wall",
+      "한국 아파트 내부": "the interior of a typical Korean apartment with clean white walls, wooden flooring, a low dining table, and a sliding glass door leading to the veranda",
+      "아침 햇살이 드는 거실": "a sunlit living room with sheer curtains swaying in the breeze and a soft beige rug",
+      "TV와 소파 중심의 거실": "a compact living room with a gray sofa facing a wall-mounted TV and a narrow coffee table",
+      "장난감이 흩어진 거실": "a living room cluttered with colorful children's toys and cartoon cushions",
+      "작은 화분과 책이 놓인 거실": "a cozy living room with potted plants on the windowsill and books stacked on the floor",
+      "겨울용 전기장판과 극세사 담요": "a living room with an electric mat on the floor, fleece blankets, and a kotatsu-style table",
+      "햇살이 비추는 안방": "a master bedroom bathed in soft morning sunlight with cream-colored curtains and a neatly made bed",
+      "바닥에 이불만 깔린 방": "a modest bedroom with just a folded blanket and pillow on the warm floor, no bedframe in sight",
+      "책과 텀블러가 놓인 협탁": "a wooden nightstand with stacked books, a phone charger, and a half-filled tumbler",
+      "서랍장 위 작은 거울": "a small oval mirror standing on a dresser, surrounded by hairpins and hand cream",
+      "커튼이 반쯤 열린 창가 방": "a bedroom with sheer curtains drawn halfway, letting in the afternoon breeze",
+      "노란 조명이 켜진 밤의 침실": "a bedroom at night lit by warm yellow ambient lighting, casting soft shadows on the walls",
+      "작은 선풍기가 돌아가는 여름방": "a summer bedroom with a plastic fan oscillating beside a thin floral bedsheet",
+      "전기장판과 극세사 이불의 겨울방": "a winter bedroom with an electric mat under plush blankets and fleece bedding",
+      "아이의 방": "a child’s bedroom with cartoon-patterned bedsheets, plush toys, and a colorful bookshelf",
+      "대학생의 자취방 침실": "a studio bedroom with an unmade bed, a laptop on the blanket, and a laundry basket in the corner",
+      "벽에 사진이 붙은 방": "a bedroom wall decorated with taped polaroid photos, fairy lights, and handwritten notes",
+      "거울에 낙서가 있는 침실": "a bedroom with a standing mirror marked by doodles and motivational sticky notes",
+      "창문 밖 불빛이 들어오는 방": "a bedroom at night with city lights shimmering through the window blinds",
+      "옷이 걸린 이동식 행거가 있는 방": "a bedroom with a movable clothing rack filled with summer dresses and tote bags",
+      "반려동물이 눕는 창가 자리": "a corner of the bedroom where a pet lies curled up on a cushion under the window",
+      "고요한 새벽의 침실": "a peaceful bedroom just before dawn, dimly lit with the sky turning faint blue",
+
+
 
     };
      
@@ -1275,7 +1300,7 @@
     };
 
     const dicts = {
-      
+      background: background_description,
       emotion: emotion_translation,
       activity: activity_description,
       pose: pose_description,
@@ -1341,7 +1366,7 @@
         const nationality = dicts.nationality[nationalityKey];
 
         const inputIds = [
-          "emotion", "activity", "pose", "camera", "distance",
+          "background", "emotion", "activity", "pose", "camera", "distance",
           "manicure", "foot", "lighting", "outfit", "object",
           "body_shape", "hairstyle", "age", "fabric_response", "rendering"
         ];
@@ -1353,6 +1378,7 @@
         });
 
         // ▼ 입력값 꺼내기
+        const backgroundValue         = values.background;
         const emotionValue       = values.emotion;
         const activityValue      = values.activity;
         const poseValue          = values.pose;
@@ -1369,7 +1395,7 @@
         const fabricValue        = values.fabric_response;
         const renderingValue     = values.rendering;
 
-
+        const background = dicts.background[values.background]  || "a summer bedroom with a plastic fan oscillating beside a thin floral bedsheet";
         const emotion    = dicts.emotion[values.emotion]        || "a calm, neutral expression";
         const activity   = dicts.activity[values.activity]      || "She is sitting quietly.";
         const pose       = dicts.pose[values.pose]              || "sitting cross-legged on the floor";
@@ -1404,7 +1430,7 @@
 
 // 프롬프트 생성
 // 사용자 세부사항이 있을 경우 앞부분에 삽입
-const prompt = `${customNote}${distance}, ${camera}, capturing a ${nationality} ${appearance_text}, ${pose} indoors.
+const prompt = `${customNote}${distance}, ${camera}, ${background}, capturing a ${nationality} ${appearance_text}, ${pose} indoors.
 
 She is wearing ${outfit}.
 
@@ -1442,6 +1468,7 @@ Avoid all visual defects such as poor anatomy, disfigurement, deformations, low 
       };
 
       // 나머지 항목들 랜덤 값 설정
+      ocument.getElementById("background").value = randomValue(background_description);
       document.getElementById("emotion").value = randomValue(emotion_translation);
       document.getElementById("activity").value = randomValue(activity_description);
       document.getElementById("pose").value = randomValue(pose_description);
@@ -1507,6 +1534,7 @@ Avoid all visual defects such as poor anatomy, disfigurement, deformations, low 
       
       // ✅ 4. 기타 항목 랜덤 설정
       const randomItems = [
+        ["background", dicts.background],
         ["manicure", dicts.manicure],
         ["foot", dicts.foot],
         ["lighting", dicts.lighting],
