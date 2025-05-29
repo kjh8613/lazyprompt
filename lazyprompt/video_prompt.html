@@ -1367,7 +1367,12 @@
     // ✅ 외형 상태 저장
     function getAppearanceState() {
       return {
-        nationality: document.getElementById("nationality")?.value,
+        nationality_checked: [
+          "nationality_korean",
+          "nationality_japanese",
+          "nationality_chinese",
+          "nationality_western"
+        ].filter(id => document.getElementById(id)?.checked),
         body_shape: document.getElementById("body_shape")?.value,
         face_shape : document.getElementById("face_shape")?.value,
         hairstyle: document.getElementById("hairstyle")?.value,
@@ -1384,6 +1389,17 @@
     function applyAppearanceState(state) {
       if (!state) return;
 
+      // 🔷 nationality 체크박스 복원 추가
+      if (state.nationality_checked) {
+        ["nationality_korean", "nationality_japanese", "nationality_chinese", "nationality_western"]
+          .forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+              el.checked = state.nationality_checked.includes(id);
+            }
+          });
+      }
+
       const setSafeValue = (id, value) => {
         const el = document.getElementById(id);
         if (el) {
@@ -1393,7 +1409,6 @@
         }
       };
 
-      setSafeValue("nationality", state.nationality);
       setSafeValue("body_shape", state.body_shape);
       setSafeValue("face_shape", state.face_shape);
       setSafeValue("hairstyle", state.hairstyle);
@@ -1435,6 +1450,21 @@
           });
         }
       });
+
+      // ✅ DOM 로딩 후 체크박스 감지기 추가
+    ["nationality_korean", "nationality_japanese", "nationality_chinese", "nationality_western"]
+      .forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener("change", () => {
+            // 일관성 모드가 켜져 있으면 새로 저장
+            if (document.getElementById("consistencyMode").checked) {
+              persistentAppearance = getAppearanceState();
+            }
+          });
+        }
+      });
+
     });
 
     // applyConsistencyIfEnabled 함수 정의
@@ -1730,28 +1760,34 @@
         return keys[Math.floor(Math.random() * keys.length)];
       };
 
+      const isConsistent = document.getElementById("consistencyMode")?.checked; 
+
       // 1) 나머지 옵션들 랜덤 세팅
       document.getElementById("genre").value = randomValue(genre_tone);
       document.getElementById("background").value = randomValue(background);
       document.getElementById("time").value = randomValue(time);
       document.getElementById("character_count").value = randomValue(character_count_dict);
       document.getElementById("activity").value = randomValue(character_action);
-      /*document.getElementById("pose").value = randomValue(character_action);*/
       document.getElementById("emotion").value = randomValue(emotion);
       document.getElementById("camera").value = randomValue(camera_view);
       document.getElementById("distance").value = randomValue(distance_description);
       document.getElementById("camera_movement").value = randomValue(camera_movement);
       document.getElementById("lighting").value = randomValue(lighting);
-      document.getElementById("outfit").value = randomValue(outfit);
-      document.getElementById("body_shape").value = randomValue(body_shape);
-      document.getElementById("hairstyle").value = randomValue(hairstyle);
-      document.getElementById("fabric_response").value = randomValue(fabric_response);
-      document.getElementById("rendering").value = randomValue(rendering_translation);
-      document.getElementById("face_shape").value = randomValue(face_shape);
-      document.getElementById("manicure").value = randomValue(manicure_text);
-      document.getElementById("foot").value = randomValue(foot_text);
-      document.getElementById("age").value = Math.floor(Math.random() * 28) + 23;
 
+      // 1-1) 외형 항목은 일관성 모드 OFF일 때만 랜덤 적용
+      if (!isConsistent) {
+        document.getElementById("face_shape").value = randomValue(face_shape);
+        document.getElementById("body_shape").value = randomValue(body_shape);
+        document.getElementById("hairstyle").value = randomValue(hairstyle);
+        document.getElementById("outfit").value = randomValue(outfit);
+        document.getElementById("age").value = Math.floor(Math.random() * 28) + 23;
+        document.getElementById("manicure").value = randomValue(manicure_text);
+        document.getElementById("foot").value = randomValue(foot_text);
+        document.getElementById("fabric_response").value = randomValue(fabric_response);
+        document.getElementById("rendering").value = randomValue(rendering_translation);
+      }
+
+    
       // 2) 국적 체크박스(4개) — 아무것도 선택 안 돼 있을 때만 랜덤으로 켜기
       const boxes = [
         "nationality_korean",
@@ -1759,15 +1795,24 @@
         "nationality_chinese",
         "nationality_western"
       ];
-      // 하나라도 체크돼 있으면 유지
-      const anyChecked = boxes.some(id => document.getElementById(id).checked);
-      if (!anyChecked) {
-        const count = Math.floor(Math.random() * boxes.length) + 1; // 1~4개
-        const shuffled = boxes.slice().sort(() => 0.5 - Math.random());
-        const selected = shuffled.slice(0, count);
+      if (isConsistent && persistentAppearance?.nationality_checked) {
+        // ✅ 일관성 모드면 저장된 상태로 체크박스 복원
         boxes.forEach(id => {
-          document.getElementById(id).checked = selected.includes(id);
+          const el = document.getElementById(id);
+          if (el) el.checked = persistentAppearance.nationality_checked.includes(id);
         });
+      } else {
+        // ✅ 일관성 모드가 아니고, 아무것도 체크 안 되어 있으면 랜덤 체크
+        const anyChecked = boxes.some(id => document.getElementById(id).checked);
+        if (!anyChecked) {
+          const count = Math.floor(Math.random() * boxes.length) + 1; // 1~4개
+          const shuffled = boxes.slice().sort(() => 0.5 - Math.random());
+          const selected = shuffled.slice(0, count);
+          boxes.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.checked = selected.includes(id);
+          });
+        }  
       }
 
       // 3) 프롬프트 생성
