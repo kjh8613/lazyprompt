@@ -872,63 +872,101 @@
     };
 
     const camera_description = {
-      "발끝에서 시작해 위로": "a bottom-up shot starting at the toes, slowly rising to include the whole body",
-      "발등에서 시작해 무릎까지": "a ground-level shot that pans from the top of the feet to the knees",
-      "발꿈치에서 허벅지까지": "a subtle upward shot following the back of the legs up to the thighs",
-      "손끝에서 시작해 어깨까지": "a close shot tracing from the fingertips up the arms to the shoulders",
-      "손목에서 턱선까지": "a flowing shot moving from the wrist toward the jawline and lips",
-      "턱선에서 쇄골까지": "a sensual shot from the chin down to the collarbone",
-      "눈썹에서 입술까지": "a tight close-up panning from the eyes to the lips, evoking subtle emotion",
-      "뒤통수에서 척추까지": "a downward shot that glides along the spine from the back of the head",
-      "허리에서 가슴까지": "a mid-body shot that elevates from the waist to the chest area",
-      "무릎에서 복부까지": "a soft rising angle from the knees toward the abdomen",
-      "어깨에서 손끝까지 내려감": "a top-down shot following the arm down to relaxed fingers",
-      "엉덩이에서 어깨까지 올라감": "a lingering upward shot from the lower back or hips to the shoulders",
-      "머리 위에서 발끝까지 전체 조망": "a full top-down shot from head to toes, capturing the entire posture",
-      "뒤에서 발끝에서 시작해 뒤통수까지": "a full-body rear shot that pans from the feet up to the back of the head",
-      "복부에서 얼굴까지": "a front-facing zoom that flows from the abdomen up to the face",
-      "가슴에서 눈까지 올라가는 시점": "a close and slow upward shot focusing on intimacy and expression",
-      "손가락에서 액세서리까지": "a focused shot tracing rings, bracelets, or nails with precision",
+      "발끝에서 시작해 위로":
+        "A micro-drone begins just above the floor near the toes, then ascends naturally along the legs to the face. The body unfolds with strong vertical perspective, but the subject appears unaware of the camera.",
 
+      "발등에서 시작해 무릎까지":
+        "The drone floats close to the top of the foot and rises gently to the knees. Lower leg shapes are captured with cinematic foreshortening, maintaining a candid and relaxed posture.",
+
+      "발꿈치에서 허벅지까지":
+        "Starting from behind the heel, the drone glides smoothly upward toward the thighs. The leg line is visually stretched for depth without drawing attention to the camera’s presence.",
+
+      "손끝에서 시작해 어깨까지":
+        "The shot flows upward from the fingertips to the shoulder, emphasizing arm length and natural curvature. The drone remains unobtrusive, maintaining a spontaneous feel.",
+
+      "손목에서 턱선까지":
+        "Beginning near the wrist, the drone rises toward the jawline in a soft arc. Gestures and elegance are amplified through perspective, without disrupting realism.",
+
+      "턱선에서 쇄골까지":
+        "The shot moves downward from the chin to the collarbone, highlighting the contours of the neck and shoulders. The transition feels intimate but organic.",
+
+      "눈썹에서 입술까지":
+        "The drone descends slowly from the eyebrows to the lips, focusing on facial rhythm and depth. The expression remains natural, with no sense of being observed.",
+
+      "뒤통수에서 척추까지":
+        "Aerial movement begins at the back of the head and flows down the spine, tracing symmetry and natural form. The body’s alignment is enhanced with visual compression.",
+
+      "허리에서 가슴까지":
+        "The composition rises smoothly from the waist to the chest, drawing attention to balance and posture. The framing exaggerates depth without forcing awareness.",
+
+      "무릎에서 복부까지":
+        "This view starts at knee height and travels upward toward the abdomen. Depth builds through vertical flow, while the subject remains relaxed and unaware.",
+
+      "어깨에서 손끝까지 내려감":
+        "From the shoulder down to the fingers, the drone moves with gentle gravity, emphasizing gesture and line. The perspective remains immersive yet unposed.",
+
+      "엉덩이에서 어깨까지 올라감":
+        "A soft vertical motion from the hips to the shoulders builds an impression of height and elegance. The camera floats as if unnoticed by the subject.",
+
+      "머리 위에서 발끝까지 전체 조망":
+        "The drone hovers directly above and descends toward the feet, capturing the body’s full length with architectural clarity. The subject is unaware of the observation.",
+
+      "뒤에서 발끝에서 시작해 뒤통수까지":
+        "A rising shot from behind the heels to the head follows the spine naturally. The drone’s presence is subtle, allowing the body to appear as a unified form.",
+
+      "복부에서 얼굴까지":
+        "From the front waistline, the drone lifts to the face with soft transition. The viewpoint highlights vertical continuity without disrupting the subject’s natural expression.",
+
+      "가슴에서 눈까지 올라가는 시점":
+        "Rising gently from the chest to the eyes, this shot dramatizes the face with proportional focus. The drone remains unintrusive, making the gaze feel authentic and magnified.",
+
+      "손가락에서 액세서리까지":
+        "The drone floats near the fingers and zooms into accessories like rings or bracelets. The detail is enlarged by lens compression, but the scene remains candid and focused."
     };
+
+
 
     const distance_description = {
       "초초근접 (5cm 이하)": 
-        "From the lens within 5cm – an ultra extreme close-up that isolates micro-details like skin pores, lip texture, or sweat droplets. Creates intense intimacy and visual tension.",
+        "From within 5cm – an ultra extreme close-up showing micro-details like fingernail texture, lip skin, or toe edges. If mounted on a body part (e.g. fingertip or toe), that part is clearly visible and dominates the frame with extreme depth distortion.",
 
       "초근접 (5~15cm)": 
-        "From a 5–15cm perspective – an extreme close-up that frames singular features such as the eyes, lips, fingernails, or toes. Designed to evoke emotional focus and tactile intensity.",
+        "From a 5–15cm distance – an extreme close-up shot focusing on a singular body part such as the eyes, lips, fingertips, or toes. The attached body part appears enlarged and prominent due to forced perspective.",
 
       "근접 (15~40cm)": 
-        "From a 15–40cm range – a close-up capturing the face, hands, or feet along with slight surrounding elements. Highlights emotion, subtle gestures, or details in action.",
+        "From 15–40cm away – a close-up that clearly frames a primary body part (face, hand, foot) and adjacent features. Perspective exaggerates surface curvature and intimacy.",
 
       "상반신 근접 (50~80cm)": 
-        "From 50–80cm away – a tight medium shot from the lens that includes the subject’s head down to chest or waist. Ideal for personal expression and conversational framing.",
+        "From 50–80cm away – a tight upper-body shot showing the head to chest or waist. Used for intimate expressions or subjective conversation angles.",
 
       "상반신 전체 (80~120cm)": 
-        "From a lens position 80–120cm away – a natural medium shot showing the subject’s upper body, from head to hips. Used to capture posture, expression, and interaction comfortably.",
+        "From 80–120cm away – a natural medium shot showing the subject's upper body from head to hips. Suitable for posture, gestures, and facial expression.",
+
+      "하반신 중심 (1.2~1.8m)": 
+        "From 1.2–1.8m away – a lower-body-focused composition that shows from feet or thighs up to the waist. Often used when the camera is mounted on or near the feet to emphasize legs, footwear, or seated posture with upward perspective.",
 
       "3/4 신 (1.2~1.8m)": 
-        "From a 1.2–1.8m distance – a three-quarter shot that frames the subject from head to knees or mid-thigh. Balances body shape with partial background for stylish or narrative context.",
+        "From 1.2–1.8m away – a three-quarter shot showing from head to knees or thighs. Balances body proportions while maintaining emotional distance and slight environmental framing.",
 
       "전신 기본 (2~3m)": 
-        "From 2–3 meters away – a full-body shot that captures the subject from head to toe. Used to show posture, stance, fashion, and spatial balance.",
+        "From 2–3 meters – a standard full-body shot capturing the entire figure from head to toe. Appropriate for showcasing outfits, posture, and full stance within a balanced scene.",
 
       "넓은 전신 (4~6m)": 
-        "Shot from 4–6 meters – a wide full-body frame with generous breathing room around the subject. Allows for dynamic interaction with surroundings and spatial storytelling.",
+        "From 4–6 meters – a wide full-body frame with spatial breathing room. Subject is fully visible with contextual interaction with surroundings.",
 
       "초광각 전신 (7~10m)": 
-        "From a distant 7–10m viewpoint – a long full-body shot where the subject appears smaller within the scene. Emphasizes background dominance or thematic distance.",
+        "From 7–10 meters – a long full-body shot where the subject appears small and embedded within the background. Highlights isolation or landscape prominence.",
 
       "실루엣 원거리 (10~20m)": 
-        "Seen from 10–20 meters – a distant silhouette shot that emphasizes mood, isolation, or voyeuristic perspective. The subject becomes part of a larger atmosphere.",
+        "From 10–20 meters – a distant silhouette composition. The subject merges into the environment, evoking loneliness, vastness, or voyeuristic detachment.",
 
       "배경 중심 롱샷 (20m 이상)": 
-        "From 20 meters or more – an establishing long shot where the subject blends into the scenery. Designed to depict vastness, insignificance, or spatial narrative.",
+        "From 20+ meters – a cinematic establishing shot where the subject is minor in scale, overwhelmed by landscape or architectural space. Used for mood or narrative grandeur.",
 
       "착시 카메라 (몸에 부착)": 
-        "From a subjective camera angle – mimics an eye-level or body-mounted viewpoint such as head, chest, or shoulder. Creates immersion and first-person experience."
+        "From a mounted first-person perspective – camera is affixed to a body part such as the forehead, chest, foot, or finger. The attached body part must remain clearly visible in the frame while depth distortion conveys immersion and scale exaggeration."
     };
+
 
 
     const manicure_text = {
