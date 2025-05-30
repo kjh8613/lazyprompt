@@ -23,7 +23,7 @@
     <meta name="keywords" content="AI 프롬프트 생성기, 여성 모델 이미지 프롬프트, 무료 프롬프트 도구, ChatGPT 프롬프트, Gemini 프롬프트, Midjourney 프롬프트, DALL-E 프롬프트, 이미지 생성기, 동영상 프롬프트, AI 비디오 프롬프트, 시네마틱 프롬프트, 4K 프롬프트, 8K 프롬프트, Sora 프롬프트, Veo3 프롬프트, Runway 프롬프트, Pika 프롬프트, 프롬프트 디자이너, AI 콘텐츠 생성, 미디어 텍스트 툴, 일본인 프롬프트, 한국인 이미지 프롬프트, 프롬프트 갤러리, 프롬프트 공유, 디씨인사이드chatgpt갤러리, 디씨chatgpt갤러리, 디씨챗지피티갤러리, 디씨인사이드챗지피티, 쓰레드챗지피티, 쓰레드chatgpt, 쓰레드인공지능, 쓰레드ai, 쓰레드프롬프트, 챗지피티프롬프트, 프롬프트 커뮤니티, ai 프롬프트 공유, 인공지능 프롬프트, 프롬프트 툴, ChatGPT, Gemini, Midjourney, DALL·E, Sora, Stable Diffusion, Adobe Firefly, Microsoft Copilot, NightCafe Creator, Artbreeder, Deep Dream Generator, Hotpot.ai, starryai," />
 
     <!-- favicon -->
-    <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon">
+    <link rel="icon" href="media/favicon.ico?v=2" type="image/x-icon">
 
   
     <!-- 기본 메타 -->
@@ -34,7 +34,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="인공지능 프롬프트 자동 생성기 - Veo3, ChatGPT, Sora, Gemini, Midjourney, DALL·E 등" />
     <meta property="og:description" content="총 2천만 가지 이상의 조합! 다양한 포즈, 감정, 의상으로 AI 이미지 프롬프트를 쉽게 생성해보세요." />
-    <meta property="og:image" content="image_prompt.png" />
+    <meta property="og:image" content="media/image_prompt.png" />
     <meta property="og:url" content="https://lazyprompt.netlify.app" />
     <meta property="og:type" content="website" />
   
@@ -42,7 +42,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="인공지능 프롬프트 자동 생성기" />
     <meta name="twitter:description" content="클릭 몇 번으로 완성되는 고퀄리티 AI 이미지 프롬프트, 지금 바로 생성해보세요." />
-    <meta name="twitter:image" content="image_prompt.png" />
+    <meta name="twitter:image" content="media/image_prompt.png" />
   
 
   <style>
@@ -88,61 +88,61 @@
     }
 
     /* ────────────────────────── Navigation Buttons ───────────────────────── */
+    /* ── 네비게이션 버튼 ── */
     .main-nav {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
-      margin: 2rem 0;
+      gap: 0.75rem;
+      margin: 2rem auto;
+      max-width: 720px;
+      padding: 0 1rem;
+      box-sizing: border-box;
     }
+
     .nav-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 120px;
-      padding: 0 .8rem;
+      padding: 0.5rem 1rem;
       background: #333;
       color: #fff;
       text-decoration: none;
       font-weight: 500;
-      border-radius: .4rem;
+      border-radius: 0.4rem;
       white-space: nowrap;
-      transition: background .2s;
+      text-align: center;
+      transition: background 0.2s;
+      box-sizing: border-box;
     }
+
+    /* ✅ 너비 유연한 버튼 전용 */
+    .nav-button.stretch {
+      flex: 1 0 140px;
+    }
+
     .nav-button:hover {
       background: #555;
     }
+
     .nav-button img {
       width: 20px;
       height: 20px;
-      margin-right: .5rem;
+      margin-right: 0.5rem;
     }
 
-    /* ─────────────────────────── Mobile Overrides ────────────────────────── */
     @media (max-width: 720px) {
-      /* Header vertical stacking */
-      .header-container {
-        flex-direction: column;
-        height: 50vh;
-      }
-      .header-logo img {
-        max-width: 120px;
-      }
-      .header-text {
-        text-align: center;
+      .nav-button.stretch {
+        flex: 1 1 45%;
       }
 
-      /* Navigation wraps and buttons flex-grow */
-      .main-nav {
-        flex-wrap: wrap;
-        gap: .5rem;
-      }
       .nav-button {
-        flex: 1 1 auto;        /* 남는 공간을 균일하게 분배 */
-        margin: .25rem 0;       /* 위아래 간격 추가 */
-        font-size: .9rem;       /* 글자 크기 약간 축소 */
-        padding: .4rem 1rem;    /* 터치 영역 여유 확보 */
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+        margin: 0.2rem 0;
       }
     }
+
 
 
 
@@ -166,7 +166,7 @@
       <!-- 1) 헤더 (로고 + 텍스트) -->
       <div class="header-container">
         <div class="header-logo">
-          <img src="lazyprompt.png" alt="Lazyprompt 로고" />
+          <img src="media/lazyprompt.png" alt="Lazyprompt 로고" />
         </div>
         <div class="header-text">
           <h1 class="header-title">
@@ -196,10 +196,15 @@
         <a href="video_prompt.html" class="nav-button">
           🎬 동영상 생성기
         </a>
+
+        <!-- 블로그 생성기 -->
+        <a href="blog_prompt.html" class="nav-button">
+          📝 블로그 생성기
+        </a>
       
         <!-- Threads 이동 (아이콘 + 텍스트) -->
         <a href="https://www.threads.net/@not_all_said" target="_blank" class="nav-button">
-          <img src="threads.png" alt="Threads 아이콘" />
+          <img src="media/threads.png" alt="Threads 아이콘" />
           Threads
         </a>
       </nav>
@@ -208,21 +213,36 @@
       <!-- 3) 소개 -->
       <section style="max-width: 700px; margin: auto; color: #444; font-size: 0.95rem; line-height:1.6;">
         <h2>이미지 프롬프트 생성기</h2>
-        <p>이 웹버전은 입문자도 쉽게 사용할 수 있는 무료 프롬프트 생성 도구입니다.
-          국적 선택, 기본 포즈와 감정 조합만으로도 감각적인 이미지 프롬프트를 빠르게 만들어보세요.
-          총 약 2,000만 가지 이상의 조합이 가능하며, 실제 생성된 프롬프트는 ChatGPT, Gemini, Midjourney, DALL·E, Sora, Stable Diffusion, Adobe Firefly, Microsoft Copilot, NightCafe Creator, Artbreeder, Deep Dream Generator, Hotpot.ai, starryai 등 다양한 이미지 생성 AI에서 바로 사용 가능합니다.
-          정밀한 얼굴형, 손톱 스타일, 고급 렌더링 퀄리티, 조명-피부 묘사 등을 기능을 이용하실 수 있습니다. (실시간 업데이트 중)</p>
+        <p>
+          이 웹버전은 입문자도 쉽게 사용할 수 있는 무료 프롬프트 생성 도구입니다.<br>
+          국적 선택, 기본 포즈와 감정 조합만으로도 감각적인 이미지 프롬프트를 빠르게 만들어보세요.<br>
+          총 약 <strong>2,000만 가지 이상의 조합</strong>이 가능하며, 실제 생성된 프롬프트는 <strong>ChatGPT, Gemini, Midjourney, DALL·E, Sora, Stable Diffusion, Adobe Firefly, Microsoft Copilot, NightCafe Creator, Artbreeder, Deep Dream Generator, Hotpot.ai, starryai</strong> 등 다양한 이미지 생성 AI에서 바로 사용 가능합니다.<br>
+          정밀한 얼굴형, 손톱 스타일, 고급 렌더링 퀄리티, 조명-피부 묘사 등의 기능을 제공합니다. (실시간 업데이트 중)
+        </p>
+
         <h2>동영상 프롬프트 생성기</h2>
-        <p>레이지 프롬프트는 동영상 프롬프트도 제공합니다. 시네마틱 AI 영상 생성에 최적화된 무료 프롬프트 도구입니다.
-          한국인/일본인/중국인/서양인, 포즈와 행동, 카메라 무빙 등을 조합하여 4K 동영상 프롬프트를 자동으로 생성해보세요.
-          생성된 프롬프트는 Veo3, Sora, Runway, Pika, Gemini, ChatGPT, InVideo AI, Pictory AI, Synthesia, Descript, HeyGen, Lumen5, FlexClip, Raw Shorts, Viide.io, Kaiber, Gen-1, Gen-2 등 다양한 영상 AI 모델에서 바로 사용 가능합니다.
-          세밀한 카메라 무브먼트, 씬 전환 묘사, 텍스처 묘사 기능을 포함합니다. (실시간 업데이트 중)</p>
+        <p>
+          레이지 프롬프트는 동영상 프롬프트도 제공합니다. <strong>시네마틱 AI 영상 생성에 최적화된 무료 프롬프트 도구</strong>입니다.<br>
+          한국인/일본인/중국인/서양인, 포즈와 행동, 카메라 무빙 등을 조합하여 4K 동영상 프롬프트를 자동으로 생성해보세요.<br>
+          생성된 프롬프트는 <strong>Veo3, Sora, Runway, Pika, Gemini, ChatGPT, InVideo AI, Pictory AI, Synthesia, Descript, HeyGen, Lumen5, FlexClip, Raw Shorts, Viide.io, Kaiber, Gen-1, Gen-2</strong> 등 다양한 영상 AI 모델에서 바로 사용 가능합니다.<br>
+          세밀한 카메라 무브먼트, 씬 전환 묘사, 텍스처 묘사 기능을 포함합니다. (실시간 업데이트 중)
+        </p>
+
+        <h2>블로그 프롬프트 생성기</h2>
+        <p>
+          블로그 초보자부터 콘텐츠 마케터까지 누구나 쉽게 활용할 수 있는 <strong>실전형 글쓰기 프롬프트 도구</strong>입니다.<br>
+          작성 목적, 타깃 독자층, 플랫폼 스타일, 톤앤매너 등을 선택하면 <strong>자동으로 서론–본문–결론 구조의 블로그 문장</strong>을 생성해줍니다.<br>
+          <strong>SEO 키워드 반영</strong>, <strong>스토리텔링 구조</strong>, <strong>클릭 유도 문구</strong>, <strong>감성 에세이부터 Q&A, 리스트형, 정보형까지</strong> 다양한 형식에 맞춘 생성이 가능합니다.<br>
+          생성된 프롬프트는 <strong>ChatGPT, Claude, Gemini, Notion AI, Copy.ai</strong> 등 다양한 AI 글쓰기 툴에 바로 붙여 넣어 사용할 수 있습니다.<br>
+          수익형 콘텐츠, 후기 리뷰, 자기계발, 전문가 브랜딩 등 <strong>콘텐츠 마케팅 전략에 최적화된 구성</strong>을 제공합니다. (실시간 업데이트 중)
+        </p>
       </section>
+
 
       <!-- 4) 예시 이미지 -->
       <section style="max-width: 700px; margin: 3rem auto; text-align: center;">
         <h3>예시 이미지</h3>
-        <img src="image_prompt.png" alt="예시 이미지" style="max-width:100%; border-radius:0.5rem; box-shadow:0 2px 6px rgba(0,0,0,0.1);" />
+        <img src="media/image_prompt.png" alt="예시 이미지" style="max-width:100%; border-radius:0.5rem; box-shadow:0 2px 6px rgba(0,0,0,0.1);" />
         <p style="color:#666; font-size:0.85rem; margin-top:0.5rem;">
           ▲ “8K ultra-realistic…” 예시
         </p>
@@ -231,13 +251,28 @@
       <!-- 5) 예시 동영상 -->
       <section style="max-width: 700px; margin: 3rem auto; text-align: center;">
         <h3>예시 동영상</h3>
-        <video src="video_prompt.mp4" controls style="width:100%; border-radius:0.5rem; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+        <video src="media/video_prompt.mp4" controls style="width:100%; border-radius:0.5rem; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
           브라우저가 영상 재생을 지원하지 않습니다.
         </video>
         <p style="color:#666; font-size:0.85rem; margin-top:0.5rem;">
           ▲ “cold dawn light…” 예시
         </p>
       </section>
+
+      <!-- 6) 예시 블로그 프롬프트 -->
+      <section style="max-width: 700px; margin: 3rem auto; text-align: center;">
+        <h3>예시 블로그 프롬프트</h3>
+        <img src="media/blog_prompt.png" alt="블로그 프롬프트 예시" 
+            style="width: 100%; border-radius: 0.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1);" />
+        <p style="color: #666; font-size: 0.85rem; margin-top: 0.5rem;">
+          ▲ 자동 생성된 블로그 글 구조 예시
+        </p>
+      </section>
+
+
+
+
+
     </div>
   </div>  
 </body>

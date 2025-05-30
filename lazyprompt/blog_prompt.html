@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WT30TDCBJ0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-WT30TDCBJ0');
+    </script>
+  
+
+    <!-- Google AdSense -->
+    <script async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6793290562583440"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- SEO 키워드 -->
+    <meta name="keywords" content="AI 프롬프트 생성기, 여성 모델 이미지 프롬프트, 블로그 프롬프트 생성기, 무료 프롬프트 도구, ChatGPT 프롬프트, Gemini 프롬프트, Midjourney 프롬프트, DALL-E 프롬프트, 이미지 생성기, 동영상 프롬프트, 블로그 콘텐츠 자동화, 블로그 키워드 프롬프트, 블로그 글쓰기 도우미, 시네마틱 프롬프트, 4K 프롬프트, 8K 프롬프트, Sora 프롬프트, Veo3 프롬프트, Runway 프롬프트, Pika 프롬프트, 프롬프트 디자이너, AI 콘텐츠 생성, 미디어 텍스트 툴, 일본인 프롬프트, 한국인 이미지 프롬프트, 프롬프트 갤러리, 프롬프트 공유, 디씨인사이드chatgpt갤러리, 디씨chatgpt갤러리, 디씨챗지피티갤러리, 디씨인사이드챗지피티, 쓰레드챗지피티, 쓰레드chatgpt, 쓰레드인공지능, 쓰레드ai, 쓰레드프롬프트, 챗지피티프롬프트, 프롬프트 커뮤니티, ai 프롬프트 공유, 인공지능 프롬프트, 프롬프트 툴, ChatGPT, Gemini, Midjourney, DALL·E, Sora, Stable Diffusion, Adobe Firefly, Microsoft Copilot, NightCafe Creator, Artbreeder, Deep Dream Generator, Hotpot.ai, starryai" />
+
+    <!-- 기본 메타 -->
+    <meta name="description" content="국적 선택, 다양한 포즈·의상·카메라 구도로 2천만 가지 이상의 AI 이미지 및 블로그 프롬프트를 자동 생성. ChatGPT, Gemini, Midjourney, DALL·E, Sora 등 즉시 사용 가능!" />
+    <meta name="author" content="PromptDesignerLab" />
+    <meta name="keywords" content="AI 프롬프트 생성기, 블로그 글쓰기 프롬프트, 여성 모델 이미지 프롬프트, 무료 프롬프트 도구, 블로그 자동화, ChatGPT, Gemini, Midjourney, DALL·E, Sora, Stable Diffusion, Adobe Firefly, Microsoft Copilot, NightCafe Creator, Artbreeder, Deep Dream Generator, Hotpot.ai, starryai, 이미지 생성기, 프롬프트 디자이너, 일본인 프롬프트, 한국인 이미지 프롬프트, 블로그 콘텐츠 툴" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI 이미지 & 블로그 프롬프트 자동 생성기 - Veo3, ChatGPT, Sora, Gemini, Midjourney 등" />
+    <meta property="og:description" content="총 2천만 가지 이상의 조합! 다양한 포즈, 감정, 의상, 글쓰기 스타일로 AI 프롬프트를 쉽게 생성해보세요." />
+    <meta property="og:image" content="media/image_prompt.png" />
+    <meta property="og:url" content="https://lazyprompt.netlify.app" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter 카드 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AI 이미지 & 블로그 프롬프트 자동 생성기" />
+    <meta name="twitter:description" content="클릭 몇 번으로 완성되는 고퀄리티 AI 이미지 및 블로그 프롬프트, 지금 바로 생성해보세요." />
+    <meta name="twitter:image" content="media/image_prompt.png" />
+
+  
+  
+  <style>
+    /* 화면 가운뎃점 정렬용 컨테이너 */
+    .header-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;  /* 세로 중앙 */
+      align-items: center;      /* 가로 중앙 */
+      height: 50vh;            /* 화면 전체 높이 */
+      width: 90%;               /* 뷰포트 대비 90% 너비 */
+      max-width: 500px;         /* 최대 500px 너비 */
+      margin: 0 auto;           /* 수평 중앙 정렬 */
+      padding: 0 1rem;          /* 좌우 여유 공간 */
+      text-align: center;
+    }
+
+
+    /* 메인 타이틀 */
+    .header-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      background: linear-gradient(90deg, #ff7e5f, #feb47b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.05em;
+      margin: 0;
+    }
+
+    /* 서브 타이틀 */
+    .header-subtitle {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #666;
+      margin-top: 0.5rem;
+      line-height: 1.4;
+      white-space: pre-line;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fb;
+      margin: 0;
+      padding: 0.5rem;
+      font-size: 0.85rem;
+      line-height: 1.35;
+      color: #222;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-box,
+    .output-box,
+    .ad-fixed-box {
+      background: #ffffff;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      max-width: 700px;
+      margin: auto;
+      box-sizing: border-box;
+    }
+
+    .output-box {
+      width: 100%;
+      min-height: 400px; /* 높이 추가 */
+    }
+
+    .ad-fixed-box {
+      height: 600px;
+      text-align: center;
+    }
+
+    .ad-fixed-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.4rem;
+    }
+
+    .ad-fixed-box div {
+      margin-top: 0.3rem;
+      font-size: 0.85rem;
+      color: #444;
+    }
+
+    @media (max-width: 720px) {
+      .form-box, .output-box, .ad-fixed-box {
+        width: 100% !important;
+      }
+
+      .ad-fixed-box {
+        height: auto;
+      }
+
+      .ad-fixed-box img {
+        height: auto;
+        object-fit: contain;
+      }
+
+      textarea {
+        height: 280px;
+      }
+    }
+
+    label {
+      margin: 0.3rem 0 0.15rem;
+      font-weight: 500;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      color: #111;
+    }
+
+    select,
+    input[type="number"],
+    input[type="text"] {
+      width: 100%;
+      padding: 0.3rem 0.5rem;
+      margin-bottom: 0.3rem;
+      font-size: 0.8rem;
+      max-width: 170px;
+      border: 1px solid #ccc;
+      border-radius: 0.35rem;
+      background: #fff;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 0.45rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      width: 100%;
+      background-color: #111;
+      color: white;
+      border: 1px solid transparent;
+      border-radius: 0.4rem;
+      cursor: pointer;
+      margin-top: 0.4rem;
+      transition: all 0.2s ease-in-out;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    button:hover {
+      background-color: #333;
+    }
+
+    button:active {
+      transform: scale(0.97);
+      background-color: #000;
+    }
+
+    textarea {
+      width: 100%;
+      height: 360px; /* .output-box 높이에 맞춰 적당한 여유를 둔 높이 */
+      padding: 0.5rem;
+      border-radius: 0.4rem;
+      border: 1px solid #ccc;
+      font-size: 0.8rem;
+      line-height: 1.35;
+      resize: vertical;
+      background: #fbfbfb;
+      color: #222;
+      box-sizing: border-box;
+    }
+
+
+    .checkbox-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .checkbox-container label {
+      display: flex;
+      align-items: center;
+      font-weight: normal;
+      font-size: 0.8rem;
+      margin: 0;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      margin-right: 0.4rem;
+    }
+
+    .info-text {
+      font-size: 0.75rem;
+      color: #666;
+      margin-top: 0.8rem;
+      line-height: 1.35;
+      text-align: left;
+    }
+
+    /* ── 네비게이션 버튼 ── */
+    /* ── 네비게이션 버튼 ── */
+    .main-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 2rem auto;
+    max-width: 720px;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    }
+
+    .nav-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 0.4rem;
+    white-space: nowrap;
+    text-align: center;
+    transition: background 0.2s;
+    box-sizing: border-box;
+    }
+
+    /* ✅ 너비 유연한 버튼 전용 */
+    .nav-button.stretch {
+    flex: 1 0 140px;
+    }
+
+    .nav-button:hover {
+    background: #555;
+    }
+
+    .nav-button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
+    }
+
+    @media (max-width: 720px) {
+    .nav-button.stretch {
+        flex: 1 1 45%;
+    }
+
+    .nav-button {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+        margin: 0.2rem 0;
+    }
+    }
+
+    
+  </style>
+</head>
+<body>
+   <!-- 타이틀 및 설명 -->
+  <div class="header-container">
+    
+    <h1 class="header-title">
+      Lazyprompt<br/>
+      레이지프롬프트
+    </h1>
+
+    <h2 class="header-subtitle">
+      🖼️📹 이미지·동영상 프롬프트 생성기<br/>
+      무료 8K 시네마틱 미디어 텍스트 툴
+    </h2>
+  </div>
+
+  <div class="container">  
+    <div class="form-box">
+      <nav class="main-nav">
+        <!-- 홈 -->
+        <a href="index.html" class="nav-button">
+          🏠 Home
+        </a>
+      
+        <!-- 이미지 생성기 -->
+        <a href="image_prompt.html" class="nav-button">
+          🖼 이미지 생성기
+        </a>
+      
+        <!-- 동영상 생성기 -->
+        <a href="video_prompt.html" class="nav-button">
+          🎬 동영상 생성기
+        </a>
+
+        <!-- 블로그 생성기 -->
+        <a href="blog_prompt.html" class="nav-button">
+          📝 블로그 생성기
+        </a>
+      
+        <!-- Threads 이동 (아이콘 + 텍스트) -->
+        <a href="https://www.threads.net/@not_all_said" target="_blank" class="nav-button">
+          <img src="media/threads.png" alt="Threads 아이콘" />
+          Threads
+        </a>
+      </nav>
+            
+      <h2>블로그 프롬프트 무제한 생성기</h2>
+        <p style="color: #444; font-size: 15px; line-height: 1.6;">
+        이 웹버전은 <strong>블로그 초보자부터 마케터까지 누구나 활용할 수 있는 무료 프롬프트 생성 도구</strong>입니다.<br><br>
+        <strong>블로그 주제</strong>와 <strong>목표 독자</strong>, <strong>톤앤매너</strong>만 선택해도, 자연스럽고 설득력 있는 문장 구조가 자동 생성됩니다.<br><br>
+        총 <strong>수백만 가지 이상의 조합</strong>이 가능하며, 실제 생성된 프롬프트는 <strong>ChatGPT, Claude, Gemini, Notion AI, Copy.ai</strong> 등 다양한 글쓰기 AI에 바로 복사·붙여넣기하여 사용할 수 있습니다.<br><br>
+        SEO 키워드 자동 포함, 스토리텔링 구조, 감정 호소 방식 등 <strong>실전형 콘텐츠 마케팅에 최적화된 프롬프트</strong> 기능은 <strong>지속 업데이트 중</strong>입니다.
+        </p>
+
+
+
+      <!-- 구분선 추가 -->
+      <hr style="border: none; border-top: 1px solid #ddd; margin: 2rem auto; max-width: 680px; opacity: 0.4;" />
+  
+      <!-- 예시 이미지 추가 -->
+      <div style="text-align: center; margin: 1.5rem 0;">
+        <img
+          src="media/blog_prompt.png"
+          alt="실제 생성된 블로그 프롬프트 예시"
+          width="100%"
+          style="border-radius: 0.5rem; box-shadow: 0 0 10px rgba(0,0,0,0.05); max-width: 100%;"
+        />
+        <div style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
+          ▲ 실제 생성된 블로그 프롬프트 예시
+        </div>
+      </div>
+
+
+      <!-- container 바로 안쪽 -->
+      <div style="width: 100%; margin-bottom: 1rem;">
+      <label for="custom_detail" style="
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+        display: block;
+        color: #111;">
+        블로그 내용에 대한 세부사항 입력 :
+      </label>
+      <input
+        type="text"
+        id="custom_detail"
+        placeholder="원하는 블로그에 대한 세부사항이 있다면 입력하세요."
+        style="
+          display: block;
+          width: 100%;
+          max-width: 100%;
+          height: 44px;
+          padding: 0.6rem 0.75rem;
+          font-size: 0.95rem;
+          border: 1px solid #ccc;
+          border-radius: 0.6rem;
+          background: #fff;
+          box-sizing: border-box;
+          color: #222;
+        "
+      />
+        <!-- ✅ 체크박스 UI (국적 위) -->
+        <div class="checkbox-container">
+          <label for="consistencyMode" style="
+            display: block;
+            padding: 0.75em;
+            background-color: #f0f4ff;
+            border-left: 4px solid #4a8df8;
+            border-radius: 8px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #1a1a1a;
+          ">
+            <input type="checkbox" id="consistencyMode" style="margin-right: 0.5em;">
+            <strong style="color: #285fc3;">일관성 모드</strong><br/>
+            블로그 글의 스타일이 고정되어<br/>
+            랜덤 생성 시에도 유지됩니다.<br/>
+            <span style="font-size: 0.85em; color: #666;">
+              시리즈 글쓰기에 유용합니다.<br/>
+              (정확도는 향후 개선 예정)
+            </span>
+          </label>
+
+
+        </div>     
+
+
+        <label>🎯 작성 목적: <select id="writing_purpose"></select></label>
+        <label>📂 카테고리: <select id="category"></select></label>
+        
+        <!-- 🎯 SEO 키워드 (드롭다운 + 입력 하이브리드) -->
+        <label>🔑 중심 키워드:
+        <input type="text" id="keyword" placeholder="예: 비건 레시피, 퇴사 후 창업" style="width: 100%; max-width: 500px;" />
+        </label>
+        <label>🎯 SEO 초점 키워드:
+        <input type="text" id="seo_focus" placeholder="예: ChatGPT 단축키, 자격증 추천, 여름 휴가지" style="width: 100%; max-width: 500px;" />
+        </label>
+        
+        <label>🧑‍🤝‍🧑 타깃 독자층: <select id="audience"></select></label>
+        <label>📝 플랫폼 스타일: <select id="platform_style"></select></label>
+        <label>🙋 문체 선택: <select id="tone_formality"></select></label>
+        <label>🎨 톤/스타일: <select id="tone_style"></select></label>
+        <label>📏 글의 길이: <select id="length"></select></label>
+        <label>🗂️ 콘텐츠 형식: <select id="reference_style"></select></label>
+        <label>📢 CTA 포함 여부 (예: "지금 구매하기", "더 알아보기"):  <select id="include_cta"></select></label>
+        <label>🔥 클릭 유도 문구: <select id="clickbait"></select></label>
+                
+
+        <button id="generatePromptButton">🎯 프롬프트 생성</button>
+        <button id="randomButton">🎲 랜덤 생성</button>
+        <button id="copyButton">📋 복사하기</button>
+        <button id="resetButton">🔄 리셋</button>
+      </div>
+
+
+      <!-- ✅ 프롬프트 출력창: 광고보다 위에 -->
+      <div class="output-box">
+        <h2>생성된 프롬프트</h2>
+        <textarea id="output"></textarea>
+      </div>
+
+      <!-- Info Text Below Reset Button -->
+      <div class="info-text">
+        <p>| *랜덤 생성 시 간혹 톤과 문체가 일치하지 않을 수 있습니다.</p>
+        <p>| *작성 목적, 독자층, 플랫폼 스타일이 서로 논리적으로 맞는 조합이어야 합니다.</p>
+        <p>| *ChatGPT 결과가 만족스럽지 않을 경우, Gemini, Claude 등도 시도해보세요.</p>
+        <p>| *생성된 글을 블로그에 업로드할 때의 책임은 사용자 본인에게 있습니다.</p>
+        </div>
+
+      <!--
+      <div class="ad-fixed-box">
+        <div>스탠다드 디럭스 버전 준비중(생성 가능한 경우의 수 500억 이상👇)</div>
+        <a href="현재 공백" target="_blank">
+          <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FFNrGO%2FbtsOa9WaTl8%2FS7nxEpRyk69XIM5HaawEwK%2Fimg.png"
+              alt="썸네일" />
+        </a>
+      </div>
+      -->
+
+    </div>
+  </div>
+    
+  <script>
+    
+    const writing_purpose = {
+        "검색 유입을 위한 글": "검색 엔진 최적화를 통해 블로그 유입을 극대화하기 위한 정보 중심 콘텐츠",
+        "제품을 자연스럽게 홍보": "상품이나 서비스를 독자에게 자연스럽게 소개하고 신뢰를 유도하는 콘텐츠",
+        "정보 중심의 콘텐츠": "정확하고 객관적인 데이터를 기반으로 지식을 전달하는 글",
+        "감성을 전달하는 글": "독자의 감정에 호소하며 공감과 여운을 주는 감성 중심의 에세이 스타일",
+        "SNS 공유용 콘텐츠": "짧고 임팩트 있는 메시지로 공유 유도를 목표로 하는 소셜 최적화 글",
+        "전문가 이미지 구축": "작성자를 전문가로 인식하게 만드는 깊이 있는 조언 및 통찰 제공형 콘텐츠",
+        "경험담 중심 스토리": "개인의 실제 경험을 중심으로 서사를 구성한 신뢰감 있는 이야기 콘텐츠",
+        "구독자·팔로워 유도": "블로그나 SNS 구독자 확보를 목표로 한 후속 행동 유도형 콘텐츠",
+        "수익형 키워드 글": "수익을 유도할 수 있는 특정 키워드를 중심으로 구성된 블로그 최적화 콘텐츠",
+        "이슈·트렌드 대응": "최근 이슈나 트렌드를 반영하여 검색 및 공유 유입을 노리는 시의성 높은 콘텐츠",
+        "문제 해결형 가이드": "특정 문제를 정의하고 단계별 해결법을 제공하는 How-To 중심의 실용 콘텐츠",
+        "이용 후기/리뷰": "제품, 서비스, 장소에 대한 개인적인 체험과 평가를 중심으로 작성된 후기형 콘텐츠",
+        "이야기 기반 콘텐츠": "하나의 주제를 이야기 형식으로 풀어내며 독자의 몰입과 감정이입을 유도하는 콘텐츠",
+        "토론·의견 제시": "사회적 이슈나 주제에 대해 자신의 의견을 논리적으로 정리한 주장형 콘텐츠",
+        "참여 유도형 콘텐츠": "댓글, 공유, 투표 등 독자의 반응과 상호작용을 유도하는 목적의 콘텐츠",
+    };
+
+    const category = {
+        "자기계발": "목표 설정, 습관 형성, 동기부여 등 개인 성장에 관한 주제",
+        "투자/재테크": "주식, 부동산, 암호화폐, 절약 팁 등 자산 관리와 관련된 콘텐츠",
+        "IT/디지털": "신기술, 앱 리뷰, 디지털 트렌드, 생산성 도구 등을 소개하는 글",
+        "여행/맛집": "국내외 여행기, 여행 팁, 맛집 후기 및 추천 등 체험형 콘텐츠",
+        "일상 브이로그": "개인의 일상, 소소한 하루, 루틴 소개 등 공감형 콘텐츠",
+        "리뷰/언박싱": "제품, 서비스, 책, 앱 등에 대한 솔직한 평가 및 사용 후기",
+        "교육/공부법": "시험 준비, 학습법, 자기주도 학습, 자격증 정보 등 교육 관련 콘텐츠",
+        "육아/가정": "육아 경험, 부모 노하우, 가족 이야기 등 부모 대상 콘텐츠",
+        "건강/웰빙": "운동, 식단, 마음 건강, 뷰티 루틴 등 몸과 마음을 관리하는 글",
+        "연애/관계": "연애 팁, 연인 문제 해결, 인간관계에 대한 심리적 통찰",
+        "비즈니스/창업": "업무 효율, 조직문화, 창업 노하우, 1인 비즈니스 등 실무 중심 콘텐츠",
+        "문화/예술": "책, 영화, 전시, 음악 등 감성적인 취향 공유 및 문화 감상",
+        "사회/시사": "사회적 이슈, 뉴스, 논쟁거리 등 의견 제시 및 분석형 콘텐츠",
+        "라이프스타일": "취미, 셀프 인테리어, 미니멀리즘 등 개인의 삶의 방식 소개",
+        "인터뷰/사람 이야기": "특정 인물의 이야기나 인터뷰 형식의 인사이트 중심 콘텐츠",
+    };
+
+    const keyword = document.getElementById("keyword").value;
+    const seoFocus = document.getElementById("seo_focus").value.trim();
+
+    const audience = {
+        "2030 직장인": {
+            "20대 사회초년생": "첫 직장, 인간관계, 자기계발에 관심 많은 초기 커리어층",
+            "30대 중간관리자": "업무 효율, 커리어 전환, 워라밸 추구층"
+        },
+        "40대 이상 부모": {
+            "초등학생 자녀 부모": "교육 방향, 사교육, 스마트폰 사용에 민감한 부모",
+            "고등학생 자녀 부모": "입시, 진로, 정서 관리에 집중하는 학부모층"
+        },
+        "Z세대 대학생": {
+            "캠퍼스 생활 중심": "연애, 동아리, 여행 등 일상에 관심",
+            "취업 준비 중": "자소서, 인턴, 면접 정보 탐색 중"
+        },
+        "1인 가구·혼족": {
+            "도시 거주 1인가구": "자취, 주거 공간 인테리어, 외식 줄이기",
+            "혼밥·혼술 선호층": "혼자 즐기는 문화, 편의성 중심 콘텐츠"
+        },
+        "프리랜서·창작자": {
+            "디자이너/영상 편집자": "툴 리뷰, 포트폴리오 공유, 작업 루틴",
+            "작가/콘텐츠 제작자": "아이디어 발상, 글쓰기 루틴, 브랜딩 전략"
+        },
+        "스타트업 창업자": {
+            "기술 기반 창업자": "AI, SaaS, 앱 개발 중심",
+            "라이프스타일 브랜드 창업자": "D2C, 제품 디자인, 마케팅 자동화"
+        },
+        "은퇴자·시니어층": {
+            "은퇴 후 경제설계": "연금, 재취업, 자산관리",
+            "여가 중심 시니어": "여행, 취미, 건강관리 관심"
+        },
+        "육아맘·워킹맘": {
+            "전업 육아맘": "놀이 교육, 이유식, 홈케어 관심층",
+            "직장맘": "시간관리, 직장-육아 병행 팁, 워킹맘 커뮤니티"
+        },
+        "자격증 준비생": {
+            "공무원 시험 준비생": "행정직, 경찰직, 시간표 루틴",
+            "전문직/민간자격 준비생": "노무사, 회계사, 마케팅 자격증 정보"
+        },
+        "디지털 노마드": {
+            "해외 체류 노마드": "태국, 발리, 일본 등 거점 정보",
+            "국내 노마드": "카페·코워킹 추천, 전국 숙소 및 일정 팁"
+        },
+        "해외 취업/유학 준비생": {
+            "미국 유학 준비생": "SAT, 유학 비용, 문화 차이",
+            "유럽 워홀 준비생": "비자 정보, 현지 생활 노하우"
+        },
+        "반려동물 양육자": {
+            "강아지 보호자": "산책, 간식, 훈련법, 건강관리",
+            "고양이 보호자": "모래, 캣타워, 무릎냥 대처법"
+        },
+        "건강·다이어트 관심층": {
+            "운동 루틴 중시": "헬스, 홈트, 스트레칭 위주 독자",
+            "식단 조절 중": "저탄고지, 간헐적 단식, 웰빙 식사"
+        },
+        "투자·재테크 초보자": {
+            "주식 입문자": "차트 보는 법, 키움 사용법, 종목 검색",
+            "코인/비트 입문자": "메이저코인, 알트코인, 거래소 팁",
+            "부동산 관심 초보": "전세 vs 매매, 소형 아파트 투자"
+        },
+        "취미 중심 독자": {
+            "요리 취미층": "레시피, 간편식, 브런치 메뉴 공유",
+            "사진·영상": "카메라 기종, 촬영 스팟, 편집 팁",
+            "DIY/핸드메이드": "캔들, 비누, 리폼 콘텐츠"
+        }
+    };
+
+    const platform_style = {
+        "네이버 블로그 스타일": "검색 최적화와 체류시간 유도를 위해 소제목, 해시태그, 사진 배치에 신경 쓴 구성. 주로 일상, 리뷰, 정보성 콘텐츠에 적합",
+        "브런치 스타일": "감성적이고 서사 중심의 문체. 에세이, 자기고백, 철학적 성찰에 어울리며 단문 중심으로 구성됨",
+        "티스토리 스타일": "광고 삽입, 수익화를 고려한 중장문 정보 콘텐츠에 적합. 상세한 설명과 고급 지식 전달에 최적화",
+        "워드프레스 스타일": "B2B, 글로벌 타깃을 위한 구조화된 포스트 스타일. 헤드라인, 리스트, CTA 강조",
+        "인스타그램 글 스타일": "짧고 강렬한 문장, 줄바꿈, 이모지 중심. 감정·일상·공감 콘텐츠에 적합",
+        "페이스북 노트 스타일": "주장, 의견, 사회적 이슈 중심. 긴 글도 가능하며 참여 유도와 확산력에 강함",
+        "카카오뷰/카카오채널 스타일": "모바일 화면 기준 최적화, 썸네일과 제목 클릭률 중심. 생활 꿀팁, 트렌드 큐레이션에 적합",
+        "링크드인 포스트 스타일": "전문적이고 단정한 문체. 경력, 통찰, B2B 관점의 콘텐츠에 최적화",
+        "전자책/리포트 스타일": "단계별 목차, 구조화된 문단, 서론-본론-결론 중심 구성. 참고자료/통계 활용 비율 높음",
+        "뉴스레터 스타일": "간결하고 요약 중심, 구독자 전용 콘텐츠에 적합. ‘읽을 거리 + 행동 유도’ 구조 강조",
+
+        // 추가된 스타일
+        "유튜브 스크립트 스타일": "시청자의 집중을 유도하는 Hook-문제제기-해결-콜투액션 구조. 말하듯이 쓰는 구어체 스타일",
+        "쿠팡파트너스 리뷰 스타일": "제품 특징, 장단점, 실사용기, 가격 링크 포함. 신뢰성 기반의 추천 콘텐츠에 적합",
+        "인스타 릴스/쇼츠 자막 스타일": "짧은 문장, 강조 단어, 감탄사 위주. 화면을 덮는 자막 문체. 반말 혹은 의성어 표현 다수",
+        "네이버 스마트스토어 스타일": "상품 상세페이지용 소개 문체. 스펙 요약, 구매포인트, 고객 후기 활용 중심",
+        "커뮤니티 글 스타일(클리앙/뽐뿌)": "현실적, 친구에게 말하듯 후기를 남기는 문체. 공감, 추천, ‘내돈내산’ 강조",
+        "이메일 캠페인 스타일": "제목과 첫 줄의 강한 CTA 중심. 최소 문장으로 강한 행동 유도. 링크 삽입 강조",
+        "카페24 상품 설명 스타일": "온라인 쇼핑몰 최적화. 제품 특징, 사용법, 사이즈 정보, FAQ 포함",
+        "에디토리얼 매거진 스타일": "트렌디하고 세련된 문체. 패션, 문화, 인터뷰 콘텐츠에 어울림. 고급 단어 활용 비중 높음",
+    };
+
+    const tone_formality = {
+        "정중하고 격식 있는 문체 (딱딱하고 포멀함)": 
+            "정부, 기업, 전문가용 글에 적합한 매우 정중한 말투입니다. 설명서, 공지, 발표문에 자주 사용됩니다. 예) '해당 기능은 다음과 같습니다.'",
+
+        "부드럽고 자연스러운 존댓말 (대부분의 블로그 글에 적합)": 
+            "정중하지만 딱딱하지 않은 말투로, 블로그 후기, 정보 전달, 리뷰 글 등에서 가장 널리 사용됩니다. 예) '이 제품을 사용해보니 정말 괜찮더라고요.'",
+
+        "친근한 반말체 (Z세대, SNS용)": 
+            "친구에게 말하듯 편하게 말하는 스타일입니다. 주로 Z세대 대상 SNS 콘텐츠나 후기, 일기형 글에 적합합니다. 예) '이거 써봤는데 진짜 괜찮았어!'",
+
+        "말하듯 자연스러운 대화체 (유튜브, 후기, 스토리형 콘텐츠)": 
+            "마치 말을 하듯 문장을 이어가는 문체입니다. 긴 설명이나 강의 느낌 없이 편하게 글을 이어가고 싶을 때 유용합니다. 예) '그래서 내가 해봤는데 말이야~'",
+
+        "논리적인 설명형 문어체 (객관적이고 구조화된 설명)": 
+            "딱딱하지만 명확한 설명이 필요한 콘텐츠에 어울립니다. 뉴스, 정책 요약, 분석 리포트 등에 적합합니다. 예) '이러한 결과는 다음의 원인에서 기인합니다.'",
+
+        "감정을 강조하는 감성적인 문체 (공감 유도, 에세이용)": 
+            "마음을 울리는 감정 중심의 문체로, 감성 블로그, 자기 고백형 글, 에세이에 적합합니다. 예) '그날의 햇살은 유난히도 따뜻했다. 마치 내게 말을 거는 것 같았다.'",
+
+        "질문과 답변을 오가는 Q&A 문체 (자주 묻는 질문이나 제품 소개)": 
+            "독자의 궁금증을 먼저 제시하고 그에 대한 답을 주는 형식입니다. 상품 설명, FAQ, 정보성 글에 유용합니다. 예) 'Q. 가격은 어떤가요? A. 1만 원대로 구매할 수 있습니다.'",
+
+        "임팩트 있고 반복적인 광고 문체 (카피라이팅, 랜딩페이지용)": 
+            "짧은 문장을 반복하며 긴장감과 욕구를 자극하는 문체입니다. 광고나 마케팅용 콘텐츠에 자주 사용됩니다. 예) '당신의 피부, 다시 태어나게 하세요. 단 7일이면 충분합니다!'",
+
+        "전문지식 전달형 문체 (전문직, 자격증, 기술 콘텐츠)": 
+            "용어 사용에 신중하며 지식 전달에 초점을 둔 스타일입니다. 자격증 정보, 의학, 재테크, 기술 블로그에 적합합니다. 예) '이 지표는 평균 회전율을 의미하며, 재고 관리에 필수적입니다.'",
+
+        "기승전결 뚜렷한 스토리텔링 문체 (브랜드 소개, 체험기)": 
+            "하나의 사건이나 경험을 처음-중간-결말 구조로 풀어가는 문체입니다. 체험 후기, 브랜딩 콘텐츠, 자전적 글에 적합합니다. 예) '처음엔 반신반의했지만, 직접 써보고 나서 생각이 달라졌습니다.'"
+    };
+
+    const tone_style = {
+        "정보 전달 중심": "📘 객관적이고 사실 중심. 예) '2024년부터 적용되는 개정 세법은 다음과 같습니다.'\n사용처: 팁, 가이드, 분석 글 등",
+        "감성적이고 부드러운 톤": "💗 감정을 자극하는 따뜻한 문체. 예) '그날의 햇살은 유난히도 눈부셨다.'\n사용처: 에세이, 공감 글, 브런치 스타일",
+        "직설적이고 도발적인 톤": "🔥 강한 어조와 입장 표현 중심. 예) '이걸 아직도 모르고 있다면, 당신은 손해를 보고 있는 겁니다.'\n사용처: 마케팅, 문제 제기형 글",
+        "유머러스하고 가벼운 톤": "😂 유쾌한 농담과 익살스러운 표현. 예) '다이어트는 내일부터… 아니 다음 생에.'\n사용처: SNS, 릴스, 일상 콘텐츠",
+        "철학적이고 사색적인 톤": "🧠 깊이 있는 문장과 통찰 제공. 예) '우리는 늘 결과보다 과정에 속고 있다.'\n사용처: 자기성찰, 인사이트 글",
+        "스토리텔링 중심의 톤": "📖 시간의 흐름이나 상황 중심. 예) '퇴사 후 나는 처음으로 매일 7시에 일어났다.'\n사용처: 후기, 경험담, 브랜드 히스토리",
+        "전문적이고 신뢰감 있는 톤": "🧑‍🏫 용어와 구조가 단정한 설명형. 예) 'ROAS는 Return on Ad Spend의 약자로, 광고 수익률을 뜻합니다.'\n사용처: 리뷰, 자격증, 재테크",
+        "Z세대 트렌디한 톤": "🎯 줄임말, 밈, 반말 사용. 예) '와 진짜 이건 미쳤다ㅋㅋ 내돈내산 인정.'\n사용처: Z세대 대상 쇼츠, SNS 콘텐츠",
+    };
+
+    const length = {
+        "🎯 Threads용 초간단 포스팅 (30~100자)": "짧은 임팩트 중심 문장. 유행어, 밈, 감성 문구에 적합. 빠른 반응과 공유 유도용",
+        "📷 인스타 캡션·스토리용 (100~300자)": "사진/영상에 감정을 덧붙이거나 핵심 메시지를 요약하는 짧고 감각적인 문장용",
+        "🗨️ 유튜브 커뮤니티·쇼츠 설명 (200~500자)": "영상 요약, 댓글 유도 문구, 좋아요·구독 요청용 콘텐츠에 적합",
+        "✍️ 블로그 짧은 포스트 (500~900자)": "간단한 팁, 후기, 하루일기, 제품 간단 리뷰 등 가볍게 소비되는 글에 적합",
+        "📝 블로그 표준 길이 (900~1,500자)": "검색 최적화 중심, 서론-본론-결론 구조에 적합. 네이버·티스토리 주력 콘텐츠 포맷",
+        "📚 정보형·리뷰형 장문 (1,500~2,500자)": "전문가 리뷰, 가이드, 비교 분석 콘텐츠. 광고/제휴 글, 수익형 글에 활용",
+        "📖 브런치·에세이용 장문 (2,500~4,000자)": "감성 글, 인사이트 공유, 스토리텔링 기반. 깊은 몰입감 유도",
+        "📄 전자책/연재 시리즈급 (4,000자 이상)": "장기 프로젝트, 강의형 콘텐츠, 전자책 구성용. 고도화된 전문 콘텐츠에 적합",
+    };
+
+    const reference_style = {
+        "🧠 정보형 글": "팩트와 데이터를 기반으로 지식·정보를 전달하는 콘텐츠 (예: 건강 팁, 역사 소개)",
+        "📋 리스트형 정리": "번호나 점으로 정리된 포맷으로 가독성과 공유력을 높임 (예: ~하는 5가지 방법)",
+        "💬 Q&A 형식": "질문-답변 구조로 구성되어 궁금증 해소에 적합 (예: 자주 묻는 질문, 초보자 가이드)",
+        "📌 요약·정리형": "긴 정보를 짧고 간결하게 요약한 콘텐츠 (예: 뉴스 요약, 핵심 노트)",
+        "🗣️ 후기·경험담": "실제 체험을 중심으로 한 리뷰나 감상 중심의 글 (예: 제품 사용 후기, 여행 후기)",
+        "👣 일기·에세이": "개인의 생각과 감정을 자연스럽게 담아내는 감성형 콘텐츠 (예: 브런치, 티스토리 에세이)",
+        "🧪 실험·테스트 후기": "직접 해본 실험·테스트 과정과 결과를 공유 (예: 챗GPT 활용 실험기, 다이어트 실천기)",
+        "🔍 비교·분석형": "두 가지 이상 대상을 객관적 기준으로 비교하고 분석하는 형식 (예: 노션 vs 에버노트)",
+        "🎓 튜토리얼·가이드": "단계별로 따라하는 학습형 콘텐츠 (예: 블로그 시작하기, GPT 프롬프트 작성법)",
+        "📈 인사이트·해석형": "트렌드나 사회 이슈에 대한 개인적 해석과 의견을 담은 글 (예: 2030의 소비 변화 분석)",
+        "🧭 문제 해결 중심": "하나의 문제를 정의하고, 해결책을 단계별로 안내하는 구조 (예: 검색 노출이 안될 때 해결법)",
+        "💼 포트폴리오형": "자신의 작업, 성과, 브랜딩을 소개하는 형식 (예: 디자이너 소개, 블로그 소개 페이지)",
+        "🎤 인터뷰·대화체": "실제 사람과의 인터뷰나 가상 대화 형식의 글 (예: 창업자 인터뷰, GPT와의 대화)"
+    };
+
+    const include_cta = {
+        "없음": "행동 유도 문구 없이 정보만 제공합니다.",
+        "구매 유도": "'지금 구매하기', '할인 받기' 등 구매를 유도합니다.",
+        "더 알아보기": "'더 보기', '자세히 보기' 등 정보 탐색 유도",
+        "가입/상담": "'무료 가입', '상담 신청' 등 전환 유도",
+        "다운로드": "'앱 설치', '자료 받기' 등 다운로드 유도",
+        "SNS 공유": "'공유하기', '저장하기' 등 소셜 확산 유도",
+        "참여 유도": "'댓글 남기기', '투표 참여' 등 상호작용 유도",
+        "구독/팔로우": "'구독하기', '팔로우' 등 팬 확보 목적",
+    };
+
+    const clickbait = {
+        "없음": "자연스러운 제목 사용 (자극 없이 정보 중심)",
+        "숫자로 강조된 제목": "예: 'TOP 5 팁', '3분 만에 끝내는' 등 숫자로 간결하게 임팩트 전달",
+        "질문형/궁금증 유발": "예: '왜 아무도 이걸 안 할까?', '당신만 모르고 있는 사실?'",
+        "충격/자극 표현 사용": "예: '경악주의', '소름 돋는다', '말문이 막혔다' 등 강한 표현 사용",
+        "비밀/미공개 정보 암시": "예: '공개하지 않던 방법', '고수들만 아는 꿀팁'",
+        "강한 대비 강조": "예: '이걸 아는 사람 vs 모르는 사람', '하는 사람과 안 하는 사람의 차이'",
+        "긴박감/기한 한정": "예: '오늘 마감!', '지금 안 보면 후회합니다', '마지막 기회'",
+        "실패 방지/경고성 문구": "예: '이거 몰랐다간 큰일 납니다', '절대 이렇게 하지 마세요'",
+        "실제 후기/경험 강조": "예: '직접 해봤습니다', '이걸로 월 100 벌었습니다'",
+        "전문가/권위 강조": "예: 'OO교수가 말하는 정답', '전문가 추천!', '의사가 말하는 꿀팁'",
+        "쉬워 보이는 강조": "예: '누구나 할 수 있습니다', '초보자도 단 10분 만에'",
+        "대중 심리 활용": "예: '요즘 다들 이거 합니다', '안 보면 손해!', '남들 다 하는데 나만 몰랐던'",
+        "호기심 자극": "예: '보면 이해됩니다', '사진 보고 놀람', '결과는 상상 초월'",
+        "스토리 기반 유도": "예: '퇴사 후 1년, 인생이 바뀐 이야기', '무일푼에서 1억까지'",
+        "논란/이슈 암시": "예: '생각보다 심각합니다', '이건 좀 아니지 않나요?'",
+        "도전/참여 유도": "예: '당신도 도전하세요!', '댓글로 의견 남겨주세요'",
+        "몰입형 시나리오 제목": "예: '만약 당신이 하루 만에 부자가 된다면?', '그날, 그 선택이 모든 걸 바꿨다'"
+    };
+
+
+   function getBlogPromptState() {
+    return {
+        consistencyMode: document.getElementById("consistencyMode")?.checked || false, // 체크 여부 true/false
+        writing_purpose: document.getElementById("writing_purpose")?.value || "",
+        category: document.getElementById("category")?.value || "",
+        keyword: document.getElementById("keyword")?.value.trim() || "",
+        seo_focus: document.getElementById("seo_focus")?.value.trim() || "",
+        audience: document.getElementById("audience")?.value || "",
+        platform_style: document.getElementById("platform_style")?.value || "",
+        tone_formality: document.getElementById("tone_formality")?.value || "",
+        tone_style: document.getElementById("tone_style")?.value || "",
+        length: document.getElementById("length")?.value || "",
+        reference_style: document.getElementById("reference_style")?.value || "",
+        include_cta: document.getElementById("include_cta")?.value || "",
+        clickbait: document.getElementById("clickbait")?.value || ""
+     };
+    }
+
+
+    function applyAppearanceState(state) {
+      if (!state) return;
+
+      const setSafeValue = (id, value) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.value = value;
+        } else {
+          console.warn(`[⚠️ applyAppearanceState] 요소가 존재하지 않음: #${id}`);
+        }
+      };
+
+    setSafeValue("audience", state.audience); // 타깃 독자층
+    setSafeValue("platform_style", state.platform_style); // 플랫폼 스타일
+    setSafeValue("tone_formality", state.tone_formality); // 문체 (격식)
+    setSafeValue("tone_style", state.tone_style); // 톤/스타일
+    setSafeValue("length", state.length); // 글의 길이
+    setSafeValue("reference_style", state.reference_style); // 콘텐츠 형식
+
+
+    }
+
+    
+    window.addEventListener("DOMContentLoaded", function () {
+      // ✅ 일관성 모드 체크박스 동작
+      document.getElementById("consistencyMode").addEventListener("change", function () {
+        if (this.checked) {
+          persistentAppearance = getAppearanceState();
+        } else {
+          persistentAppearance = null;
+        }
+      });
+
+      // ✅ 일관성 모드 자동 해제
+      const watchedFields = [
+        "audience",           // 타깃 독자층
+        "platform_style",     // 플랫폼 스타일
+        "tone_formality",     // 문체(격식)
+        "tone_style",         // 글 톤/스타일
+        "length",             // 글의 길이
+        "reference_style"     // 콘텐츠 형식
+        ];
+
+      watchedFields.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener("change", () => {
+            if (document.getElementById("consistencyMode").checked) {
+              alert("수정을 감지해 일관성 모드를 해제합니다.");
+              document.getElementById("consistencyMode").checked = false;
+              persistentAppearance = null;
+            }
+          });
+        }
+      });
+    });
+
+
+
+    const dicts = {
+        writing_purpose: writing_purpose,
+        category: category,
+        audience: audience,
+        platform_style: platform_style,
+        tone_formality: tone_formality,
+        tone_style: tone_style,
+        length: length,
+        reference_style: reference_style,
+        include_cta: include_cta,
+        clickbait: clickbait,
+    };
+
+
+    function fillOptions() {
+        for (const [id, dict] of Object.entries(dicts)) {
+            const select = document.getElementById(id);
+            if (!select) continue;
+
+            // ❗ <select> 요소에만 옵션 추가 → input은 제외됨
+            if (select.tagName.toLowerCase() !== 'select') continue;
+
+            const keys = Array.isArray(dict) ? dict : Object.keys(dict);
+
+            keys.forEach((label) => {
+                const option = document.createElement('option');
+                option.value = label;
+                option.textContent = label;
+                select.appendChild(option);
+            });
+        }
+    }
+
+
+
+    function extractFirstValue(obj) {
+    if (typeof obj === 'string') return obj;
+    if (typeof obj === 'object' && obj !== null) {
+        const firstKey = Object.keys(obj)[0];
+        return extractFirstValue(obj[firstKey]);
+    }
+    return "정보 없음";
+    }
+
+    function generatePromptActual() {
+    try {
+        const consistencyOn = document.getElementById("consistencyMode")?.checked;
+        if (consistencyOn) {
+        if (persistentAppearance) {
+            applyAppearanceState(persistentAppearance);
+        } else {
+            persistentAppearance = getAppearanceState();
+            applyAppearanceState(persistentAppearance);
+        }
+        }
+
+        const blogInputIds = [
+        "writing_purpose", "category", "keyword", "seo_focus",
+        "audience", "platform_style", "tone_formality", "tone_style",
+        "length", "reference_style", "include_cta", "clickbait"
+        ];
+
+        const values = {};
+        blogInputIds.forEach(id => {
+        const el = document.getElementById(id);
+        values[id] = el ? el.value.trim() : "";
+        });
+
+        // 🔽 핵심 값 가져오기
+        const writingPurpose = dicts.writing_purpose?.[values.writing_purpose] || values.writing_purpose || "정보성 블로그 글 작성";
+        const category       = dicts.category?.[values.category] || values.category || "일반 카테고리";
+        const keyword        = values.keyword || "블로그 키워드";
+        const seoFocus       = values.seo_focus || "SEO 키워드";
+        const audience       = extractFirstValue(dicts.audience?.[values.audience]) || values.audience || "일반 독자";
+        const platformStyle  = dicts.platform_style?.[values.platform_style] || values.platform_style || "블로그 형식";
+        const toneFormality  = dicts.tone_formality?.[values.tone_formality] || values.tone_formality || "친절한 문체";
+        const toneStyle      = dicts.tone_style?.[values.tone_style] || values.tone_style || "정보 전달 중심";
+        const length         = dicts.length?.[values.length] || values.length || "보통 분량의 글";
+        const referenceStyle = dicts.reference_style?.[values.reference_style] || values.reference_style || "일반 텍스트 형식";
+        const includeCta     = dicts.include_cta?.[values.include_cta] || values.include_cta || "CTA 없음";
+        const clickbait      = dicts.clickbait?.[values.clickbait] || values.clickbait || "평범한 제목";
+
+        const customDetail = document.getElementById("custom_detail")?.value.trim();
+        const customNote = customDetail ? `This instruction overrides all other rules: ${customDetail}.` : "";
+
+        const prompt = `
+    ${customNote}
+
+    작성 목적: ${writingPurpose}
+    카테고리: ${category}
+    핵심 키워드: ${keyword}
+    SEO 초점 키워드: ${seoFocus}
+    대상 독자층: ${audience}
+    플랫폼 스타일: ${platformStyle}
+    문체: ${toneFormality}
+    글의 톤/스타일: ${toneStyle}
+    글의 길이: ${length}
+    콘텐츠 형식: ${referenceStyle}
+
+    ${includeCta.includes("없음") ? "" : `✔️ 행동 유도 문구 포함: ${includeCta}`}
+    ${clickbait ? `클릭 유도 문구 스타일: ${clickbait}` : ""}
+
+    위 조건들을 바탕으로 블로그 글의 서론, 본문, 결론 구조를 갖추어 자연스럽고 읽기 쉬운 포맷으로 작성해주세요.
+    내용은 "${keyword}"와 관련된 유익한 정보를 중심으로 "${audience}"에게 실질적인 도움을 주는 방향으로 구성되어야 합니다.
+        `.trim();
+
+        document.getElementById("output").value = prompt;
+
+    } catch (error) {
+        console.error("프롬프트 생성 중 오류 발생:", error);
+        document.getElementById("output").value = "프롬프트 생성 중 오류가 발생했습니다. 콘솔을 확인해주세요.";
+    }
+    }
+
+
+    // 랜덤 생성 버튼 클릭 시
+    function setRandomValuesActual() {
+      const consistencyOn = document.getElementById("consistencyMode")?.checked;
+      if (consistencyOn) {
+        if (persistentAppearance) {
+          // 저장된 내용이 있으면 그걸 그대로 적용
+          applyAppearanceState(persistentAppearance);
+        } else {
+          // 저장된 내용이 없다면 현재 상태를 저장하고 그대로 적용
+          persistentAppearance = getAppearanceState();
+          applyAppearanceState(persistentAppearance);
+        }
+      }
+
+
+      const randomValue = (map) => {
+        if (Array.isArray(map)) {
+          return map[Math.floor(Math.random() * map.length)];
+        } else {
+          const keys = Object.keys(map);
+          return keys[Math.floor(Math.random() * keys.length)];
+        }
+      };
+
+        document.getElementById("writing_purpose").value  = randomValue(writing_purpose);
+        document.getElementById("category").value         = randomValue(category);
+        document.getElementById("audience").value         = randomValue(audience);
+        document.getElementById("platform_style").value   = randomValue(platform_style);
+        document.getElementById("tone_formality").value   = randomValue(tone_formality);
+        document.getElementById("tone_style").value       = randomValue(tone_style);
+        document.getElementById("length").value           = randomValue(length);
+        document.getElementById("reference_style").value  = randomValue(reference_style);
+        document.getElementById("include_cta").value      = randomValue(include_cta);
+        document.getElementById("clickbait").value        = randomValue(clickbait);
+
+      // 프롬프트 자동 생성
+      generatePromptActual();
+    }
+
+
+   function setRandomValuesActualSafe() {
+      const consistencyOn = document.getElementById("consistencyMode")?.checked;
+
+      // ✅ 1. 내용 관련만 일관성 유지
+      if (consistencyOn) {
+        if (!persistentAppearance) {
+          persistentAppearance = getAppearanceState();
+        }
+
+        // 내용 관련 필드만 수동 적용 (❗ 랜덤 필드는 건드리지 않음)
+        const fixedFields = [
+            "audience", "platform_style", "tone_formality",
+            "tone_style", "length", "reference_style"
+        ];
+
+        fixedFields.forEach(id => {
+          const el = document.getElementById(id);
+          if (el && persistentAppearance[id] !== undefined) {
+            el.value = persistentAppearance[id];
+          }
+        });
+      }
+
+      const randomKey = (obj) => Object.keys(obj)[Math.floor(Math.random() * Object.keys(obj).length)];
+      const randomFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+      const randomItems = [
+        ["writing_purpose", writing_purpose],       // 작성 목적
+        ["category", category],                     // 카테고리
+        ["keyword", keyword],                       // 중심 키워드 (※ 드롭다운 하이브리드인 경우 제외 가능)
+        ["seo_focus", seo_focus],                   // SEO 초점 키워드 (※ 동일)
+        ["audience", audience],                     // 타깃 독자
+        ["platform_style", platform_style],         // 플랫폼 스타일
+        ["tone_formality", tone_formality],         // 문체 격식
+        ["tone_style", tone_style],                 // 글 톤
+        ["length", length],                         // 글 길이
+        ["reference_style", reference_style],       // 콘텐츠 형식
+        ["include_cta", include_cta],               // CTA 포함 여부
+        ["clickbait", clickbait]                    // 클릭 유도 문구
+    ];
+
+        randomItems.forEach(([id, source]) => {
+            const value = Array.isArray(source) ? randomFromArray(source) : randomKey(source);
+            setValue(id, value);
+        });
+
+
+      // ✅ 6. 프롬프트 생성
+      generatePromptActual();
+
+      // ✅ 내부 헬퍼
+      function setValue(id, value) {
+        const el = document.getElementById(id);
+        if (el) el.value = value;
+      }
+    }
+
+
+
+
+    // 리셋 버튼 클릭 시 실행되는 함수
+    function resetPrompt() {
+      const resetValue = (id, defaultValue = "") => {
+        const el = document.getElementById(id);
+        if (el) el.value = defaultValue;
+      };
+
+      // 출력창 비우기
+      resetValue("output");
+
+      // 입력값들 초기화
+        resetValue("writing_purpose");
+        resetValue("category");
+        resetValue("keyword", "");      // 입력창 초기화
+        resetValue("seo_focus", "");    // 입력창 초기화
+        resetValue("audience");
+        resetValue("platform_style");
+        resetValue("tone_formality");
+        resetValue("tone_style");
+        resetValue("length");
+        resetValue("reference_style");
+        resetValue("include_cta");
+        resetValue("clickbait");
+
+    }
+
+    // 리셋 버튼 이벤트 연결
+    document.getElementById("resetButton").addEventListener("click", function (e) {
+      e.preventDefault();
+      resetPrompt();
+    });
+
+
+    function copyToClipboard() {
+      const output = document.getElementById("output").value;
+
+      if (!output.trim()) {
+        alert("복사할 프롬프트가 없습니다. 먼저 프롬프트를 생성해주세요.");
+        return;
+      }
+
+      // Clipboard API를 사용하여 텍스트 복사
+      navigator.clipboard.writeText(output)
+        .then(() => {
+          alert("프롬프트가 복사되었습니다!");
+        })
+        .catch(err => {
+          console.error('복사 실패:', err);
+          alert("복사에 실패했습니다.");
+        });
+    }
+
+
+    // DOM이 로드된 후 실행
+    document.addEventListener('DOMContentLoaded', () => {
+      // 옵션 채우기
+      fillOptions();
+
+      // 버튼 이벤트 안전하게 추가
+      const addClick = (id, fn) => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener("click", (e) => {
+          e.preventDefault();
+          fn();
+        });
+      };
+
+      addClick("generatePromptButton", generatePromptActual);
+      addClick("randomButton", setRandomValuesActualSafe);
+      addClick("copyButton", copyToClipboard);
+      addClick("resetButton", resetPrompt);
+
+      // 초기 자동 랜덤 프롬프트
+      setTimeout(setRandomValuesActualSafe, 100);
+    });
+
+
+  </script>
+</body>
+</html>
