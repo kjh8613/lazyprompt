@@ -893,19 +893,43 @@
     };
 
     const distance_description = {
-      "초초근접 (5cm 이하)": "ultra extreme close-up (within 5cm) – focuses on a single detail such as fingernail texture, lip lines, or a bead of sweat. Hyper-intimate and intense.",
-      "초근접 (5~15cm)": "extreme close-up (5–15cm) – captures parts like eyes, lips, toes, fingernails. Creates emotional tension and tactile intimacy.",
-      "근접 (15~40cm)": "close-up (15–40cm) – shows the face, hands, or feet with some surrounding skin/clothing. Often used for emotional or gesture-driven frames.",
-      "상반신 근접 (50~80cm)": "tight medium shot (50–80cm) – shows head to chest or waist, often used for natural conversation or internal expression.",
-      "상반신 전체 (80~120cm)": "medium shot (80–120cm) – head to waist or hips, natural framing for interviews, expressions, and posture context.",
-      "3/4 신 (1.2~1.8m)": "three-quarter shot (1.2–1.8m) – frames from head to knees or mid-thigh, used for posing, clothing, and partial environment.",
-      "전신 기본 (2~3m)": "full-body shot (2–3m) – shows head to toe, typically used for body shape, fashion, posture, and stance clarity.",
-      "넓은 전신 (4~6m)": "wide full-body shot (4–6m) – full body with generous room above and below; allows interaction with surroundings.",
-      "초광각 전신 (7~10m)": "long full-body shot (7–10m) – subject appears relatively small; environment or background becomes dominant.",
-      "실루엣 원거리 (10~20m)": "distant silhouette shot (10–20m) – used for emotional isolation, atmosphere, or voyeuristic distance.",
-      "배경 중심 롱샷 (20m 이상)": "establishing long shot (20m or more) – subject nearly blends into background; used to show vastness or detachment.",
-      "착시 카메라 (몸에 부착)": "subjective POV – mimics eyes, shoulder, or hand-mounted camera. Used for immersion and personal involvement.",
+      "초초근접 (5cm 이하)": 
+        "From the lens within 5cm – an ultra extreme close-up that isolates micro-details like skin pores, lip texture, or sweat droplets. Creates intense intimacy and visual tension.",
+
+      "초근접 (5~15cm)": 
+        "From a 5–15cm perspective – an extreme close-up that frames singular features such as the eyes, lips, fingernails, or toes. Designed to evoke emotional focus and tactile intensity.",
+
+      "근접 (15~40cm)": 
+        "From a 15–40cm range – a close-up capturing the face, hands, or feet along with slight surrounding elements. Highlights emotion, subtle gestures, or details in action.",
+
+      "상반신 근접 (50~80cm)": 
+        "From 50–80cm away – a tight medium shot from the lens that includes the subject’s head down to chest or waist. Ideal for personal expression and conversational framing.",
+
+      "상반신 전체 (80~120cm)": 
+        "From a lens position 80–120cm away – a natural medium shot showing the subject’s upper body, from head to hips. Used to capture posture, expression, and interaction comfortably.",
+
+      "3/4 신 (1.2~1.8m)": 
+        "From a 1.2–1.8m distance – a three-quarter shot that frames the subject from head to knees or mid-thigh. Balances body shape with partial background for stylish or narrative context.",
+
+      "전신 기본 (2~3m)": 
+        "From 2–3 meters away – a full-body shot that captures the subject from head to toe. Used to show posture, stance, fashion, and spatial balance.",
+
+      "넓은 전신 (4~6m)": 
+        "Shot from 4–6 meters – a wide full-body frame with generous breathing room around the subject. Allows for dynamic interaction with surroundings and spatial storytelling.",
+
+      "초광각 전신 (7~10m)": 
+        "From a distant 7–10m viewpoint – a long full-body shot where the subject appears smaller within the scene. Emphasizes background dominance or thematic distance.",
+
+      "실루엣 원거리 (10~20m)": 
+        "Seen from 10–20 meters – a distant silhouette shot that emphasizes mood, isolation, or voyeuristic perspective. The subject becomes part of a larger atmosphere.",
+
+      "배경 중심 롱샷 (20m 이상)": 
+        "From 20 meters or more – an establishing long shot where the subject blends into the scenery. Designed to depict vastness, insignificance, or spatial narrative.",
+
+      "착시 카메라 (몸에 부착)": 
+        "From a subjective camera angle – mimics an eye-level or body-mounted viewpoint such as head, chest, or shoulder. Creates immersion and first-person experience."
     };
+
 
     const manicure_text = {
       "없음": "clean, unpolished nails",
@@ -1608,7 +1632,10 @@
 
 // 프롬프트 생성
 // 사용자 세부사항이 있을 경우 앞부분에 삽입
-const prompt = `${customNote}${distance}, ${camera}, ${background}, capturing a ${nationality} ${appearance_text}, ${pose} indoors.
+const prompt = `
+🎥 Shot using ${camera}, at ${distance} distance – the framing and composition prioritize this perspective.
+
+${customNote} ${background}, featuring a ${nationality} ${appearance_text}, ${pose} indoors.
 
 She is wearing ${outfit}.
 
@@ -1617,11 +1644,12 @@ Lighting is ${lighting}.
 
 ${upward_focus_note}
 
-🎥 ${rendering}.
+Rendered in ${rendering}.
 ${fabric}
 
 Avoid all visual defects such as poor anatomy, disfigurement, deformations, low resolution, blurry focus, oversaturation, cropped framing, any kind of text, watermark or signature. Ensure no extra or missing limbs, no fused or unnatural fingers.
 `;
+
 
 
         // 출력
