@@ -448,6 +448,7 @@
         <label>👗 의상 스타일: <select id="outfit"></select></label>
         <label>🧍‍♀️ 체형: <select id="body_shape"></select></label>
         <label>🤸‍♀️ 포즈 선택: <select id="pose"></select></label>
+        <label>👤 얼굴형: <select id="face_shape"></select></label>
         <label>📸 카메라 시점: <select id="camera"></select></label>
         <label>🔭 카메라 거리: <select id="distance"></select></label>
         <label>☀️ 시간대 (조명): <select id="lighting"></select></label>
@@ -502,6 +503,51 @@
       "중국인": "Chinese woman",
       "서양인": "Western woman"
     };
+
+
+    const face_shape_description = {
+      "우아하고 정제된 이미지": "An oval-shaped face with balanced proportions, high cheekbones that add subtle definition, a tall and smooth nose bridge that enhances elegance, defined double eyelids with an open and calm gaze, straight eyebrows that give a composed expression, plump lips with a gentle upward curve, and a soft jawline that rounds the lower face delicately.",
+      "귀엽고 따뜻한 소녀상": "A heart-shaped face that tapers to a delicate chin, chubby cheeks that give a youthful charm, a small button nose with a rounded tip, downturned eyes with an emotional gaze, thin and softly curved eyebrows, naturally tinted lips with a soft texture, and a delicate V-line jaw that completes the sweet impression.",
+      "도시적이고 세련된 인상": "A long face with elegant vertical proportions, natural cheekbones that create smooth transitions, a sculpted nose bridge with a slight ridge, almond-shaped eyes that express intelligence, arched brows that accentuate facial angles, lips with a sharply defined cupid's bow, and a sharp jawline that adds a sense of confidence and clarity.",
+      "도도한 커리어우먼": "A diamond-shaped face with pronounced cheekbones, a high-bridged nose with clean lines, sharp cat-like eyes, well-defined arched eyebrows, full matte lips, and a strong angular jawline that exudes confidence and assertiveness.",
+      "청순한 첫사랑 이미지": "A round face with soft curves, smooth cheekbones, a small and natural-looking nose, clear and slightly upturned eyes, straight light eyebrows, glossy lips with a pink hue, and a gentle U-line jaw that adds purity.",
+      "지적인 대학생": "An oval face with subtle structure, soft cheekbones, a slightly aquiline nose, almond-shaped eyes behind glasses, natural brows, lips with a well-defined edge, and a slim jaw that complements an intellectual aura.",
+      "순수하고 수줍은 인상": "A heart-shaped face with flushed cheeks, a small rounded nose, downturned eyes with visible eyelid folds, softly curved eyebrows, pouty lips, and a fragile chin that adds innocence.",
+      "신비롭고 몽환적인 분위기": "A long, narrow face with hollow cheeks, a sharp and tall nose, large round eyes with deep-set eyelids, thick and slightly messy eyebrows, slightly parted glossy lips, and a pointed chin that emphasizes ethereality.",
+      "건강하고 생기 넘치는 인상": "A square face with defined cheekbones, a broad nose with a straight bridge, big lively eyes with wide eyelid space, bold eyebrows, smiling lips with a full lower lip, and a firm jawline that radiates vitality.",
+      "차갑고 도도한 냉미녀": "An inverted triangle-shaped face with sharp cheekbones, a straight nose bridge, piercing narrow eyes, angular brows, red-tinted matte lips, and a sharply defined chin that highlights a cold elegance.",
+      "엣지 있는 예술가 타입": "A square-shaped face with prominent cheekbones, a slightly curved nose, dreamy deep-set eyes, asymmetrical eyebrows, softly smiling lips, and a defined jaw that conveys bold creativity.",
+      "활발한 스포츠 여신": "A rectangular face with strong bone structure, sharp cheekbones, a wide nose, wide-open energetic eyes, thick brows, lightly chapped lips, and a firm chin radiating athletic confidence.",
+      "섹시하고 당당한 여성상": "A V-line face with sculpted cheeks, a high nose bridge, seductive upturned eyes, sharp arched eyebrows, bold red lips, and a clean-cut jawline exuding fierce confidence.",
+      "중성적이고 시크한 인상": "A narrow, long face with flat cheeks, a straight nose, half-lidded eyes, softly filled brows, pale lips, and a balanced jawline that merges masculine and feminine features.",
+      "수수하고 자연스러운 분위기": "A slightly rounded face with mild cheekbones, a small natural nose, kind soft eyes, light straight eyebrows, neutral-toned lips, and a round chin that feels approachable.",
+      "강단 있고 리더십 있는 이미지": "A broad square face with flat cheekbones, a wide nose bridge, confident sharp eyes, thick strong eyebrows, neutral lips, and a structured jaw that exudes authority.",
+      "은은한 동양적 미인": "A slim oval face with low cheekbones, a straight but subtle nose, monolid eyes with calm presence, straight black brows, petal-like lips, and a soft, long chin that enhances grace.",
+      "차분하고 온화한 인상": "A heart-shaped face with gently flushed cheeks, a narrow rounded nose, big kind eyes, medium brows with a downward slope, light pink lips, and a softly pointed chin.",
+      "클래식한 여배우 스타일": "A symmetrical face with softly contoured cheekbones, a Grecian nose, wide expressive eyes, gracefully arched eyebrows, velvet-textured lips, and a refined jawline of timeless elegance.",
+      "도회적인 모델 느낌": "A diamond-shaped face with bold features, sharply contoured cheeks, a sharp nose, striking eyes with dramatic lashes, high-set brows, defined matte lips, and a clean angled jaw.",
+      "단아하고 정갈한 이미지": "A soft oval face with evenly contoured cheeks, a modestly defined nose, gentle monolid eyes, straight fine brows, rosy lips with a slight shine, and a calm, smooth jawline expressing purity.",
+      "러블리한 로맨틱 스타일": "A round face with high full cheeks, a small upturned nose, sparkling doe-like eyes, light curved brows, glossy lips with a coral tint, and a subtle V-line chin that adds charm.",
+      "세련된 직장인 느낌": "An angular oval face with tight cheek structure, a sleek nose bridge, sharp alert eyes, angled dark eyebrows, natural-colored lips, and a clean jawline suggesting professionalism.",
+      "도발적이고 강렬한 인상": "A sharp diamond-shaped face with hollow cheeks, a pointed nose, narrow eyes with bold eyeliner effect, sharp black brows, deep red lips, and a jaw that cuts clean into the neckline.",
+      "아련한 첫사랑 느낌": "A soft heart-shaped face with plump cheeks, a small button nose, watery large eyes, thin straight brows, blurred gradient lips, and a faint chin that adds a nostalgic air.",
+      "지적이고 냉철한 분위기": "A rectangular face with angular lines, firm cheekbones, a prominent straight nose, narrow focused eyes, thick eyebrows with a high arch, matte lips, and a sharp, clean jaw that commands attention.",
+      "맑고 투명한 이미지": "A round face with luminous cheeks, a petite clean nose, big twinkling eyes with clear whites, natural thin eyebrows, light pink glossy lips, and a softly curved chin that exudes clarity.",
+      "포근하고 엄마 같은 인상": "A broad round face with full cheeks, a wide low-bridged nose, relaxed gentle eyes, downward soft brows, warm nude lips, and a large rounded chin that radiates comfort.",
+      "카리스마 있는 리더상": "A strong square face with defined bones, a long structured nose, narrow commanding eyes, thick assertive eyebrows, natural full lips, and a firm chin with clear edges that suggest control.",
+      "잔잔한 클래식 미": "An oval face with moderate symmetry, soft cheekbones, a proportioned nose, clear eyes with eyelid creases, slightly arched brows, velvet lips, and a well-balanced jawline with timeless elegance.",
+      "자연주의 감성 스타일": "A softly angled face with minimal makeup features, lightly freckled cheeks, a short rounded nose, gentle eyes with long lashes, feathery brows, rose-tinted lips, and a jawline with soft transitions evoking natural charm.",
+      "청명한 교생 선생님 느낌": "An oval face with structured balance, clear cheekbones, a modest nose bridge, attentive eyes behind thin-frame glasses, neat straight brows, light lip tint, and a jawline that blends professionalism and warmth.",
+      "지치지 않는 열정가": "A rectangular face with dynamic cheek structure, pronounced nose with a defined bridge, bright intense eyes, thick slightly messy brows, expressive full lips, and a firm chin representing tireless energy.",
+      "차분한 문학소녀": "A heart-shaped face with calm cheeks, a soft curved nose, wide thoughtful eyes with single lids, curved light brows, barely-there lips, and a small delicate chin that evokes quiet intellect.",
+      "연예인 비주얼": "A symmetrical oval face with smooth contours, sleek high nose bridge, large expressive eyes with glittering pupils, arched designer brows, glossy full lips, and a clear V-line jaw that shines on camera.",
+      "고혹적인 클래식 뮤즈": "A long face with elegant tapering lines, sculpted cheekbones, a Grecian nose, heavy-lidded eyes, full vintage-style brows, rich burgundy lips, and a pronounced chin enhancing timeless allure.",
+      "감성적인 화가 느낌": "A round face with flushed cheeks, a slightly off-center nose, absent-minded dreamy eyes, natural thick eyebrows, parted lips with muted color, and a softly fading chin giving artistic freedom.",
+      "해맑고 발랄한 소녀": "A wide round face with springy cheeks, a small turned-up nose, sparkly big eyes, short playful brows, bouncy lips with bright tint, and a chin that bounces with laughter.",
+      "스타일리시한 패션모델": "A sharp angular face with narrow cheekbones, high nose bridge, edgy fox-like eyes, bold brushed brows, matte neutral lips, and a crisp jawline that commands runway presence.",
+      "묘한 매력의 언더독": "An asymmetric face with unique charm, slightly crooked nose, deep-set mismatched eyes, irregular brow height, soft bitten lips, and a quirky chin structure that makes her unforgettable.",
+    };
+
 
     const background_description = {
       "없음" : "a neutral, undefined background to keep focus on the subject",
@@ -1345,6 +1391,7 @@
       return {
         nationality: document.getElementById("nationality")?.value,
         body_shape: document.getElementById("body_shape")?.value,
+        face_shape: document.getElementById("face_shape")?.value,
         hairstyle: document.getElementById("hairstyle")?.value,
         outfit: document.getElementById("outfit")?.value,
         age: document.getElementById("age")?.value,
@@ -1371,6 +1418,7 @@
 
       setSafeValue("nationality", state.nationality);
       setSafeValue("body_shape", state.body_shape);
+      setSafeValue("face_shape", state.face_shape);
       setSafeValue("hairstyle", state.hairstyle);
       setSafeValue("outfit", state.outfit);
       setSafeValue("age", state.age);
@@ -1396,7 +1444,7 @@
 
       // ✅ 외형 요소 변경 시 일관성 모드 자동 해제
       const watchedFields = [
-        "nationality", "body_shape", "hairstyle", "outfit",
+        "nationality", "body_shape", "face_shape", "hairstyle", "outfit",
         "age", "camera", "distance", "manicure", "foot", "fabric_response", "rendering",
       ];
 
@@ -1428,6 +1476,7 @@
       lighting: lighting_text,
       outfit: outfit_text,
       body_shape: body_shape_description,
+      face_shape: face_shape_description,
       hairstyle: hairstyle_description,
       fabric_response: fabric_response,
       rendering: rendering_translation,
@@ -1497,7 +1546,7 @@
         const inputIds = [
           "background", "emotion", /*"activity",*/ "pose", "camera", "distance",
           "manicure", "foot", "lighting", "outfit",
-          "body_shape", "hairstyle", "age", "fabric_response", "rendering"
+          "body_shape", "face_shape", "hairstyle", "age", "fabric_response", "rendering"
         ];
 
         const values = {};
@@ -1518,6 +1567,7 @@
         const lightingValue      = values.lighting;
         const outfitValue        = values.outfit;
         const bodyShapeValue     = values.body_shape;
+        const faceShapeValue     = values.face_shape;
         const hairstyleValue     = values.hairstyle;
         const ageValue           = values.age;
         const fabricValue        = values.fabric_response;
@@ -1534,6 +1584,7 @@
         const lighting   = dicts.lighting[values.lighting]      || "bright and golden midday light";
         const outfit     = dicts.outfit[values.outfit]          || "a pastel summer tank top and short, lightweight summer shorts";
         const body_shape = dicts.body_shape[values.body_shape]  || "balanced body with even proportions between shoulders, waist, and hips";
+        const face_shape = dicts.face_shape[values.face_shape]  || "An oval-shaped face with balanced proportions, high cheekbones that add subtle definition, a tall and smooth nose bridge that enhances elegance, defined double eyelids with an open and calm gaze, straight eyebrows that give a composed expression, plump lips with a gentle upward curve, and a soft jawline that rounds the lower face delicately.";
         const hairstyle  = dicts.hairstyle[values.hairstyle]    || "hair unbound in natural tones and textures";
         const age        = values.age                           || "25";
         const fabric     = dicts.fabric_response[values.fabric_response] || "fabric drapes naturally along body curves, showing subtle weave texture";
@@ -1548,7 +1599,7 @@
         // 외형 묘사 파트
         const appearance_text = `${body_shape}, aged ${age}, ${emotion}, with soft-glow skin randomized between porcelain white and fair beige, ` +
           `face within conventionally attractive East Asian types, eyes always open, ` +
-          `face shape randomized (oval, round, heart-shaped, sharp jawline, V-line), ${hairstyle}, nails and toenails may or may not be polished (if so, pastel/nude/glitter).`;
+          `${face_shape}, ${hairstyle}. Her hands have ${manicure}, and her feet are ${foot}.`;
 
     
         // upward_focus_note 생성
@@ -1606,7 +1657,7 @@ Avoid all visual defects such as poor anatomy, disfigurement, deformations, low 
       };
 
       // 나머지 항목들 랜덤 값 설정
-      ocument.getElementById("background").value = randomValue(background_description);
+      document.getElementById("background").value = randomValue(background_description);
       document.getElementById("emotion").value = randomValue(emotion_translation);
       /*document.getElementById("activity").value = randomValue(activity_description);*/
       document.getElementById("pose").value = randomValue(pose_description);
@@ -1617,6 +1668,7 @@ Avoid all visual defects such as poor anatomy, disfigurement, deformations, low 
       document.getElementById("lighting").value = randomValue(lighting_text);
       document.getElementById("outfit").value = randomValue(outfit_text);
       document.getElementById("body_shape").value = randomValue(body_shape_description);
+      document.getElementById("face_shape").value = randomValue(face_shape_description);
       document.getElementById("hairstyle").value = randomValue(hairstyle_description);
       document.getElementById("age").value = Math.floor(Math.random() * 18) + 23;
       document.getElementById("fabric_response").value = randomValue(fabric_response);
@@ -1645,7 +1697,7 @@ Avoid all visual defects such as poor anatomy, disfigurement, deformations, low 
         }
 
         // 외형 관련 필드만 수동 적용 (❗ 랜덤 필드는 건드리지 않음)
-        const fixedFields = ["nationality", "body_shape", "hairstyle", "outfit", "age", "camera", "distance", "manicure", "foot"];
+        const fixedFields = ["nationality", "body_shape", "face_shape", "hairstyle", "outfit", "age", "camera", "distance", "manicure", "foot"];
         fixedFields.forEach(id => {
           const el = document.getElementById(id);
           if (el && persistentAppearance[id] !== undefined) {
@@ -1705,8 +1757,10 @@ Avoid all visual defects such as poor anatomy, disfigurement, deformations, low 
           ["manicure", dicts.manicure],
           ["foot", dicts.foot],
           ["outfit", dicts.outfit],
+          ["pose", dicts.pose],
           ["body_shape", dicts.body_shape],
-          ["hairstyle", dicts.hairstyle]
+          ["face_shape", dicts.face_shape],
+          ["hairstyle", dicts.hairstyle],
         ];
         appearanceItems.forEach(([id, source]) => {
           const value = Array.isArray(source) ? randomFromArray(source) : randomKey(source);
@@ -1753,6 +1807,7 @@ Avoid all visual defects such as poor anatomy, disfigurement, deformations, low 
       resetValue("lighting");
       resetValue("outfit");
       resetValue("body_shape");
+      resetValue("face_shape");
       resetValue("hairstyle");
       resetValue("fabric_response");
       resetValue("rendering");
