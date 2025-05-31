@@ -459,6 +459,7 @@
         <label>👔 의상 스타일: <select id="outfit"></select></label>
         <label>🧍‍♂️ 체형: <select id="body_shape"></select></label>
         <label>🤸‍♂️ 포즈 선택: <select id="pose"></select></label>
+        <label>🏃 활동 선택: <select id="activity"></select></label>
         <label>👨 얼굴형: <select id="face_shape"></select></label>
         <label>📸 카메라 시점: <select id="camera"></select></label>
         <label>🔭 카메라 거리: <select id="distance"></select></label>
@@ -760,36 +761,37 @@
       "상실감": "the character holds something close, as if clinging to a fading presence",
     };
 
-    /*
+    
     const activity_description = {
-      "스마트폰 확인 중": "She is checking her smartphone attentively.",
-      "노트북 작업 중": "She is working on her laptop with focus.",
-      "책을 읽는 중": "She is reading a hardcover book held gently in her hands.",
-      "그림을 그리는 중": "She is sketching carefully on a notepad or sketchbook.",
-      "커피를 마시는 중": "She is sipping from a warm cup of coffee.",
-      "게임을 하는 중": "She is holding a game console, deeply immersed in play.",
-      "식물을 돌보는 중": "She is tending to a potted plant, adjusting leaves and checking soil.",
-      "다림질하는 중": "She is ironing clothes on a board, focusing on each fold.",
-      "빨래를 개는 중": "She is folding laundry neatly into stacks.",
-      "옷걸이에 옷을 거는 중": "She is hanging clothes on a hanger with quiet intent.",
-      "헤드셋을 쓰고 음악 감상": "She is wearing a headset and listening to music, immersed in sound.",
-      "TV를 보는 중": "She is watching television with a calm expression.",
-      "강아지를 쓰다듬는 중": "She is petting a small dog resting beside her.",
-      "창밖을 바라보는 중": "She is looking out the window, lost in thought.",
-      "명상 중": "She is sitting in silent meditation, eyes gently closed.",
-      "머리를 말리는 중": "She is drying her hair with a towel or dryer.",
-      "거울을 보는 중": "She is checking her appearance in a mirror.",
-      "메모를 하는 중": "She is jotting down notes on a small pad.",
-      "화장을 고치는 중": "She is touching up her makeup with gentle strokes.",
-      "휴식을 취하는 중": "She is taking a quiet moment to relax and breathe.",
-      "데스크탑 작업 중": "She is working on a desktop computer with both hands on the keyboard, her eyes focused on the screen.",
-      "일기 쓰는 중": "She is writing quietly in her diary with focused emotion.",
-      "편지 읽는 중": "She is reading a heartfelt letter with a soft expression.",
-      "셀카 찍는 중": "She is taking a selfie with her phone, posing playfully.",
-      "향초에 불 붙이는 중": "She is lighting a scented candle slowly and gently.",
-      "스트리밍 방송 중": "She is streaming live content, focused on the camera."
+      "없음" : "he is doing nothing in particular, simply staying still with a neutral posture.",
+      "스마트폰 확인 중": "he is checking her smartphone attentively.",
+      "노트북 작업 중": "he is working on her laptop with focus.",
+      "책을 읽는 중": "he is reading a hardcover book held gently in her hands.",
+      "그림을 그리는 중": "he is sketching carefully on a notepad or sketchbook.",
+      "커피를 마시는 중": "he is sipping from a warm cup of coffee.",
+      "게임을 하는 중": "he is holding a game console, deeply immersed in play.",
+      "식물을 돌보는 중": "he is tending to a potted plant, adjusting leaves and checking soil.",
+      "다림질하는 중": "he is ironing clothes on a board, focusing on each fold.",
+      "빨래를 개는 중": "he is folding laundry neatly into stacks.",
+      "옷걸이에 옷을 거는 중": "he is hanging clothes on a hanger with quiet intent.",
+      "헤드셋을 쓰고 음악 감상": "he is wearing a headset and listening to music, immersed in sound.",
+      "TV를 보는 중": "he is watching television with a calm expression.",
+      "강아지를 쓰다듬는 중": "he is petting a small dog resting beside her.",
+      "창밖을 바라보는 중": "he is looking out the window, lost in thought.",
+      "명상 중": "he is sitting in silent meditation, eyes gently closed.",
+      "머리를 말리는 중": "he is drying her hair with a towel or dryer.",
+      "거울을 보는 중": "he is checking her appearance in a mirror.",
+      "메모를 하는 중": "he is jotting down notes on a small pad.",
+      "화장을 고치는 중": "he is touching up her makeup with gentle strokes.",
+      "휴식을 취하는 중": "he is taking a quiet moment to relax and breathe.",
+      "데스크탑 작업 중": "he is working on a desktop computer with both hands on the keyboard, her eyes focused on the screen.",
+      "일기 쓰는 중": "he is writing quietly in her diary with focused emotion.",
+      "편지 읽는 중": "he is reading a heartfelt letter with a soft expression.",
+      "셀카 찍는 중": "he is taking a selfie with her phone, posing playfully.",
+      "향초에 불 붙이는 중": "he is lighting a scented candle slowly and gently.",
+      "스트리밍 방송 중": "he is streaming live content, focused on the camera."
     };
-    */
+    
 
     const pose_description = {
       "바닥에 앉은 자세": "sitting cross-legged on the floor",
@@ -1561,7 +1563,7 @@
     const dicts = {
       background: background_description,
       emotion: emotion_translation,
-      /*activity: activity_description,*/
+      activity: activity_description,
       pose: pose_description,
       camera: camera_description,
       distance: distance_description,
@@ -1638,7 +1640,7 @@
         const nationality = dicts.nationality[nationalityKey];
 
         const inputIds = [
-          "background", "emotion", /*"activity",*/ "pose", "camera", "distance",
+          "background", "emotion", "activity", "pose", "camera", "distance",
           "manicure", "foot", "lighting", "outfit",
           "body_shape", "face_shape", "hairstyle", "age", "fabric_response", "rendering"
         ];
@@ -1652,7 +1654,7 @@
         // ▼ 입력값 꺼내기
         const backgroundValue         = values.background;
         const emotionValue       = values.emotion;
-        /*const activityValue      = values.activity;*/
+        const activityValue      = values.activity;
         const poseValue          = values.pose;
         const cameraValue        = values.camera;
         const distanceValue      = values.distance;
@@ -1733,7 +1735,7 @@
 const prompt = `
 🎥 Shot using ${camera}, at ${distance} distance – the framing and composition prioritize this perspective.
 
-${customNote} ${background}, featuring a ${nationality} ${appearance_text}, ${pose} indoors.
+${customNote} ${background}, featuring a ${nationality} ${appearance_text}, ${pose} , ${activity} indoors.
 
 He is wearing ${outfit}.
 
@@ -1786,7 +1788,7 @@ Avoid all visual defects such as poor anatomy, disfigurement, deformations, low 
       // 나머지 항목들 랜덤 값 설정
       document.getElementById("background").value = randomValue(background_description);
       document.getElementById("emotion").value = randomValue(emotion_translation);
-      /*document.getElementById("activity").value = randomValue(activity_description);*/
+      document.getElementById("activity").value = randomValue(activity_description);
       document.getElementById("pose").value = randomValue(pose_description);
       document.getElementById("camera").value = randomValue(camera_description);
       document.getElementById("distance").value = randomValue(distance_description);
@@ -1885,6 +1887,7 @@ Avoid all visual defects such as poor anatomy, disfigurement, deformations, low 
           ["foot", dicts.foot],
           ["outfit", dicts.outfit],
           ["pose", dicts.pose],
+          ["activity", dicts.activity],
           ["body_shape", dicts.body_shape],
           ["face_shape", dicts.face_shape],
           ["hairstyle", dicts.hairstyle],

@@ -459,6 +459,7 @@
         <label>👗 의상 스타일: <select id="outfit"></select></label>
         <label>🧍‍♀️ 체형: <select id="body_shape"></select></label>
         <label>🤸‍♀️ 포즈 선택: <select id="pose"></select></label>
+        <label>🏃 활동 선택: <select id="activity"></select></label>
         <label>👤 얼굴형: <select id="face_shape"></select></label>
         <label>📸 카메라 시점: <select id="camera"></select></label>
         <label>🔭 카메라 거리: <select id="distance"></select></label>
@@ -759,8 +760,9 @@
       "상실감": "the character holds something close, as if clinging to a fading presence",
     };
 
-    /*
+  
     const activity_description = {
+      "없음" : "She is doing nothing in particular, simply staying still with a neutral posture.",
       "스마트폰 확인 중": "She is checking her smartphone attentively.",
       "노트북 작업 중": "She is working on her laptop with focus.",
       "책을 읽는 중": "She is reading a hardcover book held gently in her hands.",
@@ -788,7 +790,7 @@
       "향초에 불 붙이는 중": "She is lighting a scented candle slowly and gently.",
       "스트리밍 방송 중": "She is streaming live content, focused on the camera."
     };
-    */
+  
 
     const pose_description = {
       "바닥에 앉은 자세": "sitting cross-legged on the floor",
@@ -1547,7 +1549,7 @@
     const dicts = {
       background: background_description,
       emotion: emotion_translation,
-      /*activity: activity_description,*/
+      activity: activity_description,
       pose: pose_description,
       camera: camera_description,
       distance: distance_description,
@@ -1624,7 +1626,7 @@
         const nationality = dicts.nationality[nationalityKey];
 
         const inputIds = [
-          "background", "emotion", /*"activity",*/ "pose", "camera", "distance",
+          "background", "emotion", "activity", "pose", "camera", "distance",
           "manicure", "foot", "lighting", "outfit",
           "body_shape", "face_shape", "hairstyle", "age", "fabric_response", "rendering"
         ];
@@ -1636,9 +1638,9 @@
         });
 
         // ▼ 입력값 꺼내기
-        const backgroundValue         = values.background;
+        const backgroundValue    = values.background;
         const emotionValue       = values.emotion;
-        /*const activityValue      = values.activity;*/
+        const activityValue      = values.activity;
         const poseValue          = values.pose;
         const cameraValue        = values.camera;
         const distanceValue      = values.distance;
@@ -1655,7 +1657,7 @@
 
         const background = dicts.background[values.background]  || "a summer bedroom with a plastic fan oscillating beside a thin floral bedsheet";
         const emotion    = dicts.emotion[values.emotion]        || "a calm, neutral expression";
-        /*const activity   = dicts.activity[values.activity]      || "She is sitting quietly.";*/
+        const activity   = dicts.activity[values.activity]      || "She is sitting quietly.";
         const pose       = dicts.pose[values.pose]              || "sitting cross-legged on the floor";
         const camera     = dicts.camera[values.camera]          || "a front-facing perspective";
         const distance   = dicts.distance[values.distance]      || "medium full-body shot";
@@ -1691,7 +1693,7 @@
 const prompt = `
 🎥 Shot using ${camera}, at ${distance} distance – the framing and composition prioritize this perspective.
 
-${customNote} ${background}, featuring a ${nationality} ${appearance_text}, ${pose} indoors.
+${customNote} ${background}, featuring a ${nationality} ${appearance_text}, ${pose} , ${activity} indoors.
 
 She is wearing ${outfit}.
 
@@ -1842,6 +1844,7 @@ Avoid all visual defects such as poor anatomy, disfigurement, deformations, low 
           ["foot", dicts.foot],
           ["outfit", dicts.outfit],
           ["pose", dicts.pose],
+          ["activity", dicts.activity],
           ["body_shape", dicts.body_shape],
           ["face_shape", dicts.face_shape],
           ["hairstyle", dicts.hairstyle],
