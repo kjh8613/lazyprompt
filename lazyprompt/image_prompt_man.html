@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WT30TDCBJ0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', 'G-WT30TDCBJ0');
+    </script>
+  
+    <!-- Google AdSense -->
+    <script async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6793290562583440"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- SEO 키워드 -->
+    <meta name="keywords" content="AI 프롬프트 생성기, 여성 모델 이미지 프롬프트, 무료 프롬프트 도구, ChatGPT 프롬프트, Gemini 프롬프트, Midjourney 프롬프트, DALL-E 프롬프트, 이미지 생성기, 동영상 프롬프트, AI 비디오 프롬프트, 시네마틱 프롬프트, 4K 프롬프트, 8K 프롬프트, Sora 프롬프트, Veo3 프롬프트, Runway 프롬프트, Pika 프롬프트, 프롬프트 디자이너, AI 콘텐츠 생성, 미디어 텍스트 툴, 일본인 프롬프트, 한국인 이미지 프롬프트, 프롬프트 갤러리, 프롬프트 공유, 디씨인사이드chatgpt갤러리, 디씨chatgpt갤러리, 디씨챗지피티갤러리, 디씨인사이드챗지피티, 쓰레드챗지피티, 쓰레드chatgpt, 쓰레드인공지능, 쓰레드ai, 쓰레드프롬프트, 챗지피티프롬프트, 프롬프트 커뮤니티, ai 프롬프트 공유, 인공지능 프롬프트, 프롬프트 툴, ChatGPT, Gemini, Midjourney, DALL·E, Sora, Stable Diffusion, Adobe Firefly, Microsoft Copilot, NightCafe Creator, Artbreeder, Deep Dream Generator, Hotpot.ai, starryai," />
+
+    <!-- favicon -->
+    <link rel="icon" href="media/favicon.ico?v=2" type="image/x-icon">
+
+  
+    <!-- 기본 메타 -->
+    <meta name="description" content="국적 선택, 다양한 포즈·의상·카메라 구도로 2천만 가지 이상의 AI 이미지 프롬프트를 자동 생성. ChatGPT, Gemini, Midjourney, DALL·E, Sora 등 즉시 사용 가능!" />
+    <meta name="author" content="PromptDesignerLab" />
+    <meta name="keywords" content="AI 프롬프트 생성기, 남성 모델 이미지 프롬프트, 여성 모델 이미지 프롬프트, 무료 프롬프트 도구, ChatGPT, Gemini, Midjourney, DALL-E, 이미지 생성기, 프롬프트 디자이너, 일본인 프롬프트, 한국인 이미지 프롬프트" />
+  
+    <!-- Open Graph -->
+    <meta property="og:title" content="인공지능 프롬프트 자동 생성기 - Veo3, ChatGPT, Sora, Gemini, Midjourney, DALL·E 등" />
+    <meta property="og:description" content="총 2천만 가지 이상의 조합! 다양한 포즈, 감정, 의상으로 AI 이미지 프롬프트를 쉽게 생성해보세요." />
+    <meta property="og:image" content="media/image_prompt.png" />
+    <meta property="og:url" content="https://lazyprompt.netlify.app" />
+    <meta property="og:type" content="website" />
+  
+    <!-- Twitter 카드 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="인공지능 프롬프트 자동 생성기" />
+    <meta name="twitter:description" content="클릭 몇 번으로 완성되는 고퀄리티 AI 이미지 프롬프트, 지금 바로 생성해보세요." />
+    <meta name="twitter:image" content="meida/image_prompt.png" />
+  
+  
+  <style>
+    /* 화면 가운뎃점 정렬용 컨테이너 */
+    .header-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;  /* 세로 중앙 */
+      align-items: center;      /* 가로 중앙 */
+      height: 50vh;            /* 화면 전체 높이 */
+      width: 90%;               /* 뷰포트 대비 90% 너비 */
+      max-width: 500px;         /* 최대 500px 너비 */
+      margin: 0 auto;           /* 수평 중앙 정렬 */
+      padding: 0 1rem;          /* 좌우 여유 공간 */
+      text-align: center;
+    }
+
+
+    /* 메인 타이틀 */
+    .header-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      background: linear-gradient(90deg, #ff7e5f, #feb47b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.05em;
+      margin: 0;
+    }
+
+    /* 서브 타이틀 */
+    .header-subtitle {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #666;
+      margin-top: 0.5rem;
+      line-height: 1.4;
+      white-space: pre-line;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fb;
+      margin: 0;
+      padding: 0.5rem;
+      font-size: 0.85rem;
+      line-height: 1.35;
+      color: #222;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-box,
+    .output-box,
+    .ad-fixed-box {
+      background: #ffffff;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      max-width: 700px;
+      margin: auto;
+      box-sizing: border-box;
+    }
+
+    .output-box {
+      width: 100%;
+      min-height: 400px; /* 높이 추가 */
+    }
+
+    .ad-fixed-box {
+      height: 600px;
+      text-align: center;
+    }
+
+    .ad-fixed-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.4rem;
+    }
+
+    .ad-fixed-box div {
+      margin-top: 0.3rem;
+      font-size: 0.85rem;
+      color: #444;
+    }
+
+    @media (max-width: 720px) {
+      .form-box, .output-box, .ad-fixed-box {
+        width: 100% !important;
+      }
+
+      .ad-fixed-box {
+        height: auto;
+      }
+
+      .ad-fixed-box img {
+        height: auto;
+        object-fit: contain;
+      }
+
+      textarea {
+        height: 280px;
+      }
+    }
+
+    label {
+      margin: 0.3rem 0 0.15rem;
+      font-weight: 500;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      color: #111;
+    }
+
+    select,
+    input[type="number"],
+    input[type="text"] {
+      width: 100%;
+      padding: 0.3rem 0.5rem;
+      margin-bottom: 0.3rem;
+      font-size: 0.8rem;
+      max-width: 170px;
+      border: 1px solid #ccc;
+      border-radius: 0.35rem;
+      background: #fff;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 0.45rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      width: 100%;
+      background-color: #111;
+      color: white;
+      border: 1px solid transparent;
+      border-radius: 0.4rem;
+      cursor: pointer;
+      margin-top: 0.4rem;
+      transition: all 0.2s ease-in-out;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    button:hover {
+      background-color: #333;
+    }
+
+    button:active {
+      transform: scale(0.97);
+      background-color: #000;
+    }
+
+    textarea {
+      width: 100%;
+      height: 360px; /* .output-box 높이에 맞춰 적당한 여유를 둔 높이 */
+      padding: 0.5rem;
+      border-radius: 0.4rem;
+      border: 1px solid #ccc;
+      font-size: 0.8rem;
+      line-height: 1.35;
+      resize: vertical;
+      background: #fbfbfb;
+      color: #222;
+      box-sizing: border-box;
+    }
+
+
+    .checkbox-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .checkbox-container label {
+      display: flex;
+      align-items: center;
+      font-weight: normal;
+      font-size: 0.8rem;
+      margin: 0;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      margin-right: 0.4rem;
+    }
+
+    .info-text {
+      font-size: 0.75rem;
+      color: #666;
+      margin-top: 0.8rem;
+      line-height: 1.35;
+      text-align: left;
+    }
+
+    /* ── 네비게이션 버튼 ── */
+    /* ── 인덱스용 내비게이션 스타일 덮어씌우기 ── */
+    /* ── 네비게이션 버튼 ── */
+    .main-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin: 2rem auto;
+      max-width: 720px;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+
+    .nav-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      background: #333;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 0.4rem;
+      white-space: nowrap;
+      text-align: center;
+      transition: background 0.2s;
+      box-sizing: border-box;
+    }
+
+    /* ✅ 너비 유연한 버튼 전용 */
+    .nav-button.stretch {
+      flex: 1 0 140px;
+    }
+
+    .nav-button:hover {
+      background: #555;
+    }
+
+    .nav-button img {
+      width: 20px;
+      height: 20px;
+      margin-right: 0.5rem;
+    }
+
+    @media (max-width: 720px) {
+      .nav-button.stretch {
+        flex: 1 1 45%;
+      }
+
+      .nav-button {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+        margin: 0.2rem 0;
+      }
+    }
+
+    
+    
+  </style>
+</head>
+<body>
+   <!-- 타이틀 및 설명 -->
+  <div class="header-container">
+    
+    <h1 class="header-title">
+      Lazyprompt<br/>
+      레이지프롬프트
+    </h1>
+
+    <h2 class="header-subtitle">
+      🖼️📹 이미지·동영상 프롬프트 생성기<br/>
+      무료 8K 시네마틱 미디어 텍스트 툴
+    </h2>
+  </div>
+
+  <div class="container">  
+    <div class="form-box">
+      <nav class="main-nav">
+        <!-- 홈 -->
+        <a href="index.html" class="nav-button">
+          🏠 Home
+        </a>
+      
+        <!-- 이미지 생성기 여자 -->
+        <a href="image_prompt.html" class="nav-button">
+          🖼 이미지 생성기(👩‍🦰)
+        </a>
+
+        <!-- 이미지 생성기 여자 -->
+        <a href="image_prompt_man.html" class="nav-button">
+          🖼 이미지 생성기(👨‍🦱)
+        </a>
+
+      
+        <!-- 동영상 생성기 -->
+        <a href="video_prompt.html" class="nav-button">
+          🎬 동영상 생성기(👩‍🦰)
+        </a>
+
+        <!-- 동영상 생성기 -->
+        <a href="video_prompt_man.html" class="nav-button">
+          🎬 동영상 생성기(👨‍🦱)
+        </a>
+
+        <!-- 블로그 생성기 -->
+        <a href="blog_prompt.html" class="nav-button">
+          📝 블로그 생성기
+        </a>  
+      
+        <!-- Threads 이동 (아이콘 + 텍스트) -->
+        <a href="https://www.threads.net/@not_all_said" target="_blank" class="nav-button">
+          <img src="media/threads.png" alt="Threads 아이콘" />
+          Threads
+        </a>
+      </nav>
+            
+      <h2>남성 모델 프롬프트 무제한 생성기</h2>
+        <p style="color: #444; font-size: 15px; line-height: 1.6;">
+          이 웹버전은 <strong>입문자도 쉽게 사용할 수 있는 무료 프롬프트 생성 도구</strong>입니다.<br><br>
+          <strong>국적 선택</strong>, 기본 포즈와 감정 조합만으로도 감각적인 이미지 프롬프트를 빠르게 만들어보세요.<br><br>
+          총 <strong>약 2,000만 가지 이상의 조합</strong>이 가능하며, 실제 생성된 프롬프트는 <strong>ChatGPT, Gemini, Midjourney, DALL·E, Sora, Stable Diffusion, Adobe Firefly, Microsoft Copilot, NightCafe Creator, Artbreeder, Deep Dream Generator, Hotpot.ai, starryai</strong> 등 다양한 이미지 생성 AI에서 바로 사용 가능합니다.<br><br>
+          더 정밀한 얼굴형, 손톱 스타일, 고급 렌더링 퀄리티, 조명-피부 묘사 등을 포함한 기능은 <strong>추후 공개됩니다.</strong> (실시간 업데이트 중)
+        </p>  
+
+
+      <!-- 구분선 추가 -->
+      <hr style="border: none; border-top: 1px solid #ddd; margin: 2rem auto; max-width: 680px; opacity: 0.4;" />
+  
+      <!-- 예시 이미지 추가 -->
+      <div style="text-align: center; margin: 1.5rem 0;">
+        <img
+          src="media/image_prompt_man.png"
+          alt="실제 생성된 이미지 프롬프트 예시"
+          width="100%"
+          style="border-radius: 0.5rem; box-shadow: 0 0 10px rgba(0,0,0,0.05); max-width: 100%;"
+        />
+        <div style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
+          ▲ 실제 생성된 이미지 프롬프트 예시
+        </div>
+      </div>
+
+
+      <!-- container 바로 안쪽 -->
+      <div style="width: 100%; margin-bottom: 1rem;">
+      <label for="custom_detail" style="
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+        display: block;
+        color: #111;">
+        이미지에 대한 세부사항 입력:
+      </label>
+      <input
+        type="text"
+        id="custom_detail"
+        placeholder="원하는 이미지에 대한 세부사항이 있다면 입력하세요. 영어로 입력하는 것이 가장 정확합니다."
+        style="
+          display: block;
+          width: 100%;
+          max-width: 100%;
+          height: 44px;
+          padding: 0.6rem 0.75rem;
+          font-size: 0.95rem;
+          border: 1px solid #ccc;
+          border-radius: 0.6rem;
+          background: #fff;
+          box-sizing: border-box;
+          color: #222;
+        "
+      />
+        <!-- ✅ 체크박스 UI (국적 위) -->
+        <div class="checkbox-container">
+          <label for="consistencyMode" style="
+            display: block;
+            padding: 0.75em;
+            background-color: #f0f4ff;
+            border-left: 4px solid #4a8df8;
+            border-radius: 8px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: #1a1a1a;
+          ">
+            <input type="checkbox" id="consistencyMode" style="margin-right: 0.5em;">
+            <strong style="color: #285fc3;">일관성 모드</strong><br/>
+            캐릭터 외형이 고정되어<br/>
+            랜덤 생성 시에도 유지됩니다.<br/>
+            <span style="font-size: 0.85em; color: #666;">
+              시리즈 이미지 제작에 유용합니다.<br/>
+              (정확도는 향후 개선 예정)
+            </span>
+          </label>
+
+
+        </div>     
+
+
+        <label>🌎국적 선택: </label>
+        <div class="checkbox-container">
+          <label for="nationality_korean">
+            <input type="checkbox" id="nationality_korean"> 한국인
+          </label>
+          <label for="nationality_japanese">
+            <input type="checkbox" id="nationality_japanese"> 일본인
+          </label>
+          <label for="nationality_chinese">
+            <input type="checkbox" id="nationality_chinese"> 중국인
+          </label>
+          <label for="nationality_western">
+            <input type="checkbox" id="nationality_western"> 서양인
+          </label>
+        </div>
+
+        <label>🎂 나이(23-50): <input type="number" id="age" min="23" max="50" value="25" /></label>
+        <label>👔 의상 스타일: <select id="outfit"></select></label>
+        <label>🧍‍♂️ 체형: <select id="body_shape"></select></label>
+        <label>🤸‍♂️ 포즈 선택: <select id="pose"></select></label>
+        <label>👨 얼굴형: <select id="face_shape"></select></label>
+        <label>📸 카메라 시점: <select id="camera"></select></label>
+        <label>🔭 카메라 거리: <select id="distance"></select></label>
+        <label>☀️ 시간대 (조명): <select id="lighting"></select></label>
+        <label>💇‍♂️ 헤어 스타일: <select id="hairstyle"></select></label>
+        <label>💅 손 스타일: <select id="manicure"></select></label>
+        <label>🦶 발 스타일: <select id="foot"></select></label>
+        <label>😊 감정: <select id="emotion"></select></label>
+        <label>🏞️ 배경: <select id="background"></select></label>
+        <label>🌬️ 원단 반응: <select id="fabric_response"></select></label>
+        <label>✨ 렌더링 퀄리티: <select id="rendering"></select></label>
+        <!-- <label>행동 선택: <select id="activity"></select></label> -->             
+
+        <button id="generatePromptButton">🎯 프롬프트 생성</button>
+        <button id="randomButton">🎲 랜덤 생성</button>
+        <button id="copyButton">📋 복사하기</button>
+        <button id="resetButton">🔄 리셋</button>
+      </div>
+
+
+      <!-- ✅ 프롬프트 출력창: 광고보다 위에 -->
+      <div class="output-box">
+        <h2>생성된 프롬프트</h2>
+        <textarea id="output"></textarea>
+      </div>
+
+      <!-- Info Text Below Reset Button -->
+      <div class="info-text">
+        <p>| *랜덤 생성시 간혹 행동과 포즈간에 충돌이 일어날 수 있습니다.</p>
+        <p>| *행동과 포즈는 논리적이여야 합니다. 예)누워서는 커피를 마실 수 없습니다.</p>
+        <p>| *ChatGPT의 품질이 안 좋을 경우, Sora, Gemini를 시도해보세요.</p>
+        <p>| *이미지를 활용할 때 발생하는 저작권이나 기타 문제 등의 책임은 개발자와는 관계가 없습니다.</p>
+      </div>
+
+      <!--
+      <div class="ad-fixed-box">
+        <div>스탠다드 디럭스 버전 준비중(생성 가능한 경우의 수 500억 이상👇)</div>
+        <a href="현재 공백" target="_blank">
+          <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FFNrGO%2FbtsOa9WaTl8%2FS7nxEpRyk69XIM5HaawEwK%2Fimg.png"
+              alt="썸네일" />
+        </a>
+      </div>
+      -->
+
+    </div>
+  </div>
+    
+
+  <script>
+    const nationality_description = {
+      "한국인": "Korean man",
+      "일본인": "Japanese man",
+      "중국인": "Chinese man",
+      "서양인": "Western man"
+    };
+
+
+    const face_shape_description = {
+        "부드럽고 신뢰감 있는 이미지": "An oval-shaped face with harmonious proportions, gently sloped cheekbones, a straight high nose bridge, calm double-lidded eyes, natural straight brows, softly contoured lips, and a rounded jawline that evokes trust and gentleness.",
+        "소년미 있는 순수한 인상": "A heart-shaped face with a softly pointed chin, full cheeks that retain youthfulness, a small rounded nose, innocent eyes with a slight sparkle, slender eyebrows, and a gentle jaw that enhances purity.",
+        "도시적이고 세련된 남성상": "A long vertical face with sleek lines, subtle cheekbone definition, a refined nose bridge, intelligent almond-shaped eyes, angled eyebrows, sculpted lips, and a sharp jawline conveying modernity and style.",
+        "냉철하고 카리스마 있는 외모": "A diamond-shaped face with high angular cheekbones, a sharply defined nose, piercing cat-like eyes, slanted brows, matte lips, and a firm jawline that projects authority and coolness.",
+        "첫사랑 같은 부드러운 분위기": "A round face with soft facial transitions, a small smooth nose, gentle round eyes, light brows, naturally tinted lips, and a clean U-line jaw that gives off a warm and nostalgic feeling.",
+        "지적인 대학생 스타일": "An oval face with soft cheekbones, a modestly arched nose, glasses over almond eyes, defined lips, and a neat jawline that balances intellect and neatness.",
+        "수줍고 내성적인 느낌": "A heart-shaped face with light blush on the cheeks, a small button nose, downturned eyes that suggest sensitivity, light curved brows, and a modest jawline that reflects innocence.",
+        "몽환적이고 예술적인 분위기": "A narrow long face with hollow cheeks, a tall sharp nose, large deep-set eyes, thick disheveled brows, lightly parted lips, and a pointed chin that adds an air of mystery.",
+        "활기차고 건강한 인상": "A square face with robust cheekbones, a broad nose, bright wide eyes, bold brows, smiling lips, and a strong jawline that radiates energy and vitality.",
+        "차갑고 냉정한 이미지": "An inverted triangle face with sharp cheekbones, a sleek nose bridge, narrow eyes with intensity, angled brows, matte lips, and a sharply defined jaw that feels distant and composed.",
+        "예술가 같은 자유로운 외모": "A square-shaped face with distinct cheekbones, a slightly hooked nose, dreamy deep-set eyes, asymmetrical brows, curved lips, and a sharp jaw that represents creative eccentricity.",
+        "운동선수 느낌의 남성상": "A rectangular face with defined bone structure, high cheekbones, a bold nose, energetic eyes, thick brows, and a pronounced chin that conveys athletic presence.",
+        "자신감 넘치는 남성미": "A V-line face with tight cheek structure, a high nose bridge, confident upturned eyes, sharp dark brows, bold lips, and a jawline that emphasizes assertiveness.",
+        "중성적이고 트렌디한 스타일": "A narrow long face with flat cheeks, soft nose, relaxed half-open eyes, straight brows, pale lips, and a clean jawline blending masculine and feminine traits.",
+        "편안하고 자연스러운 인상": "A slightly rounded face with low cheekbones, small natural nose, soft eyes, light straight brows, neutral lips, and a gently sloped chin that suggests ease.",
+        "지도자적이고 신뢰 있는 이미지": "A broad square face with low cheekbones, wide nose bridge, commanding eyes, strong brows, neutral lips, and a blocky jaw that inspires authority.",
+        "차분하고 단정한 동양적 외모": "A slim oval face with low cheekbones, a flat but elegant nose, monolid eyes, straight black brows, clean lips, and a long soft chin that enhances serenity.",
+        "온화하고 친절한 분위기": "A heart-shaped face with softly contoured cheeks, a modest nose, big calm eyes, low arched brows, soft pink lips, and a round jawline that makes him approachable.",
+        "클래식한 영화배우 스타일": "A symmetrical face with balanced bone lines, a Grecian nose, expressive deep eyes, well-shaped eyebrows, velvet-textured lips, and a timeless chin that evokes elegance.",
+        "모델 같은 뚜렷한 이목구비": "A diamond face with sharp features, sunken cheeks, a defined nose, intense eyes, raised brows, matte lips, and a chiseled jawline fit for high fashion.",
+        "단정하고 절제된 남성상": "A soft oval face with refined contours, a straight small nose, calm eyes with monolids, fine brows, and a quiet jawline that shows composure.",
+        "로맨틱하고 따뜻한 인상": "A round face with high cheeks, a cute upturned nose, sparkly eyes, gentle curved brows, dewy lips, and a V-shaped chin that adds charm.",
+        "프로페셔널한 직장인 스타일": "An angular oval face with tight features, a straight elegant nose, focused eyes, tidy brows, and a sharply drawn jaw that suggests diligence.",
+        "강렬하고 도발적인 외모": "A sharp diamond face with sunken cheeks, hawkish nose, piercing eyes, harsh eyebrows, dark lips, and a blade-like chin that captures attention.",
+        "잔잔한 감성의 청춘상": "A heart-shaped face with gentle curves, baby-fat cheeks, glassy large eyes, soft thin brows, soft-blur lips, and a modest chin that touches nostalgia.",
+        "냉철하고 분석적인 분위기": "A rectangular face with angular features, flat cheekbones, straight nose, calculating eyes, arched brows, and a cutting jawline radiating logic.",
+        "맑고 순수한 이미지": "A round face with clear skin, a tiny neat nose, wide bright eyes, soft brows, rosy lips, and a smooth chin that adds innocence.",
+        "따뜻하고 믿음직한 인상": "A broad round face with plush cheeks, low nose bridge, relaxed eyes, straight brows, natural-toned lips, and a full jaw conveying dependability.",
+        "카리스마 넘치는 리더": "A wide square face with high cheekbones, structured nose, intense narrow eyes, bushy brows, defined lips, and a hard jawline radiating dominance.",
+        "고전적이고 품위 있는 외모": "An oval face with harmonious symmetry, gentle cheekbone slope, straight nose, double-lid eyes, slightly arched brows, soft lips, and a classic chin line.",
+        "내추럴한 감성남": "A softly defined face with faint freckles, a natural nose, thoughtful eyes, fluffy brows, subtle lips, and a relaxed jaw evoking authenticity.",
+        "정돈된 교사 느낌": "An oval face with stable balance, moderate cheeks, glasses over focused eyes, neat brows, and a clean-lined jaw that radiates responsibility.",
+        "열정 가득한 청년상": "A rectangular face with vivid cheek transitions, bold nose, energetic wide eyes, tousled brows, expressive lips, and a tight chin showing determination.",
+        "조용한 인문학도": "A heart-shaped face with gentle contours, a small nose, thoughtful single-lid eyes, soft brows, and a small jaw giving off literary introspection.",
+        "연예인 비주얼": "A perfectly symmetrical oval face, a high sleek nose bridge, large sparkly eyes, defined brows, plump lips, and a sharp V-line jaw made for the camera.",
+        "고풍스러운 미남 뮤즈": "A long face with descending angles, noble cheekbones, Grecian nose, deep dreamy eyes, heavy vintage brows, wine-tinted lips, and a pronounced chin.",
+        "감성적이고 예술적인 인상": "A round face with flushed skin, unique nose lines, glazed thoughtful eyes, organic brows, lightly parted lips, and an ambiguous chin with artistic charm.",
+        "쾌활하고 발랄한 청년": "A round expressive face, playful nose tip, bright shining eyes, thick short brows, animated lips, and a smiling chin full of energy.",
+        "하이패션 모델 스타일": "An angular sharp face, deep cheek shadows, long straight nose, intense fox-eyes, strong brows, and a sleek jaw for high-end visuals.",
+        "독특하고 잊히지 않는 인상": "An asymmetrical face with unique proportions, offset nose, mismatched eyes, uneven brows, quirky lips, and a chin that adds unforgettable character."
+    };
+
+
+
+    const background_description = {
+      "없음" : "a neutral, undefined background to keep focus on the subject",
+      "폐공장": "an abandoned factory with rusted steel beams and broken windows",
+      "해변": "a tranquil beach with gentle waves and soft golden sand",
+      "붉은 숲": "a dense forest with crimson foliage and filtered sunlight",
+      "유리온실": "a glass greenhouse with lush plants and warm humidity",
+      "낡은 체육관": "an old gymnasium with creaky floors and faded equipment",
+      "도시 고가도로 아래": "under an urban overpass with flickering streetlights",
+      "기차역 플랫폼": "a quiet train station platform with distant announcements",
+      "안개 낀 묘지": "a foggy graveyard with moss-covered stones and eerie silence",
+      "푸른 밀밭": "an expansive green wheat field swaying in the wind",
+      "고속도로 휴게소": "a lonely rest stop along the highway at dusk",
+      "전쟁터 폐허": "a ruined battlefield littered with broken armor and smoke",
+      "기괴한 미술관 내부": "an uncanny art museum interior with distorted exhibits",
+      "유령이 나올 것 같은 놀이공원": "an abandoned amusement park with creaking rides and eerie echoes",
+      "전등 하나만 켜진 다락방": "an attic lit by a single bulb casting long shadows",
+      "장마철 골목": "a rain-soaked alleyway with puddles and neon reflections",
+      "바닷가 절벽 위": "atop a seaside cliff with crashing waves below",
+      "사막 오아시스": "a desert oasis with palm trees and shimmering water",
+      "밤의 골목길": "a narrow night alley glowing with scattered neon signs",
+      "천장이 유리로 된 현대 미술관": "a modern art museum with a glass ceiling and soft gallery lighting",
+      "무대 리허설장": "a theater rehearsal space with marked floors and stage lights",
+      "컨테이너 창고": "a shipping container warehouse with stacked crates and dim lighting",
+      "비상계단": "a metallic emergency staircase spiraling down a building",
+      "가정집 거실 (90년대풍)": "a cozy 90s-style living room with warm tones and vintage decor",
+      "공사 중인 빌딩 내부": "inside an unfinished building with scaffolding and exposed wiring",
+      "수몰된 도시": "a submerged cityscape with partially visible rooftops",
+      "종이등불이 날리는 축제 거리": "a festive street with floating paper lanterns and colorful banners",
+      "고층 빌딩의 유리 엘리베이터 안": "inside a high-rise glass elevator overlooking a city",
+      "네온사인으로 가득한 전자상가": "an electronics district filled with colorful neon lights",
+      "비어 있는 학교 교실": "an empty school classroom with sunlight through blinds",
+      "병원 수술실": "a sterile hospital surgery room with cold lighting",
+      "도서관 옥상": "a quiet library rooftop with a view of the city skyline",
+      "무대 뒤 백스테이지": "a cluttered backstage with curtains, props, and hushed voices",
+      "낮은 천장의 지하 벙커": "a low-ceiling underground bunker with flickering lights and concrete walls",
+      "지붕 없는 버려진 성당": "a roofless abandoned cathedral with ivy-covered walls and scattered pews",
+      "우주 정거장 내부": "inside a futuristic space station with metallic corridors and floating lights",
+      "침몰 직전의 유람선 내부": "inside a sinking cruise ship with tilted floors and leaking walls",
+      "거대한 식물 뿌리에 둘러싸인 동굴": "a hidden cave wrapped in giant roots with glowing moss",
+      "인형으로 가득 찬 빈 방": "an empty room filled with antique dolls and silence",
+      "불타고 있는 숲속 오두막": "a forest cabin engulfed in flames, casting dancing shadows",
+      "겨울철 눈덮인 기차길": "a snow-covered railway track disappearing into a white horizon",
+      "창고형 클럽의 댄스플로어": "a warehouse-style club with flashing lights and pounding bass",
+      "버려진 군사 기지": "a deserted military base with sandbags and broken fences",
+      "로마 유적지 안": "inside Roman ruins with crumbling pillars and marble dust",
+      "고대 신전 내부": "inside an ancient temple with flickering torches and sacred carvings",
+      "사막의 풍력 발전기 지역": "a desert field filled with towering wind turbines and dust trails",
+      "거대한 시계탑 내부": "inside a towering clocktower with moving gears and echoing ticks",
+      "심해 해저 연구소": "an underwater lab deep in the ocean with glowing panels and silence",
+      "폭설 내리는 거리": "a snow-covered street during heavy snowfall, with muffled sounds and glowing windows",
+      "달빛 비추는 폐교 운동장": "an abandoned schoolyard under moonlight with rusting swings and silence",
+      "지하철역 끝 승강장": "the far end of a dimly lit subway platform with flickering lights",
+      "불타고 있는 도서관 내부": "the interior of a burning library with collapsing shelves and smoke",
+      "하이테크 기업 로비": "a sleek corporate lobby with holograms and reflective marble floors",
+      "과거형 시골 기차역": "a rural train station from the past, with wooden benches and analog clocks",
+      "무성한 수풀 속 오두막": "a hidden cabin deep in overgrown woods, with moss on the walls",
+      "천장이 유리로 된 열대 식물원": "a tropical greenhouse with cascading vines and humid air",
+      "우주선 조종실": "inside a spacecraft cockpit with glowing controls and cosmic views",
+      "폐쇄된 지하 주차장": "an abandoned underground parking lot with oil stains and silence",
+      "낙엽 가득한 공원 산책로": "a park trail covered in autumn leaves with gentle breeze",
+      "고요한 호숫가": "a tranquil lakeside with still water and faint ripples",
+      "해무가 자욱한 부두": "a fog-covered dockyard with creaking ropes and distant horns",
+      "폭풍우 치는 옥상": "a rooftop during a storm with flashing lightning and whipping wind",
+      "고대 신전 폐허": "ruins of an ancient temple overtaken by nature",
+      "지붕이 뚫린 지하철 터널": "a broken subway tunnel with shafts of sunlight leaking through",
+      "폐가 거실": "a decaying living room of a forgotten house with torn wallpaper",
+      "공항 활주로 끝": "the far end of an airport runway at sunrise with heat haze",
+      "빙판길 위": "on a frozen road with slippery reflections and chilly air",
+      "한밤의 숲속 캠프파이어 주변": "around a campfire deep in a midnight forest, surrounded by darkness",
+      "새벽의 옥상 헬리포트": "a rooftop helipad at dawn, with mist swirling over the landing pad",
+      "침수된 지하철역 내부": "a partially flooded subway station with water reflecting ceiling lights",
+      "달빛에 잠긴 고성": "an old castle bathed in moonlight, surrounded by quiet hills",
+      "잔디밭에 주차된 오래된 차": "an old car parked in a meadow, half-covered in wildflowers",
+      "사라진 도시 위를 나는 드론 시점": "a drone's-eye view over a forgotten city overtaken by vines",
+      "붉은 조명이 깔린 사진 현상실": "a photo darkroom lit by dim red lights and chemical trays",
+      "성당의 스테인드글라스 앞": "in front of stained glass windows in a quiet cathedral",
+      "폭풍우 속 등대": "a storm-battered lighthouse flashing through sheets of rain",
+      "폐쇄된 놀이공원의 관람차 위": "atop a rusted Ferris wheel in an abandoned amusement park",
+      "여름 저녁의 논두렁길": "a rice field path at summer dusk, with insects buzzing in the air",
+      "벚꽃이 흩날리는 강변 산책로": "a riverside path lined with cherry blossoms in the wind",
+      "야간 철거 중인 마천루 내부": "inside a skyscraper under nighttime demolition with sparks and dust",
+      "무너진 학교 도서관": "a collapsed school library with scattered books and broken shelves",
+      "외딴 섬의 해변 동굴": "a beach cave on a remote island, echoing with ocean sounds",
+      "현관 불빛 아래의 비 오는 밤": "a rainy night under a front porch light, with puddles on the ground",
+      "붕괴 직전의 낡은 교회": "an old chapel on the verge of collapse, creaking with every gust",
+      "온실 속의 빛바랜 벤치": "a faded bench inside a warm greenhouse, surrounded by vines",
+      "허물어진 고층 빌딩 위층": "the upper floors of a crumbling skyscraper, open to the wind",
+      "고요한 바다 위 보트 한 척": "a solitary boat floating on a still ocean at sunset",
+      "흘러내린 포스터로 뒤덮인 낡은 골목": "an old alleyway covered in peeling posters and graffiti",
+      "작은 카페의 창가 자리": "a window seat in a small café with morning light and empty cups",
+      "시간이 멈춘 시계 박물관": "a clock museum frozen in time, filled with silent ticking",
+      "아침 햇살이 들어오는 침실": "a sunlit bedroom in the morning with soft sheets and scattered books",
+      "식탁에 아침 식사 준비된 주방": "a kitchen with a breakfast table set, steam rising from a cup",
+      "빨래 널린 아파트 베란다": "an apartment balcony with hanging laundry swaying in the breeze",
+      "출근 시간의 붐비는 버스 안": "inside a crowded morning bus with standing passengers and sleepy faces",
+      "비오는 날의 카페 창가": "a café window seat on a rainy day with drops racing down the glass",
+      "책으로 가득한 작은 서재": "a cozy study filled with books, warm light, and a cluttered desk",
+      "엘리베이터 안": "inside a quiet elevator with mirrored walls and soft elevator music",
+      "동네 슈퍼마켓": "a small neighborhood grocery store with fluorescent lights and narrow aisles",
+      "편의점 계산대 앞": "in front of a convenience store counter with open snack shelves nearby",
+      "학교 복도": "a school hallway with lockers and echoing footsteps",
+      "지하철 좌석에 앉아": "sitting on a subway seat with the hum of motion in the background",
+      "공원 벤치": "a park bench under light shade with birds chirping nearby",
+      "편안한 리빙룸": "a comfortable living room with cushions, plants, and a quiet TV glow",
+      "노트북을 켜둔 작업실": "a home workspace with a laptop, coffee mug, and open notebook",
+      "욕실 세면대 앞": "in front of a bathroom sink with a mirror fogged from the shower",
+      "세탁소 내부": "inside a laundromat with humming machines and the scent of detergent",
+      "비어 있는 도서관 열람실": "an empty library reading room with tall shelves and quiet air",
+      "아파트 복도": "a dim apartment corridor with delivery boxes stacked by doors",
+      "카페트 깔린 아이 방": "a child's room with toys, a soft carpet, and pastel curtains",
+      "햇볕 내리쬐는 옥상 정원": "a rooftop garden under midday sun with potted plants and deck chairs",
+      "헬스장 러닝머신 위": "on a treadmill in a gym with people around stretching and lifting",
+      "커피 내리는 사무실 탕비실": "an office pantry with someone pouring coffee beside a buzzing fridge",
+      "쇼핑몰 푸드코트": "a shopping mall food court with tray noise and crowd murmur",
+      "지하 주차장에서 장을 들고 나오는 길": "walking through an underground parking lot with grocery bags in hand",
+      "편의점 앞 야외 테이블": "an outdoor table in front of a convenience store, under fluorescent lights",
+      "아파트 단지 놀이터": "a neighborhood playground with empty swings and fading chalk drawings",
+      "혼자 앉은 회사 회의실": "a company meeting room with one person and a half-finished agenda",
+      "비어 있는 영화관 좌석": "an empty movie theater with dim aisle lights and soft seat cushions",
+      "헤어샵 거울 앞": "in front of a salon mirror with hair clippings on the floor",
+      "빨래방 코인세탁기 앞": "in front of a coin laundry machine spinning behind glass",
+      "야근 중인 사무실": "a late-night office with glowing monitors and empty desks",
+      "비 오는 지하철 출입구": "a rainy subway entrance with umbrellas dripping near the turnstiles",
+      "기숙사 복도": "a dormitory hallway with open doors and muffled music",
+      "대형 서점의 잡지 코너": "the magazine section of a large bookstore with glossy covers",
+      "패스트푸드 매장 창가 자리": "a fast-food restaurant window seat with neon lights outside",
+      "푸드트럭 앞 벤치": "a bench near a food truck, surrounded by disposable containers",
+      "작은 꽃가게 내부": "inside a small flower shop with buckets of fresh blooms and faint aroma",
+      "우산을 말리는 현관": "a home entrance with dripping umbrellas and a muddy doormat",
+      "이삿짐이 쌓인 새 집 거실": "a new apartment living room cluttered with unopened boxes",
+      "택배 박스를 개봉 중인 방": "a room with torn parcel boxes and bubble wrap on the floor",
+      "마트 셀프계산대 앞": "in front of a supermarket self-checkout kiosk with beeping sounds",
+      "카페 화장실 거울 앞": "in front of a café bathroom mirror with dim lights and lipstick marks",
+      "휴대폰 충전 중인 침대 옆 탁자": "a bedside table with a charging phone and water bottle",
+      "학원 복도": "a cram school hallway with stacked backpacks and scribbled notes",
+      "세차장 안 물튀는 바닥": "inside a car wash with water splashing under neon signage",
+      "동네 약국 카운터 앞": "in front of a local pharmacy counter with shelves of medicine",
+      "버스정류장 벤치": "a bench at a bus stop under a flickering timetable screen",
+      "택시 안 조명 아래": "inside a taxi at night with dashboard lights and city blur",
+      "햇빛 드는 식물 선반 옆": "beside a sunlit plant shelf with leafy shadows on the wall",
+      "한국 아파트 내부": "the interior of a typical Korean apartment with clean white walls, wooden flooring, a low dining table, and a sliding glass door leading to the veranda",
+      "아침 햇살이 드는 거실": "a sunlit living room with sheer curtains swaying in the breeze and a soft beige rug",
+      "TV와 소파 중심의 거실": "a compact living room with a gray sofa facing a wall-mounted TV and a narrow coffee table",
+      "장난감이 흩어진 거실": "a living room cluttered with colorful children's toys and cartoon cushions",
+      "작은 화분과 책이 놓인 거실": "a cozy living room with potted plants on the windowsill and books stacked on the floor",
+      "겨울용 전기장판과 극세사 담요": "a living room with an electric mat on the floor, fleece blankets, and a kotatsu-style table",
+      "햇살이 비추는 안방": "a master bedroom bathed in soft morning sunlight with cream-colored curtains and a neatly made bed",
+      "바닥에 이불만 깔린 방": "a modest bedroom with just a folded blanket and pillow on the warm floor, no bedframe in sight",
+      "책과 텀블러가 놓인 협탁": "a wooden nightstand with stacked books, a phone charger, and a half-filled tumbler",
+      "서랍장 위 작은 거울": "a small oval mirror standing on a dresser, surrounded by hairpins and hand cream",
+      "커튼이 반쯤 열린 창가 방": "a bedroom with sheer curtains drawn halfway, letting in the afternoon breeze",
+      "노란 조명이 켜진 밤의 침실": "a bedroom at night lit by warm yellow ambient lighting, casting soft shadows on the walls",
+      "작은 선풍기가 돌아가는 여름방": "a summer bedroom with a plastic fan oscillating beside a thin floral bedsheet",
+      "전기장판과 극세사 이불의 겨울방": "a winter bedroom with an electric mat under plush blankets and fleece bedding",
+      "아이의 방": "a child’s bedroom with cartoon-patterned bedsheets, plush toys, and a colorful bookshelf",
+      "대학생의 자취방 침실": "a studio bedroom with an unmade bed, a laptop on the blanket, and a laundry basket in the corner",
+      "벽에 사진이 붙은 방": "a bedroom wall decorated with taped polaroid photos, fairy lights, and handwritten notes",
+      "거울에 낙서가 있는 침실": "a bedroom with a standing mirror marked by doodles and motivational sticky notes",
+      "창문 밖 불빛이 들어오는 방": "a bedroom at night with city lights shimmering through the window blinds",
+      "옷이 걸린 이동식 행거가 있는 방": "a bedroom with a movable clothing rack filled with summer dresses and tote bags",
+      "반려동물이 눕는 창가 자리": "a corner of the bedroom where a pet lies curled up on a cushion under the window",
+      "고요한 새벽의 침실": "a peaceful bedroom just before dawn, dimly lit with the sky turning faint blue",
+    };
+     
+    const emotion_translation = {
+      "슬픔": "the character's eyes glisten with sadness, movements slow and heavy",
+      "기쁨": "the character radiates joy, with bright eyes and an open expression",
+      "무표정": "the character shows no emotion, face calm and unreadable",
+      "긴장": "the character appears tense, muscles slightly rigid and breath held",
+      "평온": "the character is serene and composed, exuding calmness",
+      "분노": "the character trembles slightly, fists clenched, with an intense glare",
+      "그리움": "the character looks distant, as if recalling a memory with soft sorrow",
+      "환희": "the character appears overjoyed, movements buoyant and energetic",
+      "불안": "the character’s gaze flickers, hands fidgeting slightly in nervousness",
+      "냉소": "the character smirks faintly, eyes filled with ironic detachment",
+      "감격": "the character holds back tears of gratitude, lip trembling",
+      "허무": "the character stares blankly, drained of emotion or purpose",
+      "애절": "the character seems on the verge of tears, struggling to hold composure",
+      "몰입": "the character is entirely focused, unaware of their surroundings",
+      "경이": "the character's eyes widen in wonder, mouth slightly agape",
+      "수치심": "the character looks down, avoiding eye contact with visible shame",
+      "경멸": "the character's lips curl with contempt, eyes narrowed in disdain",
+      "자책": "the character clenches their jaw, clearly blaming themselves",
+      "기대감": "the character leans forward slightly, eyes sparkling with hope",
+      "죄책감": "the character winces inwardly, unable to face what they've done",
+      "자신감": "the character stands tall, chin slightly raised with quiet confidence",
+      "흥미로움": "the character tilts their head with curiosity, lips pursed in thought",
+      "낙담": "the character slumps slightly, shoulders heavy with disappointment",
+      "긴장 속의 차분함": "the character remains composed, but a slight tremble betrays inner tension",
+      "감정 억제": "the character fights to suppress emotions, lips pressed tight",
+      "불굴": "the character stands firm, eyes set with unwavering determination",
+      "두려움": "the character backs away slightly, breath shallow and eyes darting",
+      "외로움": "the character seems isolated, as if forgotten by the world",
+      "안도": "the character exhales slowly, shoulders lowering with relief",
+      "냉담": "the character appears emotionally distant, gaze cold and indifferent",
+      "혼란": "the character glances around with uncertainty, lips parted as if lost",
+      "상실감": "the character holds something close, as if clinging to a fading presence",
+    };
+
+    /*
+    const activity_description = {
+      "스마트폰 확인 중": "She is checking her smartphone attentively.",
+      "노트북 작업 중": "She is working on her laptop with focus.",
+      "책을 읽는 중": "She is reading a hardcover book held gently in her hands.",
+      "그림을 그리는 중": "She is sketching carefully on a notepad or sketchbook.",
+      "커피를 마시는 중": "She is sipping from a warm cup of coffee.",
+      "게임을 하는 중": "She is holding a game console, deeply immersed in play.",
+      "식물을 돌보는 중": "She is tending to a potted plant, adjusting leaves and checking soil.",
+      "다림질하는 중": "She is ironing clothes on a board, focusing on each fold.",
+      "빨래를 개는 중": "She is folding laundry neatly into stacks.",
+      "옷걸이에 옷을 거는 중": "She is hanging clothes on a hanger with quiet intent.",
+      "헤드셋을 쓰고 음악 감상": "She is wearing a headset and listening to music, immersed in sound.",
+      "TV를 보는 중": "She is watching television with a calm expression.",
+      "강아지를 쓰다듬는 중": "She is petting a small dog resting beside her.",
+      "창밖을 바라보는 중": "She is looking out the window, lost in thought.",
+      "명상 중": "She is sitting in silent meditation, eyes gently closed.",
+      "머리를 말리는 중": "She is drying her hair with a towel or dryer.",
+      "거울을 보는 중": "She is checking her appearance in a mirror.",
+      "메모를 하는 중": "She is jotting down notes on a small pad.",
+      "화장을 고치는 중": "She is touching up her makeup with gentle strokes.",
+      "휴식을 취하는 중": "She is taking a quiet moment to relax and breathe.",
+      "데스크탑 작업 중": "She is working on a desktop computer with both hands on the keyboard, her eyes focused on the screen.",
+      "일기 쓰는 중": "She is writing quietly in her diary with focused emotion.",
+      "편지 읽는 중": "She is reading a heartfelt letter with a soft expression.",
+      "셀카 찍는 중": "She is taking a selfie with her phone, posing playfully.",
+      "향초에 불 붙이는 중": "She is lighting a scented candle slowly and gently.",
+      "스트리밍 방송 중": "She is streaming live content, focused on the camera."
+    };
+    */
+
+    const pose_description = {
+      "바닥에 앉은 자세": "sitting cross-legged on the floor",
+      "소파에 다리 꼬고 앉은 자세": "sitting with one thigh crossed over the other on a sofa",
+      "소파에 양반다리 앉은 자세": "sitting cross-legged on a sofa",
+      "엎드려 누운 자세": "lying face down, supported on her elbows",
+      "한쪽 다리만 구부린 자세": "lying down with one knee raised while the other leg remains extended",
+      "의자에 바른 자세로 앉은 자세": "sitting upright on a chair with both feet on the floor",
+      "바닥에 다리를 앞으로 뻗은 자세": "sitting on the floor with her legs stretched straight forward",
+      "서있는 자세": "standing upright with a relaxed posture",
+      "쪼그려 앉은 자세": "squatting low with knees bent and feet flat on the ground",
+      "바닥에 고개를 숙이고 웅크린 자세": "sitting curled up on the floor with head down",
+      "발가락을 꼼지락 거린다": "wiggling her toes slightly",
+      "걷는다": "the character is walking slowly, footsteps echoing in the space",
+      "달린다": "the character is running with urgency, breath visible in the air",
+      "춤춘다": "the character dances freely, body moving in fluid rhythm",
+      "하늘을 본다": "the character looks up at the sky in contemplation",
+      "앉아 있다": "the character sits calmly, hands resting on their knees",
+      "서성인다": "the character paces around, lost in thought",
+      "바닥을 바라본다": "the character stares at the ground, expression unreadable",
+      "팔을 벌린다": "the character spreads their arms wide as if embracing something unseen",
+      "포옹한다": "two characters embrace in a quiet moment of connection",
+      "멍하니 선다": "the character stands motionless, absorbed in silence",
+      "창밖을 응시한다": "the character gazes out the window, detached from the world",
+      "거울을 바라본다": "the character looks into a mirror, examining themselves",
+      "노래한다": "the character sings softly, voice blending into the air",
+      "울고 있다": "the character is crying silently, tears catching the light",
+      "웃는다": "the character smiles subtly, barely noticeable but sincere",
+      "소리친다": "the character yells into the void, voice raw with emotion",
+      "춤추듯 걷는다": "the character moves forward in a dance-like rhythm, surreal and elegant",
+      "무언가를 쥐고 있다": "the character is holding something tightly, knuckles pale",
+      "벽에 기대어 선다": "the character leans against a wall, shoulders tense",
+      "천천히 돌고 있다": "the character spins slowly in place, lost in thought",
+      "손으로 얼굴을 가린다": "the character covers their face with trembling hands",
+      "손끝을 바라본다": "the character inspects their fingertips with quiet curiosity",
+      "바닥에 주저앉는다": "the character sinks to the floor, overwhelmed",
+      "빛을 향해 걷는다": "the character walks toward the light in the distance",
+      "허공을 바라본다": "the character stares into empty space, unblinking",
+      "자신을 껴안는다": "the character hugs themselves tightly, seeking comfort",
+      "옷깃을 만지작거린다": "the character fiddles with their collar, anxious",
+      "창문을 두드린다": "the character taps gently on a windowpane",
+      "발끝으로 선다": "the character rises on tiptoes, reaching upward",
+      "주변을 경계한다": "the character scans their surroundings cautiously",
+      "무대 위에 선다": "the character stands under a spotlight, exposed and still",
+      "문틈을 들여다본다": "the character peeks through a slightly open door",
+      "하늘을 향해 손을 뻗는다": "the character reaches up toward the sky",
+      "걸음을 멈춘다": "the character stops abruptly, as if frozen in realization",
+      "가슴을 움켜쥔다": "the character presses their hand to their chest, as if containing an overwhelming feeling",
+      "무너진다": "the character collapses to their knees, overwhelmed by emotion",
+      "손을 떨고 있다": "the character’s hands tremble as they struggle to stay composed",
+      "심호흡한다": "the character takes a deep breath, trying to steady themselves",
+      "눈을 감는다": "the character closes their eyes, retreating inward",
+      "가슴을 누른다": "the character presses a hand to their chest, as if to contain something within",
+      "허공을 응시한다": "the character stares into empty space, thoughts adrift",
+      "고개를 숙인다": "the character bows their head slightly, in reflection or guilt",
+      "팔짱을 낀다": "the character crosses their arms, guarded and tense",
+      "손을 뻗는다": "the character reaches out into the void, grasping for something intangible",
+      "등을 돌린다": "the character turns their back slowly, disengaging from the scene",
+      "벽에 기대선다": "the character leans against the wall, drained and silent",
+      "자신의 얼굴을 만진다": "the character gently touches their face, unsure of who they are",
+      "물건을 꼭 쥔다": "the character tightly grips a small object, holding onto memory",
+      "유리를 두드린다": "the character taps lightly on a glass surface, seeking attention or escape",
+      "가만히 숨을 멈춘다": "the character holds their breath, as if time has stopped",
+      "고개를 천천히 돌린다": "the character slowly turns their head, reacting to something off-screen",
+      "몸을 떨고 있다": "the character’s body trembles involuntarily, overwhelmed",
+      "팔을 움켜쥔다": "the character clenches their arms tightly, trying to hold themselves together",
+      "주변을 두리번거린다": "the character looks around cautiously, scanning their surroundings",
+      "가슴을 두드린다": "the character pounds their chest with a fist, as if awakening pain or courage",
+      "앞으로 무너진다": "the character collapses forward onto their knees, defeated",
+      "뒷걸음질 친다": "the character takes hesitant steps backward, afraid or unsure",
+      "손끝으로 무언가를 만진다": "the character gently traces an object with their fingertips, lost in memory",
+      "무언가를 품에 안는다": "the character holds something to their chest, as if it’s precious or sacred",
+      "어깨를 떨군다": "the character lets their shoulders fall, giving in to emotional fatigue",
+      "주먹을 쥔다": "the character clenches their fist, silently holding back emotion",
+      "뒤돌아선다": "the character turns away, leaving something behind",
+      "양손을 치켜든다": "the character raises both hands, in surrender or plea",
+      "벽에 등을 기대고 미끄러진다": "the character slides down a wall, ending up seated on the ground in silence",
+      "소파에 비스듬히 기대어 앉은 자세": "reclining sideways on a sofa, supported by one arm",
+      "무릎을 세우고 바닥에 앉은 자세": "sitting on the floor with knees drawn up to the chest",
+      "소파에 눕다시피 앉은 자세": "half-lying on the sofa with her legs extended along the cushions",
+      "의자 등받이에 깊게 기대 앉은 자세": "slouching back deeply into a chair with a relaxed posture",
+      "다리를 한쪽으로 모으고 앉은 자세": "sitting with both legs folded to one side",
+      "의자에 턱을 괴고 앉은 자세": "sitting on a chair with her chin resting on her hand",
+      "벽에 기대어 앉은 자세": "sitting with her back leaning against the wall",
+      "침대 위에 웅크리고 앉은 자세": "sitting curled up on the bed",
+      "의자에 다리를 올리고 앉은 자세": "sitting on a chair with one or both legs raised",
+      "침대에 옆으로 누운 자세": "lying on her side on the bed",
+      "소파에 뒤집혀 누운 자세": "lying upside down on the sofa",
+      "다리를 교차하면서 꼰다": "crossing and twisting her legs together",
+      "다리를 천천히 들어올린다": "slowly lifting her leg",
+      "지긋이 위를 바라본다": "the character looks upward gently, eyes filled with quiet thoughtfulness",
+    };
+
+    const camera_description = {
+    "초광각 렌즈 (과장)":
+      "An ultra wide-angle lens captures expansive spatial context with dramatic perspective distortion. Ideal for emphasizing height, depth, or enclosing tight spaces. It stretches foreground objects while maintaining overall sharpness, making limbs or facial features appear elongated when close to the lens.",
+
+    "표준 단렌즈 (자연)":
+      "This classic focal length mimics the human eye's natural field of view, creating balanced and neutral compositions. It offers sharp subject separation with natural-looking proportions, making it ideal for portraits, half-body shots, or cinematic dialogues without visual exaggeration.",
+
+    "망원 렌즈 (압축)":
+      "A telephoto lens compresses space and flatters facial features by minimizing distortion. Its shallow depth of field isolates the subject from the background, ideal for intimate portraits, close-ups of hands or accessories, and emotionally focused scenes.",
+
+    "매크로 렌즈 (접사)":
+      "Specialized for extreme close-ups, a macro lens reveals fine textures—skin pores, jewelry engravings, or fabric detail. It excels in capturing small objects with high fidelity and shallow depth, ideal for showcasing accessories or gestures in high detail.",
+
+    "틸트-시프트 렌즈 (왜곡)":
+      "Used for selective focus and architectural correction, a tilt-shift lens can make scenes appear miniature or perfectly aligned. In portraiture, it can isolate specific body parts like the eyes or fingers while keeping surrounding areas subtly blurred or skewed for dreamlike effects.",
+
+    "어안 렌즈 (왜곡)":
+      "With a near-180° field of view, a fisheye lens warps reality into spherical distortion. While unconventional for traditional portraiture, it’s useful for experimental, surreal, or playful shots where limbs, faces, or poses appear exaggerated and warped into a stylized frame.",
+
+    "소프트 포커스 렌즈 (몽환)":
+      "This lens diffuses light gently, creating a glowing, vintage-style softness over the subject. It’s often used for ethereal close-ups or skin-smoothing aesthetics, especially when portraying delicate emotion, femininity, or nostalgic themes.",
+
+    "아나모픽 렌즈 (시네마)":
+      "Anamorphic lenses compress horizontal space and expand it in post, yielding cinematic widescreen visuals with distinct lens flares and oval bokeh. Perfect for dramatic full-body shots or expressive narrative sequences with emotional gravity and professional polish.",
+
+    "줌 렌즈 (유연)":
+      "A flexible zoom lens offers both wide and medium focal lengths with fast aperture. It’s perfect for dynamic scenes that require reframing on the fly—capturing everything from full-body to bust shots without changing lenses.",
+
+    "적외선 카메라 (열감)":
+      "Designed to capture light beyond the visible spectrum, infrared cameras reveal skin heat, blood flow, or surreal lighting effects. Often used for artistic or sci-fi aesthetics where the human figure is transformed into abstract thermal patterns.",
+
+    "깊이 센서 카메라 (입체)":
+      "Used in depth mapping, this camera captures spatial geometry to simulate 3D. It is ideal for rendering virtual depth-of-field effects, tracking body movement, or composing shots with artificial focus layers for post-edit manipulation.",
+
+    "360도 VR 카메라 (몰입)":
+      "This camera records all directions simultaneously, ideal for immersive storytelling or spatial observation. When used for fashion, movement, or performance, it enables the viewer to explore posture, outfit, and setting from multiple angles.",
+
+    "고속 촬영 카메라 (슬로우)":
+      "Capable of shooting at thousands of frames per second, this camera captures subtle movements like blinking, hair sways, or muscle tension in slow motion. Excellent for poetic realism or emotional micro-expression analysis.",
+
+    "짐벌 카메라 (안정)":
+      "A gimbal-stabilized camera ensures smooth, shake-free footage while moving. Perfect for tracking shots that follow a subject fluidly through space, especially in dynamic or emotionally immersive environments.",
+
+    "HDR 카메라 (대비)":
+      "HDR cameras capture scenes with a high contrast ratio between shadows and highlights. This allows for detailed expression in challenging lighting environments, such as backlighting or golden hour portraits, preserving both skin texture and atmosphere.",
+
+    "모노크롬 카메라 (흑백)":
+      "Designed to shoot only in black and white, monochrome cameras offer higher contrast and detail resolution by removing color filters. They're ideal for emotional, timeless, or documentary-style portraiture that emphasizes form and light.",
+
+    "스테레오 카메라 (3D)":
+      "Stereo cameras use two lenses to capture depth and simulate 3D vision. They’re used for immersive visuals in VR or AR, and for stylized portrayals of physical presence and body movement in dimensional space.",
+
+    "바디캠 (주관)":
+      "A wearable camera attached to the subject’s body offers raw, subjective footage that captures natural posture, gesture, and interaction. Ideal for documentary-style shots, first-person storytelling, or dynamic movement tracking.",
+
+    "타임랩스 카메라 (시간)":
+      "Timelapse cameras shoot at long intervals to compress time. Useful for showing subtle changes in expression, body shifts, or ambient light evolution over extended periods. Best suited for artistic or reflective storytelling sequences."
+  };
+
+
+
+
+    const distance_description = {
+      "초초근접 (5cm 이하)": 
+        "From within 5cm – an ultra extreme close-up showing micro-details like fingernail texture, lip skin, or toe edges. If mounted on a body part (e.g. fingertip or toe), that part is clearly visible and dominates the frame with extreme depth distortion.",
+
+      "초근접 (5~15cm)": 
+        "From a 5–15cm distance – an extreme close-up shot focusing on a singular body part such as the eyes, lips, fingertips, or toes. The attached body part appears enlarged and prominent due to forced perspective.",
+
+      "근접 (15~40cm)": 
+        "From 15–40cm away – a close-up that clearly frames a primary body part (face, hand, foot) and adjacent features. Perspective exaggerates surface curvature and intimacy.",
+
+      "상반신 근접 (50~80cm)": 
+        "From 50–80cm away – a tight upper-body shot showing the head to chest or waist. Used for intimate expressions or subjective conversation angles.",
+
+      "상반신 전체 (80~120cm)": 
+        "From 80–120cm away – a natural medium shot showing the subject's upper body from head to hips. Suitable for posture, gestures, and facial expression.",
+
+      "하반신 중심 (1.2~1.8m)": 
+        "From 1.2–1.8m away – a lower-body-focused composition that shows from feet or thighs up to the waist. Often used when the camera is mounted on or near the feet to emphasize legs, footwear, or seated posture with upward perspective.",
+
+      "3/4 신 (1.2~1.8m)": 
+        "From 1.2–1.8m away – a three-quarter shot showing from head to knees or thighs. Balances body proportions while maintaining emotional distance and slight environmental framing.",
+
+      "전신 기본 (2~3m)": 
+        "From 2–3 meters – a standard full-body shot capturing the entire figure from head to toe. Appropriate for showcasing outfits, posture, and full stance within a balanced scene.",
+
+      "넓은 전신 (4~6m)": 
+        "From 4–6 meters – a wide full-body frame with spatial breathing room. Subject is fully visible with contextual interaction with surroundings.",
+
+      "초광각 전신 (7~10m)": 
+        "From 7–10 meters – a long full-body shot where the subject appears small and embedded within the background. Highlights isolation or landscape prominence.",
+
+      "실루엣 원거리 (10~20m)": 
+        "From 10–20 meters – a distant silhouette composition. The subject merges into the environment, evoking loneliness, vastness, or voyeuristic detachment.",
+
+      "배경 중심 롱샷 (20m 이상)": 
+        "From 20+ meters – a cinematic establishing shot where the subject is minor in scale, overwhelmed by landscape or architectural space. Used for mood or narrative grandeur.",
+
+      "착시 카메라 (몸에 부착)": 
+        "From a mounted first-person perspective – camera is affixed to a body part such as the forehead, chest, foot, or finger. The attached body part must remain clearly visible in the frame while depth distortion conveys immersion and scale exaggeration."
+    };
+
+
+
+    const manicure_text = {
+        "없음": "clean, unpolished nails",
+        "맨손": "bare hands with no accessories",
+        "가죽 장갑": "hands in rugged leather gloves",
+        "반장갑": "hands wearing fingerless tactical gloves",
+        "운동용 장갑": "hands in padded sports or gym gloves",
+        "화이트 장갑": "hands in formal white gloves",
+        "메탈 시계": "a stainless steel wristwatch on the left wrist",
+        "가죽 시계": "a leather-strap wristwatch with a classic face",
+        "스마트워치": "a digital smartwatch with a black strap",
+        "실버 반지": "hands with a thick silver ring on the index or ring finger",
+        "블랙 반지": "a matte black ring on one finger",
+        "팔찌": "hands with a simple leather or cord bracelet",
+        "체인 팔찌": "a chunky metal chain bracelet",
+        "손목에 타투": "a visible forearm or wrist tattoo",
+        "손가락 타투": "minimalist tattoos on knuckles or fingers",
+        "니트 장갑": "hands in warm knit gloves (for cold weather)",
+        "작업 장갑": "hands in utility gloves (used for construction or outdoor work)",
+        "군용 장갑": "hands wearing camouflage-pattern tactical gloves",
+    }
+
+    const foot_text = {
+        "맨발": "bare feet without polish or footwear",
+        "각질 관리된 맨발": "bare feet with clean, well-maintained soles",
+        "발에 타투": "bare feet with visible tattoos or ink near the ankle",
+        
+        "하얀 양말": "feet wearing plain white socks",
+        "검정 양말": "feet wearing solid black dress socks",
+        "스트라이프 양말": "feet wearing striped cotton socks",
+        "컬러 포인트 양말": "feet wearing socks with bold color accents or patterns",
+        "스포츠 양말": "feet in cushioned athletic ankle socks",
+        "두꺼운 겨울 양말": "feet in thick woolen or thermal socks",
+        "밀리터리 양말": "feet in olive or camo-pattern tactical socks",
+        "하프 양말": "feet in mid-calf casual socks",
+
+        "운동화 + 양말": "feet in classic sneakers with ankle socks",
+        "운동화 (맨발)": "bare feet inside sporty sneakers",
+        "하이탑 스니커즈": "feet in high-top sneakers with thick laces",
+        "슬립온": "feet in low-cut slip-on canvas shoes",
+        "부츠": "feet in rugged lace-up boots or work boots",
+        "밀리터리 부츠": "feet in heavy-duty combat boots with thick soles",
+        "가죽 로퍼": "feet in polished leather loafers for formal style",
+        "스웨이드 첼시 부츠": "feet in suede Chelsea boots with elastic sides",
+        "샌들": "feet in simple open-toe sandals or Birkenstocks",
+        "스트랩 샌들": "feet in thick-strapped outdoor sandals",
+        "슬리퍼": "feet in casual indoor slippers or flip-flops",
+        "슬라이드": "feet in branded slides commonly worn at gyms or home",
+        "드레스 슈즈": "feet in formal oxford or derby shoes with matching socks",
+        "플랫폼 스니커즈": "feet in thick-soled streetwear sneakers",
+        "등산화": "feet in reinforced hiking shoes with grip soles",
+        "작업화": "feet in protective steel-toe work shoes",
+        "워커": "feet in military-style lace-up walkers with solid heels"
+    };
+
+    const lighting_text = {
+      "이른 새벽 (03:00~05:00)": "very dim, cold bluish-gray predawn light with long shadows, evoking solitude and anticipation. Color temperature ~5000K.",
+      "여명 직전 (05:00~06:00)": "muted dawn light with pale blue and lavender hues filtering through mist, creating a quiet, eerie tone. ~5200K.",
+      "아침 햇살 (06:00~08:00)": "soft, cool bluish morning light with gentle contrast, ideal for calm and fresh scenes. ~5500K.",
+      "맑은 오전 (08:00~11:00)": "brilliant, crisp daylight with slight coolness and high visibility. Neutral tones and alert mood. ~5600–5800K.",
+      "정오 직전 (11:00~12:00)": "clear and direct sunlight with minimal shadow; slightly warm, evokes productivity and clarity. ~6000K.",
+      "정오 (12:00~13:00)": "bright and golden midday light directly overhead; intense and neutral. Highlights details and clarity. ~6200K.",
+      "오후 (13:00~16:00)": "even, balanced natural light with a hint of warmth, casting medium shadows. Ideal for neutral, documentary scenes. ~6000K.",
+      "늦은 오후 (16:00~18:00)": "golden, horizontally angled light with longer shadows and warm skin tones. Evokes nostalgia and softness. ~5800K.",
+      "석양 전 (18:00~19:00)": "warm and soft pre-sunset light, orange-pink glow with enhanced ambient tones. Romantic or introspective feel. ~4500–5000K.",
+      "일몰 직전 (19:00~19:30)": "vivid orange-red sunset light casting dramatic silhouettes. Cinematic and emotional tone. ~4200K.",
+      "매직아워 (19:30~20:00)": "blue hour light after sunset with a cool, surreal hue and soft gradients. Ideal for dreamlike, mysterious moods. ~4000K.",
+      "밤 (20:00~23:00)": "dark ambient lighting from artificial sources (lamps, streetlights); yellow or neutral tone. Intimate or secretive scenes.",
+      "심야 (23:00~02:00)": "low-key, dim artificial light or partial moonlight; used for silence, suspense, or introspection. ~3000–3500K.",
+      "달빛 (보름 기준)": "cold, silvery moonlight with faint shadows and emotional distance. Quiet and otherworldly tone.",
+      "촛불 조명": "very warm flickering candlelight with a golden hue, emphasizing intimacy, nostalgia, or ritual. ~1800K.",
+      "백열등": "warm indoor light from an incandescent bulb, softening edges and creating a cozy feel. ~2700K.",
+      "형광등": "cool white fluorescent lighting, often clinical or sterile in tone. Used for offices, bathrooms. ~4000–5000K.",
+      "LED 무드등": "colored or neutral tone LED mood lighting, often ambient, creative, or club-like depending on color set.",
+      "네온사인": "bright, saturated colored lighting with a synthetic glow; evokes cyberpunk, nightlife, or surreal settings.",
+    };
+
+    const outfit_text = {
+      // 🔥 섹시한 스타일 (20+)
+        "타이트한 슬리브리스와 조거팬츠": "a fitted sleeveless tee showing shoulder lines, paired with tapered jogger pants",
+        "열린 셔츠와 슬랙스": "an unbuttoned shirt revealing the chest worn over tailored slacks",
+        "핏 좋은 블랙 티셔츠와 진": "a body-hugging black tee tucked into slim dark jeans",
+        "민소매 후드와 트레이닝 팬츠": "a sleeveless hoodie with slim-fit training pants and high-top sneakers",
+        "몸에 붙는 터틀넥과 슬랙스": "a tight black turtleneck tucked into sleek trousers",
+        "크롭 후디와 러너 팬츠": "a cropped hoodie showing abs, paired with runner pants",
+        "핏한 집업과 스포티 쇼츠": "a fitted zip-up sports jacket with short athletic shorts",
+        "헨리넥 반팔과 하프 팬츠": "a snug henley tee with rolled-up sleeves and tailored shorts",
+        "V넥 니트와 청바지": "a deep V-neck sweater matched with slim-fit denim",
+        "슬림핏 셔츠와 하이웨스트 슬랙스": "a pressed slim-fit shirt tucked into high-waisted slacks with a belt",
+        "시스루 셔츠와 슬랙스": "a semi-transparent mesh shirt over a tank, worn with dark trousers",
+        "복싱웨어 스타일": "a cropped boxing tank with sweat shorts and bandaged hands",
+        "랩 가디건과 와이드 팬츠": "a front-tied wrap cardigan exposing chest with wide-leg pants",
+        "핏한 민소매 + 러닝 쇼츠": "a tight sleeveless tee with short runner shorts showing leg muscles",
+        "셔츠 한두 개 풀린 스타일": "a half-unbuttoned shirt tucked into pants with a visible necklace",
+        "상의 탈의 + 슬랙스": "bare chest with formal slacks and dress shoes",
+        "오픈 베스트 + 스키니 팬츠": "an open vest revealing abs worn with skinny pants",
+        "실크 셔츠와 슬랙스": "a flowing silk shirt tucked into sleek slacks with slight shine",
+        "스트랩 나시와 워커": "a strap tank top showing traps and arms, paired with combat boots",
+
+        // 🖇 오피스/캐주얼/코스튬 스타일
+        "화이트 셔츠와 슬랙스": "a crisp white shirt tucked into tailored slacks and dress shoes",
+        "니트와 치노 팬츠": "a textured knit sweater paired with beige chinos and loafers",
+        "후드티와 데님": "an oversized hoodie with relaxed denim jeans",
+        "가죽 재킷과 블랙진": "a fitted leather jacket over a dark tee and black jeans",
+        "트렌치코트와 슬랙스": "a classic trench coat over a turtleneck and slacks",
+        "오버핏 셔츠와 하프 팬츠": "an oversized button-up shirt with loose half pants",
+        "체크 셔츠와 워커": "a check flannel shirt, dark jeans, and lace-up boots",
+        "카고 조끼와 트레이닝 팬츠": "a utility cargo vest over a tee, paired with training pants",
+        "테크웨어 룩": "a black layered techwear set with harness and zippers",
+        "스트리트 오버핏 세트": "a graphic oversized tee with baggy shorts and chunky sneakers",
+        "한복 스타일 셔츠와 슬랙스": "a modern hanbok-style tunic with minimal slacks and slip-ons",
+        "무대의상 아이돌풍": "a glittering performance outfit with cropped jacket and skinny pants",
+        "밀리터리 전투복": "a camouflage tactical uniform with gloves and boots",
+        "검도복": "a kendo uniform with belt and hakama pants",
+        "닌자 코스튬": "a stealth black ninja costume with fingerless gloves",
+        "바리스타 룩": "a rolled-up white shirt, apron, and cropped pants for a cozy café worker style",
+        "아트스쿨 감성룩": "a mismatched outfit with painter’s shirt, canvas pants, and sandals",
+
+        // 🌞 여름/휴양지 스타일
+        "린넨 셔츠와 반바지": "a breezy linen shirt with the sleeves rolled up, paired with beige shorts and sandals",
+        "나시티와 카고 반바지": "a sleeveless tank top with cargo shorts and trekking sandals",
+        "얇은 하와이안 셔츠와 슬랙스": "a floral Hawaiian shirt left unbuttoned over a plain tee, matched with relaxed slacks",
+        "오픈 셔츠 + 수영복 하의": "a half-open beach shirt with swim trunks and barefoot feet",
+        "반팔 셔츠와 슬립온": "a buttoned short-sleeve shirt with cuffed shorts and slip-on shoes",
+
+        // ❄ 겨울/가을 패션
+        "코트와 머플러": "a long wool coat over a turtleneck, styled with a scarf and boots",
+        "숏패딩과 트레이닝 팬츠": "a cropped padded jacket with fleece-lined jogger pants",
+        "니트 레이어드 셔츠": "a cable-knit sweater layered over a collared shirt and denim",
+        "롱패딩과 후드티": "a long padded coat over a hoodie and cargo pants",
+        "플란넬 셔츠와 청바지": "a thick plaid flannel shirt with straight-fit denim jeans",
+
+        // 🕴 포멀/수트 스타일
+        "클래식 블랙 수트": "a classic tailored black suit with a white dress shirt and leather shoes",
+        "그레이 더블 브레스트 수트": "a gray double-breasted suit with a dark tie and polished loafers",
+        "정장 셔츠와 조끼": "a fitted dress shirt with a buttoned vest and slim trousers",
+        "터틀넥과 블레이저": "a high-neck knit under a formal blazer, paired with slim-fit slacks",
+        "셔츠와 서스펜더 팬츠": "a clean white shirt tucked into pants with suspenders and dress shoes",
+
+        // 🧢 스트릿/캐주얼
+        "그래픽 티셔츠와 와이드 데님": "a bold graphic t-shirt tucked into wide-leg jeans with a chain accessory",
+        "크롭 맨투맨과 조거팬츠": "a cropped sweatshirt that shows the waistline, matched with joggers",
+        "버킷햇 + 오버핏 셋업": "a loose oversized set-up with a bucket hat and sneakers",
+        "스트릿 아노락 + 카고 팬츠": "a zip-up anorak jacket with drawstrings and tactical cargo pants",
+        "오버핏 반팔과 슬랙스": "a wide short-sleeve tee tucked loosely into soft trousers",
+
+        // 🎭 코스튬/컨셉
+        "바텐더 유니폼": "a black vest over a white shirt, with a bowtie and apron",
+        "파일럿 점프슈트": "a military-style pilot jumpsuit with pockets and shoulder patches",
+        "무용수 연습복": "a tight-fit dance tank with stretch pants and bare feet",
+        "검정 터틀넥 + 안경": "a sleek black turtleneck with round glasses for an intellectual look",
+        "70년대 복고 패션": "a colorful retro shirt with bell-bottom jeans and platform shoes",
+        "공연 무대의상": "a stage-ready outfit with metallic fabrics and cropped jacket",
+        "레이서 복장": "a fitted racing suit with gloves, racing logos, and high boots",
+    };
+
+    const body_shape_description = {
+        "슬림형": "slim body type with lean lines and minimal muscle definition",
+        "균형형": "proportionate body with balanced shoulders, waist, and hips",
+        "근육형": "muscular build with defined abs, chest, and arms",
+        "운동선수형": "athletic body with broader shoulders, narrow waist, and visible strength",
+        "장신형": "tall body type with long limbs and extended torso",
+        "컴팩트형": "shorter stature with solid, compressed frame",
+        "각진 실루엣": "angular frame with square shoulders and firm chest line",
+        "자연형": "natural frame with average build and relaxed posture",
+        "중성형": "androgynous body type with narrow shoulders and flat contours",
+        "흉근 강조형": "upper-body-focused with broad chest and visible pecs",
+        "복부 중심형": "lower-center-heavy type with thicker waist or rounded belly",
+        "상체 중심형": "top-heavy with strong shoulders and narrow hips",
+        "하체 중심형": "bottom-heavy with thicker thighs and sturdy legs",
+        "입체형": "dimensional build with visible muscle depth from side angles",
+        "모델형": "model-like frame with lean abs, subtle collarbones, and long legs",
+        "빈약형": "slightly underweight frame with visible collarbones and narrow wrists",
+        "탄탄형": "tight and toned body with dry muscle definition and low fat",
+        "체중감소형": "slimmed-down type with noticeable bone structure and facial cuts",
+        "좁은 어깨형": "narrow-shouldered body type with a slightly hunched posture and compact upper torso",
+        "넓은 어깨형": "broad-shouldered body with prominent deltoids and a V-shaped upper body",
+        "마른 근육형": "lean muscular frame with sinewy definition and visible veins along arms",
+        "체지방 낮은 드라이형": "low-fat dry physique with high muscle definition and sharp angles",
+        "통뼈형": "thick-boned structure with wide joints and heavy frame regardless of fat level",
+        "말랐지만 튼튼한": "slim but firm frame with strong forearms and core stability",
+        "상반신 발달형": "developed upper body with wide chest, solid lats, and tapered waist",
+        "하반신 발달형": "strong lower body with thick thighs and muscular calves",
+        "장거리 러너형": "endurance build with low body fat, long limbs, and minimal muscle bulk",
+        "단거리 스프린터형": "power-speed build with explosive thighs and compressed strength",
+        "직각 어깨형": "broad and square shoulder line with sharp collarbone visibility",
+        "둥근 어깨형": "rounded shoulder muscles giving a fuller and softer upper body look",
+        "역삼각형": "V-tapered torso with wide shoulders and narrow hips",
+        "정사각형형": "blocky frame with even width across shoulders, waist, and hips",
+        "벌크업형": "bulked-up build with high muscle volume and thick limbs",
+        "중량 선수형": "heavyweight frame with both muscular and fatty mass for maximum power",
+        "피트니스 모델형": "cut and symmetrical body with visible abs, obliques, and chest lines",
+        "야위고 긴 체형": "gaunt and elongated frame with bony joints and sunken contours",
+        "햄벌크형": "chubby but soft frame with round belly and gentle curves",
+        "산악인 체형": "rugged body with dense muscle, weathered skin, and firm calves"
+    };
+
+    const hairstyle_description = {
+       // ▫️ 내추럴 / 자연스러움
+        "내추럴 다운펌": "naturally layered hair with slight volume, softly laid down with minimal product",
+        "자연스러운 가르마 스타일": "free-parted hairstyle with loose strands framing the face",
+        "가볍게 흐트러진 숏컷": "messy short cut with tousled bangs and texture",
+        "볼륨 펌 헤어": "soft volume-permed hair adding roundness and natural wave",
+
+        // ▫️ 클래식 / 정갈한
+        "사이드 파트 포멀컷": "classic side-parted cut with short sides and neatly combed top",
+        "포마드 스타일": "sleek pomade style with shiny finish and tight sides",
+        "버즈컷": "very short buzz cut with even length all over the head",
+        "크루컷": "clean and short crew cut with slightly longer crown",
+        "아이비리그 컷": "refined ivy league cut with side part and a touch of volume on top",
+
+        // ▫️ 캐주얼 / 트렌디
+        "쉼표 머리": "bangs curled inward forming a comma shape, trendy and soft",
+        "가르마펌": "middle-parted perm with soft waves enhancing volume and balance",
+        "애즈펌": "lightly permed down hairstyle covering the forehead slightly",
+        "댄디컷": "neatly cropped sides and longer bangs combed downward naturally",
+        "투블럭 컷": "two-block cut with cropped sides and voluminous top section",
+        "템플 페이드": "temple fade cut with gradual tapering near the ears and clean lines",
+
+        // ▫️ 긴 머리 / 묶음 스타일
+        "장발 스트레이트": "long straight hair falling below the neck with a center or no part",
+        "로우 번": "long hair tied into a low bun at the back of the head",
+        "하프 번": "top half of the long hair twisted into a small bun, with the rest left loose",
+        "워리어 매듭": "rugged long hair tied tightly into a functional warrior-style knot",
+        "단정한 포니테일": "long hair pulled back into a neat ponytail with no loose strands",
+
+        // ▫️ 특수 / 개성 스타일
+        "드레드록": "thick dreadlocks styled back or tied, expressing a bold personality",
+        "브레이드 스타일": "tight braids along the scalp (cornrows or boxer style)",
+        "언더컷 + 웨이브": "undercut with soft wavy top styled loosely backward",
+        "레게 스타일": "freeform locs with beads or ties in an expressive urban look",
+        "컬러 블리치 헤어": "short or medium hair bleached to silver, ash, or pastel tones",
+
+        // ▫️ 앞머리 / 프린지
+        "풀뱅 다운컷": "thick straight fringe covering the forehead, paired with short sides",
+        "시스루 뱅 남성형": "light see-through bangs softly parted over the forehead",
+        "사선 뱅": "angled fringe swept naturally to one side",
+        "짧은 뱅 컷": "very short bangs just above the eyebrows for a sharp look",
+
+        // ▫️ 기타
+        "올백 스타일": "hair brushed entirely back with strong hold for a confident image",
+        "모히칸 스타일": "mohawk-style hair with shaved sides and raised center strip",
+        "히피 웨이브": "shoulder-length loose waves with a bohemian feel",
+        "중단발 내추럴": "medium-length hair touching the collar, styled with light curls",
+    };
+
+    const fabric_response = {
+      // 🔄 동작 반응
+      "몸 움직임에 따라 천이 자연스럽게 반응": "fabric dynamically shifts and clings or loosens depending on body posture or motion",
+      "몸의 곡선을 따라 자연스럽게 흘러내림": "cloth follows the natural curves of the body, emphasizing silhouette without stiffness",
+      "움직일 때 주름과 텍스처가 자연스럽게 생성": "creases and folds appear realistically as the fabric responds to motion",
+      "옷자락이 중력과 제스처에 민감하게 반응": "hems sway subtly in response to gravity and every small movement",
+      
+      // 🌬 공기 흐름 반응
+      "공기 흐름에 부드럽게 나부낌": "fabric flows gently and continuously in ambient air movement",
+      "바람에 천이 잔잔하게 흔들림": "clothing reacts to breeze with soft, rhythmic fluttering",
+      
+      // 🌟 시각 질감 묘사
+      "섬유의 결이 조명에 따라 다르게 표현": "fabric texture appears differently depending on lighting angle and intensity",
+      "레이스나 얇은 천은 반투명 효과": "sheer materials like lace are rendered with realistic semi-transparency",
+      "천의 조직과 결이 또렷하게 표현됨": "weave direction and textile grain are precisely visible in high fidelity",
+      "보풀, 실밥 등의 미세 질감이 섬세하게 드러남": "micro-details like fraying edges or pilling are clearly rendered for realism"
+    };
+
+    const rendering_translation = {
+      "심리 공포 호러" : "A ghostly girl lingers in a minimalist bedroom steeped in vintage film grain and psychological tension, evoking eerie silence and J-horror aesthetics reminiscent of *The Ring* and *A Tale of Two Sisters",
+      "8K 초고화질 리얼": "8K ultra-realistic rendering",
+      "4K 실사 고화질": "4K photorealistic rendering",
+      "HD 영화풍": "HD cinematic rendering",
+      "애니메이션 셀 셰이딩": "anime-style cel shading",
+      "디지털 페인팅 스타일": "digital painting style",
+      "빈티지 필름 룩": "vintage film look",
+      "극사실주의 그림체": "hyperrealistic illustration style",
+      "로우파이 감성화질": "lo-fi emotional tone",
+      "페인터리 오일화": "painterly oil painting style",
+      "수채화 느낌": "watercolor painting texture",
+      "블렌더 스타일 3D": "Blender-style 3D rendering",
+      "게임 트레일러 느낌": "game cinematic trailer style",
+      "패션 잡지 스타일": "editorial fashion photography style",
+      "소프트 라이트 몽환풍": "dreamy soft light atmosphere",
+      "필름 그레인 아날로그": "analog film grain aesthetic",
+      "하이패션 룩북 스타일": "high-fashion lookbook style",
+      "레트로 미래풍": "retro-futuristic aesthetic",
+      "사이버펑크 스타일": "cyberpunk neon-lit aesthetic",
+      "다큐멘터리 필름톤": "documentary film tone",
+      "흑백 필름 누아르": "black-and-white noir style",
+      "빛 번짐 감성": "bloomy light diffusion",
+      "광택 나는 3D 질감": "glossy 3D texture rendering",
+      "붓터치가 느껴지는 회화": "visible brushstroke painting style",
+      "낮은 채도의 침착한 색감": "muted color palette with subdued tones",
+      "꿈속 같은 컬러": "dreamlike surreal color palette",
+      "네온 글로우 효과": "neon glow visual style",
+      "저해상도 VHS 느낌": "low-res VHS retro filter",
+      "모션 블러 효과 강조": "motion blur emphasis",
+      "광각 렌즈 왜곡 효과": "wide-angle lens distortion",
+      "HDR 콘트라스트 풍": "high dynamic range contrast style",
+      "푸른 계열 SF 분위기": "bluish sci-fi ambient lighting",
+      "스팀펑크 고딕": "steampunk gothic aesthetic",
+      "미니멀리즘 조명 구성": "minimalist lighting setup",
+      "거친 브러시 질감": "rough brush texture",
+      "아티스틱 콜라주풍": "artistic collage-inspired style",
+      "셀프카메라 스타일": "casual selfie camera style",
+      "중세 유화 느낌": "medieval oil painting look",
+      "아크릴화 스타일": "acrylic painting texture",
+      "판타지 일러스트 감성": "fantasy illustration tone",
+      "인스타 감성 필터": "pastel-toned Instagram filter aesthetic",
+      "광택과 반사 강조": "emphasized gloss and reflections",
+      "픽셀아트 느낌": "pixel art style",
+      "수묵화 느낌": "East Asian ink wash style",
+      "절제된 흑백 미니멀": "restrained monochrome minimalist tone",
+      "부드러운 그라디언트 배경": "soft gradient background",
+      "풀3D 애니 스타일": "full 3D anime-style rendering",
+      "풀3D 셀 셰이딩 애니": "full 3D cel-shaded anime style",
+      "CG 애니메이션 영화풍": "CG animated film look",
+      "일본풍 3D 애니메이션": "Japanese-style 3D animation aesthetic",
+      "입체감 있는 애니 그림체": "three-dimensional anime illustration style",
+      "하이엔드 3D 애니 퀄리티": "high-end 3D anime rendering quality",
+      "유니티 스타일 3D 애니": "Unity-style 3D anime rendering",
+      "언리얼 기반 애니 느낌": "Unreal Engine anime-style look",
+      "피규어 같은 3D 모델링": "figure-like 3D character modeling",
+      "3D 애니 오프닝 톤": "3D anime opening sequence tone",
+      "카툰 스타일": "cartoon-style illustration",
+      "카툰 렌더링": "cartoon rendering style",
+      "미국식 TV 카툰풍": "Western TV cartoon aesthetic",
+      "웹툰 스타일": "Korean webtoon-style drawing",
+      "세로형 웹툰 레이아웃": "vertical-scrolling webtoon format",
+      "컬러 웹툰 풍": "colored webtoon illustration",
+      "흑백 만화 스타일": "black-and-white manga style",
+      "스크린톤 만화 질감": "screentone manga texture",
+      "SD 캐릭터 스타일": "super-deformed (SD) character style",
+      "단선 강조 카툰풍": "bold-outline cartoon drawing",
+      "웹툰 데일리 드로잉": "casual slice-of-life webtoon tone",
+      "감정선이 강조된 웹툰": "emotionally expressive webtoon style",
+      "90년대 신문 카툰풍": "90s newspaper comic strip style",
+      "빈티지 만화 스타일": "vintage comic book look",
+      "코믹북 색조 강조": "bold-tone American comic book style",
+      "동글동글한 카툰": "soft, round cartoon illustration",
+      "카툰 아트 디코 스타일": "Art Deco cartoon styling",
+      "네온 컬러 카툰": "neon-colored cartoon style",
+      "잉크 라인 드로잉": "inked line-art cartoon style",
+      "한 컷 웹툰": "single-panel webtoon format",
+
+
+    };
+
+    /*
+    const activity_pose_compatibility = {
+      // ✅ 손에 들고 사용하는 동작: 앉든 서든 OK
+      "스마트폰 확인 중": [
+        "서있는 자세",                  // 지하철, 거리에서 흔함
+        "의자에 바른 자세로 앉은 자세",
+        "소파에 다리 꼬고 앉은 자세",
+        "한쪽 다리만 구부린 자세",
+        "바닥에 앉은 자세"
+      ],
+
+      // ✅ 작업 자세 → 책상 자세 우선
+      "노트북 작업 중": [
+        "의자에 바른 자세로 앉은 자세",
+        "바닥에 다리를 앞으로 뻗은 자세"     // 바닥에서 무릎 위에 올려두고도 가능
+      ],
+
+      // ✅ 독서 → 앉은 자세가 가장 자연스러움
+      "책을 읽는 중": [
+        "의자에 바른 자세로 앉은 자세",
+        "소파에 다리 꼬고 앉은 자세",
+        "소파에 양반다리 앉은 자세",
+        "한쪽 다리만 구부린 자세",
+        "바닥에 앉은 자세"
+      ],
+
+      // ✅ 손을 써야 하는 정적 활동
+      "그림을 그리는 중": [
+        "의자에 바른 자세로 앉은 자세",
+        "바닥에 앉은 자세",
+        "소파에 양반다리 앉은 자세"
+      ],
+
+      // ✅ 마실 때는 상체를 세워야 하므로 엎드린 자세는 제외
+      "커피를 마시는 중": [
+        "의자에 바른 자세로 앉은 자세",
+        "소파에 다리 꼬고 앉은 자세",
+        "소파에 양반다리 앉은 자세",
+        "바닥에 앉은 자세"
+      ],
+
+      // ✅ 게임은 자유자재 → 누워도 OK
+      "게임을 하는 중": [
+        "의자에 바른 자세로 앉은 자세",
+        "소파에 양반다리 앉은 자세",
+        "한쪽 다리만 구부린 자세",
+        "엎드려 누운 자세",
+        "바닥에 앉은 자세"
+      ],
+
+      // ✅ 식물 관리 → 대부분 서서 or 쪼그려서
+      "식물을 돌보는 중": [
+        "서있는 자세",
+        "쪼그려 앉은 자세"
+      ],
+
+      // ✅ 다림질은 테이블이므로 서 있는 게 기본
+      "다림질하는 중": [
+        "서있는 자세"
+      ],
+
+      // ✅ 빨래 개기 → 낮은 작업대나 바닥에서
+      "빨래를 개는 중": [
+        "쪼그려 앉은 자세",
+        "바닥에 앉은 자세",
+        "소파에 양반다리 앉은 자세"
+      ],
+
+      // ✅ 옷걸이는 무조건 서서 해야 자연스럽다
+      "옷걸이에 옷을 거는 중": [
+        "서있는 자세"
+      ],
+
+      // ✅ 감상은 어떤 자세든 가능 (정적 활동)
+      "헤드셋을 쓰고 음악 감상": [
+        "서있는 자세",
+        "의자에 바른 자세로 앉은 자세",
+        "소파에 다리 꼬고 앉은 자세",
+        "바닥에 앉은 자세",
+        "한쪽 다리만 구부린 자세",
+        "엎드려 누운 자세"
+      ],
+
+      // ✅ TV 시청 → 앉은 자세 고정
+      "TV를 보는 중": [
+        "소파에 다리 꼬고 앉은 자세",
+        "소파에 양반다리 앉은 자세",
+        "의자에 바른 자세로 앉은 자세"
+      ],
+
+      // ✅ 강아지 쓰다듬기 → 자세 낮춰야 편함
+      "강아지를 쓰다듬는 중": [
+        "바닥에 앉은 자세",
+        "한쪽 다리만 구부린 자세",
+        "쪼그려 앉은 자세"
+      ],
+
+      // ✅ 창밖 보기 → 창 위치에 따라 자유도 높음
+      "창밖을 바라보는 중": [
+        "서있는 자세",
+        "한쪽 다리만 구부린 자세",
+        "엎드려 누운 자세"
+      ],
+
+      // ✅ 명상 → 정좌가 기본
+      "명상 중": [
+        "바닥에 앉은 자세",
+        "소파에 양반다리 앉은 자세"
+      ],
+
+      // ✅ 머리 말리기 → 서서 or 수건 두른 채 앉은 자세
+      "머리를 말리는 중": [
+        "서있는 자세",
+        "엎드려 누운 자세",
+        "한쪽 다리만 구부린 자세"
+      ],
+
+      // ✅ 거울 보기 → 서거나 앉아 있음
+      "거울을 보는 중": [
+        "서있는 자세",
+        "의자에 바른 자세로 앉은 자세"
+      ],
+
+      // ✅ 메모 → 의자나 책상 위
+      "메모를 하는 중": [
+        "의자에 바른 자세로 앉은 자세",
+        "소파에 다리 꼬고 앉은 자세"
+      ],
+
+      // ✅ 화장 → 앉은 자세가 일반적
+      "화장을 고치는 중": [
+        "의자에 바른 자세로 앉은 자세"
+      ],
+
+      // ✅ 휴식 → 눕거나 느슨한 자세
+      "휴식을 취하는 중": [
+        "엎드려 누운 자세",
+        "한쪽 다리만 구부린 자세",
+        "소파에 양반다리 앉은 자세"
+      ],
+
+      // ✅ 데스크탑 작업은 무조건 책상 + 의자
+      "데스크탑 작업 중": [
+        "의자에 바른 자세로 앉은 자세"
+      ]
+    };*/
+
+    let persistentAppearance = null; // 복장/외형 저장용 객체
+
+    function getAppearanceState() {
+      return {
+        nationality: document.getElementById("nationality")?.value,
+        body_shape: document.getElementById("body_shape")?.value,
+        face_shape: document.getElementById("face_shape")?.value,
+        hairstyle: document.getElementById("hairstyle")?.value,
+        outfit: document.getElementById("outfit")?.value,
+        age: document.getElementById("age")?.value,
+        camera: document.getElementById("camera")?.value,
+        distance: document.getElementById("distance")?.value,
+        manicure: document.getElementById("manicure")?.value,
+        foot: document.getElementById("foot")?.value,
+        fabric_response: document.getElementById("fabric_response")?.value,
+        rendering: document.getElementById("rendering")?.value,
+      };
+    }
+
+    function applyAppearanceState(state) {
+      if (!state) return;
+
+      const setSafeValue = (id, value) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.value = value;
+        } else {
+          console.warn(`[⚠️ applyAppearanceState] 요소가 존재하지 않음: #${id}`);
+        }
+      };
+
+      setSafeValue("nationality", state.nationality);
+      setSafeValue("body_shape", state.body_shape);
+      setSafeValue("face_shape", state.face_shape);
+      setSafeValue("hairstyle", state.hairstyle);
+      setSafeValue("outfit", state.outfit);
+      setSafeValue("age", state.age);
+      setSafeValue("camera", state.camera);
+      setSafeValue("distance", state.distance);
+      setSafeValue("manicure", state.manicure);
+      setSafeValue("foot", state.foot);
+      setSafeValue("fabric_response", state.fabric_response);
+      setSafeValue("rendering", state.rendering);
+
+    }
+
+    
+    window.addEventListener("DOMContentLoaded", function () {
+      // ✅ 일관성 모드 체크박스 동작
+      document.getElementById("consistencyMode").addEventListener("change", function () {
+        if (this.checked) {
+          persistentAppearance = getAppearanceState();
+        } else {
+          persistentAppearance = null;
+        }
+      });
+
+      // ✅ 외형 요소 변경 시 일관성 모드 자동 해제
+      const watchedFields = [
+        "nationality", "body_shape", "face_shape", "hairstyle", "outfit",
+        "age", "camera", "distance", "manicure", "foot", "fabric_response", "rendering",
+      ];
+
+      watchedFields.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener("change", () => {
+            if (document.getElementById("consistencyMode").checked) {
+              alert("외형 수정을 감지해 일관성 모드를 해제합니다.");
+              document.getElementById("consistencyMode").checked = false;
+              persistentAppearance = null;
+            }
+          });
+        }
+      });
+    });
+
+
+
+    const dicts = {
+      background: background_description,
+      emotion: emotion_translation,
+      /*activity: activity_description,*/
+      pose: pose_description,
+      camera: camera_description,
+      distance: distance_description,
+      manicure: manicure_text,
+      foot: foot_text,
+      lighting: lighting_text,
+      outfit: outfit_text,
+      body_shape: body_shape_description,
+      face_shape: face_shape_description,
+      hairstyle: hairstyle_description,
+      fabric_response: fabric_response,
+      rendering: rendering_translation,
+      nationality: nationality_description
+    };
+
+
+    function fillOptions() {
+      for (const [id, dict] of Object.entries(dicts)) {
+        // object는 제거되었으므로 여기서 건너뛴다
+        if (id === 'object') continue;
+
+        const select = document.getElementById(id);
+        if (!select) continue;
+
+        if (Array.isArray(dict)) {
+          dict.forEach((label) => {
+            const option = document.createElement('option');
+            option.value = label;
+            option.textContent = label;
+            select.appendChild(option);
+          });
+        } else {
+          Object.keys(dict)
+            /*.sort((a, b) => a.localeCompare(b, 'ko'))*/
+            .forEach((label) => {
+              const option = document.createElement('option');
+              option.value = label;
+              option.textContent = label;
+              select.appendChild(option);
+            });
+        }
+      }
+    }
+
+
+
+     function generatePromptActual() {
+      try {
+        const consistencyOn = document.getElementById("consistencyMode")?.checked;
+      if (consistencyOn) {
+        if (persistentAppearance) {
+          // 저장된 외형이 있으면 그걸 그대로 적용
+          applyAppearanceState(persistentAppearance);
+        } else {
+          // 저장된 외형이 없다면 현재 상태를 저장하고 그대로 적용
+          persistentAppearance = getAppearanceState();
+          applyAppearanceState(persistentAppearance);
+        }
+      }
+
+        // 1) 가능한 국적 키 수집
+        const candidates = [];
+        if (document.getElementById("nationality_korean").checked)  candidates.push("한국인");
+        if (document.getElementById("nationality_japanese").checked) candidates.push("일본인");
+        if (document.getElementById("nationality_chinese").checked)  candidates.push("중국인");
+        if (document.getElementById("nationality_western").checked)  candidates.push("서양인");
+
+        // 2) 선택된 게 없으면 기본키, 있으면 랜덤 추출
+        const nationalityKey = candidates.length > 0
+          ? candidates[Math.floor(Math.random() * candidates.length)]
+          : "한국인";
+
+        // ✅ dicts에서 가져오기
+        const nationality = dicts.nationality[nationalityKey];
+
+        const inputIds = [
+          "background", "emotion", /*"activity",*/ "pose", "camera", "distance",
+          "manicure", "foot", "lighting", "outfit",
+          "body_shape", "face_shape", "hairstyle", "age", "fabric_response", "rendering"
+        ];
+
+        const values = {};
+        inputIds.forEach(id => {
+          const el = document.getElementById(id);
+          values[id] = el ? el.value : null;
+        });
+
+        // ▼ 입력값 꺼내기
+        const backgroundValue         = values.background;
+        const emotionValue       = values.emotion;
+        /*const activityValue      = values.activity;*/
+        const poseValue          = values.pose;
+        const cameraValue        = values.camera;
+        const distanceValue      = values.distance;
+        const manicureValue      = values.manicure;
+        const footValue          = values.foot;
+        const lightingValue      = values.lighting;
+        const outfitValue        = values.outfit;
+        const bodyShapeValue     = values.body_shape;
+        const faceShapeValue     = values.face_shape;
+        const hairstyleValue     = values.hairstyle;
+        const ageValue           = values.age;
+        const fabricValue        = values.fabric_response;
+        const renderingValue     = values.rendering;
+
+        const background = dicts.background[values.background]  
+        || "a summer bedroom with a plastic fan oscillating beside a thin floral bedsheet";
+
+        const emotion = dicts.emotion[values.emotion]  
+        || "a calm, neutral expression";
+
+        const pose = dicts.pose[values.pose]  
+        || "sitting cross-legged on the floor";
+
+        const camera = dicts.camera[values.camera]  
+        || "a front-facing perspective";
+
+        const distance = dicts.distance[values.distance]  
+        || "medium full-body shot";
+
+        const manicure = dicts.manicure[values.manicure]  
+        || "hands with no accessories or visible polish";
+
+        const foot = dicts.foot[values.foot]  
+        || "bare feet with no polish or footwear";
+
+        const lighting = dicts.lighting[values.lighting]  
+        || "bright and golden midday light";
+
+        const outfit = dicts.outfit[values.outfit]  
+        || "a fitted sleeveless tee with slim track pants";
+
+        const body_shape = dicts.body_shape[values.body_shape]  
+        || "balanced male body with even proportions between shoulders, waist, and hips";
+
+        const face_shape = dicts.face_shape[values.face_shape]  
+        || "An oval-shaped male face with balanced bone structure, defined cheekbones, a straight nose bridge, calm almond-shaped eyes, and a clean jawline that conveys composure.";
+
+        const hairstyle = dicts.hairstyle[values.hairstyle]  
+        || "short tousled hair with natural volume and soft fringe";
+
+        const age = values.age  
+        || "25";
+
+        const fabric = dicts.fabric_response[values.fabric_response]  
+        || "fabric that follows body movement naturally, with visible texture and soft shadows";
+
+        const rendering = dicts.rendering[values.rendering]  
+        || "8K ultra-realistic rendering with lifelike skin details and photographic depth";
+
+
+
+
+        // 커스텀 명령어
+        const customDetail = document.getElementById("custom_detail").value.trim();
+        const customNote = customDetail ? `This instruction overrides all other rules: ${customDetail}. ` : "";
+
+        // 외형 묘사 파트
+        const appearance_text = `${body_shape}, aged ${age}, ${emotion}, with soft-glow skin randomized between porcelain white and fair beige, ` +
+        `face within conventionally attractive East Asian types, eyes always open, ` +
+        `${face_shape}, ${hairstyle}. His hands have ${manicure}, and his feet are ${foot}.`;
+
+        // upward_focus_note 생성
+        const upward_focus_note = (cameraValue.includes("올려다봄") && ["상반신부터 하반신까지", "길게"].includes(distanceValue)) ?
+        "The camera begins from his feet and slowly rises upward, capturing his legs and torso with immersive vertical framing." : "";
+
+// 프롬프트 생성
+// 사용자 세부사항이 있을 경우 앞부분에 삽입
+const prompt = `
+🎥 Shot using ${camera}, at ${distance} distance – the framing and composition prioritize this perspective.
+
+${customNote} ${background}, featuring a ${nationality} ${appearance_text}, ${pose} indoors.
+
+He is wearing ${outfit}.
+
+His nails ${manicure}. His toenails ${foot}.
+Lighting is ${lighting}.
+
+${upward_focus_note}
+
+Rendered in ${rendering}.
+${fabric}
+
+Avoid all visual defects such as poor anatomy, disfigurement, deformations, low resolution, blurry focus, oversaturation, cropped framing, any kind of text, watermark or signature. Ensure no extra or missing limbs, no fused or unnatural fingers.
+`;
+
+
+
+
+        // 출력
+        document.getElementById("output").value = prompt.trim();
+      } catch (error) {
+        console.error("프롬프트 생성 중 오류 발생:", error);
+        document.getElementById("output").value = "프롬프트 생성 중 오류가 발생했습니다. 콘솔을 확인해주세요.";
+      }
+    }
+
+    // 랜덤 생성 버튼 클릭 시
+    function setRandomValuesActual() {
+      const consistencyOn = document.getElementById("consistencyMode")?.checked;
+      if (consistencyOn) {
+        if (persistentAppearance) {
+          // 저장된 외형이 있으면 그걸 그대로 적용
+          applyAppearanceState(persistentAppearance);
+        } else {
+          // 저장된 외형이 없다면 현재 상태를 저장하고 그대로 적용
+          persistentAppearance = getAppearanceState();
+          applyAppearanceState(persistentAppearance);
+        }
+      }
+
+
+      const randomValue = (map) => {
+        if (Array.isArray(map)) {
+          return map[Math.floor(Math.random() * map.length)];
+        } else {
+          const keys = Object.keys(map);
+          return keys[Math.floor(Math.random() * keys.length)];
+        }
+      };
+
+      // 나머지 항목들 랜덤 값 설정
+      document.getElementById("background").value = randomValue(background_description);
+      document.getElementById("emotion").value = randomValue(emotion_translation);
+      /*document.getElementById("activity").value = randomValue(activity_description);*/
+      document.getElementById("pose").value = randomValue(pose_description);
+      document.getElementById("camera").value = randomValue(camera_description);
+      document.getElementById("distance").value = randomValue(distance_description);
+      document.getElementById("manicure").value = randomValue(manicure_text);
+      document.getElementById("foot").value = randomValue(foot_text);
+      document.getElementById("lighting").value = randomValue(lighting_text);
+      document.getElementById("outfit").value = randomValue(outfit_text);
+      document.getElementById("body_shape").value = randomValue(body_shape_description);
+      document.getElementById("face_shape").value = randomValue(face_shape_description);
+      document.getElementById("hairstyle").value = randomValue(hairstyle_description);
+      document.getElementById("age").value = Math.floor(Math.random() * 18) + 23;
+      document.getElementById("fabric_response").value = randomValue(fabric_response);
+      document.getElementById("rendering").value      = randomValue(rendering_translation);
+
+      // 프롬프트 자동 생성
+      generatePromptActual();
+    }
+
+
+
+    function isCameraDistanceCompatible(camera, distance) {
+      // 초근접일 때 'up' 계열 구도는 허용하지 않음
+      if (distance === "초근접" && camera.toLowerCase().includes("up")) return false;
+      return true;
+    }
+
+
+   function setRandomValuesActualSafe() {
+      const consistencyOn = document.getElementById("consistencyMode")?.checked;
+
+      // ✅ 1. 외형 관련만 일관성 유지
+      if (consistencyOn) {
+        if (!persistentAppearance) {
+          persistentAppearance = getAppearanceState();
+        }
+
+        // 외형 관련 필드만 수동 적용 (❗ 랜덤 필드는 건드리지 않음)
+        const fixedFields = ["nationality", "body_shape", "face_shape", "hairstyle", "outfit", "age", "camera", "distance", "manicure", "foot"];
+        fixedFields.forEach(id => {
+          const el = document.getElementById(id);
+          if (el && persistentAppearance[id] !== undefined) {
+            el.value = persistentAppearance[id];
+          }
+        });
+      }
+
+      const randomKey = (obj) => Object.keys(obj)[Math.floor(Math.random() * Object.keys(obj).length)];
+      const randomFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+      // ✅ 2. 감정 설정
+      setValue("emotion", randomKey(dicts.emotion));
+
+      /*// ✅ 3. 활동-포즈 충돌 회피
+      let activity, pose;
+      while (true) {
+        activity = randomKey(dicts.activity);
+        const possiblePoses = activity_pose_compatibility[activity];
+        if (possiblePoses?.length > 0) {
+          pose = possiblePoses[Math.floor(Math.random() * possiblePoses.length)];
+          break;
+        }
+      }
+      setValue("activity", activity);
+      setValue("pose", pose);*/
+
+      // ✅ 4. 카메라-거리 충돌 회피 (일관성 OFF일 때만 랜덤)
+      if (!consistencyOn) {
+        let camera, distance;
+        const cameraOptions = Object.keys(dicts.camera);
+        const distanceOptions = Object.keys(dicts.distance);
+        while (true) {
+          camera = cameraOptions[Math.floor(Math.random() * cameraOptions.length)];
+          distance = distanceOptions[Math.floor(Math.random() * distanceOptions.length)];
+          if (isCameraDistanceCompatible(camera, distance)) break;
+        }
+        setValue("camera", camera);
+        setValue("distance", distance);
+      }
+
+      // ✅ 5. 랜덤 대상만 랜덤 설정
+      const randomItems = [
+        ["background", dicts.background],
+        ["lighting", dicts.lighting],
+        ["fabric_response", dicts.fabric_response],
+        ["rendering", dicts.rendering]
+      ];
+      randomItems.forEach(([id, source]) => {
+        const value = Array.isArray(source) ? randomFromArray(source) : randomKey(source);
+        setValue(id, value);
+      });
+
+      if (!consistencyOn) {
+        // 외형도 랜덤 적용
+        const appearanceItems = [
+          ["manicure", dicts.manicure],
+          ["foot", dicts.foot],
+          ["outfit", dicts.outfit],
+          ["pose", dicts.pose],
+          ["body_shape", dicts.body_shape],
+          ["face_shape", dicts.face_shape],
+          ["hairstyle", dicts.hairstyle],
+        ];
+        appearanceItems.forEach(([id, source]) => {
+          const value = Array.isArray(source) ? randomFromArray(source) : randomKey(source);
+          setValue(id, value);
+        });
+
+        const minAge = 23;
+        const maxAge = 50;
+        setValue("age", Math.floor(Math.random() * (maxAge - minAge + 1)) + minAge);
+      }
+
+      // ✅ 6. 프롬프트 생성
+      generatePromptActual();
+
+      // ✅ 내부 헬퍼
+      function setValue(id, value) {
+        const el = document.getElementById(id);
+        if (el) el.value = value;
+      }
+    }
+
+
+
+
+    // 리셋 버튼 클릭 시 실행되는 함수
+    function resetPrompt() {
+      const resetValue = (id, defaultValue = "") => {
+        const el = document.getElementById(id);
+        if (el) el.value = defaultValue;
+      };
+
+      // 출력창 비우기
+      resetValue("output");
+
+      // 입력값들 초기화
+      resetValue("emotion");
+      resetValue("age", 25);
+      resetValue("activity");
+      resetValue("pose");
+      resetValue("camera");
+      resetValue("distance");
+      resetValue("manicure", "없음");
+      resetValue("foot", "없음");
+      resetValue("lighting");
+      resetValue("outfit");
+      resetValue("body_shape");
+      resetValue("face_shape");
+      resetValue("hairstyle");
+      resetValue("fabric_response");
+      resetValue("rendering");
+      resetValue("custom_detail");
+
+      // 체크박스도 초기화하고 싶다면 아래 추가
+      const nationalityCheckboxes = [
+        "nationality_korean",
+        "nationality_japanese",
+        "nationality_chinese",
+        "nationality_western"
+      ];
+      nationalityCheckboxes.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.checked = false;
+      });
+    }
+
+    // 리셋 버튼 이벤트 연결
+    document.getElementById("resetButton").addEventListener("click", function (e) {
+      e.preventDefault();
+      resetPrompt();
+    });
+
+
+    function copyToClipboard() {
+      const output = document.getElementById("output").value;
+
+      if (!output.trim()) {
+        alert("복사할 프롬프트가 없습니다. 먼저 프롬프트를 생성해주세요.");
+        return;
+      }
+
+      // Clipboard API를 사용하여 텍스트 복사
+      navigator.clipboard.writeText(output)
+        .then(() => {
+          alert("프롬프트가 복사되었습니다!");
+        })
+        .catch(err => {
+          console.error('복사 실패:', err);
+          alert("복사에 실패했습니다.");
+        });
+    }
+
+
+    // DOM이 로드된 후 실행
+    document.addEventListener('DOMContentLoaded', () => {
+      // 옵션 채우기
+      fillOptions();
+
+      // 버튼 이벤트 안전하게 추가
+      const addClick = (id, fn) => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener("click", (e) => {
+          e.preventDefault();
+          fn();
+        });
+      };
+
+      addClick("generatePromptButton", generatePromptActual);
+      addClick("randomButton", setRandomValuesActualSafe);
+      addClick("copyButton", copyToClipboard);
+      addClick("resetButton", resetPrompt);
+
+      // 초기 자동 랜덤 프롬프트
+      setTimeout(setRandomValuesActualSafe, 100);
+    });
+
+
+  </script>
+</body>
+</html>
