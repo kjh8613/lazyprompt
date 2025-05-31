@@ -872,57 +872,64 @@
     };
 
     const camera_description = {
-      "발끝에서 시작해 위로":
-        "A micro-drone begins just above the floor near the toes, then ascends naturally along the legs to the face. The body unfolds with strong vertical perspective, but the subject appears unaware of the camera.",
+    "초광각 렌즈 (과장)":
+      "An ultra wide-angle lens captures expansive spatial context with dramatic perspective distortion. Ideal for emphasizing height, depth, or enclosing tight spaces. It stretches foreground objects while maintaining overall sharpness, making limbs or facial features appear elongated when close to the lens.",
 
-      "발등에서 시작해 무릎까지":
-        "The drone floats close to the top of the foot and rises gently to the knees. Lower leg shapes are captured with cinematic foreshortening, maintaining a candid and relaxed posture.",
+    "표준 단렌즈 (자연)":
+      "This classic focal length mimics the human eye's natural field of view, creating balanced and neutral compositions. It offers sharp subject separation with natural-looking proportions, making it ideal for portraits, half-body shots, or cinematic dialogues without visual exaggeration.",
 
-      "발꿈치에서 허벅지까지":
-        "Starting from behind the heel, the drone glides smoothly upward toward the thighs. The leg line is visually stretched for depth without drawing attention to the camera’s presence.",
+    "망원 렌즈 (압축)":
+      "A telephoto lens compresses space and flatters facial features by minimizing distortion. Its shallow depth of field isolates the subject from the background, ideal for intimate portraits, close-ups of hands or accessories, and emotionally focused scenes.",
 
-      "손끝에서 시작해 어깨까지":
-        "The shot flows upward from the fingertips to the shoulder, emphasizing arm length and natural curvature. The drone remains unobtrusive, maintaining a spontaneous feel.",
+    "매크로 렌즈 (접사)":
+      "Specialized for extreme close-ups, a macro lens reveals fine textures—skin pores, jewelry engravings, or fabric detail. It excels in capturing small objects with high fidelity and shallow depth, ideal for showcasing accessories or gestures in high detail.",
 
-      "손목에서 턱선까지":
-        "Beginning near the wrist, the drone rises toward the jawline in a soft arc. Gestures and elegance are amplified through perspective, without disrupting realism.",
+    "틸트-시프트 렌즈 (왜곡)":
+      "Used for selective focus and architectural correction, a tilt-shift lens can make scenes appear miniature or perfectly aligned. In portraiture, it can isolate specific body parts like the eyes or fingers while keeping surrounding areas subtly blurred or skewed for dreamlike effects.",
 
-      "턱선에서 쇄골까지":
-        "The shot moves downward from the chin to the collarbone, highlighting the contours of the neck and shoulders. The transition feels intimate but organic.",
+    "어안 렌즈 (왜곡)":
+      "With a near-180° field of view, a fisheye lens warps reality into spherical distortion. While unconventional for traditional portraiture, it’s useful for experimental, surreal, or playful shots where limbs, faces, or poses appear exaggerated and warped into a stylized frame.",
 
-      "눈썹에서 입술까지":
-        "The drone descends slowly from the eyebrows to the lips, focusing on facial rhythm and depth. The expression remains natural, with no sense of being observed.",
+    "소프트 포커스 렌즈 (몽환)":
+      "This lens diffuses light gently, creating a glowing, vintage-style softness over the subject. It’s often used for ethereal close-ups or skin-smoothing aesthetics, especially when portraying delicate emotion, femininity, or nostalgic themes.",
 
-      "뒤통수에서 척추까지":
-        "Aerial movement begins at the back of the head and flows down the spine, tracing symmetry and natural form. The body’s alignment is enhanced with visual compression.",
+    "아나모픽 렌즈 (시네마)":
+      "Anamorphic lenses compress horizontal space and expand it in post, yielding cinematic widescreen visuals with distinct lens flares and oval bokeh. Perfect for dramatic full-body shots or expressive narrative sequences with emotional gravity and professional polish.",
 
-      "허리에서 가슴까지":
-        "The composition rises smoothly from the waist to the chest, drawing attention to balance and posture. The framing exaggerates depth without forcing awareness.",
+    "줌 렌즈 (유연)":
+      "A flexible zoom lens offers both wide and medium focal lengths with fast aperture. It’s perfect for dynamic scenes that require reframing on the fly—capturing everything from full-body to bust shots without changing lenses.",
 
-      "무릎에서 복부까지":
-        "This view starts at knee height and travels upward toward the abdomen. Depth builds through vertical flow, while the subject remains relaxed and unaware.",
+    "적외선 카메라 (열감)":
+      "Designed to capture light beyond the visible spectrum, infrared cameras reveal skin heat, blood flow, or surreal lighting effects. Often used for artistic or sci-fi aesthetics where the human figure is transformed into abstract thermal patterns.",
 
-      "어깨에서 손끝까지 내려감":
-        "From the shoulder down to the fingers, the drone moves with gentle gravity, emphasizing gesture and line. The perspective remains immersive yet unposed.",
+    "깊이 센서 카메라 (입체)":
+      "Used in depth mapping, this camera captures spatial geometry to simulate 3D. It is ideal for rendering virtual depth-of-field effects, tracking body movement, or composing shots with artificial focus layers for post-edit manipulation.",
 
-      "엉덩이에서 어깨까지 올라감":
-        "A soft vertical motion from the hips to the shoulders builds an impression of height and elegance. The camera floats as if unnoticed by the subject.",
+    "360도 VR 카메라 (몰입)":
+      "This camera records all directions simultaneously, ideal for immersive storytelling or spatial observation. When used for fashion, movement, or performance, it enables the viewer to explore posture, outfit, and setting from multiple angles.",
 
-      "머리 위에서 발끝까지 전체 조망":
-        "The drone hovers directly above and descends toward the feet, capturing the body’s full length with architectural clarity. The subject is unaware of the observation.",
+    "고속 촬영 카메라 (슬로우)":
+      "Capable of shooting at thousands of frames per second, this camera captures subtle movements like blinking, hair sways, or muscle tension in slow motion. Excellent for poetic realism or emotional micro-expression analysis.",
 
-      "뒤에서 발끝에서 시작해 뒤통수까지":
-        "A rising shot from behind the heels to the head follows the spine naturally. The drone’s presence is subtle, allowing the body to appear as a unified form.",
+    "짐벌 카메라 (안정)":
+      "A gimbal-stabilized camera ensures smooth, shake-free footage while moving. Perfect for tracking shots that follow a subject fluidly through space, especially in dynamic or emotionally immersive environments.",
 
-      "복부에서 얼굴까지":
-        "From the front waistline, the drone lifts to the face with soft transition. The viewpoint highlights vertical continuity without disrupting the subject’s natural expression.",
+    "HDR 카메라 (대비)":
+      "HDR cameras capture scenes with a high contrast ratio between shadows and highlights. This allows for detailed expression in challenging lighting environments, such as backlighting or golden hour portraits, preserving both skin texture and atmosphere.",
 
-      "가슴에서 눈까지 올라가는 시점":
-        "Rising gently from the chest to the eyes, this shot dramatizes the face with proportional focus. The drone remains unintrusive, making the gaze feel authentic and magnified.",
+    "모노크롬 카메라 (흑백)":
+      "Designed to shoot only in black and white, monochrome cameras offer higher contrast and detail resolution by removing color filters. They're ideal for emotional, timeless, or documentary-style portraiture that emphasizes form and light.",
 
-      "손가락에서 액세서리까지":
-        "The drone floats near the fingers and zooms into accessories like rings or bracelets. The detail is enlarged by lens compression, but the scene remains candid and focused."
-    };
+    "스테레오 카메라 (3D)":
+      "Stereo cameras use two lenses to capture depth and simulate 3D vision. They’re used for immersive visuals in VR or AR, and for stylized portrayals of physical presence and body movement in dimensional space.",
+
+    "바디캠 (주관)":
+      "A wearable camera attached to the subject’s body offers raw, subjective footage that captures natural posture, gesture, and interaction. Ideal for documentary-style shots, first-person storytelling, or dynamic movement tracking.",
+
+    "타임랩스 카메라 (시간)":
+      "Timelapse cameras shoot at long intervals to compress time. Useful for showing subtle changes in expression, body shifts, or ambient light evolution over extended periods. Best suited for artistic or reflective storytelling sequences."
+  };
+
 
 
 
