@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WT30TDCBJ0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-WT30TDCBJ0');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6793290562583440"
+    crossorigin="anonymous"
+  ></script>
+
+  <!-- SEO 키워드 -->
+  <meta name="keywords" content="4컷 만화 생성기, AI 만화 프롬프트, 웹툰 아이디어 생성기, 코믹 스트립 프롬프트, 만화 스토리 생성, AI 그림 프롬프트, 무료 만화 도구, ChatGPT 만화, Midjourney 만화, DALL-E 만화, 만화 캐릭터 생성, 4컷 개그, 만화 시나리오, AI 콘텐츠 생성, 만화 프롬프트 디자이너, 프롬프트 공유, 인공지능 만화, 코믹 프롬프트 툴, 4-koma manga prompt, comic strip ideas" />
+
+  <!-- favicon -->
+  <link rel="icon" href="media/favicon.ico?v=2" type="image/x-icon">
+
+  <!-- 기본 메타 -->
+  <title>AI 4컷 만화 아이디어 & 프롬프트 생성기</title>
+  <meta name="description" content="클릭 몇 번으로 독창적인 4컷 만화 아이디어와 AI 이미지 생성 프롬프트를 만들어보세요! ChatGPT, Midjourney, DALL·E 등에서 즉시 사용 가능합니다." />
+  <meta name="author" content="ComicPromptLab" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI 4컷 만화 아이디어 & 프롬프트 생성기" />
+  <meta property="og:description" content="캐릭터, 장르, 그림체, 개그 포인트를 선택하여 재미있는 4컷 만화 스토리를 자동으로 생성하고, AI 이미지 프롬프트까지 한 번에!" />
+  <meta property="og:image" content="media/4koma_og_image.png" /> <!-- 4컷 만화 관련 OG 이미지로 교체 필요 -->
+  <meta property="og:url" content="https://YOUR_SITE_URL/4koma_generator.html" /> <!-- 실제 URL로 교체 필요 -->
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter 카드 -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI 4컷 만화 아이디어 & 프롬프트 생성기" />
+  <meta name="twitter:description" content="쉽고 빠르게 나만의 4컷 만화 아이디어를 얻고, AI 이미지 생성을 위한 프롬프트도 받아보세요." />
+  <meta name="twitter:image" content="media/4koma_twitter_image.png" /> <!-- 4컷 만화 관련 트위터 이미지로 교체 필요 -->
+
+  <style>
+    /* 화면 가운뎃점 정렬용 컨테이너 */
+    .header-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;  /* 세로 중앙 */
+      align-items: center;      /* 가로 중앙 */
+      height: 50vh;            /* 화면 전체 높이 */
+      width: 90%;               /* 뷰포트 대비 90% 너비 */
+      max-width: 500px;         /* 최대 500px 너비 */
+      margin: 0 auto;           /* 수평 중앙 정렬 */
+      padding: 0 1rem;          /* 좌우 여유 공간 */
+      text-align: center;
+    }
+
+
+    /* 메인 타이틀 */
+    .header-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      background: linear-gradient(90deg, #ff7e5f, #feb47b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 0.05em;
+      margin: 0;
+    }
+
+    /* 서브 타이틀 */
+    .header-subtitle {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #666;
+      margin-top: 0.5rem;
+      line-height: 1.4;
+      white-space: pre-line;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f9fb;
+      margin: 0;
+      padding: 0.5rem;
+      font-size: 0.85rem;
+      line-height: 1.35;
+      color: #222;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-box,
+    .output-box,
+    .ad-fixed-box {
+      background: #ffffff;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      max-width: 700px;
+      margin: auto;
+      box-sizing: border-box;
+    }
+
+    .output-box {
+      width: 100%;
+      min-height: 400px; /* 높이 추가 */
+    }
+
+    .ad-fixed-box {
+      height: 600px;
+      text-align: center;
+    }
+
+    .ad-fixed-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0.4rem;
+    }
+
+    .ad-fixed-box div {
+      margin-top: 0.3rem;
+      font-size: 0.85rem;
+      color: #444;
+    }
+
+    @media (max-width: 720px) {
+      .form-box, .output-box, .ad-fixed-box {
+        width: 100% !important;
+      }
+
+      .ad-fixed-box {
+        height: auto;
+      }
+
+      .ad-fixed-box img {
+        height: auto;
+        object-fit: contain;
+      }
+
+      textarea {
+        height: 280px;
+      }
+    }
+
+    label {
+      margin: 0.3rem 0 0.15rem;
+      font-weight: 500;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      color: #111;
+    }
+
+    select,
+    input[type="number"],
+    input[type="text"] {
+      width: 100%;
+      padding: 0.3rem 0.5rem;
+      margin-bottom: 0.3rem;
+      font-size: 0.8rem;
+      max-width: 170px;
+      border: 1px solid #ccc;
+      border-radius: 0.35rem;
+      background: #fff;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 0.45rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      width: 100%;
+      background-color: #111;
+      color: white;
+      border: 1px solid transparent;
+      border-radius: 0.4rem;
+      cursor: pointer;
+      margin-top: 0.4rem;
+      transition: all 0.2s ease-in-out;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    button:hover {
+      background-color: #333;
+    }
+
+    button:active {
+      transform: scale(0.97);
+      background-color: #000;
+    }
+
+    textarea {
+      width: 100%;
+      height: 360px; /* .output-box 높이에 맞춰 적당한 여유를 둔 높이 */
+      padding: 0.5rem;
+      border-radius: 0.4rem;
+      border: 1px solid #ccc;
+      font-size: 0.8rem;
+      line-height: 1.35;
+      resize: vertical;
+      background: #fbfbfb;
+      color: #222;
+      box-sizing: border-box;
+    }
+
+
+    .checkbox-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .checkbox-container label {
+      display: flex;
+      align-items: center;
+      font-weight: normal;
+      font-size: 0.8rem;
+      margin: 0;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      margin-right: 0.4rem;
+    }
+
+    .info-text {
+      font-size: 0.75rem;
+      color: #666;
+      margin-top: 0.8rem;
+      line-height: 1.35;
+      text-align: left;
+    }
+
+    /* ── 네비게이션 버튼 ── */
+    /* ── 인덱스용 내비게이션 스타일 덮어씌우기 ── */
+    /* ── 네비게이션 버튼 ── */
+    /* ✅ 버튼 컨테이너 스타일 */
+    .main-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+      margin: 2rem auto;
+      max-width: 720px;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+
+    /* ✅ 기본 버튼 스타일 */
+    .nav-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      background: #333;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 0.4rem;
+      white-space: nowrap;
+      transition: background 0.2s;
+      text-align: center;
+      font-size: 1rem;
+      box-sizing: border-box;
+      min-width: 140px;
+      flex: 1 1 calc(33.333% - 1rem); /* 데스크탑 3열 기준 */
+    }
+
+    /* ✅ 이미지 아이콘 (Threads 등) */
+    .nav-button img {
+      width: 20px;
+      height: 20px;
+      margin-right: 0.5rem;
+    }
+
+    /* ✅ Hover 효과 */
+    .nav-button:hover {
+      background: #555;
+    }
+
+    /* ✅ 모바일 대응 */
+    @media (max-width: 720px) {
+      .nav-button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+        flex: 1 1 calc(50% - 0.75rem); /* 모바일에서는 2열 배치 */
+      }
+    }
+
+    
+    
+  </style>
+</head>
+<body>
+  <!-- 타이틀 및 설명 -->
+  <div class="header-container">
+    
+    <h1 class="header-title">
+      Lazyprompt<br/>
+      레이지프롬프트
+    </h1>
+
+    <h2 class="header-subtitle">
+      🖼️📹 이미지·동영상 프롬프트 생성기<br/>
+      무료 8K 시네마틱 미디어 텍스트 툴
+    </h2>
+  </div>
+
+  <div class="container">  
+    <div class="form-box">
+      <nav class="main-nav">
+        <!-- 홈 -->
+        <a href="index.html" class="nav-button">
+          🏠 Home
+        </a>
+      
+        <!-- 이미지 생성기 여자 -->
+        <a href="image_prompt.html" class="nav-button">
+          🖼 이미지 생성기(👩‍🦰)
+        </a>
+
+        <!-- 이미지 생성기 여자 -->
+        <a href="image_prompt_man.html" class="nav-button">
+          🖼 이미지 생성기(👨‍🦱)
+        </a>
+
+      
+        <!-- 동영상 생성기 -->
+        <a href="video_prompt.html" class="nav-button">
+          🎬 동영상 생성기(👩‍🦰)
+        </a>
+
+        <!-- 동영상 생성기 -->
+        <a href="video_prompt_man.html" class="nav-button">
+          🎬 동영상 생성기(👨‍🦱)
+        </a>
+
+        <!-- 블로그 생성기 -->
+        <a href="blog_prompt.html" class="nav-button">
+          📝 블로그 생성기
+        </a>  
+
+        <!-- 4컷 만화 생성기-->
+        <a href="4cut.html" class="nav-button">
+          📝 4컷만화 생성기
+        </a>  
+      
+        <!-- Threads 이동 (아이콘 + 텍스트) -->
+        <a href="https://www.threads.net/@not_all_said" target="_blank" class="nav-button">
+          <img src="media/threads.png" alt="Threads 아이콘" />
+          Threads
+        </a>
+      </nav>
+
+      <h2>✨ 나만의 4컷 만화 만들기 ✨</h2>
+      <p style="color: #4a5568; font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.5rem;">
+        아래 항목들을 선택하거나 입력하고 '생성!' 버튼을 누르면, 재미있는 <strong>4컷 만화 아이디어</strong>와 함께 AI 이미지 생성 도구(Midjourney, DALL·E 등)에서 사용할 수 있는 <strong>상세 프롬프트</strong>가 만들어집니다. <br/>모든 항목은 <strong>'랜덤 생성'</strong>으로도 채울 수 있어요!
+      </p>
+
+      <!-- 구분선 추가 -->
+      <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 1.5rem auto; max-width: 100%;" />
+
+
+      <!-- 예시 이미지 추가 -->
+      <div style="text-align: center; margin: 1.5rem 0;">
+        <img
+          src="media/4cut.png"
+          alt="실제 생성된 이미지 프롬프트 예시"
+          width="100%"
+          style="border-radius: 0.5rem; box-shadow: 0 0 10px rgba(0,0,0,0.05); max-width: 100%;"
+        />
+        <div style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
+          ▲ 실제 생성된 이미지 프롬프트 예시
+        </div>
+      </div>
+
+
+      <!-- 🎨 1. 만화 기본 설정 -->
+      <h3 class="section-title">🎨 1. 만화 기본 설정</h3>
+
+      <label for="custom_idea">✨ 만화 주제/핵심 아이디어 (선택 입력):</label>
+      <input type="text" id="custom_idea" placeholder="예: 늦잠 잔 고양이와 아침 식사 대소동 (비워두면 랜덤 주제)" style="max-width: 100%; margin-bottom: 0.8rem;" />
+
+      <label for="comic_genre">📚 만화 장르:</label>
+      <select id="comic_genre" style="margin-bottom: 0.8rem; max-width: 100%;"></select>
+
+      <label for="comic_art_style">🖌️ 만화 그림체 스타일:</label>
+      <select id="comic_art_style" style="margin-bottom: 0.8rem; max-width: 100%;"></select>
+
+      <h3 class="section-title">💬 대사 스타일 설정</h3>
+      <label for="dialogue_preference">🗣️ 대사 포함 여부:</label>
+      <select id="dialogue_preference" style="margin-bottom: 0.8rem; max-width: 100%;"></select>
+
+      <!-- 🙋‍♂️ 2. 주인공 설정 -->
+      <h3 class="section-title">🙋‍♂️ 2. 주인공 설정</h3>
+
+      <div class="checkbox-container" style="margin-bottom: 1rem;">
+        <label for="consistencyMode">
+          <input type="checkbox" id="consistencyMode" style="margin-right: 0.5em;" checked>
+          <strong style="color: #285fc3;">주인공 특징 고정 (권장)</strong><br/>
+          컷마다 주인공의 외형/성격이 일관되게 유지됩니다.<br/>
+          <span style="font-size: 0.85em; color: #666;">(해제 시 매 컷 새로운 느낌의 캐릭터 가능)</span>
+        </label>
+      </div>
+
+      <label for="character_type">👤 주인공 타입:</label>
+      <select id="character_type" style="margin-bottom: 0.8rem; max-width: 100%;"></select>
+
+      <label for="character_keywords">✏️ 주인공 특징 (1~3개 키워드, 선택 입력):</label>
+      <input type="text" id="character_keywords" placeholder="예: 안경, 덜렁이, 먹보 (비워두면 랜덤 특징)" style="max-width: 100%; margin-bottom: 0.8rem;" />
+
+      <!-- 📖 3. 스토리 구성 -->
+      <h3 class="section-title">📖 3. 스토리 구성</h3>
+
+      <label for="story_structure">📜 4컷 전개 방식:</label>
+      <select id="story_structure" style="margin-bottom: 0.8rem; max-width: 100%;"></select>
+
+      <label for="main_gag_point">😂 만화의 개그/핵심 포인트:</label>
+      <select id="main_gag_point" style="margin-bottom: 0.8rem; max-width: 100%;"></select>
+
+      <label for="main_background_setting">🏞️ 주요 배경 장소 (선택):</label>
+      <select id="main_background_setting" style="margin-bottom: 0.8rem; max-width: 100%;"></select>
+
+      <!-- 버튼 영역 -->
+      <button id="generateComicButton">🎯 4컷 만화 생성!</button>
+      <button id="randomAllButton" style="background-color: #38a169;">🎲 전체 랜덤 생성</button>
+      <button id="copyResultButton" style="background-color: #667eea;">📋 결과 복사</button>
+      <button id="resetInputsButton" style="background-color: #e53e3e;">🔄 입력 초기화</button>
+
+      
+      <tenping class="adsbytenping" style="width:100%;max-width:768px;margin:0px auto;display:block;" tenping-ad-display-type="1LawCE8FqKOhetXZhMopsQ%3d%3d" tenping-ad-client="AmJcobl3EWVsHfAz4Y7TfV%2bba2jTUc%2f%2ff8EPvW4YWtYYGp1BkicHPnDIecX1wjsR"></tenping>
+      <script async src="//ads.tenping.kr/scripts/adsbytenping.min.js"></script>
+
+
+      <!-- 프롬프트 출력창 -->
+      <div class="output-box" style="margin-top: 1.5rem;">
+        <h2>생성된 4컷 만화 아이디어 & 프롬프트</h2>
+        <textarea id="output"></textarea>
+      </div>
+
+      <!-- Info Text -->
+      <div class="info-text">
+        <p><strong>💡 이렇게 활용해 보세요!</strong></p>
+        <p>| * 만약 대사가 중요하고 글자 깨짐이 심하다면, 프롬프트에서 '한글 대사 포함' 규칙을 제거하고 그림만 생성한 후, 별도로 대사를 추가하는 것을 권장합니다.</p>
+        <p>| *'만화 주제/핵심 아이디어'를 구체적으로 입력하면 더욱 원하는 방향의 만화를 만들 수 있습니다.</p>
+        <p>| *'전체 랜덤 생성' 버튼으로 예상치 못한 재미있는 아이디어를 발견해 보세요.</p>
+        <p>| *생성된 아이디어와 프롬프트를 바탕으로 Midjourney, DALL·E, Stable Diffusion 등에서 멋진 4컷 만화를 직접 그려보세요!</p>
+        <p>| *캐릭터 특징을 고정하면 모든 컷에서 동일한 캐릭터가 등장합니다.</p>
+        <p>| *이미지 생성 AI에 따라 프롬프트의 효과는 다를 수 있습니다. 필요시 프롬프트를 수정하여 사용하세요.</p>
+        <p>| *AI가 생성하는 이미지의 한글 대사는 완벽하지 않을 수 있습니다. 글자가 깨지거나 어색하게 나올 경우, 이미지 편집 도구를 사용하여 직접 수정하시거나, 대사 없이 그림만 참고하여 활용해 보세요.</p>
+        <p>| *때로는 동일한 프롬프트로 여러 번 생성하면 더 나은 결과를 얻을 수도 있습니다.</p>
+    
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --------------------------------------------------------------------------------
+    // 💬 4컷 만화 옵션 데이터
+    // --------------------------------------------------------------------------------
+    const comic_options_data = {
+      comic_genre: {
+        "일상 코믹": "everyday life comedy, slice of life humor",
+        "학원 개그": "school life gag, funny student interactions",
+        "판타지 유머": "fantasy world humor, comical magical elements",
+        "직장인 시트콤": "office life sitcom, relatable work humor",
+        "동물 만화 (의인화)": "anthropomorphic animal comic, cute and funny animal antics",
+        "SF 블랙코미디": "sci-fi black comedy, futuristic satire",
+        "병맛 개그": "absurdist humor, nonsensical and over-the-top gags",
+        "따뜻한 힐링 코믹": "heartwarming comedy, gentle and uplifting humor",
+        "은근한 암시 코믹 (일본식)": "Japanese style subtle suggestive humor, slice-of-life with romantic or mildly risqué undertones", 
+        "랜덤 장르": "random genre" // 특수 값
+      },
+      comic_art_style: {
+        "심플 카툰체": "simple cartoon style, clean lines, flat colors",
+        "명랑만화체 (80-90년대)": "classic manga style, expressive faces, dynamic poses, screentones",
+        "모던 웹툰 스타일": "modern webtoon style, digital painting, vibrant colors, gradient shading",
+        "SD 캐릭터 스타일": "chibi (super deformed) style, cute oversized heads, small bodies",
+        "흑백 스케치 스타일": "monochrome sketch style, rough lines, artistic feel",
+        "미국 코믹북 스타일": "American comic book style, bold outlines, dynamic action, Ben Day dots effect",
+        "픽셀 아트 스타일": "pixel art style, retro game aesthetic",
+        "아동용 그림책 스타일": "children's book illustration style, soft and colorful",
+        "일본식 감성 일러스트체 (은은한 암시)": "Japanese illustration style with a soft, emotional touch, often seen in light novels or slice-of-life manga with subtle adult themes. Features delicate character designs, expressive eyes, soft shading, and atmospheric lighting. Not overly explicit, but can imply romantic or mildly risqué situations through body language and composition. May incorporate subtle ecchi aesthetics if contextually appropriate.",
+        "80-90년대 일본 레트로 만화체": "retro Japanese manga style from the 1980s-1990s, featuring large expressive eyes, distinct hairstyles of the era, frequent use of screentones for shading and texture, dynamic paneling, and a nostalgic feel. Think classic shonen or shojo manga from that period.",
+        "랜덤 그림체": "random art style" // 특수 값
+      },
+
+       dialogue_preference: {
+        "한글 대사 포함 (AI 시도)": "Attempt to include Korean dialogue in speech bubbles.",
+        "대사 없음 (그림만 생성)": "No dialogue or speech bubbles; focus on visual storytelling only."
+        // 필요시 "영문 대사 포함" 등도 추가 가능
+      },
+
+
+      character_type: {
+        "평범한 학생": "an ordinary student",
+        "소심한 직장인": "a timid office worker",
+        "게으른 고양이": "a lazy cat",
+        "의욕 넘치는 강아지": "an overly enthusiastic dog",
+        "어설픈 마법사": "a clumsy wizard",
+        "고장난 로봇": "a malfunctioning robot",
+        "동네 백수 형": "a neighborhood slacker",
+        "허당 외계인": "a clueless alien",
+        "꿈 많은 소녀": "a dreamy young girl",
+        "무뚝뚝한 할아버지": "a gruff grandfather",
+        // "은근한 성인 만화"에 어울리는 캐릭터 유형 추가
+        "약간 허술한 미녀 회사원": "a slightly clumsy but attractive office lady",
+        "친절한 옆집 누나/형": "a kind and attractive older neighbor (female or male)",
+        "순진한 연하남/연상녀 커플": "an innocent younger man with an older woman (or vice versa) in a relationship",
+        "매력적인 아르바이트생": "a charming part-time worker (e.g., at a cafe, convenience store)",
+        "비밀스러운 동아리 선배": "a mysterious and alluring senior student in a club",
+        "살짝 어른스러운 여고생/남고생": "a high school student who seems a bit more mature or worldly",
+        "고독을 즐기는 매혹적인 예술가": "an alluring artist who enjoys solitude",
+        "신혼의 달콤함을 즐기는 부부": "a newlywed couple enjoying their sweet life",
+        "랜덤 주인공": "random character" // 특수 값
+      },
+      story_structure: {
+        "기-승-전-결 (일반적)": "Classic four-act structure (Ki-Sho-Ten-Ketsu)",
+        "상황 제시 - 예상 - 반전 - 결과": "Setup - Anticipation - Twist - Resolution",
+        "문제 발생 - 해결 시도 - 실패/악화 - 황당한 결말": "Problem - Attempted Solution - Worsening Situation - Absurd Ending",
+        "일상의 한 단면 - 작은 사건 - 리액션 - 마무리": "Slice of Life - Minor Incident - Reaction - Conclusion",
+        "점층적 과장 (갈수록 심해짐)": "Gradual Escalation (situation gets increasingly absurd)",
+        "예상치 못한 만남/사건 - 혼란 - 적응/해결 - 새로운 일상": "Unexpected Encounter - Chaos - Adaptation/Resolution - New Normal",
+        "랜덤 전개": "random structure" // 특수 값
+      },
+      main_gag_point: {
+        "어이없는 실수/해프닝": "an absurd mistake or happening",
+        "기막힌 오해와 착각": "a hilarious misunderstanding",
+        "과장된 리액션/표정": "exaggerated reactions and facial expressions",
+        "예상치 못한 행운/불운": "unexpected luck or misfortune",
+        "말장난/언어유희 (아재개그 포함)": "puns or wordplay (dad jokes)",
+        "슬랩스틱 코미디": "slapstick comedy, physical humor",
+        "상황의 아이러니/풍자": "situational irony or satire",
+        "허무 개그/뜬금포": "anti-humor or non-sequitur gag",
+        "귀여움으로 웃기기": "humor derived from cuteness or innocence",
+        // "은근한 성인 개그" 관련 개그 포인트 추가
+        "은근한 상황 코미디 (성인 유머 암시)": "subtle situational comedy with adult humor undertones or innuendo",
+        "미묘한 대사/행동으로 인한 착각 유발": "misunderstandings caused by subtly suggestive dialogue or actions",
+        "아슬아슬한 경계선의 코믹한 긴장감": "comedic tension from situations bordering on risqué but never crossing the line explicitly",
+        "캐릭터 간의 은밀한 눈빛/몸짓 개그": "humor derived from secret glances or subtle body language between characters, implying unspoken thoughts",
+        "일상 속 예상치 못한 섹슈얼 텐션 코미디": "unexpected moments of light sexual tension in everyday situations leading to comedic outcomes",
+        "순진한 반응과 대비되는 어른스러운 상황": "comedy from an innocent character's reaction to a subtly adult situation",
+        "랜덤 개그": "random gag type" // 특수 값
+      },
+      main_background_setting: {
+        "평범한 집 안 (거실/방)": "a typical home interior (living room/bedroom)",
+        "시끌벅적한 교실/학교": "a bustling classroom or school environment",
+        "지루한 사무실/회사": "a mundane office or workplace",
+        "복잡한 길거리/도시 풍경": "a busy street or urban cityscape",
+        "동네 공원/놀이터": "a local park or playground",
+        "숲 속/자연 풍경": "a forest or natural landscape",
+        "바닷가/해변": "a beach or seaside setting",
+        "판타지 세계 (성, 던전 등)": "a fantasy world (castle, dungeon, etc.)",
+        "우주선 내부/외계 행성": "inside a spaceship or on an alien planet",
+        "장소 특정 안 함 (캐릭터 중심)": "no specific background (character-focused)",
+        "랜덤 배경": "random background" // 특수 값
+      }
+    };
+
+    // --------------------------------------------------------------------------------
+    // ⚙️ 유틸리티 함수 및 초기화
+    // --------------------------------------------------------------------------------
+    let persistentCharacter = null; // 캐릭터 일관성 유지용
+
+    function getCharacterState() {
+      return {
+        character_type: document.getElementById("character_type")?.value,
+        character_keywords: document.getElementById("character_keywords")?.value,
+        // 필요하다면 다른 캐릭터 관련 항목 추가 (예: 대표 의상 등)
+      };
+    }
+
+    function applyCharacterState(state) {
+      if (!state) return;
+      const setSafeValue = (id, value) => {
+        const el = document.getElementById(id);
+        if (el && value !== undefined) el.value = value;
+      };
+      setSafeValue("character_type", state.character_type);
+      setSafeValue("character_keywords", state.character_keywords);
+    }
+
+    function fillOptions() {
+      for (const [id, options] of Object.entries(comic_options_data)) {
+        const select = document.getElementById(id);
+        if (!select) continue;
+        select.innerHTML = ''; // 기존 옵션 초기화
+
+        Object.keys(options).forEach((label) => {
+          const option = document.createElement('option');
+          option.value = label; // 실제 값은 레이블 자체로 사용 (JS에서 영어 설명 매핑)
+          option.textContent = label;
+          select.appendChild(option);
+        });
+      }
+    }
+
+    function getSelectedValue(selectId, defaultValue = "랜덤") {
+        const selectElement = document.getElementById(selectId);
+        let value = selectElement.value;
+        const optionsObject = comic_options_data[selectId];
+
+        if (value.includes("랜덤") || !value) { // "랜덤"이 포함된 레이블이거나 값이 없을 경우
+            const keys = Object.keys(optionsObject).filter(k => !k.includes("랜덤")); // "랜덤" 옵션 제외
+            if (keys.length > 0) {
+                return keys[Math.floor(Math.random() * keys.length)];
+            }
+            return defaultValue; // 기본값 반환 (혹시 모든 옵션이 랜덤일 경우)
+        }
+        return value; // 실제 선택된 한글 레이블 반환
+    }
+    
+    function getEnglishDescription(optionKey, selectedKoreanLabel) {
+        if (comic_options_data[optionKey] && comic_options_data[optionKey][selectedKoreanLabel]) {
+            return comic_options_data[optionKey][selectedKoreanLabel];
+        }
+        return selectedKoreanLabel; // 매칭되는 영어 설명이 없으면 한글 레이블 그대로 반환
+    }
+
+
+    // --------------------------------------------------------------------------------
+    // 💡 만화 아이디어 및 프롬프트 생성 로직
+    // --------------------------------------------------------------------------------
+    function generateComicActual() {
+      try {
+        const consistencyOn = document.getElementById("consistencyMode")?.checked;
+        if (consistencyOn) {
+          if (persistentCharacter) {
+            applyCharacterState(persistentCharacter);
+          } else {
+            persistentCharacter = getCharacterState();
+          }
+        } else {
+            persistentCharacter = null; // 일관성 모드 해제 시 초기화
+        }
+
+        // 사용자 입력 값 가져오기 (getSelectedValue로 "랜덤" 처리 포함)
+        const customIdea = document.getElementById("custom_idea").value.trim();
+        
+        // 한글 레이블 가져오기
+        const comicGenreLabel = getSelectedValue("comic_genre");
+        const comicArtStyleLabel = getSelectedValue("comic_art_style");
+        const characterTypeLabel = consistencyOn && persistentCharacter ? persistentCharacter.character_type : getSelectedValue("character_type");
+        const characterKeywords = consistencyOn && persistentCharacter ? persistentCharacter.character_keywords : document.getElementById("character_keywords").value.trim();
+        const storyStructureLabel = getSelectedValue("story_structure");
+        const mainGagPointLabel = getSelectedValue("main_gag_point");
+        const mainBackgroundLabel = getSelectedValue("main_background_setting");
+
+        // 영어 설명으로 변환
+        const comicGenre = getEnglishDescription("comic_genre", comicGenreLabel);
+        const comicArtStyle = getEnglishDescription("comic_art_style", comicArtStyleLabel);
+        const characterType = getEnglishDescription("character_type", characterTypeLabel);
+        const storyStructure = getEnglishDescription("story_structure", storyStructureLabel);
+        const mainGagPoint = getEnglishDescription("main_gag_point", mainGagPointLabel);
+        const mainBackground = getEnglishDescription("main_background_setting", mainBackgroundLabel);
+
+
+        // --- 4컷 만화 아이디어 생성 ---
+        let ideaOutput = `## 🌟 4컷 만화 아이디어 🌟 ##\n\n`;
+        ideaOutput += `**만화 주제/키워드:** ${customIdea || '(랜덤 주제 정해짐)'}\n`;
+        ideaOutput += `**장르:** ${comicGenreLabel} (${comicGenre})\n`;
+        ideaOutput += `**그림체:** ${comicArtStyleLabel} (${comicArtStyle})\n`;
+        ideaOutput += `**주인공 타입:** ${characterTypeLabel} (${characterType})\n`;
+        if (characterKeywords) ideaOutput += `**주인공 특징:** ${characterKeywords}\n`;
+        ideaOutput += `**4컷 전개:** ${storyStructureLabel} (${storyStructure})\n`;
+        ideaOutput += `**개그/핵심 포인트:** ${mainGagPointLabel} (${mainGagPoint})\n`;
+        if (mainBackgroundLabel !== '장소 특정 안 함 (캐릭터 중심)' && !mainBackgroundLabel.includes("랜덤")) {
+            ideaOutput += `**주요 배경:** ${mainBackgroundLabel} (${mainBackground})\n`;
+        }
+        ideaOutput += `\n---\n[스토리보드 아이디어]\n`;
+
+        // (간단한 스토리보드 생성 로직 - 실제로는 더 정교해야 함)
+        // 이 부분은 선택된 항목들을 기반으로 각 컷의 내용을 동적으로 생성해야 합니다.
+        // 예시로 매우 단순하게 구성합니다.
+        const charDesc = `${characterTypeLabel}${characterKeywords ? `(${characterKeywords})` : ''}`;
+        
+        let panelDetails = {
+            p1_title: "시작", p1_desc: `${charDesc}이(가) ${mainBackgroundLabel !== '장소 특정 안 함 (캐릭터 중심)' ? mainBackgroundLabel + '에서' : ''} 무언가를 시작하려 한다. (${storyStructureLabel}의 첫 단계)`,
+            p2_title: "전개", p2_desc: `예상치 못한 ${mainGagPointLabel} 상황이 발생한다.`,
+            p3_title: "위기/절정", p3_desc: `상황이 더욱 고조되거나, 주인공이 ${mainGagPointLabel}에 빠진다.`,
+            p4_title: "결말/반전", p4_desc: `황당하거나 웃긴 결말. ${mainGagPointLabel}이(가) 극대화된다. (${storyStructureLabel}의 마무리)`
+        };
+        
+        // 좀 더 구체적인 스토리보드 예시 생성 함수 (개선 필요)
+        function generateDetailedStoryboard(theme, charType, charKw, structure, gag, background) {
+            let p = { p1_t: "두근두근 시작", p1_d: "", p2_t: "이게 아닌데", p2_d: "", p3_t: "점점 더", p3_d: "", p4_t: "결국엔 빵!", p4_d: ""};
+            const protagonist = `${charType}${charKw ? ` (${charKw})` : ''}`;
+            const setting = (background !== "no specific background (character-focused)" && background !== "random background") ? ` ${background}에서` : "";
+
+            if (structure.includes("Ki-Sho-Ten-Ketsu")) { // 기승전결
+                p.p1_d = `${protagonist}이(가)${setting} 평범한 하루를 시작한다. ${theme ? '('+theme+' 관련 암시)' : ''}`;
+                p.p2_d = `작은 사건이나 변화(${gag}의 씨앗)가 발생한다.`;
+                p.p3_d = `사건이 예상치 못한 방향으로 흘러가며 ${gag}이(가) 고조된다.`;
+                p.p4_d = `모든 것이 ${gag}으로 마무리되며 웃음을 유발하거나 허탈함을 남긴다.`;
+            } else if (structure.includes("Twist")) { // 반전
+                p.p1_d = `${protagonist}은(는)${setting} ${theme || '무언가'}를 기대하며 준비한다.`;
+                p.p2_d = `모든 것이 순조롭게 진행되는 듯 보인다. (${gag}과 무관해 보이는 상황)`;
+                p.p3_d = `결정적인 순간, 예상치 못한 ${gag} 요소가 등장하며 모든 것을 뒤엎는다.`;
+                p.p4_d = `${protagonist}은(는) ${gag}으로 인해 완전히 다른 결과를 맞이한다. (황당/허탈)`;
+            } else { // 기본
+                p.p1_d = `${protagonist}이(가)${setting} ${theme || '일상적인 일'}을 하고 있다.`;
+                p.p2_d = `갑자기 ${gag}과 관련된 작은 문제가 발생한다.`;
+                p.p3_d = `문제를 해결하려 하지만, 오히려 ${gag} 상황이 더 심각해진다.`;
+                p.p4_d = `${protagonist}은(는) ${gag}으로 인해 완전히 망하거나 웃픈 상황에 처한다.`;
+            }
+            return p;
+        }
+
+        const detailedPanels = generateDetailedStoryboard(customIdea, characterType, characterKeywords, storyStructure, mainGagPoint, mainBackground);
+
+        ideaOutput += `**[1컷] ${detailedPanels.p1_t}:** ${detailedPanels.p1_d}\n`;
+        ideaOutput += `**[2컷] ${detailedPanels.p2_t}:** ${detailedPanels.p2_d}\n`;
+        ideaOutput += `**[3컷] ${detailedPanels.p3_t}:** ${detailedPanels.p3_d}\n`;
+        ideaOutput += `**[4컷] ${detailedPanels.p4_t}:** ${detailedPanels.p4_d}\n`;
+
+        // 대사 포함 여부 가져오기
+        const dialoguePreferenceLabel = getSelectedValue("dialogue_preference");
+        const dialoguePreference = getEnglishDescription("dialogue_preference", dialoguePreferenceLabel);
+
+                // --- AI 이미지 생성 프롬프트 ---
+        ideaOutput += `\n---\n## 🖼️ AI 이미지 생성 프롬프트 (4컷 만화 한 장) ##\n\n`;
+
+        // 1. 최상위 규칙 (한글 대사 포함 또는 대사 없음)
+        let imagePrompt = ""; // 초기화
+        if (dialoguePreferenceLabel === "한글 대사 포함 (AI 시도)") {
+            imagePrompt += `**Must include Korean dialogue in speech bubbles.** `;
+        } else if (dialoguePreferenceLabel === "대사 없음 (그림만 생성)") {
+            imagePrompt += `**No speech bubbles or dialogue text should be present.** Focus entirely on visual storytelling. `;
+        }
+        // (다른 대사 옵션이 있다면 여기에 추가)
+        
+        // 2. 만화의 전체적인 내용 요약
+        let comicSummary = "";
+        if (customIdea) {
+            comicSummary = `The comic is about "${customIdea}". `;
+        } else {
+            comicSummary = `This is a ${comicGenreLabel} comic featuring a ${mainGagPointLabel} situation. `;
+        }
+        comicSummary += `The main character is ${characterType}${characterKeywords ? ` (${characterKeywords})` : ''}. `;
+        comicSummary += `The story unfolds in a "${storyStructureLabel}" manner. `;
+        
+        imagePrompt += comicSummary;
+
+        // 3. 4컷 만화 형식 및 스타일 지시
+        imagePrompt += `Create a single image consisting of a 4-panel comic strip, laid out in a grid (e.g., 2x2 or 1x4). `;
+        imagePrompt += `Art style: ${comicArtStyle}. `;
+        imagePrompt += `Genre: ${comicGenre}. `;
+
+        // 4. 캐릭터 일관성 및 상세 지시
+        let characterPrompt = `The main character, as described above, must be consistently drawn across all panels. `;
+        // 만약 characterKeywords를 여기서 한 번 더 강조하고 싶다면 추가할 수 있지만, comicSummary에 이미 포함되어 있습니다.
+        // if (characterKeywords) characterPrompt += ` Key features: "${characterKeywords}". `;
+        imagePrompt += characterPrompt; // 이제 characterPrompt가 정의된 후 사용됩니다.
+        
+        // 5. 스토리텔링 및 개그 포인트
+        imagePrompt += `The comic strip should visually tell a short story that clearly conveys the central gag: "${mainGagPoint}". `;
+
+        if (mainBackground !== 'no specific background (character-focused)' && !mainBackground.includes("random background")) {
+            imagePrompt += `The primary setting is ${mainBackground}. `;
+        }
+        
+        // 6. 각 패널에 대한 시각적 지시 (스토리보드 내용 요약, 패널 제목은 AI 설명용으로만)
+        imagePrompt += `Panel 1 describes the scene: ${detailedPanels.p1_d.substring(0,120)}. `;
+        imagePrompt += `Panel 2 describes the scene: ${detailedPanels.p2_d.substring(0,120)}. `;
+        imagePrompt += `Panel 3 describes the scene: ${detailedPanels.p3_d.substring(0,120)}. `;
+        imagePrompt += `Panel 4 describes the scene: ${detailedPanels.p4_d.substring(0,120)}. `;
+        
+        // 7. 대사 및 기타 지침
+        imagePrompt += `Focus on clear visual storytelling, expressive character actions, and humorous situations. `;
+        if (dialoguePreferenceLabel === "한글 대사 포함 (AI 시도)") {
+            imagePrompt += `**Korean speech bubbles are essential for dialogue and punchlines where appropriate.** Minimize text outside of speech bubbles. **Do not render any panel descriptive titles (e.g., "두근두근 시작", "이게 아닌데") as text in the image.** `;
+        } else if (dialoguePreferenceLabel === "대사 없음 (그림만 생성)") {
+            imagePrompt += `All storytelling must be done visually without any text. **Do not render any panel descriptive titles as text in the image.** `;
+        }
+        imagePrompt += `High quality illustration. `;
+
+        // AI 이미지 생성 프롬프트에 부정 프롬프트를 직접 추가하는 것은 일반적이지 않습니다.
+        // 부정 프롬프트는 별도의 입력 필드나 API 파라미터로 전달됩니다.
+        // 여기서는 ideaOutput에 부정 프롬프트 섹션을 별도로 구성하여 사용자에게 보여주는 현재 구조를 유지합니다.
+        // 따라서 imagePrompt += negativePrompt; 줄은 제거하거나, AI 도구가 이를 지원하는 방식인지 확인해야 합니다.
+        // 현재 코드에서는 negativePrompt를 imagePrompt에 합치지 않고, ideaOutput의 별도 섹션에만 표시합니다.
+
+        // --- (부정 프롬프트 섹션은 ideaOutput에 별도로 구성) ---
+        let negativePromptSection = `\n\n---\n### 🚫 제외할 요소 (부정 프롬프트 예시) ###\n`;
+        negativePromptSection += `blurry, low quality, watermark, signature, bad anatomy, extra limbs, disfigured, ugly, tiling, poorly drawn hands, poorly drawn face, out of frame, mutated, deformed, missing fingers, fused fingers. Ensure distinct separation between panels. Clear panel borders. `;
+        negativePromptSection += `panel titles as text, descriptive text titles (like "두근두근 시작", "이게 아닌데") as part of the image. `; // 패널 제목 텍스트 렌더링 방지 강화
+
+        if (dialoguePreferenceLabel === "한글 대사 포함 (AI 시도)") {
+            negativePromptSection += ` text (outside speech bubbles), illegible text, broken characters, unreadable Korean, garbled text.`;
+        } else if (dialoguePreferenceLabel === "대사 없음 (그림만 생성)") {
+            negativePromptSection += ` all text, all speech bubbles, any kind of letters or words.`;
+        }
+        
+        // 최종 출력은 아이디어 + AI 프롬프트 + 부정 프롬프트 안내
+        document.getElementById("output").value = ideaOutput + imagePrompt + negativePromptSection; // imagePrompt에 negativePrompt가 이미 포함되지 않도록 주의
+                                                                                                  // ideaOutput에도 이미 부정 프롬프트 섹션 헤더가 있으므로,
+                                                                                                  // negativePromptSection만 추가합니다.
+                                                                                                  // ideaOutput의 기존 ### 🚫 제외할 요소 ... ### 헤더를 사용하고,
+                                                                                                  // 그 아래에 negativePrompt 내용을 채워 넣는 것이 더 깔끔합니다.
+
+        // 수정된 최종 출력 방식:
+        // ideaOutput은 스토리보드까지만 포함하도록 하고,
+        // AI 프롬프트와 부정 프롬프트는 명확히 구분하여 조합
+        let finalOutput = ideaOutput; // ideaOutput은 스토리보드 아이디어까지만
+        finalOutput += `\n---\n## 🖼️ AI 이미지 생성 프롬프트 (4컷 만화 한 장) ##\n\n${imagePrompt}`;
+        finalOutput += `\n\n---\n### 🚫 제외할 요소 (부정 프롬프트 예시) ###\n${negativePromptSection.replace('\n\n---\n### 🚫 제외할 요소 (부정 프롬프트 예시) ###\n', '')}`; // 헤더 중복 제거
+
+        document.getElementById("output").value = finalOutput;
+      } catch (error) {
+        console.error("프롬프트 생성 중 오류 발생:", error);
+        document.getElementById("output").value = "프롬프트 생성 중 오류가 발생했습니다. 콘솔을 확인해주세요.\n" + error.stack;
+      }
+    }
+
+    // --------------------------------------------------------------------------------
+    // 🎲 랜덤 값 설정 및 🔄 리셋 기능
+    // --------------------------------------------------------------------------------
+    function setRandomValuesActualSafe() {
+      const consistencyOn = document.getElementById("consistencyMode")?.checked;
+
+      if (consistencyOn) {
+        if (!persistentCharacter) {
+          persistentCharacter = getCharacterState(); // 현재 값으로 고정 시작
+        }
+        applyCharacterState(persistentCharacter); // 명시적으로 적용 (character_type, character_keywords)
+      } else {
+         persistentCharacter = null; // 확실히 초기화
+      }
+
+      // Helper to set random value for a select element
+      // "랜덤" 옵션을 제외하고 실제 옵션 중에서 랜덤 선택
+      const setSelectRandomValue = (id, optionsObj) => {
+        const el = document.getElementById(id);
+        if (el) {
+          // "랜덤"으로 끝나는 키를 제외한 실제 옵션 키들만 필터링
+          const validKeys = Object.keys(optionsObj).filter(key => !key.endsWith("랜덤"));
+          if (validKeys.length > 0) {
+            el.value = validKeys[Math.floor(Math.random() * validKeys.length)];
+          } else if (Object.keys(optionsObj).length > 0) {
+            // 모든 옵션이 "랜덤"으로 끝나는 극단적인 경우 (또는 옵션이 하나이고 그것이 "랜덤"인 경우)
+            // 이 경우 첫 번째 옵션이라도 선택 (하지만 comic_options_data 구조상 이럴 일은 거의 없음)
+             el.value = Object.keys(optionsObj)[0];
+          }
+        }
+      };
+      
+      // --- 모든 select 항목에 대해 랜덤 값 설정 ---
+
+      // 캐릭터 일관성 모드가 아닐 때만 캐릭터 관련 항목을 랜덤으로 설정
+      if (!consistencyOn) {
+        setSelectRandomValue("character_type", comic_options_data.character_type);
+        document.getElementById("character_keywords").value = ""; // 키워드는 비워둠
+      }
+      // (일관성 모드일 때는 applyCharacterState에서 이미 character_type, character_keywords를 설정함)
+
+      // 캐릭터 외 나머지 항목들은 항상 랜덤 설정 (또는 사용자의 기존 선택 유지 원하면 로직 변경 필요)
+      setSelectRandomValue("comic_genre", comic_options_data.comic_genre);
+      setSelectRandomValue("comic_art_style", comic_options_data.comic_art_style);
+      setSelectRandomValue("dialogue_preference", comic_options_data.dialogue_preference); // 새로 추가된 항목
+      setSelectRandomValue("story_structure", comic_options_data.story_structure);
+      setSelectRandomValue("main_gag_point", comic_options_data.main_gag_point);
+      setSelectRandomValue("main_background_setting", comic_options_data.main_background_setting);
+      
+      // '만화 주제/핵심 아이디어'는 랜덤 생성 시 비워둡니다.
+      document.getElementById("custom_idea").value = ""; 
+
+      // 모든 값을 설정한 후 프롬프트 생성
+      generateComicActual();
+    }
+
+
+    function resetInputs() {
+      document.getElementById("custom_idea").value = "";
+      document.getElementById("character_keywords").value = "";
+
+      for (const id of Object.keys(comic_options_data)) {
+        const select = document.getElementById(id);
+        if (select && select.options.length > 0) {
+          select.selectedIndex = 0; // 첫 번째 옵션으로 리셋
+        }
+      }
+      // document.getElementById("consistencyMode").checked = true; // 필요시 기본값으로
+      document.getElementById("output").value = "";
+      persistentCharacter = null; // 고정된 캐릭터 정보도 리셋
+    }
+
+    // --------------------------------------------------------------------------------
+    // 📋 클립보드 복사 기능
+    // --------------------------------------------------------------------------------
+    function copyToClipboard() {
+      const output = document.getElementById("output").value;
+      if (!output.trim()) {
+        alert("복사할 내용이 없습니다. 먼저 만화 아이디어를 생성해주세요.");
+        return;
+      }
+      navigator.clipboard.writeText(output)
+        .then(() => {
+          alert("생성된 내용이 클립보드에 복사되었습니다!");
+        })
+        .catch(err => {
+          console.error('복사 실패:', err);
+          alert("복사에 실패했습니다. 수동으로 복사해주세요.");
+        });
+    }
+
+    // --------------------------------------------------------------------------------
+    // 🚀 DOM 로드 후 실행
+    // --------------------------------------------------------------------------------
+    document.addEventListener('DOMContentLoaded', () => {
+      fillOptions();
+
+      // 일관성 모드 체크박스 리스너
+      document.getElementById("consistencyMode")?.addEventListener("change", function () {
+        if (this.checked) {
+          persistentCharacter = getCharacterState(); // 현재 값으로 고정
+        } else {
+          persistentCharacter = null; // 고정 해제
+        }
+      });
+      
+      // 캐릭터 관련 필드 변경 시 일관성 모드 자동 해제 경고 (선택적)
+      ['character_type', 'character_keywords'].forEach(id => {
+          const el = document.getElementById(id);
+          if(el) {
+              el.addEventListener('change', () => {
+                  if (document.getElementById('consistencyMode')?.checked) {
+                      // alert("주인공 설정을 변경하면 '주인공 특징 고정'이 해제될 수 있습니다. 계속 고정하려면 다시 체크해주세요.");
+                      // document.getElementById('consistencyMode').checked = false; // 강제 해제
+                      persistentCharacter = getCharacterState(); // 변경된 내용으로 업데이트
+                  }
+              });
+          }
+      });
+
+
+      const addClick = (id, fn) => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener("click", (e) => {
+          e.preventDefault();
+          fn();
+        });
+      };
+
+      addClick("generateComicButton", generateComicActual);
+      addClick("randomAllButton", setRandomValuesActualSafe);
+      addClick("resetInputsButton", resetInputs);
+      addClick("copyResultButton", copyToClipboard);
+
+      setTimeout(setRandomValuesActualSafe, 150); // 페이지 로드 시 초기 랜덤 생성
+    });
+
+  </script>
+</body>
+</html>
