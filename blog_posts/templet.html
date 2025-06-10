@@ -443,31 +443,22 @@ AI 안전 가이드라인, 책임감 있는 AI 사용
 }
 
 /* 개별 글 제목 버튼 스타일 (이전 .article-link-button 과 동일 또는 유사) */
-.article-link-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #ffffff;
-    color: #363636;
-    text-decoration: none;
-    border-radius: 25px;
-    font-size: 0.9em;
-    font-weight: 500;
-    border: 1px solid #dbdbdb;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 200px; /* 버튼 하나당 최대 너비 */
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.07);
-}
+/* 모바일 화면 대응 (예: 720px 이하) */
+@media (max-width: 720px) {
+    .center-article-buttons {
+        flex-direction: column; /* 버튼들을 세로로 쌓도록 변경 */
+        align-items: center; /* 세로로 쌓인 버튼들을 가운데 정렬 (선택 사항) */
+        gap: 12px; /* 버튼 사이의 수직 간격 */
+    }
 
-.article-link-button:hover {
-    background-color: #3273dc;
-    color: #ffffff;
-    border-color: #3273dc;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(50,115,220,0.2);
+    .article-link-button {
+        width: 100%;         /* 버튼의 너비를 100%로 설정 */
+        max-width: 100%;     /* max-width도 100%로 하여 제한 해제 */
+        text-align: center;  /* 버튼 내 텍스트 가운데 정렬 (선택 사항) */
+        /* padding-left: 10px;  좌우 패딩을 동일하게 하거나 조정 (선택 사항) */
+        /* padding-right: 10px; */
+        box-sizing: border-box; /* 패딩과 테두리가 너비에 포함되도록 */
+    }
 }
 </style>
     
