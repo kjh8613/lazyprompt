@@ -413,51 +413,73 @@ AI 안전 가이드라인, 책임감 있는 AI 사용
     font-weight: 600; /* 조금 더 강조 */
 }
 
-/* 글 목록 (버튼들을 담는 ul) 스타일 */
-/* 다른 글 목록 스타일 */
 /* 다른 글 목록 스타일 */
 .other-articles-nav {
     margin-top: 30px;
     margin-bottom: 40px;
-    padding: 20px 0;
+    padding-top: 20px;
     border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    text-align: center;
 }
 
 .other-articles-nav h4 {
     margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 1.1em;
-    color: #4a4a4a;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    color: #333;
     font-weight: 600;
+    text-align: left; /* 소제목 왼쪽 정렬 */
 }
 
-/* 중앙의 글 제목 버튼들을 담는 컨테이너 */
-.center-article-buttons {
-    display: flex; /* 버튼들을 가로로 나열 */
-    gap: 15px;     /* 두 버튼 사이 간격 */
-    justify-content: center; /* 버튼들을 항상 가운데 정렬 */
-    /* max-width: 450px; /* 두 버튼이 너무 벌어지지 않도록 최대 너비 (선택 사항) */
-    /* margin: 0 auto; /* 위 max-width와 함께 사용 시 가운데 정렬 */
+/* 링크들을 담는 div 컨테이너 스타일 */
+.article-title-container-vertical {
+    /* 특별한 스타일이 필요 없을 수도 있지만, 정렬 등을 위해 남겨둡니다. */
+    /* text-align: left; /* 내부 a 태그들이 block이므로 이 정렬은 큰 의미 없음 */
 }
 
-/* 개별 글 제목 버튼 스타일 (이전 .article-link-button 과 동일 또는 유사) */
-/* 모바일 화면 대응 (예: 720px 이하) */
+/* 각 글 제목 링크 a 태그 스타일 */
+.article-title-item {
+    display: block;         /* ⭐ 중요: 각 링크가 한 줄 전체를 차지하도록 */
+    padding: 8px 0;         /* 위아래 여백 (좌우는 0) */
+    margin-bottom: 5px;     /* 각 링크 사이의 간격 */
+    text-decoration: none;
+    color: #007bff;        /* 링크 색상 */
+    font-size: 1em;
+    font-weight: 500;
+    line-height: 1.4;
+    transition: color 0.2s ease-in-out;
+    border-bottom: 1px dotted #e0e0e0; /* 항목 구분선 */
+}
+
+.article-title-item:last-child {
+    border-bottom: none; /* 마지막 항목 구분선 제거 */
+}
+
+.article-title-item:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* article-navigation-wrapper는 중앙 정렬 용도로만 사용하거나,
+   필요 없다면 제거하고 .other-articles-nav에 직접 패딩 등을 조절할 수 있습니다.
+   만약 article-navigation-wrapper를 사용한다면: */
+.article-navigation-wrapper {
+    /* 이전에 flex 관련 스타일이 있었다면 제거하거나,
+       단순히 자식 요소(.article-title-container-vertical)의 너비를 제한하고
+       가운데 정렬하는 용도로만 사용할 수 있습니다.
+       하지만 .article-title-container-vertical 자체가 block 이므로
+       이 wrapper의 역할은 미미할 수 있습니다. */
+    /* 예: max-width: 600px; margin: 0 auto; */
+}
+
+
+/* 모바일 대응 */
 @media (max-width: 720px) {
-    .center-article-buttons {
-        flex-direction: column; /* 버튼들을 세로로 쌓도록 변경 */
-        align-items: center; /* 세로로 쌓인 버튼들을 가운데 정렬 (선택 사항) */
-        gap: 12px; /* 버튼 사이의 수직 간격 */
+    .other-articles-nav h4 {
+        font-size: 1.1em;
     }
-
-    .article-link-button {
-        width: 100%;         /* 버튼의 너비를 100%로 설정 */
-        max-width: 100%;     /* max-width도 100%로 하여 제한 해제 */
-        text-align: center;  /* 버튼 내 텍스트 가운데 정렬 (선택 사항) */
-        /* padding-left: 10px;  좌우 패딩을 동일하게 하거나 조정 (선택 사항) */
-        /* padding-right: 10px; */
-        box-sizing: border-box; /* 패딩과 테두리가 너비에 포함되도록 */
+    .article-title-item {
+        font-size: 0.95em;
+        padding: 6px 0;
     }
 }
 </style>
@@ -533,22 +555,30 @@ AI 안전 가이드라인, 책임감 있는 AI 사용
 
 
       <!-- ▼▼▼ 다른 블로그 글 목록 표시 영역 ▼▼▼ -->
-      <nav class="other-articles-nav" id="other-articles-navigation">
-          <h4>💡 이 글과 함께 읽어보세요!</h4>
+        <nav class="other-articles-nav" id="other-articles-navigation">
+            <h4>💡 이 글과 함께 읽어보세요!</h4>
 
-          <div class="article-navigation-wrapper"> <!-- 이 div는 이제 중앙 버튼만 감싸는 역할 -->
-              <div class="center-article-buttons">
-                  <!-- 첫 번째 고정 추천 글 버튼 -->
-                  <!-- ⭐ 각 상세 페이지마다 이 부분의 링크와 제목을 직접 수정해야 합니다! -->
-                  <a href="추천글_1_파일명.html" class="article-link-button" title="추천글 1 전체 제목">추천글 1 제목</a>
-
-                  <!-- 두 번째 고정 추천 글 버튼 -->
-                  <!-- ⭐ 각 상세 페이지마다 이 부분의 링크와 제목을 직접 수정해야 합니다! -->
-                  <a href="추천글_2_파일명.html" class="article-link-button" title="추천글 2 전체 제목">추천글 2 제목</a>
+            <!-- article-navigation-wrapper는 이제 중앙 정렬 용도로만 사용하거나,
+                 아래 div.article-title-container-vertical 에 직접 text-align:left 등을 줄 수 있습니다.
+                 여기서는 유지하되, 내부 div의 클래스명을 변경합니다. -->
+            <div class="article-navigation-wrapper">
+              <div class="article-title-container-vertical"> <!-- 클래스명 변경 -->
+                  <!-- 각 링크에 새로운 클래스 article-title-item 적용 -->
+                  <!-- 여기서는 반드시 blog_posts폴더 경로를 빼야 함 -->
+                  <a href="blog1.html" class="article-title-item" title="유튜브에서 월 400만원 버는 AI 채널, 아무도 몰랐던 비밀 폭로! 전체 제목">유튜브에서 월 400만원 버는 AI 채널, 아무도 몰랐던 비밀 폭로!</a>
+                  <a href="blog2.html" class="article-title-item" title="유튜브 초보도 AI로 월 4천만원! 단 몇 초 만에 바이럴 쇼츠 만드는 역대급 치트키 전체 제목">유튜브 초보도 AI로 월 4천만원! 단 몇 초 만에 바이럴 쇼츠 만드는 역대급 치트키</a>
+                  <a href="blog3.html" class="article-title-item" title="AI 립싱크 영상 만들기: 50일 만에 8,200만 뷰 달성한 바이럴 콘텐츠 비법 공개 전체 제목">AI 립싱크 영상 만들기: 50일 만에 8,200만 뷰 달성 비법</a>
+                  <a href="blog4.html" class="article-title-item" title="AI로 월 1,000만 원? 얼굴 없는 유튜브 채널, 초보자용 완벽 가이드 전체 제목">AI로 월 1,000만 원? 얼굴 없는 유튜브 채널, 초보자용 완벽 가이드</a>
+                  <a href="blog5.html" class="article-title-item" title="AI로 연 5억 버는 법? 단 1개 프롬프트로 애니메이션 유튜브 채널 만들기 전체 제목">AI로 연 5억 버는 법? 단 1개 프롬프트로 애니메이션 유튜브 채널 만들기</a>
+                  <a href="blog6.html" class="article-title-item" title="30일간 중국 영상 베꼈더니 300만 뷰? AI로 유튜브 쇼츠 채널 폭파시키는 비밀 전략 전체 제목">30일간 중국 영상 베꼈더니 300만 뷰? AI로 유튜브 쇼츠 채널 폭파시키는 비밀 전략</a>
+                  <a href="blog7.html" class="article-title-item" title="Google VEO 3로 월 $5,000 수익: 15개월 무료 사용법과 AI 자동화 사업 모델 완벽 가이드 전체 제목">Google VEO 3로 월 $5,000 수익: 15개월 무료 사용법과 AI 자동화 사업 모델 완벽 가이드</a>
+                  <a href="blog8.html" class="article-title-item" title="AI로 월 3만 달러? 유튜브 쇼츠 자동화 채널 구축 완전 정복 가이드 전체 제목">AI로 월 3만 달러? 유튜브 쇼츠 자동화 채널 구축 완전 정복 가이드</a>
+                  <a href="blog9.html" class="article-title-item" title="YouTube 수익 창출의 대격변: 2025년, 갑자기 채널이 정지되는 3가지 이유 전체 제목">YouTube 수익 창출의 대격변: 2025년, 갑자기 채널이 정지되는 3가지 이유</a>
+                  <a href="blog10.html" class="article-title-item" title="AI로 잠자는 이메일 리스트를 깨워라: 월 100만원 자동 수익 만드는 5가지 전략 (2025년판) 전체 제목">AI로 잠자는 이메일 리스트를 깨워라: 월 100만원 자동 수익 만드는 5가지 전략 (2025년판)</a>
               </div>
-          </div>
-      </nav>
-      <!-- ▲▲▲ 다른 블로그 글 목록 표시 영역 ▲▲▲ -->
+            </div>
+        </nav>
+        <!-- ▲▲▲ 다른 블로그 글 목록 표시 영역 ▲▲▲ -->
       
 
       <!-- Google AdSense 광고 (본문 상단) -->
