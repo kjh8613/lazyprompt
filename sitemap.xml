@@ -1,47 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
 <url>
   <loc>https://www.lazyprompt.me/</loc>
-  <lastmod>2025-06-02T09:45:55+00:00</lastmod>
+  <lastmod>2024-07-16T10:00:00+00:00</lastmod> <!-- 예시: 오늘 또는 최근 수정일 -->
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://www.lazyprompt.me/index.html</loc>
-  <lastmod>2025-06-02T09:45:55+00:00</lastmod>
+  <lastmod>2024-07-16T10:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.lazyprompt.me/image_prompt.html</loc>
-  <lastmod>2025-06-02T09:45:55+00:00</lastmod>
+  <lastmod>2024-07-16T10:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.lazyprompt.me/image_prompt_man.html</loc>
-  <lastmod>2025-06-01T07:52:23+00:00</lastmod>
+  <lastmod>2024-07-16T10:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.lazyprompt.me/video_prompt.html</loc>
-  <lastmod>2025-06-01T07:52:20+00:00</lastmod>
+  <lastmod>2024-07-16T10:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.lazyprompt.me/video_prompt_man.html</loc>
-  <lastmod>2025-06-01T07:48:48+00:00</lastmod>
+  <lastmod>2024-07-16T10:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.lazyprompt.me/blog_prompt.html</loc>
-  <lastmod>2025-06-02T09:45:55+00:00</lastmod>
+  <lastmod>2024-07-16T10:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
+<!-- ▼▼▼ 새로 추가된 페이지들 ▼▼▼ -->
+<url>
+  <loc>https://www.lazyprompt.me/4cut.html</loc>
+  <lastmod>2024-07-16T10:00:00+00:00</lastmod> <!-- 실제 최종 수정일로 변경 -->
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.lazyprompt.me/ai_information.html</loc>
+  <lastmod>2024-07-16T10:00:00+00:00</lastmod> <!-- 실제 최종 수정일로 변경 -->
+  <priority>0.80</priority> <!-- 블로그 목록 페이지이므로 중요도 높게 설정 가능 -->
+</url>
+
+<!-- ▼▼▼ 개별 블로그 글 페이지 (예시) ▼▼▼ -->
+<!-- 앞으로 blog_posts 폴더 안에 글을 추가할 때마다 여기에 <url> 항목을 추가해야 합니다. -->
+<url>
+  <loc>https://www.lazyprompt.me/blog_posts/ai-youtube-automation-strategy.html</loc>
+  <lastmod>2024-07-16T10:00:00+00:00</lastmod> <!-- 이 글의 실제 최종 수정일 -->
+  <priority>0.70</priority> <!-- 개별 글의 중요도 -->
+</url>
+<!-- 예시: 또 다른 블로그 글이 있다면 -->
+<!--
+<url>
+  <loc>https://www.lazyprompt.me/blog_posts/another-great-article.html</loc>
+  <lastmod>2024-07-15T14:30:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+-->
+<!-- ▲▲▲ 개별 블로그 글 페이지 (예시) ▲▲▲ -->
 
 </urlset>
