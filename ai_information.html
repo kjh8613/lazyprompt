@@ -396,6 +396,69 @@ AI 안전 가이드라인, 책임감 있는 AI 사용
 
 
 
+/* 링크들을 담는 div 컨테이너 스타일 */
+.article-title-container-vertical {
+    text-align: left; /* 내부 a 태그들이 block이므로 이 정렬은 큰 의미 없음,
+                         하지만 만약 a가 inline-block이라면 필요 */
+    max-height: 300px;  /* ⭐ 중요: 스크롤이 생길 최대 높이 지정 (예: 300px) */
+    overflow-y: auto;   /* ⭐ 중요: 내용이 max-height를 넘으면 세로 스크롤바 표시 */
+    padding-right: 10px; /* 스크롤바와 내용이 겹치지 않도록 오른쪽 여백 (선택 사항) */
+    /* 스크롤바 디자인 (선택 사항, 이전 답변 참고) */
+    scrollbar-width: thin;
+    scrollbar-color: #ccc #f0f0f0;
+}
+
+/* Webkit 계열 브라우저 스크롤바 디자인 (선택 사항) */
+.article-title-container-vertical::-webkit-scrollbar {
+    width: 6px; /* 세로 스크롤바 너비 */
+}
+.article-title-container-vertical::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 3px;
+}
+.article-title-container-vertical::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+.article-title-container-vertical::-webkit-scrollbar-thumb:hover {
+    background: #bbb;
+}
+
+
+/* 각 글 제목 링크 a 태그 스타일 (이전과 동일) */
+.article-title-item {
+    display: block;
+    padding: 8px 0;
+    /* margin-bottom: 5px; /* border-bottom으로 대체 가능 */
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1em;
+    font-weight: 500;
+    line-height: 1.4;
+    transition: color 0.2s ease-in-out;
+    border-bottom: 1px dotted #e0e0e0;
+}
+
+.article-title-item:last-child {
+    border-bottom: none;
+}
+
+.article-title-item:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* article-navigation-wrapper는 이제 이 컨테이너의 너비나 정렬을 제어할 수 있습니다.
+   예를 들어, 스크롤 영역의 전체 너비를 제한하고 싶다면 여기에 max-width를 줄 수 있습니다. */
+.article-navigation-wrapper {
+    /* max-width: 500px; /* 스크롤 영역의 전체 너비 제한 (선택 사항) */
+    /* margin: 0 auto; /* 위 max-width와 함께 사용 시 가운데 정렬 (선택 사항) */
+}
+
+
+
+
+
 .other-articles-nav {
     margin-top: 25px;
     margin-bottom: 35px;
