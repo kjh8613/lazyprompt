@@ -3,6 +3,14 @@
     }
 }
 {
+    {- $debugItem := dict "title""DEBUG POST checks system health""permalink""#""summary""If you see this, the index.json is loading correctly.""date""2025-01-01""image""" -
+    }
+}
+{
+    {- $list = $list | append $debugItem -
+    }
+}
+{
     {- range .Site.RegularPages -
     }
 }
