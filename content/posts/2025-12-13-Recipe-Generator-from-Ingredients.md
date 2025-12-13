@@ -1,10 +1,11 @@
 ---
 title: "Recipe Generator from Ingredients"
-date: 2025-12-13 20:17:04
+date: 2025-12-13 20:25:54
+draft: false
 summary: "### Recipe Generator from Ingredients  *Content generation is pending due to hig..."
 categories: ["Lifestyle"]
 cover:
-    image: "https://picsum.photos/seed/Recipe-Generator-from-Ingredients67/800/400"
+    image: "https://picsum.photos/seed/Recipe-Generator-from-Ingredients60/800/400"
     alt: "Recipe Generator from Ingredients"
     relative: false
 ---

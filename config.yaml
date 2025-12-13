@@ -3,6 +3,11 @@ languageCode: "ko-kr"
 title: "Lazy Prompt 🚀"
 # theme: "PaperMod"
 
+enableRobotsTXT: true
+buildDrafts: true
+buildFuture: true
+buildExpired: true
+
 outputs:
   home:
     - HTML
