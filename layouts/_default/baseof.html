@@ -45,7 +45,7 @@
                 <ul class="category-list">
                     {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
                     <li>
-                        <a href="{{ " /categories/" | relLangURL }}{{ $name | urlize }}">
+                        <a href="{{ printf " /categories/%s/" ($name | urlize) | relLangURL }}">
                             {{ $name | humanize }} <span class="count-badge">{{ $taxonomy.Count }}</span>
                         </a>
                     </li>
