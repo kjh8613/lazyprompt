@@ -1,24 +1,23 @@
 {{ define "main" }}
 <header class="profile-header">
     <div class="profile-card">
-        <!-- Logo Removed as per user request -->
         <h1>{{ .Site.Title }}</h1>
         <p class="subtitle">{{ .Site.Params.profileMode.subtitle }}</p>
     </div>
 </header>
-<main class="post-list">
 
-    <!-- Search Hero Section -->
+<main class="post-list">
+    <!-- Search Section -->
     <div class="search-hero">
         <h2>Find the Perfect Prompt</h2>
         <div class="search-container">
-            <input type="text" id="globalSearchInput"
-                placeholder="What are you building today? (e.g. Marketing, Code...)">
-            <button class="search-icon-btn" id="globalSearchBtn">🔍</button>
+            <input type="text" id="searchInput" placeholder="What are you building today? (e.g. Marketing, Code...)">
+            <button class="search-icon-btn" id="searchBtn">🔍</button>
         </div>
+        <div id="searchStatus" style="text-align:center; margin-top:10px; font-size:14px;"></div>
     </div>
 
-    <!-- AdSense Unit -->
+    <!-- AdSense -->
     <div style="text-align:center; margin-bottom: 40px;">
         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6793290562583440"
             data-ad-slot="9236420639" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -28,7 +27,7 @@
     </div>
 
     <h2 class="section-title">Latest Updates</h2>
-    <div class="grid" id="postGrid">
+    <div class="grid" id="resultsGrid">
         {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
         {{ range $paginator.Pages }}
         <article class="card">
@@ -46,85 +45,116 @@
         {{ end }}
     </div>
 
-    <!-- Pagination Controls -->
+    <!-- Pagination -->
     {{ if gt $paginator.TotalPages 1 }}
-    <div class="pagination">
+    <div class="pagination" id="paginationDiv">
         {{ if $paginator.HasPrev }}
-        <a href="{{ $paginator.Prev.URL }}" class="page-link prev">← Prev</a>
+        <a href="{{ $paginator.Prev.URL }}" class="page-link prev">← Previous</a>
         {{ end }}
-
-        <span class="page-info">Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
-
+        <span class="page-number">Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
         {{ if $paginator.HasNext }}
         <a href="{{ $paginator.Next.URL }}" class="page-link next">Next →</a>
         {{ end }}
     </div>
     {{ end }}
-
-    <script>
-        // Inline search for homepage
-        (function () {
-            const searchInput = document.getElementById('globalSearchInput');
-            const searchBtn = document.getElementById('globalSearchBtn');
-            const postGrid = document.querySelector('.grid');
-
-            if (!searchInput || !postGrid) return;
-
-            const initialHTML = postGrid.innerHTML;
-            const initialPagination = document.querySelector('.pagination');
-
-            let posts = [];
-
-            fetch('/index.json')
-                .then(res => res.json())
-                .then(data => {
-                    posts = data;
-                    console.log('Loaded', posts.length, 'posts');
-                })
-                .catch(e => console.error('Error:', e));
-
-            function performSearch() {
-                const query = searchInput.value.trim().toLowerCase();
-
-                if (query.length === 0) {
-                    postGrid.innerHTML = initialHTML;
-                    if (initialPagination) initialPagination.style.display = 'flex';
-                    return;
-                }
-
-                if (initialPagination) initialPagination.style.display = 'none';
-
-                const results = posts.filter(p =>
-                    p.title.toLowerCase().includes(query) ||
-                    p.summary.toLowerCase().includes(query)
-                );
-
-                if (results.length === 0) {
-                    postGrid.innerHTML = '<p style="text-align:center;color:#777;">No results found</p>';
-                } else {
-                    postGrid.innerHTML = results.map(p => `
-                    <article class="card">
-                        <a href="${p.permalink}">
-                            ${p.image ? `<div class="card-image" style="background-image: url('${p.image}');"></div>` : ''}
-                            <div class="card-content">
-                                <h3>${p.title}</h3>
-                                <p>${p.summary}</p>
-                                <span class="date">${p.date}</span>
-                            </div>
-                        </a>
-                    </article>
-                `).join('');
-                }
-            }
-
-            searchInput.addEventListener('input', performSearch);
-            searchInput.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') performSearch();
-            });
-            if (searchBtn) {
-                searchBtn.addEventListener('click', performSearch);
-            }
-        })();
-    </script>
 </main>
+
+<script>
+    // SEARCH FUNCTIONALITY - Based on working test page
+    (function () {
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const resultsGrid = document.getElementById('resultsGrid');
+        const paginationDiv = document.getElementById('paginationDiv');
+        const searchStatus = document.getElementById('searchStatus');
+
+        if (!searchInput || !resultsGrid) {
+            console.error('Search elements not found');
+            return;
+        }
+
+        // Save initial HTML
+        const initialHTML = resultsGrid.innerHTML;
+        const initialPagination = paginationDiv ? paginationDiv.style.display : '';
+
+        let posts = [];
+
+        // Load search index
+        searchStatus.innerText = 'Loading search index...';
+        searchStatus.style.color = '#666';
+
+        fetch('/index.json')
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.json();
+            })
+            .then(data => {
+                posts = data;
+                searchStatus.style.color = 'green';
+                searchStatus.innerText = `✓ ${posts.length} prompts ready`;
+                setTimeout(() => searchStatus.innerText = '', 3000);
+                console.log('Search ready:', posts.length, 'posts');
+            })
+            .catch(error => {
+                searchStatus.style.color = 'red';
+                searchStatus.innerText = '✗ Search unavailable';
+                console.error('Search load error:', error);
+            });
+
+        // Perform search
+        function performSearch() {
+            const query = searchInput.value.trim().toLowerCase();
+
+            // If empty, restore original
+            if (query.length === 0) {
+                resultsGrid.innerHTML = initialHTML;
+                if (paginationDiv) paginationDiv.style.display = initialPagination;
+                return;
+            }
+
+            // Hide pagination during search
+            if (paginationDiv) paginationDiv.style.display = 'none';
+
+            // Filter posts
+            const results = posts.filter(post =>
+                post.title.toLowerCase().includes(query) ||
+                post.summary.toLowerCase().includes(query)
+            );
+
+            // Display results
+            if (results.length === 0) {
+                resultsGrid.innerHTML = '<p style="text-align:center; color:#777; padding:40px;">No prompts found matching your query.</p>';
+            } else {
+                resultsGrid.innerHTML = results.map(post => `
+                <article class="card">
+                    <a href="${post.permalink}">
+                        ${post.image ? `<div class="card-image" style="background-image: url('${post.image}');"></div>` : ''}
+                        <div class="card-content">
+                            <h3>${post.title}</h3>
+                            <p>${post.summary}</p>
+                            <span class="date">${post.date}</span>
+                        </div>
+                    </a>
+                </article>
+            `).join('');
+            }
+
+            console.log(`Search: "${query}" → ${results.length} results`);
+        }
+
+        // Event listeners
+        searchInput.addEventListener('input', performSearch);
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch();
+            }
+        });
+        if (searchBtn) {
+            searchBtn.addEventListener('click', performSearch);
+        }
+
+        console.log('Search initialized');
+    })();
+</script>
 {{ end }}
