@@ -4,174 +4,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ .Site.Title }}</title>
-    <meta name="description" content="{{ .Site.Params.description }}">
-    <link rel="stylesheet" href="/css/style.css">
+    <meta name="description" content="{{ .Site.Params.profileMode.subtitle | default " The Largest AI Prompt Library -
+        Find and discover the perfect prompts for your AI projects" }}">
+    <meta name="keywords" content="AI prompts, ChatGPT, prompt library, AI tools, prompt engineering">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ .Site.Title }}">
+    <meta property="og:description" content="{{ .Site.Params.profileMode.subtitle }}">
+    <meta property="og:url" content="{{ .Site.BaseURL }}">
+
+    <title>{{ .Site.Title }} - {{ .Site.Params.profileMode.subtitle }}</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/logo_dark.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/css/style.css?v={{ now.Unix }}">
+
+    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6793290562583440"
         crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="app-layout">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="logo-section">
-                <h1 class="site-title">{{ .Site.Title }}</h1>
-            </div>
-            <nav class="nav-menu">
-                <a href="/" class="nav-item active">
-                    <span class="icon">🏠</span>
-                    <span>Home</span>
-                </a>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="site-logo">{{.Site.Title }}</a>
+            <nav class="header-nav">
                 {{ range .Site.Menus.main }}
-                <a href="{{ .URL }}" class="nav-item">
-                    <span class="icon">📁</span>
-                    <span>{{ .Name }}</span>
-                </a>
+                <a href="{{ .URL }}" class="nav-link">{{ .Name }}</a>
                 {{ end }}
             </nav>
-        </aside>
+        </div>
+    </header>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="container">
-                <!-- Header -->
-                <header class="profile-header">
-                    <div class="profile-card">
-                        <h1>{{ .Site.Title }}</h1>
-                        <p class="subtitle">{{ .Site.Params.profileMode.subtitle }}</p>
-                    </div>
-                </header>
-
-                <!-- Search Section -->
-                <div class="search-hero">
-                    <h2>Find the Perfect Prompt</h2>
-                    <div class="search-container">
-                        <input type="text" id="searchInput"
-                            placeholder="What are you building today? (e.g. Marketing, Code...)">
-                        <button class="search-icon-btn" id="searchBtn">🔍</button>
-                    </div>
-                    <div id="searchStatus" style="text-align:center; margin-top:10px; font-size:14px; color:#666;">
-                    </div>
-                </div>
-
-                <!-- AdSense -->
-                <div style="text-align:center; margin: 30px 0;">
-                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6793290562583440"
-                        data-ad-slot="9236420639" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                </div>
-
-                <!-- Posts Grid -->
-                <h2 class="section-title">Latest Updates</h2>
-                <div class="grid" id="resultsGrid">
-                    {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
-                    {{ range $paginator.Pages }}
-                    <article class="card">
-                        <a href="{{ .RelPermalink }}">
-                            {{ with .Params.cover.image }}
-                            <div class="card-image" style="background-image: url('{{ . }}');"></div>
-                            {{ end }}
-                            <div class="card-content">
-                                <h3>{{ .Title }}</h3>
-                                <p>{{ .Summary | truncate 100 }}</p>
-                                <span class="date">{{ .Date.Format "Jan 02, 2006" }}</span>
-                            </div>
-                        </a>
-                    </article>
-                    {{ end }}
-                </div>
-
-                <!-- Pagination -->
-                {{ if gt $paginator.TotalPages 1 }}
-                <div class="pagination" id="paginationDiv">
-                    {{ if $paginator.HasPrev }}
-                    <a href="{{ $paginator.Prev.URL }}" class="page-link prev">← Previous</a>
-                    {{ end }}
-                    <span class="page-number">Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
-                    {{ if $paginator.HasNext }}
-                    <a href="{{ $paginator.Next.URL }}" class="page-link next">Next →</a>
-                    {{ end }}
-                </div>
-                {{ end }}
-
-                <!-- Footer -->
-                <footer style="text-align:center; padding:40px 20px; color:#666;">
-                    <p>Designed for Builders</p>
-                </footer>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <span>🚀</span>
+                <span>{{ .Site.Params.profileMode.subtitle }}</span>
             </div>
-        </main>
+            <h1 class="hero-title">{{ .Site.Title }}</h1>
+            <p class="hero-subtitle">Discover the perfect AI prompts for your next project. Search through hundreds of
+                curated prompts designed for creators, developers, and innovators.</p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <div class="search-section">
+        <div class="search-wrapper">
+            <input type="text" id="searchInput" class="search-input"
+                placeholder="Search prompts by keyword, topic, or use case..." autocomplete="off">
+            <span class="search-icon">🔍</span>
+        </div>
+        <div id="searchStatus" class="search-status"></div>
     </div>
+
+    <!-- AdSense -->
+    <div style="text-align:center; margin: 2rem 0;">
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6793290562583440"
+            data-ad-slot="9236420639" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="section-header">
+            <h2 class="section-title" id="sectionTitle">Latest Prompts</h2>
+            <span class="result-count" id="resultCount"></span>
+        </div>
+
+        <!-- Posts Grid -->
+        <div class="posts-grid" id="postsGrid">
+            {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
+            {{ range $paginator.Pages }}
+            <article class="post-card">
+                <a href="{{ .RelPermalink }}">
+                    {{ with .Params.cover.image }}
+                    <div class="post-thumbnail" style="background-image: url('{{ . }}');"></div>
+                    {{ else }}
+                    <div class="post-thumbnail"></div>
+                    {{ end }}
+                    <div class="post-content">
+                        <h3 class="post-title">{{ .Title }}</h3>
+                        <p class="post-summary">{{ .Summary | truncate 150 }}</p>
+                        <div class="post-meta">
+                            <span class="post-date">{{ .Date.Format "Jan 02, 2006" }}</span>
+                            <span class="post-arrow">→</span>
+                        </div>
+                    </div>
+                </a>
+            </article>
+            {{ end }}
+        </div>
+
+        <!-- Pagination -->
+        {{ if gt $paginator.TotalPages 1 }}
+        <div class="pagination" id="pagination">
+            {{ if $paginator.HasPrev }}
+            <a href="{{ $paginator.Prev.URL }}" class="page-link">← Previous</a>
+            {{ end }}
+            <span class="page-info">Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
+            {{ if $paginator.HasNext }}
+            <a href="{{ $paginator.Next.URL }}" class="page-link">Next →</a>
+            {{ end }}
+        </div>
+        {{ end }}
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; {{ now.Year }} {{ .Site.Title }}. Designed for Builders & Creators.</p>
+        </div>
+    </footer>
 
     <!-- Search Script -->
     <script>
         (function () {
+            'use strict';
+
+            // DOM Elements
             const searchInput = document.getElementById('searchInput');
-            const searchBtn = document.getElementById('searchBtn');
-            const resultsGrid = document.getElementById('resultsGrid');
-            const paginationDiv = document.getElementById('paginationDiv');
+            const postsGrid = document.getElementById('postsGrid');
+            const pagination = document.getElementById('pagination');
             const searchStatus = document.getElementById('searchStatus');
+            const sectionTitle = document.getElementById('sectionTitle');
+            const resultCount = document.getElementById('resultCount');
 
-            if (!searchInput || !resultsGrid) return;
+            if (!searchInput || !postsGrid) return;
 
-            const initialHTML = resultsGrid.innerHTML;
-            const initialPagination = paginationDiv ? paginationDiv.style.display : '';
-            let posts = [];
+            // Store initial state
+            const initialHTML = postsGrid.innerHTML;
+            const initialPagination = pagination ? pagination.outerHTML : '';
+            let allPosts = [];
+            let isSearchActive = false;
 
-            searchStatus.innerText = 'Loading...';
+            // Load search index
+            searchStatus.textContent = 'Loading search index...';
+            searchStatus.className = 'search-status';
 
             fetch('/index.json')
-                .then(res => res.json())
-                .then(data => {
-                    posts = data;
-                    searchStatus.style.color = 'green';
-                    searchStatus.innerText = `✓ ${posts.length} prompts ready`;
-                    setTimeout(() => searchStatus.innerText = '', 3000);
+                .then(response => {
+                    if (!response.ok) throw new Error('Failed to load search index');
+                    return response.json();
                 })
-                .catch(e => {
-                    searchStatus.style.color = 'red';
-                    searchStatus.innerText = '✗ Error loading search';
+                .then(data => {
+                    allPosts = data;
+                    searchStatus.textContent = `✓ ${allPosts.length} prompts ready to search`;
+                    searchStatus.className = 'search-status success';
+                    setTimeout(() => {
+                        searchStatus.textContent = '';
+                    }, 3000);
+                })
+                .catch(error => {
+                    console.error('Search index error:', error);
+                    searchStatus.textContent = '✗ Search unavailable';
+                    searchStatus.className = 'search-status error';
                 });
 
+            // Search function
             function performSearch() {
                 const query = searchInput.value.trim().toLowerCase();
 
+                // If empty, restore original content
                 if (query.length === 0) {
-                    resultsGrid.innerHTML = initialHTML;
-                    if (paginationDiv) paginationDiv.style.display = initialPagination;
+                    postsGrid.innerHTML = initialHTML;
+                    if (pagination) {
+                        const existingPagination = document.getElementById('pagination');
+                        if (existingPagination) {
+                            existingPagination.remove();
+                        }
+                        if (initialPagination) {
+                            postsGrid.insertAdjacentHTML('afterend', initialPagination);
+                        }
+                    }
+                    sectionTitle.textContent = 'Latest Prompts';
+                    resultCount.textContent = '';
+                    isSearchActive = false;
                     return;
                 }
 
-                if (paginationDiv) paginationDiv.style.display = 'none';
+                // Hide pagination during search
+                isSearchActive = true;
+                const existingPagination = document.getElementById('pagination');
+                if (existingPagination) {
+                    existingPagination.style.display = 'none';
+                }
 
-                const results = posts.filter(p =>
-                    p.title.toLowerCase().includes(query) ||
-                    p.summary.toLowerCase().includes(query)
-                );
+                // Filter posts
+                const results = allPosts.filter(post => {
+                    const searchableText = [
+                        post.title,
+                        post.summary,
+                        (post.tags || []).join(' '),
+                        (post.categories || []).join(' ')
+                    ].join(' ').toLowerCase();
 
+                    return searchableText.includes(query);
+                });
+
+                // Update UI
+                sectionTitle.textContent = 'Search Results';
+                resultCount.textContent = `${results.length} result${results.length !== 1 ? 's' : ''}`;
+
+                // Display results
                 if (results.length === 0) {
-                    resultsGrid.innerHTML = '<p style="text-align:center;color:#777;padding:60px 20px;">No prompts found</p>';
+                    postsGrid.innerHTML = `
+                        <div class="empty-state" style="grid-column: 1 / -1;">
+                            <div class="empty-icon">🔍</div>
+                            <h3 class="empty-title">No prompts found</h3>
+                            <p class="empty-text">Try different keywords or browse all prompts</p>
+                        </div>
+                    `;
                 } else {
-                    resultsGrid.innerHTML = results.map(p => `
-                    <article class="card">
-                        <a href="${p.permalink}">
-                            ${p.image ? `<div class="card-image" style="background-image: url('${p.image}');"></div>` : ''}
-                            <div class="card-content">
-                                <h3>${p.title}</h3>
-                                <p>${p.summary}</p>
-                                <span class="date">${p.date}</span>
-                            </div>
-                        </a>
-                    </article>
-                `).join('');
+                    postsGrid.innerHTML = results.map(post => `
+                        <article class="post-card">
+                            <a href="${post.permalink}">
+                                ${post.image ?
+                            `<div class="post-thumbnail" style="background-image: url('${post.image}');"></div>` :
+                            `<div class="post-thumbnail"></div>`
+                        }
+                                <div class="post-content">
+                                    <h3 class="post-title">${escapeHtml(post.title)}</h3>
+                                    <p class="post-summary">${escapeHtml(truncate(post.summary, 150))}</p>
+                                    <div class="post-meta">
+                                        <span class="post-date">${post.date}</span>
+                                        <span class="post-arrow">→</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
+                    `).join('');
                 }
             }
 
-            searchInput.addEventListener('input', performSearch);
-            searchInput.addEventListener('keydown', e => {
-                if (e.key === 'Enter') performSearch();
+            // Utility functions
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            function truncate(text, length) {
+                if (text.length <= length) return text;
+                return text.substr(0, length) + '...';
+            }
+
+            // Event listeners
+            let searchTimeout;
+            searchInput.addEventListener('input', function () {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(performSearch, 300); // Debounce
             });
-            if (searchBtn) searchBtn.addEventListener('click', performSearch);
+
+            searchInput.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') {
+                    clearTimeout(searchTimeout);
+                    performSearch();
+                }
+            });
         })();
     </script>
 </body>
