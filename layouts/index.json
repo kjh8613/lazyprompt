@@ -1,0 +1,49 @@
+[
+    {
+        {- range $index, $e := .Site.RegularPages -
+        }
+    }
+    {
+        {- if $index -
+        }
+    },
+    {
+        { end -
+        }
+    }
+    {
+        "title": {
+            { .Title | jsonify
+            }
+        },
+        "permalink": {
+            { .Permalink | jsonify
+            }
+        },
+        "summary": {
+            { .Summary | plainify | jsonify
+            }
+        },
+        "date": {
+            { .Date.Format "Jan 02, 2006" | jsonify
+            }
+        },
+        "image": {
+            { if .Params.cover.image
+            }
+        }{
+            { .Params.cover.image | jsonify
+            }
+        }{
+            { else
+            }
+        }null{
+            { end
+            }
+        }
+    }
+    {
+        {- end -
+        }
+    }
+]

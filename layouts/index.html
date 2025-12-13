@@ -7,8 +7,11 @@
     </div>
 </header>
 <main class="post-list">
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search prompts...">
+    </div>
     <h2>Recent Prompt Posts</h2>
-    <div class="grid">
+    <div class="grid" id="postGrid">
         {{ range first 10 .Site.RegularPages }}
         <article class="card">
             <a href="{{ .RelPermalink }}">

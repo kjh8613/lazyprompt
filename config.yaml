@@ -3,6 +3,11 @@ languageCode: "ko-kr"
 title: "Lazy Prompt 🚀"
 # theme: "PaperMod"
 
+outputs:
+  home:
+    - HTML
+    - JSON
+
 # Simplified Params
 params:
   profileMode:
