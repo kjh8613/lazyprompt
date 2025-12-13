@@ -46,6 +46,10 @@ def create_post_from_row(row):
     draft: false
     categories: [{category}]
     tags: [AI, 프롬프트, {topic}, Lazyprompt]
+    cover:
+        image: "https://picsum.photos/seed/{topic}/800/400"
+        alt: "{topic} 대표 이미지"
+        relative: false
     ---
 
     ## 1. 개요
