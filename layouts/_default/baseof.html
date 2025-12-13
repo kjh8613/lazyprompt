@@ -86,14 +86,14 @@
 
     <!-- EMBEDDED SEARCH INDEX (Fail-safe) -->
     <script>
-        window.searchIndex = {{ slice | jsonify | safeJS }}; // Init empty
-        { { $list:= slice } }
+        { { $store:= newScratch } }
+        { { $store.Set "searchIndex" slice } }
         { { range.Site.RegularPages } }
         { { $item:= dict "title".Title "summary"(.Summary | plainify) "permalink".RelPermalink "date"(.Date.Format "Jan 02, 2006") "image".Params.cover.image } }
-        { { $list = $list | append $item } }
+        { { $store.Add "searchIndex"(slice $item) } }
         { { end } }
-        window.searchIndex = {{ $list | jsonify | safeJS }};
-        console.log("Embedded Index Loaded:", window.searchIndex.length, "items");
+        window.searchIndex = {{ $store.Get "searchIndex" | jsonify | safeJS }};
+        console.log("Embedded Index Loaded (via Scratch):", window.searchIndex ? window.searchIndex.length : 0, "items");
     </script>
 
     <script src="/js/search.js?v=embedded_v1"></script>
