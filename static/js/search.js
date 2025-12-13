@@ -34,14 +34,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         let posts = [];
         try {
+            console.log("Fetching search index...");
             const res = await fetch('/index.json');
             if (res.ok) {
                 posts = await res.json();
                 console.log(`Loaded ${posts.length} posts for search.`);
+                if (posts.length === 0) {
+                    console.warn("Search index is empty!");
+                }
             } else {
                 console.error("Failed to load search index:", res.status);
             }
-        } catch (e) { console.error("Search Index Error", e); }
+        } catch (e) {
+            console.error("Search Index Error", e);
+        }
 
         // Function: Perform Search
         const performSearch = (shouldScroll = false) => {
