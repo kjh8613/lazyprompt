@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         } catch (e) { console.error("Search Index Error", e); }
 
         // Function: Perform Search
-        const performSearch = () => {
+        const performSearch = (shouldScroll = false) => {
             const query = globalInput.value.toLowerCase();
             const filtered = posts.filter(post =>
                 post.title.toLowerCase().includes(query) ||
@@ -38,27 +38,27 @@ document.addEventListener('DOMContentLoaded', async () => {
             );
             renderGlobalPosts(filtered, postGrid);
 
-            // Scroll to results if query exists
-            if (query.length > 0) {
+            // Scroll to results ONLY if explicitly requested (e.g. Enter pressed)
+            if (shouldScroll && query.length > 0) {
                 postGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         };
 
-        // Event: Typing (Real-time)
-        globalInput.addEventListener('input', performSearch);
+        // Event: Typing (Real-time) - NO SCROLL
+        globalInput.addEventListener('input', () => performSearch(false));
 
-        // Event: Enter Key
+        // Event: Enter Key - SCROLL
         globalInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
-                performSearch();
+                performSearch(true);
                 globalInput.blur(); // Dismiss keyboard on mobile
             }
         });
 
-        // Event: Click Search Icon
+        // Event: Click Search Icon - SCROLL
         const searchBtn = document.querySelector('.search-icon-btn');
         if (searchBtn) {
-            searchBtn.addEventListener('click', performSearch);
+            searchBtn.addEventListener('click', () => performSearch(true));
         }
     }
 
