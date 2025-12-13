@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SNS on Lazy Prompt</title>
+    <link>https://lazyprompt.vercel.app/categories/sns/</link>
+    <description>Recent content in SNS on Lazy Prompt</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 13 Dec 2025 17:30:33 +0900</lastBuildDate>
+    <atom:link href="https://lazyprompt.vercel.app/categories/sns/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>인스타그램 감성 글귀 생성 프롬프트 - 1초 만에 복사해서 쓰는 AI 프롬프트</title>
+      <link>https://lazyprompt.vercel.app/posts/2025-12-13-%EC%9D%B8%EC%8A%A4%ED%83%80%EA%B7%B8%EB%9E%A8-%EA%B0%90%EC%84%B1-%EA%B8%80%EA%B7%80-%EC%83%9D%EC%84%B1-%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/</link>
+      <pubDate>Sat, 13 Dec 2025 17:30:33 +0900</pubDate>
+      <guid>https://lazyprompt.vercel.app/posts/2025-12-13-%EC%9D%B8%EC%8A%A4%ED%83%80%EA%B7%B8%EB%9E%A8-%EA%B0%90%EC%84%B1-%EA%B8%80%EA%B7%80-%EC%83%9D%EC%84%B1-%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/</guid>
+      <description>&lt;h2 id=&#34;1-개요&#34;&gt;1. 개요&lt;/h2&gt;
+&lt;p&gt;이 프롬프트는 &lt;strong&gt;인스타그램 감성 글귀 생성 프롬프트&lt;/strong&gt; 작업을 자동화하거나 퀄리티를 높이고 싶은 분들을 위해 제작되었습니다. 더 이상 감성적인 문구를 짜내느라 시간을 낭비하지 마세요! 당신의 인스타그램 피드를 더욱 매력적으로 만들어줄 글귀를 AI가 빠르고 쉽게 생성해줍니다.&lt;/p&gt;
+&lt;p&gt;{&amp;lt; adsense &amp;gt;}&lt;/p&gt;
+&lt;h2 id=&#34;2-프롬프트-복사-가능&#34;&gt;2. 프롬프트 (복사 가능)&lt;/h2&gt;
+&lt;p&gt;아래 박스의 내용을 복사해서 AI(ChatGPT, Midjourney 등)에 붙여넣으세요.&lt;/p&gt;
+&lt;p&gt;text
+당신은 최고의 인스타그램 감성 글귀 작가입니다. 주어진 주제, 상황, 또는 이미지 설명을 바탕으로, 팔로워들의 공감을 불러일으키고 좋아요를 누르게 만드는 매력적인 짧은 글귀를 생성해주세요. 글귀는 간결하고, 시적이며, 감성적인 분위기를 담아야 합니다. 문장 길이는 30자 내외로 제한하고, 이모지를 적절히 활용하여 감정을 더욱 풍부하게 표현하세요. 해시태그는 글귀와 관련된 2~3개를 추가합니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Categories on Lazy Prompt</title>
+    <link>https://lazyprompt.vercel.app/categories/</link>
+    <description>Recent content in Categories on Lazy Prompt</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 13 Dec 2025 17:30:41 +0900</lastBuildDate>
+    <atom:link href="https://lazyprompt.vercel.app/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>코딩</title>
+      <link>https://lazyprompt.vercel.app/categories/%EC%BD%94%EB%94%A9/</link>
+      <pubDate>Sat, 13 Dec 2025 17:30:41 +0900</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/%EC%BD%94%EB%94%A9/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SNS</title>
+      <link>https://lazyprompt.vercel.app/categories/sns/</link>
+      <pubDate>Sat, 13 Dec 2025 17:30:33 +0900</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/sns/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>블로그</title>
+      <link>https://lazyprompt.vercel.app/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/</link>
+      <pubDate>Sat, 13 Dec 2025 17:30:24 +0900</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>디자인</title>
+      <link>https://lazyprompt.vercel.app/categories/%EB%94%94%EC%9E%90%EC%9D%B8/</link>
+      <pubDate>Sat, 13 Dec 2025 17:30:17 +0900</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/%EB%94%94%EC%9E%90%EC%9D%B8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>생산성</title>
+      <link>https://lazyprompt.vercel.app/categories/%EC%83%9D%EC%82%B0%EC%84%B1/</link>
+      <pubDate>Sat, 13 Dec 2025 17:30:05 +0900</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/%EC%83%9D%EC%82%B0%EC%84%B1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI 그림</title>
+      <link>https://lazyprompt.vercel.app/categories/ai-%EA%B7%B8%EB%A6%BC/</link>
+      <pubDate>Sat, 13 Dec 2025 17:29:55 +0900</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/ai-%EA%B7%B8%EB%A6%BC/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>업무 효율</title>
+      <link>https://lazyprompt.vercel.app/categories/%EC%97%85%EB%AC%B4-%ED%9A%A8%EC%9C%A8/</link>
+      <pubDate>Sat, 13 Dec 2025 17:29:45 +0900</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/%EC%97%85%EB%AC%B4-%ED%9A%A8%EC%9C%A8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>유튜브</title>
+      <link>https://lazyprompt.vercel.app/categories/%EC%9C%A0%ED%8A%9C%EB%B8%8C/</link>
+      <pubDate>Sat, 13 Dec 2025 17:29:34 +0900</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/%EC%9C%A0%ED%8A%9C%EB%B8%8C/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>마케팅</title>
+      <link>https://lazyprompt.vercel.app/categories/%EB%A7%88%EC%BC%80%ED%8C%85/</link>
+      <pubDate>Fri, 26 Jan 2024 17:30:51 +0900</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/%EB%A7%88%EC%BC%80%ED%8C%85/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>업무 효율 on Lazy Prompt</title>
+    <link>https://lazyprompt.vercel.app/categories/%EC%97%85%EB%AC%B4-%ED%9A%A8%EC%9C%A8/</link>
+    <description>Recent content in 업무 효율 on Lazy Prompt</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sat, 13 Dec 2025 17:29:45 +0900</lastBuildDate>
+    <atom:link href="https://lazyprompt.vercel.app/categories/%EC%97%85%EB%AC%B4-%ED%9A%A8%EC%9C%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ChatGPT 영어 비즈니스 이메일 작성법 - 1초 만에 복사해서 쓰는 AI 프롬프트</title>
+      <link>https://lazyprompt.vercel.app/posts/2025-12-13-chatgpt-%EC%98%81%EC%96%B4-%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4-%EC%9D%B4%EB%A9%94%EC%9D%BC-%EC%9E%91%EC%84%B1%EB%B2%95/</link>
+      <pubDate>Sat, 13 Dec 2025 17:29:45 +0900</pubDate>
+      <guid>https://lazyprompt.vercel.app/posts/2025-12-13-chatgpt-%EC%98%81%EC%96%B4-%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4-%EC%9D%B4%EB%A9%94%EC%9D%BC-%EC%9E%91%EC%84%B1%EB%B2%95/</guid>
+      <description>&lt;h2 id=&#34;1-개요&#34;&gt;1. 개요&lt;/h2&gt;
+&lt;p&gt;이 프롬프트는 &lt;strong&gt;ChatGPT 영어 비즈니스 이메일 작성법&lt;/strong&gt; 작업을 자동화하거나 퀄리티를 높이고 싶은 분들을 위해 제작되었습니다. 시간 절약은 물론, 프로페셔널한 영어 이메일을 쉽게 작성할 수 있도록 도와줍니다.&lt;/p&gt;
+&lt;p&gt;{&amp;lt; adsense &amp;gt;}&lt;/p&gt;
+&lt;h2 id=&#34;2-프롬프트-복사-가능&#34;&gt;2. 프롬프트 (복사 가능)&lt;/h2&gt;
+&lt;p&gt;아래 박스의 내용을 복사해서 AI(ChatGPT, Midjourney 등)에 붙여넣으세요.&lt;/p&gt;
+&lt;p&gt;text
+You are an expert in writing professional business emails in English. Your writing style is clear, concise, and professional, tailored to the specific audience and purpose. Your tone is always appropriate for the situation, whether it requires formality, enthusiasm, or empathy. You understand cultural nuances in business communication and avoid potentially offensive or confusing language.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

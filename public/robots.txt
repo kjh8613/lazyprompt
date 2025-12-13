@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://lazyprompt.vercel.app/sitemap.xml
