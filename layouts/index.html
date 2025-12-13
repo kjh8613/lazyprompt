@@ -1,160 +1,179 @@
-{{ define "main" }}
-<header class="profile-header">
-    <div class="profile-card">
-        <h1>{{ .Site.Title }}</h1>
-        <p class="subtitle">{{ .Site.Params.profileMode.subtitle }}</p>
-    </div>
-</header>
+<!DOCTYPE html>
+<html lang="en">
 
-<main class="post-list">
-    <!-- Search Section -->
-    <div class="search-hero">
-        <h2>Find the Perfect Prompt</h2>
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="What are you building today? (e.g. Marketing, Code...)">
-            <button class="search-icon-btn" id="searchBtn">🔍</button>
-        </div>
-        <div id="searchStatus" style="text-align:center; margin-top:10px; font-size:14px;"></div>
-    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Site.Title }}</title>
+    <meta name="description" content="{{ .Site.Params.description }}">
+    <link rel="stylesheet" href="/css/style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6793290562583440"
+        crossorigin="anonymous"></script>
+</head>
 
-    <!-- AdSense -->
-    <div style="text-align:center; margin-bottom: 40px;">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6793290562583440"
-            data-ad-slot="9236420639" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
-
-    <h2 class="section-title">Latest Updates</h2>
-    <div class="grid" id="resultsGrid">
-        {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
-        {{ range $paginator.Pages }}
-        <article class="card">
-            <a href="{{ .RelPermalink }}">
-                {{ with .Params.cover.image }}
-                <div class="card-image" style="background-image: url('{{ . }}');"></div>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <h1 class="site-title">{{ .Site.Title }}</h1>
+            </div>
+            <nav class="nav-menu">
+                <a href="/" class="nav-item active">
+                    <span class="icon">🏠</span>
+                    <span>Home</span>
+                </a>
+                {{ range .Site.Menus.main }}
+                <a href="{{ .URL }}" class="nav-item">
+                    <span class="icon">📁</span>
+                    <span>{{ .Name }}</span>
+                </a>
                 {{ end }}
-                <div class="card-content">
-                    <h3>{{ .Title }}</h3>
-                    <p>{{ .Summary | truncate 100 }}</p>
-                    <span class="date">{{ .Date.Format "Jan 02, 2006" }}</span>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="container">
+                <!-- Header -->
+                <header class="profile-header">
+                    <div class="profile-card">
+                        <h1>{{ .Site.Title }}</h1>
+                        <p class="subtitle">{{ .Site.Params.profileMode.subtitle }}</p>
+                    </div>
+                </header>
+
+                <!-- Search Section -->
+                <div class="search-hero">
+                    <h2>Find the Perfect Prompt</h2>
+                    <div class="search-container">
+                        <input type="text" id="searchInput"
+                            placeholder="What are you building today? (e.g. Marketing, Code...)">
+                        <button class="search-icon-btn" id="searchBtn">🔍</button>
+                    </div>
+                    <div id="searchStatus" style="text-align:center; margin-top:10px; font-size:14px; color:#666;">
+                    </div>
                 </div>
-            </a>
-        </article>
-        {{ end }}
+
+                <!-- AdSense -->
+                <div style="text-align:center; margin: 30px 0;">
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6793290562583440"
+                        data-ad-slot="9236420639" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+
+                <!-- Posts Grid -->
+                <h2 class="section-title">Latest Updates</h2>
+                <div class="grid" id="resultsGrid">
+                    {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
+                    {{ range $paginator.Pages }}
+                    <article class="card">
+                        <a href="{{ .RelPermalink }}">
+                            {{ with .Params.cover.image }}
+                            <div class="card-image" style="background-image: url('{{ . }}');"></div>
+                            {{ end }}
+                            <div class="card-content">
+                                <h3>{{ .Title }}</h3>
+                                <p>{{ .Summary | truncate 100 }}</p>
+                                <span class="date">{{ .Date.Format "Jan 02, 2006" }}</span>
+                            </div>
+                        </a>
+                    </article>
+                    {{ end }}
+                </div>
+
+                <!-- Pagination -->
+                {{ if gt $paginator.TotalPages 1 }}
+                <div class="pagination" id="paginationDiv">
+                    {{ if $paginator.HasPrev }}
+                    <a href="{{ $paginator.Prev.URL }}" class="page-link prev">← Previous</a>
+                    {{ end }}
+                    <span class="page-number">Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
+                    {{ if $paginator.HasNext }}
+                    <a href="{{ $paginator.Next.URL }}" class="page-link next">Next →</a>
+                    {{ end }}
+                </div>
+                {{ end }}
+
+                <!-- Footer -->
+                <footer style="text-align:center; padding:40px 20px; color:#666;">
+                    <p>Designed for Builders</p>
+                </footer>
+            </div>
+        </main>
     </div>
 
-    <!-- Pagination -->
-    {{ if gt $paginator.TotalPages 1 }}
-    <div class="pagination" id="paginationDiv">
-        {{ if $paginator.HasPrev }}
-        <a href="{{ $paginator.Prev.URL }}" class="page-link prev">← Previous</a>
-        {{ end }}
-        <span class="page-number">Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
-        {{ if $paginator.HasNext }}
-        <a href="{{ $paginator.Next.URL }}" class="page-link next">Next →</a>
-        {{ end }}
-    </div>
-    {{ end }}
-</main>
+    <!-- Search Script -->
+    <script>
+        (function () {
+            const searchInput = document.getElementById('searchInput');
+            const searchBtn = document.getElementById('searchBtn');
+            const resultsGrid = document.getElementById('resultsGrid');
+            const paginationDiv = document.getElementById('paginationDiv');
+            const searchStatus = document.getElementById('searchStatus');
 
-<script>
-    // SEARCH FUNCTIONALITY - Based on working test page
-    (function () {
-        const searchInput = document.getElementById('searchInput');
-        const searchBtn = document.getElementById('searchBtn');
-        const resultsGrid = document.getElementById('resultsGrid');
-        const paginationDiv = document.getElementById('paginationDiv');
-        const searchStatus = document.getElementById('searchStatus');
+            if (!searchInput || !resultsGrid) return;
 
-        if (!searchInput || !resultsGrid) {
-            console.error('Search elements not found');
-            return;
-        }
+            const initialHTML = resultsGrid.innerHTML;
+            const initialPagination = paginationDiv ? paginationDiv.style.display : '';
+            let posts = [];
 
-        // Save initial HTML
-        const initialHTML = resultsGrid.innerHTML;
-        const initialPagination = paginationDiv ? paginationDiv.style.display : '';
+            searchStatus.innerText = 'Loading...';
 
-        let posts = [];
+            fetch('/index.json')
+                .then(res => res.json())
+                .then(data => {
+                    posts = data;
+                    searchStatus.style.color = 'green';
+                    searchStatus.innerText = `✓ ${posts.length} prompts ready`;
+                    setTimeout(() => searchStatus.innerText = '', 3000);
+                })
+                .catch(e => {
+                    searchStatus.style.color = 'red';
+                    searchStatus.innerText = '✗ Error loading search';
+                });
 
-        // Load search index
-        searchStatus.innerText = 'Loading search index...';
-        searchStatus.style.color = '#666';
+            function performSearch() {
+                const query = searchInput.value.trim().toLowerCase();
 
-        fetch('/index.json')
-            .then(res => {
-                if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                return res.json();
-            })
-            .then(data => {
-                posts = data;
-                searchStatus.style.color = 'green';
-                searchStatus.innerText = `✓ ${posts.length} prompts ready`;
-                setTimeout(() => searchStatus.innerText = '', 3000);
-                console.log('Search ready:', posts.length, 'posts');
-            })
-            .catch(error => {
-                searchStatus.style.color = 'red';
-                searchStatus.innerText = '✗ Search unavailable';
-                console.error('Search load error:', error);
+                if (query.length === 0) {
+                    resultsGrid.innerHTML = initialHTML;
+                    if (paginationDiv) paginationDiv.style.display = initialPagination;
+                    return;
+                }
+
+                if (paginationDiv) paginationDiv.style.display = 'none';
+
+                const results = posts.filter(p =>
+                    p.title.toLowerCase().includes(query) ||
+                    p.summary.toLowerCase().includes(query)
+                );
+
+                if (results.length === 0) {
+                    resultsGrid.innerHTML = '<p style="text-align:center;color:#777;padding:60px 20px;">No prompts found</p>';
+                } else {
+                    resultsGrid.innerHTML = results.map(p => `
+                    <article class="card">
+                        <a href="${p.permalink}">
+                            ${p.image ? `<div class="card-image" style="background-image: url('${p.image}');"></div>` : ''}
+                            <div class="card-content">
+                                <h3>${p.title}</h3>
+                                <p>${p.summary}</p>
+                                <span class="date">${p.date}</span>
+                            </div>
+                        </a>
+                    </article>
+                `).join('');
+                }
+            }
+
+            searchInput.addEventListener('input', performSearch);
+            searchInput.addEventListener('keydown', e => {
+                if (e.key === 'Enter') performSearch();
             });
+            if (searchBtn) searchBtn.addEventListener('click', performSearch);
+        })();
+    </script>
+</body>
 
-        // Perform search
-        function performSearch() {
-            const query = searchInput.value.trim().toLowerCase();
-
-            // If empty, restore original
-            if (query.length === 0) {
-                resultsGrid.innerHTML = initialHTML;
-                if (paginationDiv) paginationDiv.style.display = initialPagination;
-                return;
-            }
-
-            // Hide pagination during search
-            if (paginationDiv) paginationDiv.style.display = 'none';
-
-            // Filter posts
-            const results = posts.filter(post =>
-                post.title.toLowerCase().includes(query) ||
-                post.summary.toLowerCase().includes(query)
-            );
-
-            // Display results
-            if (results.length === 0) {
-                resultsGrid.innerHTML = '<p style="text-align:center; color:#777; padding:40px;">No prompts found matching your query.</p>';
-            } else {
-                resultsGrid.innerHTML = results.map(post => `
-                <article class="card">
-                    <a href="${post.permalink}">
-                        ${post.image ? `<div class="card-image" style="background-image: url('${post.image}');"></div>` : ''}
-                        <div class="card-content">
-                            <h3>${post.title}</h3>
-                            <p>${post.summary}</p>
-                            <span class="date">${post.date}</span>
-                        </div>
-                    </a>
-                </article>
-            `).join('');
-            }
-
-            console.log(`Search: "${query}" → ${results.length} results`);
-        }
-
-        // Event listeners
-        searchInput.addEventListener('input', performSearch);
-        searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                performSearch();
-            }
-        });
-        if (searchBtn) {
-            searchBtn.addEventListener('click', performSearch);
-        }
-
-        console.log('Search initialized');
-    })();
-</script>
-{{ end }}
+</html>
