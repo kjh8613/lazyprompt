@@ -41,10 +41,13 @@
                     <li><a href="#" id="sidebarSearchTrigger">🔍 Search</a></li>
                 </ul>
 
-                <h3>Genres & Optimization</h3>
-                <ul>
+                <h3>Categories</h3>
+                <ul class="category-list">
                     {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
-                    <li><a href="{{ " /categories/" | relLangURL }}{{ $name | urlize }}">📂 {{ $name | humanize }}</a>
+                    <li>
+                        <a href="{{ " /categories/" | relLangURL }}{{ $name | urlize }}">
+                            {{ $name | humanize }} <span class="count-badge">{{ $taxonomy.Count }}</span>
+                        </a>
                     </li>
                     {{ end }}
                 </ul>

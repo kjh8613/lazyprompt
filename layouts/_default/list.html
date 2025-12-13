@@ -1,0 +1,23 @@
+{{ define "main" }}
+<header class="page-header">
+    <h1 class="page-title">{{ .Title }}</h1>
+    <p class="page-description">Posts in "{{ .Title }}" category</p>
+</header>
+
+<div class="grid">
+    {{ range .Paginator.Pages }}
+    <article class="card">
+        <a href="{{ .RelPermalink }}">
+            {{ with .Params.cover.image }}
+            <div class="card-image" style="background-image: url('{{ . }}');"></div>
+            {{ end }}
+            <div class="card-content">
+                <h3>{{ .Title }}</h3>
+                <p>{{ .Summary | truncate 150 }}</p>
+                <span class="date">{{ .Date.Format "Jan 02, 2006" }}</span>
+            </div>
+        </a>
+    </article>
+    {{ end }}
+</div>
+{{ end }}
