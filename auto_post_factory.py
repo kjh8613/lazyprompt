@@ -7,7 +7,7 @@ from datetime import datetime
 # ==========================================
 # 1. 설정
 # ==========================================
-GEMINI_KEY = "AIzaSyCNK1EOdfsNyiZ_IyUB8_BT9vfUdYZ_jpc" # 키 입력 필수!
+GEMINI_KEY = "API_KEY_HERE" # 키 입력 필수!
 EXCEL_FILE = "keywords.xlsx"       # 방금 만든 엑셀 파일명
 OUTPUT_DIR = "./content/posts"     # Hugo 글 저장 위치
 
