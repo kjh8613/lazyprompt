@@ -1,0 +1,11 @@
+<script>
+    { { - $.Scratch.Set "searchIndex" slice -} }
+    { { - $pages := site.RegularPages -} }
+    { { - range $pages -} }
+    { { - $item := dict "title".Title "summary"(.Summary | plainify) "permalink".RelPermalink "date"(.Date.Format "Jan 02, 2006") "image".Params.cover.image -} }
+    { { - $.Scratch.Add "searchIndex"(slice $item) -} }
+    { { - end -} }
+    window.searchIndex = {{ $.Scratch.Get "searchIndex" | jsonify | safeJS }};
+    console.log("Embedded Index Loaded (Global Site):", window.searchIndex ? window.searchIndex.length : 0, "items");
+</script>
+<script src="/js/search.js?v=embedded_v4"></script>

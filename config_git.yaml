@@ -1,7 +1,7 @@
-baseURL: "https://lazyprompt.vercel.app/"
+﻿baseURL: "https://lazyprompt.vercel.app/"
 languageCode: "en-us"
-title: "Lazy Prompt"
-
+title: "Lazy Prompt ??"
+# theme: "PaperMod"
 pagination:
   pagerSize: 12
 
@@ -15,11 +15,13 @@ outputs:
     - HTML
     - JSON
 
+# Simplified Params
 params:
   profileMode:
     subtitle: "The Largest AI Prompt Library"
     imageUrl: "/images/logo_dark.png"
 
+  # Social Icons
   socialIcons:
     - name: "github"
       url: "https://github.com/"

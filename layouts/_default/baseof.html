@@ -4,202 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ .Title }} | {{ .Site.Title }}</title>
+
+    <!-- SEO Meta Tags -->
+    <title>{{ if .IsHome }}{{ .Site.Title }} - {{ .Site.Params.profileMode.subtitle }}{{ else }}{{ .Title }} | {{
+        .Site.Title }}{{ end }}</title>
     <meta name="description"
-        content="{{ if .IsHome }}The world's best collection of Copy-Paste AI Prompts for ChatGPT, Claude, and Midjourney.{{ else }}{{ .Summary }}{{ end }}">
-    <meta name="keywords" content="AI Prompts, ChatGPT Prompts, Midjourney, Coding, Marketing, Productivity, AI Tools">
+        content="{{ if .IsHome }}{{ .Site.Params.profileMode.subtitle }}{{ else }}{{ .Summary | truncate 160 }}{{ end }}">
+    <meta name="keywords" content="AI prompts, ChatGPT, prompt library, AI tools, prompt engineering">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
     <meta property="og:title" content="{{ .Title }}">
     <meta property="og:description"
-        content="{{ if .IsHome }}The world's best collection of Copy-Paste AI Prompts used by top 1% experts.{{ else }}{{ .Summary }}{{ end }}">
-    <meta property="og:image"
-        content="{{ if .Params.cover.image }}{{ .Params.cover.image }}{{ else }}{{ .Site.Params.profileMode.imageUrl }}{{ end }}">
-    <meta property="og:type" content="website">
-    <link rel="stylesheet" href="/css/style.css?v=final2">
+        content="{{ if .IsHome }}{{ .Site.Params.profileMode.subtitle }}{{ else }}{{ .Summary | truncate 160 }}{{ end }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    {{ with .Params.cover.image }}
+    <meta property="og:image" content="{{ . | absURL }}">
+    {{ end }}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/logo_dark.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/css/style.css?v={{ now.Unix }}">
+
+    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6793290562583440"
         crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="app-layout">
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <a href="/">
-                    <img src="{{ .Site.Params.profileMode.imageUrl }}" alt="Logo" class="sidebar-logo">
-                    <h2 class="sidebar-title">{{ .Site.Title }}</h2>
-                </a>
-                <p class="sidebar-subtitle">{{ .Site.Params.profileMode.subtitle }}</p>
-            </div>
-            <nav class="sidebar-nav">
-                <h3>Menu</h3>
-                <ul>
-                    <li><a href="/" class="active">🏠 Home <span class="count-badge">{{ len .Site.RegularPages
-                                }}</span></a></li>
-                    <li><a href="#" id="sidebarSearchTrigger">🔍 Search</a></li>
-                </ul>
-                <h3>Categories</h3>
-                <ul class="category-list">
-                    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
-                    <li>
-                        {{ $termPage := $.Site.GetPage (printf "categories/%s" $name) }}
-                        {{ if $termPage }}
-                        <a href="{{ $termPage.RelPermalink }}">{{ $name | humanize }} <span class="count-badge">{{
-                                $taxonomy.Count }}</span></a>
-                        {{ else }}
-                        <a href="{{ printf " /categories/%s/" ($name | urlize) | relLangURL }}">{{ $name | humanize }}
-                            <span class="count-badge">{{ $taxonomy.Count }}</span></a>
-                        {{ end }}
-                    </li>
-                    {{ end }}
-                </ul>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="site-logo">{{ .Site.Title }}</a>
+            <nav class="header-nav">
+                <a href="/" class="nav-link">Home</a>
+                {{ range .Site.Menus.main }}
+                <a href="{{ .URL }}" class="nav-link">{{ .Name }}</a>
+                {{ end }}
             </nav>
-            <div class="sidebar-footer">
-                <p>© 2025 Lazy Prompt</p>
-                <p style="margin-top:5px; font-size: 0.6rem;">Designed for Builders</p>
-            </div>
-        </aside>
-        <main class="main-content">
-            <div class="mobile-header">
-                <span class="menu-toggle">☰</span>
-                <span class="mobile-title">{{ .Site.Title }}</span>
-            </div>
-            <div class="container">
-                {{ block "main" . }}{{ end }}
-            </div>
-        </main>
-    </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    {{ block "main" . }}{{ end }}
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; {{ now.Year }} {{ .Site.Title }}. Designed for Builders & Creators.</p>
+        </div>
+    </footer>
+
+    <!-- Copy Button Script (for code blocks) -->
     <script src="/js/copy.js"></script>
-    <script>
-        // search.js - Global + Scoped Search Handler (INLINE)
-        (function () {
-            const globalInput = document.getElementById('globalSearchInput');
-            const sidebarTrigger = document.getElementById('sidebarSearchTrigger');
-            const scopedInput = document.getElementById('scopedSearchInput');
-            const postGrid = document.querySelector('.grid');
-
-            if (!globalInput && !scopedInput) return;
-
-            // Global Search (Homepage)
-            if (globalInput) {
-                const initialHTML = postGrid ? postGrid.innerHTML : '';
-                const initialPagination = document.querySelector('.pagination');
-
-                const togglePagination = (show) => {
-                    if (initialPagination) initialPagination.style.display = show ? 'flex' : 'none';
-                }
-
-                let posts = [];
-                const debugMsg = document.createElement('div');
-                debugMsg.style.cssText = "text-align:center; font-size:12px; color:gray; margin-top:5px;";
-                globalInput.parentNode.appendChild(debugMsg);
-                debugMsg.innerText = "Loading search index...";
-
-                fetch('/index.json')
-                    .then(res => {
-                        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                        return res.json();
-                    })
-                    .then(data => {
-                        posts = data;
-                        debugMsg.style.color = "green";
-                        debugMsg.innerText = `System: Ready. ${posts.length} prompts loaded.`;
-                        setTimeout(() => debugMsg.remove(), 3000);
-                    })
-                    .catch(e => {
-                        debugMsg.style.color = "red";
-                        debugMsg.innerText = `System Error: ${e.message}`;
-                        console.error("Search index load failed:", e);
-                    });
-
-                function performSearch(shouldScroll) {
-                    const query = globalInput.value.trim().toLowerCase();
-
-                    if (query.length === 0) {
-                        if (postGrid) postGrid.innerHTML = initialHTML;
-                        togglePagination(true);
-                        return;
-                    }
-
-                    togglePagination(false);
-
-                    const results = posts.filter(post =>
-                        post.title.toLowerCase().includes(query) ||
-                        post.summary.toLowerCase().includes(query)
-                    );
-
-                    if (!postGrid) return;
-
-                    if (results.length === 0) {
-                        postGrid.innerHTML = '<p style="text-align: center; color: #777;">No prompts found matching your query.</p>';
-                    } else {
-                        postGrid.innerHTML = results.map(post => `
-                        <a href="${post.permalink}" class="card">
-                            ${post.image ? `<div class="card-img"><img src="${post.image}" alt="${post.title}"></div>` : ''}
-                            <div class="card-body">
-                                <h3>${post.title}</h3>
-                                <p>${post.summary}</p>
-                                <span class="date">${post.date}</span>
-                            </div>
-                        </a>
-                    `).join('');
-                    }
-
-                    if (shouldScroll) {
-                        postGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                }
-
-                globalInput.addEventListener('input', () => performSearch(false));
-
-                globalInput.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        performSearch(true);
-                    }
-                });
-
-                // Search button click
-                const searchBtn = document.getElementById('globalSearchBtn');
-                if (searchBtn) {
-                    searchBtn.addEventListener('click', () => performSearch(true));
-                }
-
-                if (sidebarTrigger) {
-                    sidebarTrigger.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        globalInput.focus();
-                        globalInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    });
-                }
-            }
-
-            // Scoped Search (Category Pages)
-            if (scopedInput && postGrid) {
-                const allCards = Array.from(postGrid.querySelectorAll('.card'));
-
-                scopedInput.addEventListener('input', () => {
-                    const query = scopedInput.value.trim().toLowerCase();
-
-                    if (query.length === 0) {
-                        allCards.forEach(card => card.style.display = '');
-                        return;
-                    }
-
-                    allCards.forEach(card => {
-                        const title = card.querySelector('h3')?.innerText.toLowerCase() || '';
-                        const summary = card.querySelector('p')?.innerText.toLowerCase() || '';
-                        card.style.display = (title.includes(query) || summary.includes(query)) ? '' : 'none';
-                    });
-                });
-
-                scopedInput.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        postGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            }
-        })();
-    </script>
 </body>
 
 </html>
