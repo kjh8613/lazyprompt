@@ -1,6 +1,6 @@
 baseURL = 'https://lazyprompt.vercel.app/'
 languageCode = 'ko-kr'
-title = 'Lazy Prompt'
+title = 'Lazy Prompt 🚀'
 theme = "papermod"
 
 [params]
@@ -11,19 +11,16 @@ theme = "papermod"
     ShowBreadCrumbs = true
     ShowCodeCopyButtons = true
     
-    # 🏠 프로필 모드 (중앙 정렬 + 이미지)
-    [params.profileMode]
-        enabled = true
-        title = "Lazy Prompt 🚀"
-        subtitle = "게으른 자들을 위한 AI 프롬프트 도서관에 오신 것을 환영합니다."
-        imageUrl = "https://cdn-icons-png.flaticon.com/512/4712/4712109.png" # 로봇 아이콘
-        imageWidth = 120
-        imageHeight = 120
-    
+    # 🏠 대문 디자인 (Home Info Mode)로 복귀
+    # profileMode는 주석 처리하거나 지웁니다.
+    # [params.profileMode]
+    #    enabled = false
+
+    [params.homeInfoParams]
+        Title = "안녕하세요! Lazy Prompt 입니다 �"
+        Content = "여기는 게으른 자들을 위한 AI 프롬프트 도서관입니다.\n\n아래에서 원하는 프롬프트를 복사해서 바로 사용하세요!"
+
     # 소셜 아이콘
     [[params.socialIcons]]
         name = "github"
         url = "https://github.com/"
-
-    # 메인 섹션 글 목록 표시 (프로필 아래에 글 목록이 나오도록)
-    mainSections = ["posts"]
