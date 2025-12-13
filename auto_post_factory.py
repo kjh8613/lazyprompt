@@ -14,7 +14,7 @@ api_key = os.getenv("GOOGLE_API_KEY")
 # 2. 모델 설정 (🏆 Best Pick: 무제한/초고속 모델 적용)
 if api_key:
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-2.5-flash-lite') # 이걸로 고정!
+    model = genai.GenerativeModel('gemini-2.5-flash-lite') # 4K RPM (Highest limit)
 
 # 3. 공장 가동 로직 (나중에 실행될 부분)
 def run_factory():
