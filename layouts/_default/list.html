@@ -1,14 +1,13 @@
-{{ define "main" }}
-<header class="page-header search-hero">
+<!-- Search Hero Section (Identical to Home) -->
+<div class="search-hero">
+    <h2>Prompts for {{ .Title }}</h2>
     <div class="search-container">
-        <!-- Scoped Search: We add data-context="category" to tell JS to filter -->
+        <!-- Scoped Search: Data attribute for JS filtering -->
         <input type="text" id="categorySearchInput" placeholder="Search in {{ .Title }}..." data-category="{{ .Title }}"
             autocomplete="off">
         <button class="search-icon-btn">🔍</button>
     </div>
-    <h1 class="page-title" style="margin-top: 30px;">{{ .Title }}</h1>
-    <p class="page-description">Prompts for {{ .Title }}</p>
-</header>
+</div>
 
 <div id="categoryPostGrid" class="grid">
     {{ range .Paginator.Pages }}
