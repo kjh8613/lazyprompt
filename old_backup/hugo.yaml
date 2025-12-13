@@ -1,0 +1,28 @@
+baseURL: "https://lazyprompt.me" # 선생님의 도메인
+languageCode: "ko-kr"
+title: "Lazyprompt"
+theme: "PaperMod"
+
+enableRobotsTXT: true
+production: true
+
+params:
+  defaultTheme: light
+  description: "게으른 당신을 위한 AI 프롬프트 도서관"
+  
+  # 상단 메뉴 설정
+  menu:
+    main:
+      - identifier: search
+        name: 🔍 검색
+        url: /search/
+        weight: 10
+      - identifier: categories
+        name: 📂 카테고리
+        url: /categories/
+        weight: 20
+
+  # 소셜 링크 (선택사항)
+  socialIcons:
+    - name: github
+      url: "https://github.com/"
