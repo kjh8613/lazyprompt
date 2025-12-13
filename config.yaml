@@ -7,7 +7,7 @@ title: "Lazy Prompt 🚀"
 params:
   profileMode:
     subtitle: "게으른 자들을 위한 AI 프롬프트 도서관"
-    imageUrl: "https://cdn-icons-png.flaticon.com/512/4712/4712109.png" # Safe link
+    imageUrl: "/images/logo.png"
 
   # Social Icons
   socialIcons:
