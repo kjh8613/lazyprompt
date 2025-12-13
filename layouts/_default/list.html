@@ -1,301 +1,300 @@
-{{ define "main" }}
-<!-- Mobile Sidebar Toggle -->
-<button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle Menu">☰</button>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="app-layout">
-    <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
-        <a href="/" class="sidebar-logo">{{ .Site.Title }}</a>
-        <p class="sidebar-subtitle">{{ .Site.Params.profileMode.subtitle }}</p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ .Title }} - {{ .Site.Params.profileMode.subtitle }}">
+    <meta name="keywords" content="AI prompts, {{ .Title }}, ChatGPT, prompt library">
 
-        <!-- Home Section -->
-        <div class="sidebar-section">
-            <h3 class="sidebar-section-title">Navigation</h3>
-            <ul class="sidebar-nav">
-                <li>
-                    <a href="/">
-                        <span>🏠 Home</span>
-                        <span class="sidebar-count">{{ len .Site.RegularPages }}</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
 
-        <!-- Categories Section -->
-        <div class="sidebar-section">
-            <h3 class="sidebar-section-title">Categories</h3>
-            <ul class="sidebar-nav">
-                {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
-                <li>
-                    <a href="/categories/{{ $name | urlize }}/" {{ if eq $.Title ($name | humanize) }}class="active" {{
-                        end }}>
-                        <span>{{ $name | humanize }}</span>
-                        <span class="sidebar-count">{{ $taxonomy.Count }}</span>
-                    </a>
-                </li>
-                {{ end }}
-            </ul>
-        </div>
-    </aside>
+    <link rel="icon" type="image/png" href="/images/logo_dark.png">
+    <link rel="stylesheet" href="/css/style.css?v={{ now.Unix }}">
 
-    <!-- Main Content Wrapper -->
-    <div class="main-with-sidebar">
-        <!-- Header -->
-        <header class="site-header">
-            <div class="header-container">
-                <a href="/" class="site-logo">{{ .Site.Title }}</a>
-                <nav class="header-nav">
-                    {{ range .Site.Menus.main }}
-                    <a href="{{ .URL }}" class="nav-link">{{ .Name }}</a>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6793290562583440"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Mobile Sidebar Toggle -->
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle Menu">☰</button>
+
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <a href="/" class="sidebar-logo">{{ .Site.Title }}</a>
+            <p class="sidebar-subtitle">{{ .Site.Params.profileMode.subtitle }}</p>
+
+            <!-- Home Section -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-section-title">Navigation</h3>
+                <ul class="sidebar-nav">
+                    <li>
+                        <a href="/">
+                            <span>🏠 Home</span>
+                            <span class="sidebar-count">{{ len .Site.RegularPages }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Categories Section -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-section-title">Categories</h3>
+                <ul class="sidebar-nav">
+                    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+                    <li>
+                        <a href="/categories/{{ $name | urlize }}/" {{ if eq $.Title ($name | humanize) }}class="active"
+                            {{ end }}>
+                            <span>{{ $name | humanize }}</span>
+                            <span class="sidebar-count">{{ $taxonomy.Count }}</span>
+                        </a>
+                    </li>
                     {{ end }}
-                </nav>
+                </ul>
             </div>
-        </header>
+        </aside>
 
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="hero-container">
-                <div class="hero-badge">
-                    <span>📁</span>
-                    <span>{{ .Title }} Category</span>
-                </div>
-                <h1 class="hero-title">{{ .Title }}</h1>
-                <p class="hero-subtitle">Explore {{ len .Pages }} curated prompts in the {{ .Title }} category</p>
-            </div>
-        </section>
-
-        <!-- Search Section -->
-        <div class="search-section">
-            <div class="search-wrapper">
-                <input type="text" id="categorySearchInput" class="search-input" placeholder="Search in {{ .Title }}..."
-                    autocomplete="off" data-category="{{ .Title }}">
-                <span class="search-icon">🔍</span>
-            </div>
-            <div id="searchStatus" class="search-status"></div>
-        </div>
-
-        <!-- AdSense -->
-        <div style="text-align:center; margin: 2rem 0;">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6793290562583440"
-                data-ad-slot="9236420639" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="section-header">
-                <h2 class="section-title" id="sectionTitle">{{ .Title }} Prompts</h2>
-                <span class="result-count" id="resultCount"></span>
-            </div>
-
-            <!-- Posts Grid -->
-            <div class="posts-grid" id="postsGrid">
-                {{ $paginator := .Paginate .Pages }}
-                {{ range $paginator.Pages }}
-                <article class="post-card">
-                    <a href="{{ .RelPermalink }}">
-                        {{ with .Params.cover.image }}
-                        <div class="post-thumbnail" style="background-image: url('{{ . }}');"></div>
-                        {{ else }}
-                        <div class="post-thumbnail"></div>
+        <!-- Main Content Wrapper -->
+        <div class="main-with-sidebar">
+            <!-- Header -->
+            <header class="site-header">
+                <div class="header-container">
+                    <a href="/" class="site-logo">{{ .Site.Title }}</a>
+                    <nav class="header-nav">
+                        {{ range .Site.Menus.main }}
+                        <a href="{{ .URL }}" class="nav-link">{{ .Name }}</a>
                         {{ end }}
-                        <div class="post-content">
-                            <h3 class="post-title">{{ .Title }}</h3>
-                            <p class="post-summary">{{ .Summary | truncate 150 }}</p>
-                            <div class="post-meta">
-                                <span class="post-date">{{ .Date.Format "Jan 02, 2006" }}</span>
-                                <span class="post-arrow">→</span>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-                {{ end }}
-            </div>
+                    </nav>
+                </div>
+            </header>
 
-            <!-- Pagination -->
-            {{ if gt $paginator.TotalPages 1 }}
-            <div class="pagination" id="pagination">
-                {{ if $paginator.HasPrev }}
-                <a href="{{ $paginator.Prev.URL }}" class="page-link">← Previous</a>
-                {{ end }}
-                <span class="page-info">Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
-                {{ if $paginator.HasNext }}
-                <a href="{{ $paginator.Next.URL }}" class="page-link">Next →</a>
-                {{ end }}
-            </div>
-            {{ end }}
-        </main>
-
-        <!-- Footer -->
-        <footer class="site-footer">
-            <div class="footer-content">
-                <p>&copy; {{ now.Year }} {{ .Site.Title }}. Designed for Builders & Creators.</p>
-            </div>
-        </footer>
-    </div>
-</div>
-
-<!-- Category-Filtered Search Script -->
-<script>
-    (function () {
-        'use strict';
-
-        // DOM Elements
-        const searchInput = document.getElementById('categorySearchInput');
-        const postsGrid = document.getElementById('postsGrid');
-        const pagination = document.getElementById('pagination');
-        const searchStatus = document.getElementById('searchStatus');
-        const sectionTitle = document.getElementById('sectionTitle');
-        const resultCount = document.getElementById('resultCount');
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const sidebar = document.getElementById('sidebar');
-
-        if (!searchInput || !postsGrid) return;
-
-        // Mobile sidebar toggle
-        if (sidebarToggle && sidebar) {
-            sidebarToggle.addEventListener('click', function () {
-                sidebar.classList.toggle('open');
-            });
-
-            document.addEventListener('click', function (e) {
-                if (window.innerWidth <= 968 &&
-                    !sidebar.contains(e.target) &&
-                    !sidebarToggle.contains(e.target) &&
-                    sidebar.classList.contains('open')) {
-                    sidebar.classList.remove('open');
-                }
-            });
-        }
-
-        // Get current category from data attribute
-        const currentCategory = searchInput.dataset.category;
-
-        // Store initial state
-        const initialHTML = postsGrid.innerHTML;
-        const initialPagination = pagination ? pagination.outerHTML : '';
-        let categoryPosts = [];
-
-        // Load search index
-        searchStatus.textContent = 'Loading search index...';
-        searchStatus.className = 'search-status';
-
-        fetch('/index.json')
-            .then(response => {
-                if (!response.ok) throw new Error('Failed to load search index');
-                return response.json();
-            })
-            .then(data => {
-                // Filter posts by current category
-                categoryPosts = data.filter(post => {
-                    if (!post.categories) return false;
-                    return post.categories.some(cat =>
-                        cat.toLowerCase() === currentCategory.toLowerCase()
-                    );
-                });
-
-                // Update initial count
-                resultCount.textContent = `${categoryPosts.length} total`;
-
-                searchStatus.textContent = `✓ ${categoryPosts.length} prompts in ${currentCategory}`;
-                searchStatus.className = 'search-status success';
-                setTimeout(() => searchStatus.textContent = '', 3000);
-            })
-            .catch(error => {
-                console.error('Search index error:', error);
-                searchStatus.textContent = '✗ Search unavailable';
-                searchStatus.className = 'search-status error';
-            });
-
-        // Search function (category-filtered)
-        function performSearch() {
-            const query = searchInput.value.trim().toLowerCase();
-
-            if (query.length === 0) {
-                postsGrid.innerHTML = initialHTML;
-                if (pagination) {
-                    const existingPagination = document.getElementById('pagination');
-                    if (existingPagination) existingPagination.remove();
-                    if (initialPagination) postsGrid.insertAdjacentHTML('afterend', initialPagination);
-                }
-                sectionTitle.textContent = `${currentCategory} Prompts`;
-                resultCount.textContent = `${categoryPosts.length} total`;
-                return;
-            }
-
-            const existingPagination = document.getElementById('pagination');
-            if (existingPagination) existingPagination.style.display = 'none';
-
-            const results = categoryPosts.filter(post => {
-                const searchableText = [
-                    post.title,
-                    post.summary,
-                    (post.tags || []).join(' ')
-                ].join(' ').toLowerCase();
-
-                return searchableText.includes(query);
-            });
-
-            sectionTitle.textContent = `Search Results in ${currentCategory}`;
-            resultCount.textContent = `${results.length} result${results.length !== 1 ? 's' : ''}`;
-
-            if (results.length === 0) {
-                postsGrid.innerHTML = `
-                    <div class="empty-state" style="grid-column: 1 / -1;">
-                        <div class="empty-icon">🔍</div>
-                        <h3 class="empty-title">No prompts found in ${currentCategory}</h3>
-                        <p class="empty-text">Try different keywords or browse all ${currentCategory} prompts</p>
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-container">
+                    <div class="hero-badge">
+                        <span>📁</span>
+                        <span>{{ .Title }} Category</span>
                     </div>
-                `;
-            } else {
-                postsGrid.innerHTML = results.map(post => `
+                    <h1 class="hero-title">{{ .Title }}</h1>
+                    <p class="hero-subtitle">Explore curated prompts in the {{ .Title }} category</p>
+                </div>
+            </section>
+
+            <!-- Search Section -->
+            <div class="search-section">
+                <div class="search-wrapper">
+                    <input type="text" id="categorySearchInput" class="search-input"
+                        placeholder="Search in {{ .Title }}..." autocomplete="off" data-category="{{ .Title }}">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <div id="searchStatus" class="search-status"></div>
+            </div>
+
+            <!-- AdSense -->
+            <div style="text-align:center; margin: 2rem 0;">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6793290562583440"
+                    data-ad-slot="9236420639" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="section-header">
+                    <h2 class="section-title" id="sectionTitle">{{ .Title }} Prompts</h2>
+                    <span class="result-count" id="resultCount"></span>
+                </div>
+
+                <!-- Posts Grid -->
+                <div class="posts-grid" id="postsGrid">
+                    {{ $paginator := .Paginate .Pages }}
+                    {{ range $paginator.Pages }}
                     <article class="post-card">
-                        <a href="${post.permalink}">
-                            ${post.image ?
-                        `<div class="post-thumbnail" style="background-image: url('${post.image}');"></div>` :
-                        `<div class="post-thumbnail"></div>`
-                    }
+                        <a href="{{ .RelPermalink }}">
+                            {{ with .Params.cover.image }}
+                            <div class="post-thumbnail" style="background-image: url('{{ . }}');"></div>
+                            {{ else }}
+                            <div class="post-thumbnail"></div>
+                            {{ end }}
                             <div class="post-content">
-                                <h3 class="post-title">${escapeHtml(post.title)}</h3>
-                                <p class="post-summary">${escapeHtml(truncate(post.summary, 150))}</p>
+                                <h3 class="post-title">{{ .Title }}</h3>
+                                <p class="post-summary">{{ .Summary | truncate 150 }}</p>
                                 <div class="post-meta">
-                                    <span class="post-date">${post.date}</span>
+                                    <span class="post-date">{{ .Date.Format "Jan 02, 2006" }}</span>
                                     <span class="post-arrow">→</span>
                                 </div>
                             </div>
                         </a>
                     </article>
-                `).join('');
+                    {{ end }}
+                </div>
+
+                <!-- Pagination -->
+                {{ if gt $paginator.TotalPages 1 }}
+                <div class="pagination" id="pagination">
+                    {{ if $paginator.HasPrev }}
+                    <a href="{{ $paginator.Prev.URL }}" class="page-link">← Previous</a>
+                    {{ end }}
+                    <span class="page-info">Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
+                    {{ if $paginator.HasNext }}
+                    <a href="{{ $paginator.Next.URL }}" class="page-link">Next →</a>
+                    {{ end }}
+                </div>
+                {{ end }}
+            </main>
+
+            <!-- Footer -->
+            <footer class="site-footer">
+                <div class="footer-content">
+                    <p>&copy; {{ now.Year }} {{ .Site.Title }}. Designed for Builders & Creators.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Category-Filtered Search Script -->
+    <script>
+        (function () {
+            'use strict';
+
+            const searchInput = document.getElementById('categorySearchInput');
+            const postsGrid = document.getElementById('postsGrid');
+            const pagination = document.getElementById('pagination');
+            const searchStatus = document.getElementById('searchStatus');
+            const sectionTitle = document.getElementById('sectionTitle');
+            const resultCount = document.getElementById('resultCount');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+
+            if (!searchInput || !postsGrid) return;
+
+            // Mobile sidebar toggle
+            if (sidebarToggle && sidebar) {
+                sidebarToggle.addEventListener('click', function () {
+                    sidebar.classList.toggle('open');
+                });
+
+                document.addEventListener('click', function (e) {
+                    if (window.innerWidth <= 968 &&
+                        !sidebar.contains(e.target) &&
+                        !sidebarToggle.contains(e.target) &&
+                        sidebar.classList.contains('open')) {
+                        sidebar.classList.remove('open');
+                    }
+                });
             }
-        }
 
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
+            const currentCategory = searchInput.dataset.category;
+            const initialHTML = postsGrid.innerHTML;
+            const initialPagination = pagination ? pagination.outerHTML : '';
+            let categoryPosts = [];
 
-        function truncate(text, length) {
-            if (text.length <= length) return text;
-            return text.substr(0, length) + '...';
-        }
+            searchStatus.textContent = 'Loading...';
+            searchStatus.className = 'search-status';
 
-        let searchTimeout;
-        searchInput.addEventListener('input', function () {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(performSearch, 300);
-        });
+            fetch('/index.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('Failed to load');
+                    return response.json();
+                })
+                .then(data => {
+                    categoryPosts = data.filter(post => {
+                        if (!post.categories || !Array.isArray(post.categories)) return false;
+                        return post.categories.some(cat =>
+                            cat.toLowerCase() === currentCategory.toLowerCase()
+                        );
+                    });
 
-        searchInput.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter') {
+                    resultCount.textContent = categoryPosts.length + ' total';
+                    searchStatus.textContent = '✓ Ready';
+                    searchStatus.className = 'search-status success';
+                    setTimeout(() => searchStatus.textContent = '', 2000);
+                })
+                .catch(error => {
+                    console.error('Search error:', error);
+                    searchStatus.textContent = '✗ Error';
+                    searchStatus.className = 'search-status error';
+                });
+
+            function performSearch() {
+                const query = searchInput.value.trim().toLowerCase();
+
+                if (query.length === 0) {
+                    postsGrid.innerHTML = initialHTML;
+                    if (pagination) {
+                        const existingPagination = document.getElementById('pagination');
+                        if (existingPagination) existingPagination.remove();
+                        if (initialPagination) postsGrid.insertAdjacentHTML('afterend', initialPagination);
+                    }
+                    sectionTitle.textContent = currentCategory + ' Prompts';
+                    resultCount.textContent = categoryPosts.length + ' total';
+                    return;
+                }
+
+                const existingPagination = document.getElementById('pagination');
+                if (existingPagination) existingPagination.style.display = 'none';
+
+                const results = categoryPosts.filter(post => {
+                    const searchableText = [
+                        post.title || '',
+                        post.summary || '',
+                        (post.tags || []).join(' ')
+                    ].join(' ').toLowerCase();
+
+                    return searchableText.includes(query);
+                });
+
+                sectionTitle.textContent = 'Search Results in ' + currentCategory;
+                resultCount.textContent = results.length + ' result' + (results.length !== 1 ? 's' : '');
+
+                if (results.length === 0) {
+                    postsGrid.innerHTML = '<div class="empty-state" style="grid-column: 1 / -1;"><div class="empty-icon">🔍</div><h3 class="empty-title">No prompts found</h3><p class="empty-text">Try different keywords</p></div>';
+                } else {
+                    postsGrid.innerHTML = results.map(post => {
+                        const title = escapeHtml(post.title || '');
+                        const summary = escapeHtml(truncate(post.summary || '', 150));
+                        const imageDiv = post.image ?
+                            '<div class="post-thumbnail" style="background-image: url(\'' + post.image + '\');"></div>' :
+                            '<div class="post-thumbnail"></div>';
+
+                        return '<article class="post-card"><a href="' + post.permalink + '">' +
+                            imageDiv +
+                            '<div class="post-content">' +
+                            '<h3 class="post-title">' + title + '</h3>' +
+                            '<p class="post-summary">' + summary + '</p>' +
+                            '<div class="post-meta"><span class="post-date">' + post.date + '</span><span class="post-arrow">→</span></div>' +
+                            '</div></a></article>';
+                    }).join('');
+                }
+            }
+
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            function truncate(text, length) {
+                if (text.length <= length) return text;
+                return text.substr(0, length) + '...';
+            }
+
+            let searchTimeout;
+            searchInput.addEventListener('input', function () {
                 clearTimeout(searchTimeout);
-                performSearch();
-            }
-        });
-    })();
-</script>
+                searchTimeout = setTimeout(performSearch, 300);
+            });
 
-<!-- AdSense Script -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6793290562583440"
-    crossorigin="anonymous"></script>
-{{ end }}
+            searchInput.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter') {
+                    clearTimeout(searchTimeout);
+                    performSearch();
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>
