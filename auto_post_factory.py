@@ -103,14 +103,14 @@ def run_factory():
         image_url = f"https://picsum.photos/seed/{safe_topic}{random.randint(1,100)}/800/400"
 
         post_content = f"""---
-title: "{topic}"
+title: "{topic.replace('"', '\\"')}"
 date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 draft: false
-summary: "{summary}"
+summary: "{summary.replace('"', '\\"')}"
 categories: ["{category}"]
 cover:
     image: "{image_url}"
-    alt: "{topic}"
+    alt: "{topic.replace('"', '\\"')}"
     relative: false
 ---
 {ai_text}"""
