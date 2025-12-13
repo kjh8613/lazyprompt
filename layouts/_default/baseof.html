@@ -157,6 +157,12 @@
                     }
                 });
 
+                // Search button click
+                const searchBtn = document.getElementById('globalSearchBtn');
+                if (searchBtn) {
+                    searchBtn.addEventListener('click', () => performSearch(true));
+                }
+
                 if (sidebarTrigger) {
                     sidebarTrigger.addEventListener('click', (e) => {
                         e.preventDefault();
