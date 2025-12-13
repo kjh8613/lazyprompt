@@ -5,6 +5,7 @@ from datetime import datetime
 from dotenv import load_dotenv
 import time
 import random
+import traceback
 
 # 1. 환경변수 로드
 load_dotenv()
@@ -29,40 +30,38 @@ def run_factory():
     os.makedirs(output_dir, exist_ok=True)
 
     for index, row in df.iterrows():
+        topic = str(row['topic']).strip()
+        user_prompt = str(row['prompt']).strip()
+        if not topic: continue
+
+        print(f"📝 생성 중: {topic} ... ", end='')
+        
+        # 🚀 AI 글쓰기 요청
+        ai_text = ""
         try:
-            topic = str(row['topic']).strip()
-            user_prompt = str(row['prompt']).strip()
-            if not topic: continue
+            full_prompt = f"주제: {topic}\n요청: {user_prompt}\n형식: 마크다운 블로그 글. 서론-본론-결론."
+            response = model.generate_content(full_prompt)
+            ai_text = response.text
+        except Exception as e:
+            print(f"⚠️ API Limit/Error: {e}. Using fallback content.")
+            ai_text = f"### {topic}\n\n*Content generation is pending due to high traffic.*\n\nThis prompt will be available shortly. Please check back later!\n\n**Category**: {row.get('category', 'General')}"
+        
+        # 요약 생성
+        summary = ai_text[:80].replace('\n', ' ') + "..."
+        
+        # 🎨 이미지 및 파일 저장 로직
+        safe_topic = "".join([c if c.isalnum() or c in (' ', '-') else '' for c in topic]).strip().replace(' ', '-')
+        filename = f"{datetime.now().strftime('%Y-%m-%d')}-{safe_topic}.md"
+        filepath = os.path.join(output_dir, filename)
+        
+        # 카테고리 처리 (없으면 'General')
+        category = row.get('category', 'General')
+        if pd.isna(category): category = 'General'
+        
+        # Picsum 랜덤 이미지 (무제한)
+        image_url = f"https://picsum.photos/seed/{safe_topic}{random.randint(1,100)}/800/400"
 
-            print(f"📝 생성 중: {topic} ... ", end='')
-            
-            # 🚀 AI 글쓰기 요청
-            # 🚀 AI 글쓰기 요청
-            ai_text = ""
-            try:
-                full_prompt = f"주제: {topic}\n요청: {user_prompt}\n형식: 마크다운 블로그 글. 서론-본론-결론."
-                response = model.generate_content(full_prompt)
-                ai_text = response.text
-            except Exception as e:
-                print(f"⚠️ API Limit/Error: {e}. Using fallback content.")
-                ai_text = f"### {topic}\n\n*Content generation is pending due to high traffic.*\n\nThis prompt will be available shortly. Please check back later!\n\n**Category**: {row.get('category', 'General')}"
-            
-            summary = ai_text[:80].replace('\n', ' ') + "..."
-            
-            # 🎨 이미지 및 파일 저장 로직
-            safe_topic = "".join([c if c.isalnum() or c in (' ', '-') else '' for c in topic]).strip().replace(' ', '-')
-            filename = f"{datetime.now().strftime('%Y-%m-%d')}-{safe_topic}.md"
-            filepath = os.path.join(output_dir, filename)
-            
-            # 카테고리 처리 (없으면 'General')
-            category = row.get('category', 'General')
-            if pd.isna(category): category = 'General'
-            
-            # Picsum 랜덤 이미지 (무제한)
-            image_url = f"https://picsum.photos/seed/{safe_topic}{random.randint(1,100)}/800/400"
-            summary = response.text[:80].replace('\n', ' ') + "..."
-
-            post_content = f"""---
+        post_content = f"""---
 title: "{topic}"
 date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 summary: "{summary}"
@@ -72,21 +71,19 @@ cover:
     alt: "{topic}"
     relative: false
 ---
-cover:
-    image: "{image_url}"
-    alt: "{topic}"
-    relative: false
----
 {ai_text}"""
 
+        try:
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(post_content)
-            print(f"✅ 완료: {os.path.abspath(filepath)}")
-            time.sleep(3)
+            print(f"✅ 완료: {shorten_path(filepath)}")
+            time.sleep(2) # 2초 대기 (API 보호)
         except Exception as e:
-            print(f"❌ 에러 발생 ({topic}): {e}")
-            import traceback
+            print(f"❌ 파일 저장 에러 ({topic}): {e}")
             traceback.print_exc()
+
+def shorten_path(path):
+    return os.path.basename(path)
 
 if __name__ == "__main__":
     run_factory()
