@@ -266,49 +266,75 @@ a {
 
 .card {
     background: var(--card-bg);
-    border-radius: 20px;
-    /* Softer Curve */
+    border-radius: 16px;
+    /* Slightly tighter radius */
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    /* Subtle border */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Uniform height if grid allows */
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     border-color: rgba(187, 134, 252, 0.3);
 }
 
 .card-image {
-    height: 180px;
+    height: 160px;
+    /* Slightly shorter */
     background-size: cover;
     background-position: center;
-    transition: transform 0.5s;
-}
-
-.card:hover .card-image {
-    transform: scale(1.05);
+    flex-shrink: 0;
 }
 
 .card-content {
-    padding: 20px;
+    padding: 15px 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .card h3 {
-    margin: 0 0 10px 0;
-    color: var(--accent);
-    font-size: 1.2rem;
+    margin: 0 0 8px 0;
+    color: #fff;
+    /* White for better contrast */
+    font-size: 1.1rem;
     font-weight: 600;
+    line-height: 1.3;
+
+    /* Clamp Title to 2 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #aaa;
     line-height: 1.4;
+    /* Tighter line height */
+    margin-bottom: auto;
+    /* Push date to bottom */
+
+    /* Clamp Summary to 3 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .date {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: #666;
-    display: block;
-    margin-top: 15px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 
