@@ -84,17 +84,8 @@
 
     <script src="/js/copy.js"></script>
 
-    <!-- EMBEDDED SEARCH INDEX (Fail-safe) -->
-    <script>
-        { { $store:= newScratch } }
-        { { $store.Set "searchIndex" slice } }
-        { { range.Site.RegularPages } }
-        { { $item:= dict "title".Title "summary"(.Summary | plainify) "permalink".RelPermalink "date"(.Date.Format "Jan 02, 2006") "image".Params.cover.image } }
-        { { $store.Add "searchIndex"(slice $item) } }
-        { { end } }
-        window.searchIndex = {{ $store.Get "searchIndex" | jsonify | safeJS }};
-        console.log("Embedded Index Loaded (via Scratch):", window.searchIndex ? window.searchIndex.length : 0, "items");
-    </script>
+    <!-- EMBEDDED SEARCH INDEX (Partial) -->
+    {{ partial "search-index.html" . }}
 
     <script src="/js/search.js?v=embedded_v1"></script>
 </body>
