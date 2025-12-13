@@ -28,7 +28,7 @@
     </div>
 
     <h2 class="section-title">Latest Updates</h2>
-    <div class="post-grid" id="postGrid">
+    <div class="grid" id="postGrid">
         {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
         {{ range $paginator.Pages }}
         <article class="card">
