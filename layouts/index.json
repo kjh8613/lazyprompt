@@ -1,6 +1,24 @@
-﻿{{- $list := slice -}}
-{{- range site.RegularPages -}}
-  {{- $item := dict "title" .Title "summary" (.Summary | plainify) "permalink" .RelPermalink "date" (.Date.Format "Jan 02, 2006") "image" .Params.cover.image -}}
-  {{- $list = $list | append $item -}}
-{{- end -}}
-{{- $list | jsonify -}}
+﻿{
+  {- $list := slice -
+  }
+}
+{
+  {- range site.RegularPages -
+  }
+}
+  {
+  {- $item := dict "title" .Title "summary" (.Summary | plainify) "permalink" .RelPermalink "date" (.Date.Format "Jan 02, 2006") "image" .Params.cover.image "tags" .Params.tags "categories" .Params.categories -
+  }
+}
+  {
+  {- $list = $list | append $item -
+  }
+}
+{
+  {- end -
+  }
+}
+{
+  {- $list | jsonify -
+  }
+}

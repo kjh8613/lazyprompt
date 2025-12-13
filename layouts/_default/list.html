@@ -85,7 +85,7 @@
         <main class="main-content">
             <div class="section-header">
                 <h2 class="section-title" id="sectionTitle">{{ .Title }} Prompts</h2>
-                <span class="result-count" id="resultCount">{{ len .Pages }} total</span>
+                <span class="result-count" id="resultCount"></span>
             </div>
 
             <!-- Posts Grid -->
@@ -193,6 +193,9 @@
                         cat.toLowerCase() === currentCategory.toLowerCase()
                     );
                 });
+
+                // Update initial count
+                resultCount.textContent = `${categoryPosts.length} total`;
 
                 searchStatus.textContent = `✓ ${categoryPosts.length} prompts in ${currentCategory}`;
                 searchStatus.className = 'search-status success';
