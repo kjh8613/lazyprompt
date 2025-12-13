@@ -36,15 +36,25 @@ def run_factory():
 
         print(f"📝 생성 중: {topic} ... ", end='')
         
-        # 🚀 AI 글쓰기 요청
+        # 🚀 AI 글쓰기 요청 (Retry Logic Added)
         ai_text = ""
-        try:
-            full_prompt = f"주제: {topic}\n요청: {user_prompt}\n형식: 마크다운 블로그 글. 서론-본론-결론."
-            response = model.generate_content(full_prompt)
-            ai_text = response.text
-        except Exception as e:
-            print(f"⚠️ API Limit/Error: {e}. Using fallback content.")
-            ai_text = f"### {topic}\n\n*Content generation is pending due to high traffic.*\n\nThis prompt will be available shortly. Please check back later!\n\n**Category**: {row.get('category', 'General')}"
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                full_prompt = f"주제: {topic}\n요청: {user_prompt}\n형식: 마크다운 블로그 글. 서론-본론-결론.\n조건: 풍부한 내용, 2000자 내외."
+                response = model.generate_content(full_prompt)
+                ai_text = response.text
+                if ai_text: break
+            except Exception as e:
+                print(f"⚠️ 시도 {attempt+1}/{max_retries} 실패: {e}")
+                if "429" in str(e):
+                    time.sleep(10) # Wait 10s on Rate Limit
+                else:
+                    time.sleep(2)
+        
+        if not ai_text:
+             print(f"❌ 최종 실패: {topic}. Fallback 사용.")
+             ai_text = f"### {topic}\n\n*Content generation failed after multiple attempts.*\n\n**Category**: {row.get('category', 'General')}"
         
         # 요약 생성
         summary = ai_text[:80].replace('\n', ' ') + "..."
