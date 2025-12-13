@@ -877,6 +877,55 @@ img {
     font-weight: 600;
 }
 
+/* Copy Button Styles */
+.copy-btn {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-family: var(--font-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-md);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.copy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    background: linear-gradient(135deg, var(--color-primary-hover) 0%, #3730A3 100%);
+}
+
+.copy-btn:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+.copy-btn.copied {
+    background: linear-gradient(135deg, var(--color-success) 0%, #059669 100%);
+}
+
+/* Make pre tags relative for button positioning */
+.post-single .content pre {
+    position: relative;
+    background-color: var(--color-border-light);
+    padding: var(--spacing-lg);
+    padding-top: 3rem;
+    /* Extra space for button */
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    margin-bottom: var(--spacing-lg);
+}
+
 /* 모바일 반응형 */
 @media (max-width: 768px) {
     .post-single {
@@ -901,6 +950,13 @@ img {
 
     .post-single .content h4 {
         font-size: 1.125rem;
+    }
+
+    .copy-btn {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8125rem;
+        top: 0.5rem;
+        right: 0.5rem;
     }
 }
 
