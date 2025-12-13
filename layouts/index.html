@@ -7,12 +7,18 @@
     </div>
 </header>
 <main class="post-list">
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search prompts...">
+
+    <!-- Search Hero Section -->
+    <div class="search-hero">
+        <h2>Find the Perfect Prompt</h2>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="What are you building today? (e.g. Marketing, Code...)">
+            <button class="search-icon-btn">🔍</button>
+        </div>
     </div>
 
     <!-- AdSense Unit -->
-    <div style="text-align:center; margin-bottom: 30px;">
+    <div style="text-align:center; margin-bottom: 40px;">
         <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6793290562583440"
             data-ad-slot="9236420639" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>
@@ -20,7 +26,7 @@
         </script>
     </div>
 
-    <h2>Recent Prompt Posts</h2>
+    <h2 class="section-title">Latest Updates</h2>
     <div class="grid" id="postGrid">
         {{ range first 10 .Site.RegularPages }}
         <article class="card">
