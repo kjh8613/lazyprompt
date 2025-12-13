@@ -84,8 +84,16 @@
 
     <script src="/js/copy.js"></script>
 
-    <!-- EMBEDDED SEARCH INDEX (Partial) -->
-    {{ partial "search-index.html" . }}
+    <!-- EMBEDDED SEARCH INDEX (Inlined Global) -->
+    <script>
+        { { $index:= slice } }
+        { { range site.RegularPages } }
+        { { $item:= dict "title".Title "summary"(.Summary | plainify) "permalink".RelPermalink "date"(.Date.Format "Jan 02, 2006") "image".Params.cover.image } }
+        { { $index = $index | append $item } }
+        { { end } }
+        window.searchIndex = {{ $index | jsonify | safeJS }};
+        console.log("System: Embedded Index Loaded:", window.searchIndex ? window.searchIndex.length : 0, "items");
+    </script>
 
     <script src="/js/search.js?v=embedded_v1"></script>
 </body>
