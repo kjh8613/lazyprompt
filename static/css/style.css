@@ -433,3 +433,34 @@ code {
         transform: translateY(0);
     }
 }
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    gap: 20px;
+}
+
+.page-link {
+    padding: 10px 20px;
+    background: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    font-weight: 600;
+    color: var(--text);
+    transition: all 0.2s;
+}
+
+.page-link:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(142, 68, 173, 0.3);
+}
+
+.page-info {
+    font-size: 0.9rem;
+    color: #888;
+}

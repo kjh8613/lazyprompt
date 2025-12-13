@@ -28,7 +28,8 @@
 
     <h2 class="section-title">Latest Updates</h2>
     <div class="grid" id="postGrid">
-        {{ range first 10 .Site.RegularPages }}
+        {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
+        {{ range $paginator.Pages }}
         <article class="card">
             <a href="{{ .RelPermalink }}">
                 {{ with .Params.cover.image }}
@@ -43,5 +44,20 @@
         </article>
         {{ end }}
     </div>
+
+    <!-- Pagination Controls -->
+    {{ if gt $paginator.TotalPages 1 }}
+    <div class="pagination">
+        {{ if $paginator.HasPrev }}
+        <a href="{{ $paginator.Prev.URL }}" class="page-link prev">← Prev</a>
+        {{ end }}
+
+        <span class="page-info">Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
+
+        {{ if $paginator.HasNext }}
+        <a href="{{ $paginator.Next.URL }}" class="page-link next">Next →</a>
+        {{ end }}
+    </div>
+    {{ end }}
 </main>
 {{ end }}

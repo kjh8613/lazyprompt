@@ -2,6 +2,7 @@ baseURL: "https://lazyprompt.vercel.app/"
 languageCode: "ko-kr"
 title: "Lazy Prompt 🚀"
 # theme: "PaperMod"
+paginate: 12
 
 enableRobotsTXT: true
 buildDrafts: true
