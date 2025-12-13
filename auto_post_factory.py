@@ -58,40 +58,40 @@ def run_factory():
                 주제: {topic}
                 요청: {user_prompt}
                 
-                역할: 당신은 세계 상위 0.1% 수준의 '프롬프트 엔지니어'입니다.
-                목표: 사용자가 복사해서 AI(ChatGPT, Gemini)에 붙여넣기만 하면 최고의 결과를 얻을 수 있는 "고성능 프롬프트"를 설계하세요.
+                역할: You are a World-Class 'Prompt Engineer' in the top 0.1%.
+                목표: Design "High-Performance Prompts" that users can simply copy and paste into AI (ChatGPT, Claude, Gemini) to get the best results. All output must be in ENGLISH.
                 
-                [핵심 지침]
-                1. 생성되는 프롬프트는 단순한 문장이 아니라, **구조화된 프롬프트(Structured Prompt)** 양식을 갖춰야 합니다.
-                2. 프롬프트 내부에는 반드시 **Role(역할), Context(배경), Task(지시사항), Constraints(제약조건), Output(출력형식)**이 포함되어야 합니다.
-                3. 사용자가 추가 입력을 최소화하도록 내용을 구체적으로 완성해서 작성하세요.
+                [Core Instructions]
+                1. The generated prompt must be a **Structured Prompt**.
+                2. It MUST include **Role, Context, Task, Constraints, and Output Format**.
+                3. Minimize user input requirements by making the prompt specific and complete.
 
-                형식 (마크다운):
-                ## 🎯 프롬프트 설명
-                (이 프롬프트가 해결해주는 문제와 기대 효과를 2문장으로 매력적으로 요약)
+                Format (Markdown):
+                ## 🎯 Prompt Description
+                (A 2-sentence hook explaining what problem this prompt solves and its benefits)
                 
-                ## 📋 프롬프트 내용 (복사해서 사용하세요)
+                ## 📋 Copy This Prompt
                 ```markdown
                 # Role
-                (주제에 딱 맞는 최고의 전문가 페르소나 부여. 예: 10년차 카피라이터, 시니어 개발자 등)
+                (Assign a top-tier persona. e.g., "Senior Copywriter", "10x Developer")
 
                 # Context
-                (이 작업이 필요한 상황과 배경을 구체적으로 서술)
+                (Describe the situation and background where this task is needed)
 
                 # Task
-                (AI가 수행해야 할 미션을 단계별로 명확하게 지시)
+                (Clear, step-by-step instructions for the AI)
 
                 # Constraints
-                (결과물의 퀄리티를 높이기 위한 구체적인 제약 조건 3~5가지. 어조, 금지사항 등)
+                (3-5 specific rules to ensure quality. Tone, layout, prohibitions, etc.)
 
                 # Output Format
-                (표, 리스트, 코드 블록 등 원하는 결과물의 형식을 지정)
+                (Specify the desired format: Table, Markdown List, Code Block, etc.)
                 ```
                 
-                ## 💡 사용 팁
-                1. (이 프롬프트를 활용할 때 [ ] 변수 부분만 바꿔서 응용하는 꿀팁)
-                2. (더 좋은 결과를 얻기 위해 추가로 제공하면 좋은 정보)
-                3. (이 프롬프트가 가장 효과적인 모델 추천)
+                ## 💡 Pro Tips
+                1. (Tip on how to customize the [ ] placeholders)
+                2. (Additional info to provide for better results)
+                3. (Recommended model: GPT-4o, Claude 3.5 Sonnet, etc.)
                 """
                 
                 response = model.generate_content(full_prompt)

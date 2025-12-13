@@ -1,5 +1,5 @@
 baseURL: "https://lazyprompt.vercel.app/"
-languageCode: "ko-kr"
+languageCode: "en-us"
 title: "Lazy Prompt 🚀"
 # theme: "PaperMod"
 paginate: 12
@@ -17,7 +17,7 @@ outputs:
 # Simplified Params
 params:
   profileMode:
-    subtitle: "게으른 자들을 위한 AI 프롬프트 도서관"
+    subtitle: "The Largest AI Prompt Library"
     imageUrl: "/images/logo_dark.png"
 
   # Social Icons

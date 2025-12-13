@@ -8,11 +8,11 @@
 
     <!-- SEO & Meta -->
     <meta name="description"
-        content="{{ if .IsHome }}{{ .Site.Params.profileMode.subtitle }}{{ else }}{{ .Summary }}{{ end }}">
-    <meta name="keywords" content="AI Prompts, ChatGPT, Midjourney, Coding Prompts, Marketing AI">
+        content="{{ if .IsHome }}The world's best collection of Copy-Paste AI Prompts for ChatGPT, Claude, and Midjourney.{{ else }}{{ .Summary }}{{ end }}">
+    <meta name="keywords" content="AI Prompts, ChatGPT Prompts, Midjourney, Coding, Marketing, Productivity, AI Tools">
     <meta property="og:title" content="{{ .Title }}">
     <meta property="og:description"
-        content="{{ if .IsHome }}{{ .Site.Params.profileMode.subtitle }}{{ else }}{{ .Summary }}{{ end }}">
+        content="{{ if .IsHome }}The world's best collection of Copy-Paste AI Prompts used by top 1% experts.{{ else }}{{ .Summary }}{{ end }}">
     <meta property="og:image"
         content="{{ if .Params.cover.image }}{{ .Params.cover.image }}{{ else }}{{ .Site.Params.profileMode.imageUrl }}{{ end }}">
     <meta property="og:type" content="website">
@@ -64,6 +64,7 @@
 
             <div class="sidebar-footer">
                 <p>© 2025 Lazy Prompt</p>
+                <p style="margin-top:5px; font-size: 0.6rem;">Designed for Builders</p>
             </div>
         </aside>
 
