@@ -52,6 +52,17 @@ a {
     display: flex;
     flex-direction: column;
     z-index: 100;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll from ads */
+}
+
+/* Force Sidebar Ads to Fit */
+.sidebar .adsbygoogle,
+.sidebar iframe,
+.sidebar ins {
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box;
 }
 
 .sidebar-header {
