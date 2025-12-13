@@ -64,6 +64,7 @@ def run_factory():
         post_content = f"""---
 title: "{topic}"
 date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+draft: false
 summary: "{summary}"
 categories: ["{category}"]
 cover:

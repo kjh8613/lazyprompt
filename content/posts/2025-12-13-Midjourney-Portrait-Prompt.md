@@ -1,10 +1,11 @@
 ---
 title: "Midjourney Portrait Prompt"
-date: 2025-12-13 20:16:45
+date: 2025-12-13 20:25:35
+draft: false
 summary: "### Midjourney Portrait Prompt  *Content generation is pending due to high traff..."
 categories: ["Art"]
 cover:
-    image: "https://picsum.photos/seed/Midjourney-Portrait-Prompt63/800/400"
+    image: "https://picsum.photos/seed/Midjourney-Portrait-Prompt71/800/400"
     alt: "Midjourney Portrait Prompt"
     relative: false
 ---
