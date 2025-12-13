@@ -85,14 +85,21 @@
     <script src="/js/copy.js"></script>
 
     <!-- EMBEDDED SEARCH INDEX (Inlined Global) -->
+    <!-- EMBEDDED SEARCH INDEX (Direct Print Strategy) -->
     <script>
-        { { $index:= slice } }
-        { { range site.RegularPages } }
-        { { $item:= dict "title".Title "summary"(.Summary | plainify) "permalink".RelPermalink "date"(.Date.Format "Jan 02, 2006") "image".Params.cover.image } }
-        { { $index = $index | append $item } }
-        { { end } }
-        window.searchIndex = {{ $index | jsonify | safeJS }};
-        console.log("System: Embedded Index Loaded:", window.searchIndex ? window.searchIndex.length : 0, "items");
+        window.searchIndex = [
+            {{- range $index, $element := site.RegularPages -}}
+            {{- if $index -}}, { { - end -} }
+        {
+            "title": { { .Title | jsonify } },
+            "summary": { { .Summary | plainify | jsonify } },
+            "permalink": { { .RelPermalink | jsonify } },
+            "date": { { .Date.Format "Jan 02, 2006" | jsonify } },
+            "image": { { if .Params.cover.image } } { { .Params.cover.image | jsonify } } { { else } } ""{ { end } }
+        }
+        { { - end -} }
+        ];
+        console.log("System: Embedded Index Loaded (Direct):", window.searchIndex.length, "items");
     </script>
 
     <script src="/js/search.js?v=embedded_v1"></script>
