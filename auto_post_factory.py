@@ -34,6 +34,19 @@ def run_factory():
         user_prompt = str(row['prompt']).strip()
         if not topic: continue
 
+        # 🔍 중복 방지 로직 (파일명 기반 체크)
+        safe_topic = "".join([c if c.isalnum() or c in (' ', '-') else '' for c in topic]).strip().replace(' ', '-')
+        existing_files = os.listdir(output_dir)
+        is_duplicate = False
+        for f in existing_files:
+            if f.endswith(f"-{safe_topic}.md"):
+                is_duplicate = True
+                break
+        
+        if is_duplicate:
+            print(f"⏩ 스킵 (이미 있음): {topic}")
+            continue
+
         print(f"📝 생성 중: {topic} ... ", end='')
         
         # 🚀 AI 글쓰기 요청 (Retry Logic Added)

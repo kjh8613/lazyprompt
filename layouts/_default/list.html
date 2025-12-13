@@ -1,3 +1,4 @@
+{{ define "main" }}
 <header class="page-header search-hero">
     <div class="search-container">
         <!-- Scoped Search: We add data-context="category" to tell JS to filter -->
@@ -8,18 +9,20 @@
     <h1 class="page-title" style="margin-top: 30px;">{{ .Title }}</h1>
     <p class="page-description">Prompts for {{ .Title }}</p>
 </header>
-<div id="categoryPostGri    {{ range .Paginator.Pages }}
-    <article class=" card">
-    <a href="{{ .RelPermalink }}">
-        {{ with .Params.cover.image }}
-        <div class="card-image" style="background-image: url('{{ . }}');"></div>
-        {{ end }}
-        <div class="card-content">
-            <h3>{{ .Title }}</h3>
-            <p>{{ .Summary | truncate 150 }}</p>
-            <span class="date">{{ .Date.Format "Jan 02, 2006" }}</span>
-        </div>
-    </a>
+
+<div id="categoryPostGrid" class="grid">
+    {{ range .Paginator.Pages }}
+    <article class="card" data-title="{{ .Title | lower }}" data-summary="{{ .Summary | lower }}">
+        <a href="{{ .RelPermalink }}">
+            {{ with .Params.cover.image }}
+            <div class="card-image" style="background-image: url('{{ . }}');"></div>
+            {{ end }}
+            <div class="card-content">
+                <h3>{{ .Title }}</h3>
+                <p>{{ .Summary | truncate 150 }}</p>
+                <span class="date">{{ .Date.Format "Jan 02, 2006" }}</span>
+            </div>
+        </a>
     </article>
     {{ end }}
 </div>
