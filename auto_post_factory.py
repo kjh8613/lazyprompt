@@ -7,27 +7,76 @@ import time
 import random
 import traceback
 
-# 1. 환경변수 로드
+# 1. 환경변수 로드 (다중 API 키 지원)
 load_dotenv()
-api_key = os.getenv("GOOGLE_API_KEY")
+API_KEYS = [
+    os.getenv("GOOGLE_API_KEY"),
+    os.getenv("GOOGLE_API_KEY_2"),
+    os.getenv("GOOGLE_API_KEY_3")
+]
+# None 값 제거
+API_KEYS = [key for key in API_KEYS if key]
 
-# 2. 모델 설정 (🏆 Best Pick: 무제한/초고속 모델 적용)
-if api_key:
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-2.0-flash-exp') # Switching to Experimental Model for quota
+if not API_KEYS:
+    print("❌ ERROR: No valid API keys found in .env file")
+    exit(1)
+
+print(f"✅ Loaded {len(API_KEYS)} API key(s)")
+
+# 2. 모델 설정 (Smart Fallback: 무제한 쿼터 모델 우선)
+MODEL_PRIORITY = [
+    'gemini-2.5-flash-lite',   # 1순위: RPD 무제한, RPM 4K
+    'gemini-2.0-flash',         # 2순위: RPD 무제한, RPM 2K
+    'gemini-2.0-flash-lite',    # 3순위: RPD 무제한, RPM 4K (새로 추가!)
+    'gemini-2.5-flash',         # 4순위: RPD 10K, RPM 1K
+    'gemini-2.5-pro'            # 5순위: RPD 10K, RPM 150 (최종 fallback)
+]
+
+def get_model_response(prompt, max_total_retries=3):
+    """Try models in priority order with smart fallback across API keys"""
+    
+    # Try each API key
+    for key_idx, api_key in enumerate(API_KEYS):
+        genai.configure(api_key=api_key)
+        key_name = f"Key#{key_idx+1}"
+        
+        # Try each model with current API key
+        for model_name in MODEL_PRIORITY:
+            try:
+                model = genai.GenerativeModel(model_name)
+                response = model.generate_content(prompt)
+                if response.text:
+                    return response.text, f"{model_name} ({key_name})"
+            except Exception as e:
+                error_msg = str(e)
+                if "429" in error_msg or "quota" in error_msg.lower():
+                    continue  # Try next model
+                else:
+                    time.sleep(1)
+                    continue
+        
+        # All models failed with this key, try next key
+        if key_idx < len(API_KEYS) - 1:
+            print(f"⚠️ {key_name} all models exhausted, switching to next API key...")
+    
+    # All keys and models failed
+    return None, None
 
 # 3. 공장 가동 로직 (나중에 실행될 부분)
 def run_factory():
     try:
         df = pd.read_excel('list.xlsx')
         df.columns = df.columns.str.strip()
-        print(f"📂 엑셀 로드 성공: {len(df)}개의 글감 대기 중")
+        total_count = len(df)
+        print(f"📂 엑셀 로드 성공: {total_count}개의 글감 대기 중\n")
     except:
         print("💤 엑셀 파일(list.xlsx)이 없어서 대기 모드입니다.")
         return
 
     output_dir = "content/posts"
     os.makedirs(output_dir, exist_ok=True)
+    
+    processed = 0
 
     for index, row in df.iterrows():
         topic = str(row['topic']).strip()
@@ -44,12 +93,16 @@ def run_factory():
                 break
         
         if is_duplicate:
-            print(f"⏩ 스킵 (이미 있음): {topic}")
+            processed += 1
+            progress = (processed / total_count) * 100
+            print(f"[{progress:.1f}%] ⏩ 스킵: {topic[:60]}...")
             continue
 
-        print(f"📝 생성 중: {topic} ... ", end='')
+        processed += 1
+        progress = (processed / total_count) * 100
+        print(f"[{progress:.1f}%] 📝 생성 중: {topic[:60]}... ", end='')
         
-        # 🚀 AI 글쓰기 요청 (Retry Logic Added)
+        # 🚀 AI 글쓰기 요청 (Smart Model Fallback)
         ai_text = ""
         max_retries = 3
         for attempt in range(max_retries):
@@ -94,34 +147,33 @@ def run_factory():
                 3. (Recommended model: GPT-4o, Claude 3.5 Sonnet, etc.)
                 """
                 
-                response = model.generate_content(full_prompt)
-                ai_text = response.text
+                ai_text, used_model = get_model_response(full_prompt)
                 
-                if ai_text: break
+                if ai_text:
+                    print(f"✅ ({used_model})")
+                    break
+                else:
+                    print(f"⚠️ 시도 {attempt+1}/{max_retries} 실패")
+                    time.sleep(5)
+                    
             except Exception as e:
                 print(f"⚠️ 시도 {attempt+1}/{max_retries} 실패: {e}")
-                if "429" in str(e):
-                    time.sleep(10) # Wait 10s on Rate Limit
-                else:
-                    time.sleep(2)
+                time.sleep(2)
         
         if not ai_text:
              print(f"❌ 최종 실패: {topic}. Fallback 사용.")
-             ai_text = f"### {topic}\n\n*Content generation failed after multiple attempts.*\n\n**Category**: {row.get('category', 'General')}"
+             ai_text = f"### {topic}\\n\\n*Content generation failed after multiple attempts.*\\n\\n**Category**: {row.get('category', 'General')}"
         
         # 요약 생성
         summary = ai_text[:80].replace('\n', ' ') + "..."
         
-        # 🎨 이미지 및 파일 저장 로직
-        safe_topic = "".join([c if c.isalnum() or c in (' ', '-') else '' for c in topic]).strip().replace(' ', '-')
+        # 파일 저장
         filename = f"{datetime.now().strftime('%Y-%m-%d')}-{safe_topic}.md"
         filepath = os.path.join(output_dir, filename)
         
-        # 카테고리 처리 (없으면 'General')
         category = row.get('category', 'General')
         if pd.isna(category): category = 'General'
         
-        # Picsum 랜덤 이미지 (무제한)
         image_url = f"https://picsum.photos/seed/{safe_topic}{random.randint(1,100)}/800/400"
 
         post_content = f"""---
@@ -137,14 +189,10 @@ cover:
 ---
 {ai_text}"""
 
-        try:
-            with open(filepath, 'w', encoding='utf-8') as f:
-                f.write(post_content)
-            print(f"✅ 완료: {shorten_path(filepath)}")
-            time.sleep(2) # 2초 대기 (API 보호)
-        except Exception as e:
-            print(f"❌ 파일 저장 에러 ({topic}): {e}")
-            traceback.print_exc()
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(post_content)
+        
+        time.sleep(1)
 
 def shorten_path(path):
     return os.path.basename(path)

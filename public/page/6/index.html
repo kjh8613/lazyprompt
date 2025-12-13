@@ -1,985 +1,113 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta name="generator" content="Hugo 0.152.2">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="The Largest AI Prompt Library">
-    <meta name="keywords" content="AI prompts, ChatGPT, prompt library, AI tools, prompt engineering">
-
-    
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Lazy Prompt">
-    <meta property="og:description" content="The Largest AI Prompt Library">
-    <meta property="og:url" content="https://lazyprompt.vercel.app/">
-
-    <title>Lazy Prompt - The Largest AI Prompt Library</title>
-
-    
-    <link rel="icon" type="image/png" href="/images/logo_dark.png">
-
-    
-    <link rel="stylesheet" href="/css/style.css?v=1765653507">
-
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6793290562583440"
-        crossorigin="anonymous"></script>
-</head>
-
-<body>
-    
-    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle Menu">☰</button>
-
-    <div class="app-layout">
-        
-        <aside class="sidebar" id="sidebar">
-            <a href="/" class="sidebar-logo">Lazy Prompt</a>
-            <p class="sidebar-subtitle">The Largest AI Prompt Library</p>
-
-            
-            <div class="sidebar-section">
-                <h3 class="sidebar-section-title">Navigation</h3>
-                <ul class="sidebar-nav">
-                    <li>
-                        <a href="/" class="active">
-                            <span>🏠 Home</span>
-                            <span class="sidebar-count">229</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            
-            <div class="sidebar-section">
-                <h3 class="sidebar-section-title">Categories</h3>
-                <ul class="sidebar-nav">
-                    
-                    <li>
-                        <a href="/categories/auto/">
-                            <span>Auto</span>
-                            <span class="sidebar-count">2</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/automotive/">
-                            <span>Automotive</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/banking/">
-                            <span>Banking</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/beauty/">
-                            <span>Beauty</span>
-                            <span class="sidebar-count">2</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/business/">
-                            <span>Business</span>
-                            <span class="sidebar-count">6</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/career/">
-                            <span>Career</span>
-                            <span class="sidebar-count">9</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/category/">
-                            <span>Category</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/coding/">
-                            <span>Coding</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/community/">
-                            <span>Community</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/culture/">
-                            <span>Culture</span>
-                            <span class="sidebar-count">2</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/diet/">
-                            <span>Diet</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/digital-nomad/">
-                            <span>Digital nomad</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/diy/">
-                            <span>Diy</span>
-                            <span class="sidebar-count">2</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/economics/">
-                            <span>Economics</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/education/">
-                            <span>Education</span>
-                            <span class="sidebar-count">4</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/energy/">
-                            <span>Energy</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/entertainment/">
-                            <span>Entertainment</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/entrepreneurship/">
-                            <span>Entrepreneurship</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/expat/">
-                            <span>Expat</span>
-                            <span class="sidebar-count">3</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/family/">
-                            <span>Family</span>
-                            <span class="sidebar-count">3</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/fashion/">
-                            <span>Fashion</span>
-                            <span class="sidebar-count">3</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/finance/">
-                            <span>Finance</span>
-                            <span class="sidebar-count">22</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/fitness/">
-                            <span>Fitness</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/food/">
-                            <span>Food</span>
-                            <span class="sidebar-count">3</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/freelancing/">
-                            <span>Freelancing</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/gardening/">
-                            <span>Gardening</span>
-                            <span class="sidebar-count">4</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/health/">
-                            <span>Health</span>
-                            <span class="sidebar-count">10</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/healthcare/">
-                            <span>Healthcare</span>
-                            <span class="sidebar-count">4</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/hobbies/">
-                            <span>Hobbies</span>
-                            <span class="sidebar-count">4</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/hobby/">
-                            <span>Hobby</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/home/">
-                            <span>Home</span>
-                            <span class="sidebar-count">3</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/homesteading/">
-                            <span>Homesteading</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/housing/">
-                            <span>Housing</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/immigration/">
-                            <span>Immigration</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/insurance/">
-                            <span>Insurance</span>
-                            <span class="sidebar-count">3</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/investing/">
-                            <span>Investing</span>
-                            <span class="sidebar-count">10</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/kitchen/">
-                            <span>Kitchen</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/law/">
-                            <span>Law</span>
-                            <span class="sidebar-count">5</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/legal/">
-                            <span>Legal</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/lifestyle/">
-                            <span>Lifestyle</span>
-                            <span class="sidebar-count">9</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/living/">
-                            <span>Living</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/marketing/">
-                            <span>Marketing</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/mens-health/">
-                            <span>Men&#39;s health</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/mental-health/">
-                            <span>Mental health</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/minimalism/">
-                            <span>Minimalism</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/money/">
-                            <span>Money</span>
-                            <span class="sidebar-count">3</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/organization/">
-                            <span>Organization</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/parenting/">
-                            <span>Parenting</span>
-                            <span class="sidebar-count">3</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/pets/">
-                            <span>Pets</span>
-                            <span class="sidebar-count">3</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/philosophy/">
-                            <span>Philosophy</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/preparedness/">
-                            <span>Preparedness</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/privacy/">
-                            <span>Privacy</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/productivity/">
-                            <span>Productivity</span>
-                            <span class="sidebar-count">3</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/psychology/">
-                            <span>Psychology</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/real-estate/">
-                            <span>Real estate</span>
-                            <span class="sidebar-count">13</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/relationships/">
-                            <span>Relationships</span>
-                            <span class="sidebar-count">3</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/reselling/">
-                            <span>Reselling</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/retirement/">
-                            <span>Retirement</span>
-                            <span class="sidebar-count">2</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/security/">
-                            <span>Security</span>
-                            <span class="sidebar-count">2</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/self-improvement/">
-                            <span>Self improvement</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/services/">
-                            <span>Services</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/shopping/">
-                            <span>Shopping</span>
-                            <span class="sidebar-count">6</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/side-hustle/">
-                            <span>Side hustle</span>
-                            <span class="sidebar-count">6</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/society/">
-                            <span>Society</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/sustainability/">
-                            <span>Sustainability</span>
-                            <span class="sidebar-count">5</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/taxes/">
-                            <span>Taxes</span>
-                            <span class="sidebar-count">4</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/tech/">
-                            <span>Tech</span>
-                            <span class="sidebar-count">11</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/technology/">
-                            <span>Technology</span>
-                            <span class="sidebar-count">1</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/travel/">
-                            <span>Travel</span>
-                            <span class="sidebar-count">15</span>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="/categories/wellness/">
-                            <span>Wellness</span>
-                            <span class="sidebar-count">3</span>
-                        </a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </aside>
-
-        
-        <div class="main-with-sidebar">
-            
-            <header class="site-header">
-                <div class="header-container">
-                    <a href="/" class="site-logo">Lazy Prompt</a>
-                    <nav class="header-nav">
-                        
-                    </nav>
-                </div>
-            </header>
-
-            
-            <section class="hero-section">
-                <div class="hero-container">
-                    <div class="hero-badge">
-                        <span>🚀</span>
-                        <span>The Largest AI Prompt Library</span>
-                    </div>
-                    <h1 class="hero-title">Lazy Prompt</h1>
-                    <p class="hero-subtitle">Discover the perfect AI prompts for your next project. Search through
-                        hundreds of curated prompts designed for creators, developers, and innovators.</p>
-                </div>
-            </section>
-
-            
-            <div class="search-section">
-                <div class="search-wrapper">
-                    <input type="text" id="searchInput" class="search-input"
-                        placeholder="Search prompts by keyword, topic, or use case..." autocomplete="off">
-                    <span class="search-icon">🔍</span>
-                </div>
-                <div id="searchStatus" class="search-status"></div>
-            </div>
-
-            
-            <div style="text-align:center; margin: 2rem 0;">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6793290562583440"
-                    data-ad-slot="9236420639" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
-
-            
-            <main class="main-content">
-                <div class="section-header">
-                    <h2 class="section-title" id="sectionTitle">Latest Prompts</h2>
-                    <span class="result-count" id="resultCount"></span>
-                </div>
-
-                
-                <div class="posts-grid" id="postsGrid">
-                    
-                    
-                    <article class="post-card">
-                        <a href="/posts/2025-12-13-the-buy-borrows-die-strategy-how-billionaires-avoid-taxes/">
-                            
-                            <div class="post-thumbnail" style="background-image: url('https://picsum.photos/seed/The-Buy-Borrows-Die-Strategy-How-Billionaires-Avoid-Taxes88/800/400');"></div>
-                            
-                            <div class="post-content">
-                                <h3 class="post-title">The &#34;Buy Borrows Die&#34; Strategy: How Billionaires Avoid Taxes</h3>
-                                <p class="post-summary"><h2 id="-prompt-description-this-prompt-generates-a-clear-and-concise-financial-educ">🎯 Prompt Description This prompt generates a clear and concise financial educ&hellip;</h2>
-</p>
-                                <div class="post-meta">
-                                    <span class="post-date">Dec 13, 2025</span>
-                                    <span class="post-arrow">→</span>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-                    
-                    <article class="post-card">
-                        <a href="/posts/2025-12-13-dumpster-diving-laws-when-is-trash-public-property/">
-                            
-                            <div class="post-thumbnail" style="background-image: url('https://picsum.photos/seed/Dumpster-Diving-Laws-When-is-Trash-Public-Property77/800/400');"></div>
-                            
-                            <div class="post-content">
-                                <h3 class="post-title">Dumpster Diving Laws: When is Trash Public Property?</h3>
-                                <p class="post-summary"><h2 id="-prompt-description-this-prompt-generates-a-legal-curiosity-blog-post-about-">🎯 Prompt Description This prompt generates a legal curiosity blog post about &hellip;</h2>
-</p>
-                                <div class="post-meta">
-                                    <span class="post-date">Dec 13, 2025</span>
-                                    <span class="post-arrow">→</span>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-                    
-                    <article class="post-card">
-                        <a href="/posts/2025-12-13-notary-signing-agent-ron-remote-online-notarization-jobs/">
-                            
-                            <div class="post-thumbnail" style="background-image: url('https://picsum.photos/seed/Notary-Signing-Agent-RON-Remote-Online-Notarization-Jobs49/800/400');"></div>
-                            
-                            <div class="post-content">
-                                <h3 class="post-title">Notary Signing Agent (RON): Remote Online Notarization Jobs</h3>
-                                <p class="post-summary"><h2 id="-prompt-description--this-prompt-generates-a-comprehensive-work-from-home-gu">🎯 Prompt Description  This prompt generates a comprehensive work-from-home gu&hellip;</h2>
-</p>
-                                <div class="post-meta">
-                                    <span class="post-date">Dec 13, 2025</span>
-                                    <span class="post-arrow">→</span>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-                    
-                    <article class="post-card">
-                        <a href="/posts/2025-12-13-buying-zombie-debt-the-ethics-of-debt-collections/">
-                            
-                            <div class="post-thumbnail" style="background-image: url('https://picsum.photos/seed/Buying-Zombie-Debt-The-Ethics-of-Debt-Collections60/800/400');"></div>
-                            
-                            <div class="post-content">
-                                <h3 class="post-title">Buying &#34;Zombie Debt&#34;: The Ethics of Debt Collections</h3>
-                                <p class="post-summary"><h2 id="-prompt-description--this-prompt-generates-a-financial-industry-article-expl">🎯 Prompt Description  This prompt generates a financial industry article expl&hellip;</h2>
-</p>
-                                <div class="post-meta">
-                                    <span class="post-date">Dec 13, 2025</span>
-                                    <span class="post-arrow">→</span>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-                    
-                    <article class="post-card">
-                        <a href="/posts/2025-12-13-diy-mini-splits-installing-air-conditioning-without-a-pro/">
-                            
-                            <div class="post-thumbnail" style="background-image: url('https://picsum.photos/seed/DIY-Mini-Splits-Installing-Air-Conditioning-Without-a-Pro75/800/400');"></div>
-                            
-                            <div class="post-content">
-                                <h3 class="post-title">DIY Mini-Splits: Installing Air Conditioning Without a Pro</h3>
-                                <p class="post-summary"><h2 id="-prompt-description-this-prompt-generates-a-comprehensive-home-improvement-g">🎯 Prompt Description This prompt generates a comprehensive home improvement g&hellip;</h2>
-</p>
-                                <div class="post-meta">
-                                    <span class="post-date">Dec 13, 2025</span>
-                                    <span class="post-arrow">→</span>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-                    
-                    <article class="post-card">
-                        <a href="/posts/2025-12-13-arbitrage-betting-profiting-from-odds-discrepancies/">
-                            
-                            <div class="post-thumbnail" style="background-image: url('https://picsum.photos/seed/Arbitrage-Betting-Profiting-from-Odds-Discrepancies47/800/400');"></div>
-                            
-                            <div class="post-content">
-                                <h3 class="post-title">Arbitrage Betting: Profiting from Odds Discrepancies</h3>
-                                <p class="post-summary"><h2 id="-prompt-description-this-prompt-generates-a-comprehensive-betting-strategy-p">🎯 Prompt Description This prompt generates a comprehensive betting strategy p&hellip;</h2>
-</p>
-                                <div class="post-meta">
-                                    <span class="post-date">Dec 13, 2025</span>
-                                    <span class="post-arrow">→</span>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-                    
-                    <article class="post-card">
-                        <a href="/posts/2025-12-13-homestead-exemption-protecting-your-home-from-creditors-and-taxes/">
-                            
-                            <div class="post-thumbnail" style="background-image: url('https://picsum.photos/seed/Homestead-Exemption-Protecting-Your-Home-from-Creditors-and-Taxes24/800/400');"></div>
-                            
-                            <div class="post-content">
-                                <h3 class="post-title">Homestead Exemption: Protecting Your Home from Creditors and Taxes</h3>
-                                <p class="post-summary"><h2 id="-prompt-description-this-prompt-generates-a-comprehensive-legalfinancial-gu">🎯 Prompt Description This prompt generates a comprehensive legal/financial gu&hellip;</h2>
-</p>
-                                <div class="post-meta">
-                                    <span class="post-date">Dec 13, 2025</span>
-                                    <span class="post-arrow">→</span>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-                    
-                    <article class="post-card">
-                        <a href="/posts/2025-12-13-the-lion-diet-carnivore-elimination-diet-for-autoimmune-issues/">
-                            
-                            <div class="post-thumbnail" style="background-image: url('https://picsum.photos/seed/The-Lion-Diet-Carnivore-Elimination-Diet-for-Autoimmune-Issues70/800/400');"></div>
-                            
-                            <div class="post-content">
-                                <h3 class="post-title">The Lion Diet (Carnivore): Elimination Diet for Autoimmune Issues</h3>
-                                <p class="post-summary"><h2 id="-prompt-description-this-prompt-generates-a-detailed-health-diet-blog-post-a">🎯 Prompt Description This prompt generates a detailed health diet blog post a&hellip;</h2>
-</p>
-                                <div class="post-meta">
-                                    <span class="post-date">Dec 13, 2025</span>
-                                    <span class="post-arrow">→</span>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-                    
-                    <article class="post-card">
-                        <a href="/posts/2025-12-13-hand-modeling-the-niche-modeling-gig-no-one-talks-about/">
-                            
-                            <div class="post-thumbnail" style="background-image: url('https://picsum.photos/seed/Hand-Modeling-The-Niche-Modeling-Gig-No-One-Talks-About72/800/400');"></div>
-                            
-                            <div class="post-content">
-                                <h3 class="post-title">Hand Modeling: The Niche Modeling Gig No One Talks About</h3>
-                                <p class="post-summary"><h2 id="-prompt-description--this-prompt-generates-a-comprehensive-career-guide-on-h">🎯 Prompt Description  This prompt generates a comprehensive career guide on h&hellip;</h2>
-</p>
-                                <div class="post-meta">
-                                    <span class="post-date">Dec 13, 2025</span>
-                                    <span class="post-arrow">→</span>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-                    
-                    <article class="post-card">
-                        <a href="/posts/2025-12-13-user-testing-side-hustles-get-paid-10minute-to-critique-websites/">
-                            
-                            <div class="post-thumbnail" style="background-image: url('https://picsum.photos/seed/User-Testing-Side-Hustles-Get-Paid-10Minute-to-Critique-Websites21/800/400');"></div>
-                            
-                            <div class="post-content">
-                                <h3 class="post-title">User Testing Side Hustles: Get Paid $10/Minute to Critique Websites</h3>
-                                <p class="post-summary"><h2 id="-prompt-description--this-prompt-generates-a-comprehensive-gig-economy-guide">🎯 Prompt Description  This prompt generates a comprehensive gig economy guide&hellip;</h2>
-</p>
-                                <div class="post-meta">
-                                    <span class="post-date">Dec 13, 2025</span>
-                                    <span class="post-arrow">→</span>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-                    
-                    <article class="post-card">
-                        <a href="/posts/2025-12-13-rice-water-for-hair-growth-ancient-yao-womens-secret/">
-                            
-                            <div class="post-thumbnail" style="background-image: url('https://picsum.photos/seed/Rice-Water-for-Hair-Growth-Ancient-Yao-Womens-Secret85/800/400');"></div>
-                            
-                            <div class="post-content">
-                                <h3 class="post-title">Rice Water for Hair Growth: Ancient Yao Women’s Secret</h3>
-                                <p class="post-summary"><h2 id="-prompt-description-this-prompt-generates-a-comprehensive-diy-beauty-blog-po">🎯 Prompt Description This prompt generates a comprehensive DIY beauty blog po&hellip;</h2>
-</p>
-                                <div class="post-meta">
-                                    <span class="post-date">Dec 13, 2025</span>
-                                    <span class="post-arrow">→</span>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-                    
-                    <article class="post-card">
-                        <a href="/posts/2025-12-13-air-courier-travel-are-cheap-courier-flights-still-a-thing/">
-                            
-                            <div class="post-thumbnail" style="background-image: url('https://picsum.photos/seed/Air-Courier-Travel-Are-Cheap-Courier-Flights-Still-a-Thing7/800/400');"></div>
-                            
-                            <div class="post-content">
-                                <h3 class="post-title">Air Courier Travel: Are Cheap &#34;Courier Flights&#34; Still a Thing?</h3>
-                                <p class="post-summary"><h2 id="-prompt-description-this-prompt-helps-you-generate-a-travel-curiosity-blog-p">🎯 Prompt Description This prompt helps you generate a travel curiosity blog p&hellip;</h2>
-</p>
-                                <div class="post-meta">
-                                    <span class="post-date">Dec 13, 2025</span>
-                                    <span class="post-arrow">→</span>
-                                </div>
-                            </div>
-                        </a>
-                    </article>
-                    
-                </div>
-
-                
-                
-                <div class="pagination" id="pagination">
-                    
-                    <a href="/page/5/" class="page-link">← Previous</a>
-                    
-                    <span class="page-info">Page 6 of 20</span>
-                    
-                    <a href="/page/7/" class="page-link">Next →</a>
-                    
-                </div>
-                
-            </main>
-
-            
-            <footer class="site-footer">
-                <div class="footer-content">
-                    <p>&copy; 2025 Lazy Prompt. Designed for Builders & Creators.</p>
-                </div>
-            </footer>
-        </div>
-    </div>
-
-    
-    <script>
-        (function () {
-            'use strict';
-
-            
-            const searchInput = document.getElementById('searchInput');
-            const postsGrid = document.getElementById('postsGrid');
-            const pagination = document.getElementById('pagination');
-            const searchStatus = document.getElementById('searchStatus');
-            const sectionTitle = document.getElementById('sectionTitle');
-            const resultCount = document.getElementById('resultCount');
-            const sidebarToggle = document.getElementById('sidebarToggle');
-            const sidebar = document.getElementById('sidebar');
-
-            if (!searchInput || !postsGrid) return;
-
-            
-            if (sidebarToggle && sidebar) {
-                sidebarToggle.addEventListener('click', function () {
-                    sidebar.classList.toggle('open');
-                });
-
-                
-                document.addEventListener('click', function (e) {
-                    if (window.innerWidth <= 968 &&
-                        !sidebar.contains(e.target) &&
-                        !sidebarToggle.contains(e.target) &&
-                        sidebar.classList.contains('open')) {
-                        sidebar.classList.remove('open');
-                    }
-                });
-            }
-
-            
-            const initialHTML = postsGrid.innerHTML;
-            const initialPagination = pagination ? pagination.outerHTML : '';
-            let allPosts = [];
-
-            
-            searchStatus.textContent = 'Loading search index...';
-            searchStatus.className = 'search-status';
-
-            fetch('/index.json')
-                .then(response => {
-                    if (!response.ok) throw new Error('Failed to load search index');
-                    return response.json();
-                })
-                .then(data => {
-                    allPosts = data;
-                    searchStatus.textContent = `✓ ${allPosts.length} prompts ready`;
-                    searchStatus.className = 'search-status success';
-                    setTimeout(() => searchStatus.textContent = '', 3000);
-                })
-                .catch(error => {
-                    console.error('Search index error:', error);
-                    searchStatus.textContent = '✗ Search unavailable';
-                    searchStatus.className = 'search-status error';
-                });
-
-            
-            function performSearch() {
-                const query = searchInput.value.trim().toLowerCase();
-
-                if (query.length === 0) {
-                    postsGrid.innerHTML = initialHTML;
-                    if (pagination) {
-                        const existingPagination = document.getElementById('pagination');
-                        if (existingPagination) existingPagination.remove();
-                        if (initialPagination) postsGrid.insertAdjacentHTML('afterend', initialPagination);
-                    }
-                    sectionTitle.textContent = 'Latest Prompts';
-                    resultCount.textContent = '';
-                    return;
-                }
-
-                const existingPagination = document.getElementById('pagination');
-                if (existingPagination) existingPagination.style.display = 'none';
-
-                const results = allPosts.filter(post => {
-                    const searchableText = [
-                        post.title,
-                        post.summary,
-                        (post.tags || []).join(' '),
-                        (post.categories || []).join(' ')
-                    ].join(' ').toLowerCase();
-
-                    return searchableText.includes(query);
-                });
-
-                sectionTitle.textContent = 'Search Results';
-                resultCount.textContent = `${results.length} result${results.length !== 1 ? 's' : ''}`;
-
-                if (results.length === 0) {
-                    postsGrid.innerHTML = `
+<!doctype html><html lang=en><head><meta name=generator content="Hugo 0.152.2"><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="The Largest AI Prompt Library"><meta name=keywords content="AI prompts,ChatGPT,prompt library,AI tools,prompt engineering"><meta property="og:type" content="website"><meta property="og:title" content="Lazy Prompt - The Largest AI Prompt Library"><meta property="og:description" content="The Largest AI Prompt Library"><meta property="og:url" content="https://lazyprompt.vercel.app/"><title>Lazy Prompt - The Largest AI Prompt Library - The Largest AI Prompt Library</title><link rel=icon type=image/png href=/images/logo_dark.png><link rel=stylesheet href="/css/style.css?v=1765658262"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6793290562583440" crossorigin=anonymous></script></head><body><button class=sidebar-toggle id=sidebarToggle aria-label="Toggle Menu">☰</button><div class=app-layout><aside class=sidebar id=sidebar><a href=/ class=sidebar-logo>Lazy Prompt - The Largest AI Prompt Library</a><p class=sidebar-subtitle>The Largest AI Prompt Library</p><div class=sidebar-section><h3 class=sidebar-section-title>Navigation</h3><ul class=sidebar-nav><li><a href=/ class=active><span>🏠 Home</span>
+<span class=sidebar-count>289</span></a></li></ul></div><div class=sidebar-section><h3 class=sidebar-section-title>Categories</h3><ul class=sidebar-nav><li><a href=/categories/auto/><span>Auto</span>
+<span class=sidebar-count>5</span></a></li><li><a href=/categories/automotive/><span>Automotive</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/banking/><span>Banking</span>
+<span class=sidebar-count>2</span></a></li><li><a href=/categories/beauty/><span>Beauty</span>
+<span class=sidebar-count>4</span></a></li><li><a href=/categories/business/><span>Business</span>
+<span class=sidebar-count>11</span></a></li><li><a href=/categories/career/><span>Career</span>
+<span class=sidebar-count>10</span></a></li><li><a href=/categories/category/><span>Category</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/citizenship/><span>Citizenship</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/cleaning/><span>Cleaning</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/coding/><span>Coding</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/community/><span>Community</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/credit/><span>Credit</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/culture/><span>Culture</span>
+<span class=sidebar-count>2</span></a></li><li><a href=/categories/diet/><span>Diet</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/digital-nomad/><span>Digital nomad</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/diy/><span>Diy</span>
+<span class=sidebar-count>2</span></a></li><li><a href=/categories/economics/><span>Economics</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/education/><span>Education</span>
+<span class=sidebar-count>4</span></a></li><li><a href=/categories/energy/><span>Energy</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/entertainment/><span>Entertainment</span>
+<span class=sidebar-count>2</span></a></li><li><a href=/categories/entrepreneurship/><span>Entrepreneurship</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/expat/><span>Expat</span>
+<span class=sidebar-count>3</span></a></li><li><a href=/categories/family/><span>Family</span>
+<span class=sidebar-count>4</span></a></li><li><a href=/categories/fashion/><span>Fashion</span>
+<span class=sidebar-count>3</span></a></li><li><a href=/categories/finance/><span>Finance</span>
+<span class=sidebar-count>28</span></a></li><li><a href=/categories/fitness/><span>Fitness</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/food/><span>Food</span>
+<span class=sidebar-count>4</span></a></li><li><a href=/categories/freelancing/><span>Freelancing</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/gardening/><span>Gardening</span>
+<span class=sidebar-count>4</span></a></li><li><a href=/categories/health/><span>Health</span>
+<span class=sidebar-count>11</span></a></li><li><a href=/categories/healthcare/><span>Healthcare</span>
+<span class=sidebar-count>4</span></a></li><li><a href=/categories/hobbies/><span>Hobbies</span>
+<span class=sidebar-count>4</span></a></li><li><a href=/categories/hobby/><span>Hobby</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/home/><span>Home</span>
+<span class=sidebar-count>5</span></a></li><li><a href=/categories/homesteading/><span>Homesteading</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/housing/><span>Housing</span>
+<span class=sidebar-count>2</span></a></li><li><a href=/categories/immigration/><span>Immigration</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/insurance/><span>Insurance</span>
+<span class=sidebar-count>6</span></a></li><li><a href=/categories/investing/><span>Investing</span>
+<span class=sidebar-count>14</span></a></li><li><a href=/categories/kitchen/><span>Kitchen</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/law/><span>Law</span>
+<span class=sidebar-count>7</span></a></li><li><a href=/categories/legal/><span>Legal</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/lifestyle/><span>Lifestyle</span>
+<span class=sidebar-count>9</span></a></li><li><a href=/categories/living/><span>Living</span>
+<span class=sidebar-count>2</span></a></li><li><a href=/categories/marketing/><span>Marketing</span>
+<span class=sidebar-count>2</span></a></li><li><a href=/categories/mens-health/><span>Men's health</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/mental-health/><span>Mental health</span>
+<span class=sidebar-count>2</span></a></li><li><a href=/categories/minimalism/><span>Minimalism</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/money/><span>Money</span>
+<span class=sidebar-count>3</span></a></li><li><a href=/categories/organization/><span>Organization</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/parenting/><span>Parenting</span>
+<span class=sidebar-count>3</span></a></li><li><a href=/categories/pets/><span>Pets</span>
+<span class=sidebar-count>4</span></a></li><li><a href=/categories/philosophy/><span>Philosophy</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/preparedness/><span>Preparedness</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/privacy/><span>Privacy</span>
+<span class=sidebar-count>2</span></a></li><li><a href=/categories/productivity/><span>Productivity</span>
+<span class=sidebar-count>3</span></a></li><li><a href=/categories/psychology/><span>Psychology</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/publishing/><span>Publishing</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/real-estate/><span>Real estate</span>
+<span class=sidebar-count>15</span></a></li><li><a href=/categories/relationships/><span>Relationships</span>
+<span class=sidebar-count>3</span></a></li><li><a href=/categories/reselling/><span>Reselling</span>
+<span class=sidebar-count>2</span></a></li><li><a href=/categories/retirement/><span>Retirement</span>
+<span class=sidebar-count>4</span></a></li><li><a href=/categories/security/><span>Security</span>
+<span class=sidebar-count>3</span></a></li><li><a href=/categories/self-improvement/><span>Self improvement</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/services/><span>Services</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/shopping/><span>Shopping</span>
+<span class=sidebar-count>7</span></a></li><li><a href=/categories/side-hustle/><span>Side hustle</span>
+<span class=sidebar-count>8</span></a></li><li><a href=/categories/society/><span>Society</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/sustainability/><span>Sustainability</span>
+<span class=sidebar-count>5</span></a></li><li><a href=/categories/taxes/><span>Taxes</span>
+<span class=sidebar-count>6</span></a></li><li><a href=/categories/tech/><span>Tech</span>
+<span class=sidebar-count>14</span></a></li><li><a href=/categories/technology/><span>Technology</span>
+<span class=sidebar-count>1</span></a></li><li><a href=/categories/travel/><span>Travel</span>
+<span class=sidebar-count>17</span></a></li><li><a href=/categories/wellness/><span>Wellness</span>
+<span class=sidebar-count>4</span></a></li></ul></div></aside><div class=main-with-sidebar><header class=site-header><div class=header-container><a href=/ class=site-logo>Lazy Prompt - The Largest AI Prompt Library</a><nav class=header-nav></nav></div></header><section class=hero-section><div class=hero-container><div class=hero-badge><span>🚀</span>
+<span>The Largest AI Prompt Library</span></div><h1 class=hero-title>Lazy Prompt - The Largest AI Prompt Library</h1><p class=hero-subtitle>Discover the perfect AI prompts for your next project. Search through
+hundreds of curated prompts designed for creators, developers, and innovators.</p></div></section><div class=search-section><div class=search-wrapper><input type=text id=searchInput class=search-input placeholder="Search prompts by keyword, topic, or use case..." autocomplete=off>
+<span class=search-icon>🔍</span></div><div id=searchStatus class=search-status></div></div><div style="text-align:center;margin:2rem 0"><ins class=adsbygoogle style=display:block data-ad-client=ca-pub-6793290562583440 data-ad-slot=9236420639 data-ad-format=auto data-full-width-responsive=true></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({})</script></div><main class=main-content><div class=section-header><h2 class=section-title id=sectionTitle>Latest Prompts</h2><span class=result-count id=resultCount></span></div><div class=posts-grid id=postsGrid><article class=post-card><a href=/posts/2025-12-14-virtual-credit-cards-preventing-free-trials-from-charging-you/><div class=post-thumbnail style=background-image:url(https://picsum.photos/seed/Virtual-Credit-Cards-Preventing-Free-Trials-from-Charging-You57/800/400)></div><div class=post-content><h3 class=post-title>Virtual Credit Cards: Preventing Free Trials from Charging You</h3><p class=post-summary><h2 id=-prompt-description--this-prompt-generates-a-comprehensive-guide-on-using-vi>🎯 Prompt Description This prompt generates a comprehensive guide on using vi&mldr;</h2></p><div class=post-meta><span class=post-date>Dec 14, 2025</span>
+<span class=post-arrow>→</span></div></div></a></article><article class=post-card><a href=/posts/2025-12-14-doing-business-as-dba-the-cheapest-way-to-brand-your-hustle/><div class=post-thumbnail style=background-image:url(https://picsum.photos/seed/Doing-Business-As-DBA-The-Cheapest-Way-to-Brand-Your-Hustle18/800/400)></div><div class=post-content><h3 class=post-title>Doing Business As (DBA): The Cheapest Way to Brand Your Hustle</h3><p class=post-summary><h2 id=-prompt-description--this-prompt-generates-a-business-startup-guide-focused->🎯 Prompt Description This prompt generates a business startup guide focused &mldr;</h2></p><div class=post-meta><span class=post-date>Dec 14, 2025</span>
+<span class=post-arrow>→</span></div></div></a></article><article class=post-card><a href=/posts/2025-12-14-price-matching-policies-how-to-get-amazon-prices-at-target/><div class=post-thumbnail style=background-image:url(https://picsum.photos/seed/Price-Matching-Policies-How-to-Get-Amazon-Prices-at-Target60/800/400)></div><div class=post-content><h3 class=post-title>Price Matching Policies: How to Get Amazon Prices at Target</h3><p class=post-summary><h2 id=-prompt-description-this-prompt-helps-you-create-a-comprehensive-shopping-ha>🎯 Prompt Description This prompt helps you create a comprehensive shopping ha&mldr;</h2></p><div class=post-meta><span class=post-date>Dec 14, 2025</span>
+<span class=post-arrow>→</span></div></div></a></article><article class=post-card><a href=/posts/2025-12-14-pet-insurance-pre-existing-conditions-reading-the-fine-print/><div class=post-thumbnail style=background-image:url(https://picsum.photos/seed/Pet-Insurance-Pre-Existing-Conditions-Reading-the-Fine-Print38/800/400)></div><div class=post-content><h3 class=post-title>Pet Insurance "Pre-Existing Conditions": Reading the Fine Print</h3><p class=post-summary><h2 id=-prompt-description-this-prompt-generates-a-consumer-warning-guide-about-pet>🎯 Prompt Description This prompt generates a consumer warning guide about pet&mldr;</h2></p><div class=post-meta><span class=post-date>Dec 14, 2025</span>
+<span class=post-arrow>→</span></div></div></a></article><article class=post-card><a href=/posts/2025-12-14-digital-decluttering-the-para-method-for-organizing-files/><div class=post-thumbnail style=background-image:url(https://picsum.photos/seed/Digital-Decluttering-The-PARA-Method-for-Organizing-Files80/800/400)></div><div class=post-content><h3 class=post-title>Digital Decluttering: The PARA Method for Organizing Files</h3><p class=post-summary><h2 id=-prompt-description--this-prompt-helps-you-create-a-productivity-tech-guide->🎯 Prompt Description This prompt helps you create a productivity tech guide &mldr;</h2></p><div class=post-meta><span class=post-date>Dec 14, 2025</span>
+<span class=post-arrow>→</span></div></div></a></article><article class=post-card><a href=/posts/2025-12-14-catch-up-contributions-retirement-rules-for-over-50s/><div class=post-thumbnail style=background-image:url(https://picsum.photos/seed/Catch-Up-Contributions-Retirement-Rules-for-Over-50s43/800/400)></div><div class=post-content><h3 class=post-title>Catch-Up Contributions: Retirement Rules for Over-50s</h3><p class=post-summary><h2 id=-prompt-description-this-prompt-generates-a-retirement-planning-blog-post-ex>🎯 Prompt Description This prompt generates a retirement planning blog post ex&mldr;</h2></p><div class=post-meta><span class=post-date>Dec 14, 2025</span>
+<span class=post-arrow>→</span></div></div></a></article><article class=post-card><a href=/posts/2025-12-14-small-estate-affidavits-bypassing-probate-for-small-inheritances/><div class=post-thumbnail style=background-image:url(https://picsum.photos/seed/Small-Estate-Affidavits-Bypassing-Probate-for-Small-inheritances44/800/400)></div><div class=post-content><h3 class=post-title>Small Estate Affidavits: Bypassing Probate for Small inheritances</h3><p class=post-summary><h2 id=-prompt-description-this-prompt-generates-a-legal-inheritance-guide-explaini>🎯 Prompt Description This prompt generates a legal inheritance guide explaini&mldr;</h2></p><div class=post-meta><span class=post-date>Dec 14, 2025</span>
+<span class=post-arrow>→</span></div></div></a></article><article class=post-card><a href=/posts/2025-12-14-refinishing-vs-replacing-hardwood-roi-for-homeowners/><div class=post-thumbnail style=background-image:url(https://picsum.photos/seed/Refinishing-vs-Replacing-Hardwood-ROI-for-Homeowners80/800/400)></div><div class=post-content><h3 class=post-title>Refinishing vs. Replacing Hardwood: ROI for Homeowners</h3><p class=post-summary><h2 id=-prompt-description-this-prompt-generates-a-home-renovation-guide-analyzing->🎯 Prompt Description This prompt generates a home renovation guide analyzing &mldr;</h2></p><div class=post-meta><span class=post-date>Dec 14, 2025</span>
+<span class=post-arrow>→</span></div></div></a></article><article class=post-card><a href=/posts/2025-12-14-buy-nothing-year-challenges-the-economics-of-extreme-frugality/><div class=post-thumbnail style=background-image:url(https://picsum.photos/seed/Buy-Nothing-Year-Challenges-The-Economics-of-Extreme-Frugality56/800/400)></div><div class=post-content><h3 class=post-title>"Buy Nothing" Year Challenges: The Economics of Extreme Frugality</h3><p class=post-summary><h2 id=-prompt-description-this-prompt-generates-a-lifestyle-challenge-post-about-t>🎯 Prompt Description This prompt generates a lifestyle challenge post about t&mldr;</h2></p><div class=post-meta><span class=post-date>Dec 14, 2025</span>
+<span class=post-arrow>→</span></div></div></a></article><article class=post-card><a href=/posts/2025-12-14-medical-power-of-attorney-why-single-adults-need-one/><div class=post-thumbnail style=background-image:url(https://picsum.photos/seed/Medical-Power-of-Attorney-Why-Single-Adults-Need-One76/800/400)></div><div class=post-content><h3 class=post-title>Medical Power of Attorney: Why Single Adults Need One</h3><p class=post-summary><h2 id=-prompt-description-this-prompt-generates-a-comprehensive-legal-preparedness>🎯 Prompt Description This prompt generates a comprehensive legal preparedness&mldr;</h2></p><div class=post-meta><span class=post-date>Dec 14, 2025</span>
+<span class=post-arrow>→</span></div></div></a></article><article class=post-card><a href=/posts/2025-12-14-shared-branching-the-credit-union-advantage-over-big-banks/><div class=post-thumbnail style=background-image:url(https://picsum.photos/seed/Shared-Branching-The-Credit-Union-Advantage-Over-Big-Banks78/800/400)></div><div class=post-content><h3 class=post-title>Shared Branching: The Credit Union Advantage Over Big Banks</h3><p class=post-summary><h2 id=-prompt-description-this-prompt-generates-a-comprehensive-banking-guide-expl>🎯 Prompt Description This prompt generates a comprehensive banking guide expl&mldr;</h2></p><div class=post-meta><span class=post-date>Dec 14, 2025</span>
+<span class=post-arrow>→</span></div></div></a></article><article class=post-card><a href=/posts/2025-12-14-rainwater-harvesting-laws-is-it-illegal-to-collect-rain/><div class=post-thumbnail style=background-image:url(https://picsum.photos/seed/Rainwater-Harvesting-Laws-Is-It-Illegal-to-Collect-Rain80/800/400)></div><div class=post-content><h3 class=post-title>Rainwater Harvesting Laws: Is It Illegal to Collect Rain?</h3><p class=post-summary><h2 id=-prompt-description-this-prompt-generates-a-blog-post-about-the-legality-of->🎯 Prompt Description This prompt generates a blog post about the legality of &mldr;</h2></p><div class=post-meta><span class=post-date>Dec 14, 2025</span>
+<span class=post-arrow>→</span></div></div></a></article></div><div class=pagination id=pagination><a href=/page/5/ class=page-link>← Previous</a>
+<span class=page-info>Page 6 of 25</span>
+<a href=/page/7/ class=page-link>Next →</a></div></main><footer class=site-footer><div class=footer-content><p>&copy; 2025 Lazy Prompt - The Largest AI Prompt Library. Designed for Builders & Creators.</p></div></footer></div></div><script>(function(){"use strict";const s=document.getElementById("searchInput"),t=document.getElementById("postsGrid"),i=document.getElementById("pagination"),e=document.getElementById("searchStatus"),l=document.getElementById("sectionTitle"),c=document.getElementById("resultCount"),o=document.getElementById("sidebarToggle"),n=document.getElementById("sidebar");if(!s||!t)return;o&&n&&(o.addEventListener("click",function(){n.classList.toggle("open")}),document.addEventListener("click",function(e){window.innerWidth<=968&&!n.contains(e.target)&&!o.contains(e.target)&&n.classList.contains("open")&&n.classList.remove("open")}));const m=t.innerHTML,d=i?i.outerHTML:"";let a=[];e.textContent="Loading search index...",e.className="search-status",fetch("/index.json").then(e=>{if(!e.ok)throw new Error("Failed to load search index");return e.json()}).then(t=>{a=t,e.textContent=`✓ ${a.length} prompts ready`,e.className="search-status success",setTimeout(()=>e.textContent="",3e3)}).catch(t=>{console.error("Search index error:",t),e.textContent="✗ Search unavailable",e.className="search-status error"});function u(){const n=s.value.trim().toLowerCase();if(n.length===0){if(t.innerHTML=m,i){const e=document.getElementById("pagination");e&&e.remove(),d&&t.insertAdjacentHTML("afterend",d)}l.textContent="Latest Prompts",c.textContent="";return}const o=document.getElementById("pagination");o&&(o.style.display="none");const e=a.filter(e=>{const t=[e.title,e.summary,(e.tags||[]).join(" "),(e.categories||[]).join(" ")].join(" ").toLowerCase();return t.includes(n)});l.textContent="Search Results",c.textContent=`${e.length} result${e.length!==1?"s":""}`,e.length===0?t.innerHTML=`
                         <div class="empty-state" style="grid-column: 1 / -1;">
                             <div class="empty-icon">🔍</div>
                             <h3 class="empty-title">No prompts found</h3>
                             <p class="empty-text">Try different keywords or browse all prompts</p>
                         </div>
-                    `;
-                } else {
-                    postsGrid.innerHTML = results.map(post => `
+                    `:t.innerHTML=e.map(e=>`
                         <article class="post-card">
-                            <a href="${post.permalink}">
-                                ${post.image ?
-                            `<div class="post-thumbnail" style="background-image: url('${post.image}');"></div>` :
-                            `<div class="post-thumbnail"></div>`
-                        }
+                            <a href="${e.permalink}">
+                                ${e.image?`<div class="post-thumbnail" style="background-image: url('${e.image}');"></div>`:`<div class="post-thumbnail"></div>`}
                                 <div class="post-content">
-                                    <h3 class="post-title">${escapeHtml(post.title)}</h3>
-                                    <p class="post-summary">${escapeHtml(truncate(post.summary, 150))}</p>
+                                    <h3 class="post-title">${h(e.title)}</h3>
+                                    <p class="post-summary">${h(f(e.summary,150))}</p>
                                     <div class="post-meta">
-                                        <span class="post-date">${post.date}</span>
+                                        <span class="post-date">${e.date}</span>
                                         <span class="post-arrow">→</span>
                                     </div>
                                 </div>
                             </a>
                         </article>
-                    `).join('');
-                }
-            }
-
-            function escapeHtml(text) {
-                const div = document.createElement('div');
-                div.textContent = text;
-                return div.innerHTML;
-            }
-
-            function truncate(text, length) {
-                if (text.length <= length) return text;
-                return text.substr(0, length) + '...';
-            }
-
-            let searchTimeout;
-            searchInput.addEventListener('input', function () {
-                clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(performSearch, 300);
-            });
-
-            searchInput.addEventListener('keydown', function (e) {
-                if (e.key === 'Enter') {
-                    clearTimeout(searchTimeout);
-                    performSearch();
-                }
-            });
-        })();
-    </script>
-</body>
-
-</html>
+                    `).join("")}function h(e){const t=document.createElement("div");return t.textContent=e,t.innerHTML}function f(e,t){return e.length<=t?e:e.substr(0,t)+"..."}let r;s.addEventListener("input",function(){clearTimeout(r),r=setTimeout(u,300)}),s.addEventListener("keydown",function(e){e.key==="Enter"&&(clearTimeout(r),u())})})()</script></body></html>

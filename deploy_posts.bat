@@ -14,7 +14,7 @@ if %errorlevel% neq 0 (
 )
 
 echo.
-echo 2️⃣  Deploying to GitHub/Vercel...
+echo 2️⃣  Deploying to GitHub/Netlify...
 git add .
 git commit -m "Auto-Deploy: New Content from Factory"
 git push origin main
