@@ -33,20 +33,33 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         let posts = [];
-        try {
-            console.log("Fetching search index...");
-            const res = await fetch('/index.json');
-            if (res.ok) {
-                posts = await res.json();
-                console.log(`Loaded ${posts.length} posts for search.`);
-                if (posts.length === 0) {
-                    console.warn("Search index is empty!");
+        // Visual Debug Element
+        const debugMsg = document.createElement('div');
+        debugMsg.style.cssText = "text-align:center; font-size:12px; color:red; margin-top:5px;";
+        globalInput.parentNode.appendChild(debugMsg); // Add status under search bar
+
+        // STRATEGY: Use Embedded Index (No Fetch)
+        if (window.searchIndex && window.searchIndex.length > 0) {
+            posts = window.searchIndex;
+            debugMsg.style.color = "green";
+            debugMsg.innerText = `System: Ready. Loaded ${posts.length} prompts (Embedded).`;
+            setTimeout(() => debugMsg.remove(), 3000);
+        } else {
+            // Fallback to fetch if embedded failed
+            try {
+                console.log("Embedded index missing, trying fetch...");
+                const res = await fetch('/index.json');
+                if (res.ok) {
+                    posts = await res.json();
+                    debugMsg.style.color = "green";
+                    debugMsg.innerText = `System: Ready. Loaded ${posts.length} prompts (Fetched).`;
+                } else {
+                    throw new Error(res.status);
                 }
-            } else {
-                console.error("Failed to load search index:", res.status);
+            } catch (e) {
+                debugMsg.innerText = `System Error: Index failed (${e.message})`;
+                console.error("Search Error", e);
             }
-        } catch (e) {
-            console.error("Search Index Error", e);
         }
 
         // Function: Perform Search
