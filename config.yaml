@@ -4,6 +4,7 @@ title: "Lazy Prompt 🚀"
 theme: "PaperMod"
 
 params:
+  env: production
   defaultTheme: "auto"
   ShowReadingTime: true
   ShowShareButtons: true
@@ -11,23 +12,23 @@ params:
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
   
-  # 메인 섹션 지정
+  # Main Sections
   mainSections: 
     - "posts"
 
-  # 프로필 모드 설정 (확실한 노출을 위해)
+  # Profile Mode
   profileMode:
     enabled: true
     title: "Lazy Prompt 🚀"
-    subtitle: "게으른 자들을 위한 AI 프롬프트 도서관입니다."
-    imageUrl: "https://g-e409c5.bananaproportion.com/cdn-icons-png.flaticon.com/512/4712/4712109.png" # Safe link or use simple one
+    subtitle: "게으른 자들을 위한 AI 프롬프트 도서관"
+    imageUrl: "https://cdn-icons-png.flaticon.com/512/4712/4712109.png"
     imageWidth: 120
     imageHeight: 120
     buttons:
       - name: "Github"
         url: "https://github.com"
 
-  # 소셜 아이콘
+  # Social Icons
   socialIcons:
     - name: "github"
       url: "https://github.com/"
