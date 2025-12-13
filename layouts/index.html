@@ -1,0 +1,31 @@
+{{ define "main" }}
+<header class="profile-header">
+    <div class="profile-card">
+        <img src="{{ .Site.Params.profileMode.imageUrl }}" alt="Profile" class="profile-image">
+        <h1>{{ .Site.Title }}</h1>
+        <p class="subtitle">{{ .Site.Params.profileMode.subtitle }}</p>
+        <div class="buttons">
+            <a href="https://github.com" class="btn">GitHub</a>
+        </div>
+    </div>
+</header>
+<main class="post-list">
+    <h2>Recent Prompt Posts</h2>
+    <div class="grid">
+        {{ range first 10 .Site.RegularPages }}
+        <article class="card">
+            <a href="{{ .RelPermalink }}">
+                {{ with .Params.cover.image }}
+                <div class="card-image" style="background-image: url('{{ . }}');"></div>
+                {{ end }}
+                <div class="card-content">
+                    <h3>{{ .Title }}</h3>
+                    <p>{{ .Summary | truncate 100 }}</p>
+                    <span class="date">{{ .Date.Format "Jan 02, 2006" }}</span>
+                </div>
+            </a>
+        </article>
+        {{ end }}
+    </div>
+</main>
+{{ end }}

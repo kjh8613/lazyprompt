@@ -3,30 +3,11 @@ languageCode: "ko-kr"
 title: "Lazy Prompt 🚀"
 # theme: "PaperMod"
 
+# Simplified Params
 params:
-  env: production
-  defaultTheme: "auto"
-  ShowReadingTime: true
-  ShowShareButtons: true
-  ShowPostNavLinks: true
-  ShowBreadCrumbs: true
-  ShowCodeCopyButtons: true
-  
-  # Main Sections
-  mainSections: 
-    - "posts"
-
-  # Profile Mode
   profileMode:
-    enabled: true
-    title: "Lazy Prompt 🚀"
     subtitle: "게으른 자들을 위한 AI 프롬프트 도서관"
-    imageUrl: "https://cdn-icons-png.flaticon.com/512/4712/4712109.png"
-    imageWidth: 120
-    imageHeight: 120
-    buttons:
-      - name: "Github"
-        url: "https://github.com"
+    imageUrl: "https://cdn-icons-png.flaticon.com/512/4712/4712109.png" # Safe link
 
   # Social Icons
   socialIcons:
