@@ -1,74 +1,501 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Lazy Prompt</title>
     <link>https://lazyprompt.vercel.app/categories/</link>
     <description>Recent content in Categories on Lazy Prompt</description>
-    <generator>Hugo -- 0.152.2</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sat, 13 Dec 2025 17:30:41 +0900</lastBuildDate>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 14 Dec 2025 04:05:24 +0000</lastBuildDate>
     <atom:link href="https://lazyprompt.vercel.app/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>코딩</title>
-      <link>https://lazyprompt.vercel.app/categories/%EC%BD%94%EB%94%A9/</link>
-      <pubDate>Sat, 13 Dec 2025 17:30:41 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/categories/%EC%BD%94%EB%94%A9/</guid>
+      <title>Tech</title>
+      <link>https://lazyprompt.vercel.app/categories/tech/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/tech/</guid>
       <description></description>
     </item>
     <item>
-      <title>SNS</title>
-      <link>https://lazyprompt.vercel.app/categories/sns/</link>
-      <pubDate>Sat, 13 Dec 2025 17:30:33 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/categories/sns/</guid>
+      <title>Business</title>
+      <link>https://lazyprompt.vercel.app/categories/business/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/business/</guid>
       <description></description>
     </item>
     <item>
-      <title>블로그</title>
-      <link>https://lazyprompt.vercel.app/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/</link>
-      <pubDate>Sat, 13 Dec 2025 17:30:24 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/categories/%EB%B8%94%EB%A1%9C%EA%B7%B8/</guid>
+      <title>Shopping</title>
+      <link>https://lazyprompt.vercel.app/categories/shopping/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/shopping/</guid>
       <description></description>
     </item>
     <item>
-      <title>디자인</title>
-      <link>https://lazyprompt.vercel.app/categories/%EB%94%94%EC%9E%90%EC%9D%B8/</link>
-      <pubDate>Sat, 13 Dec 2025 17:30:17 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/categories/%EB%94%94%EC%9E%90%EC%9D%B8/</guid>
+      <title>Pets</title>
+      <link>https://lazyprompt.vercel.app/categories/pets/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/pets/</guid>
       <description></description>
     </item>
     <item>
-      <title>생산성</title>
-      <link>https://lazyprompt.vercel.app/categories/%EC%83%9D%EC%82%B0%EC%84%B1/</link>
-      <pubDate>Sat, 13 Dec 2025 17:30:05 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/categories/%EC%83%9D%EC%82%B0%EC%84%B1/</guid>
+      <title>Productivity</title>
+      <link>https://lazyprompt.vercel.app/categories/productivity/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/productivity/</guid>
       <description></description>
     </item>
     <item>
-      <title>AI 그림</title>
-      <link>https://lazyprompt.vercel.app/categories/ai-%EA%B7%B8%EB%A6%BC/</link>
-      <pubDate>Sat, 13 Dec 2025 17:29:55 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/categories/ai-%EA%B7%B8%EB%A6%BC/</guid>
+      <title>Retirement</title>
+      <link>https://lazyprompt.vercel.app/categories/retirement/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/retirement/</guid>
       <description></description>
     </item>
     <item>
-      <title>업무 효율</title>
-      <link>https://lazyprompt.vercel.app/categories/%EC%97%85%EB%AC%B4-%ED%9A%A8%EC%9C%A8/</link>
-      <pubDate>Sat, 13 Dec 2025 17:29:45 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/categories/%EC%97%85%EB%AC%B4-%ED%9A%A8%EC%9C%A8/</guid>
+      <title>Law</title>
+      <link>https://lazyprompt.vercel.app/categories/law/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/law/</guid>
       <description></description>
     </item>
     <item>
-      <title>유튜브</title>
-      <link>https://lazyprompt.vercel.app/categories/%EC%9C%A0%ED%8A%9C%EB%B8%8C/</link>
-      <pubDate>Sat, 13 Dec 2025 17:29:34 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/categories/%EC%9C%A0%ED%8A%9C%EB%B8%8C/</guid>
+      <title>DIY</title>
+      <link>https://lazyprompt.vercel.app/categories/diy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/diy/</guid>
       <description></description>
     </item>
     <item>
-      <title>마케팅</title>
-      <link>https://lazyprompt.vercel.app/categories/%EB%A7%88%EC%BC%80%ED%8C%85/</link>
-      <pubDate>Fri, 26 Jan 2024 17:30:51 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/categories/%EB%A7%88%EC%BC%80%ED%8C%85/</guid>
+      <title>Lifestyle</title>
+      <link>https://lazyprompt.vercel.app/categories/lifestyle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/lifestyle/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Family</title>
+      <link>https://lazyprompt.vercel.app/categories/family/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/family/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Banking</title>
+      <link>https://lazyprompt.vercel.app/categories/banking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/banking/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sustainability</title>
+      <link>https://lazyprompt.vercel.app/categories/sustainability/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/sustainability/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Immigration</title>
+      <link>https://lazyprompt.vercel.app/categories/immigration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/immigration/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Investing</title>
+      <link>https://lazyprompt.vercel.app/categories/investing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/investing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Travel</title>
+      <link>https://lazyprompt.vercel.app/categories/travel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/travel/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Real Estate</title>
+      <link>https://lazyprompt.vercel.app/categories/real-estate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/real-estate/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Finance</title>
+      <link>https://lazyprompt.vercel.app/categories/finance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/finance/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Home</title>
+      <link>https://lazyprompt.vercel.app/categories/home/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/home/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security</title>
+      <link>https://lazyprompt.vercel.app/categories/security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Taxes</title>
+      <link>https://lazyprompt.vercel.app/categories/taxes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/taxes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Energy</title>
+      <link>https://lazyprompt.vercel.app/categories/energy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/energy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Side Hustle</title>
+      <link>https://lazyprompt.vercel.app/categories/side-hustle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/side-hustle/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Insurance</title>
+      <link>https://lazyprompt.vercel.app/categories/insurance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/insurance/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Health</title>
+      <link>https://lazyprompt.vercel.app/categories/health/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/health/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Healthcare</title>
+      <link>https://lazyprompt.vercel.app/categories/healthcare/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/healthcare/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hobbies</title>
+      <link>https://lazyprompt.vercel.app/categories/hobbies/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/hobbies/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Money</title>
+      <link>https://lazyprompt.vercel.app/categories/money/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/money/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Auto</title>
+      <link>https://lazyprompt.vercel.app/categories/auto/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/auto/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Education</title>
+      <link>https://lazyprompt.vercel.app/categories/education/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/education/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Career</title>
+      <link>https://lazyprompt.vercel.app/categories/career/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/career/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Economics</title>
+      <link>https://lazyprompt.vercel.app/categories/economics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/economics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Diet</title>
+      <link>https://lazyprompt.vercel.app/categories/diet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/diet/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Beauty</title>
+      <link>https://lazyprompt.vercel.app/categories/beauty/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/beauty/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Digital Nomad</title>
+      <link>https://lazyprompt.vercel.app/categories/digital-nomad/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/digital-nomad/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Men&#39;s Health</title>
+      <link>https://lazyprompt.vercel.app/categories/mens-health/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/mens-health/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Entrepreneurship</title>
+      <link>https://lazyprompt.vercel.app/categories/entrepreneurship/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/entrepreneurship/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reselling</title>
+      <link>https://lazyprompt.vercel.app/categories/reselling/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/reselling/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Expat</title>
+      <link>https://lazyprompt.vercel.app/categories/expat/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/expat/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Parenting</title>
+      <link>https://lazyprompt.vercel.app/categories/parenting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/parenting/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Services</title>
+      <link>https://lazyprompt.vercel.app/categories/services/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/services/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Wellness</title>
+      <link>https://lazyprompt.vercel.app/categories/wellness/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/wellness/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gardening</title>
+      <link>https://lazyprompt.vercel.app/categories/gardening/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/gardening/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Relationships</title>
+      <link>https://lazyprompt.vercel.app/categories/relationships/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/relationships/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Privacy</title>
+      <link>https://lazyprompt.vercel.app/categories/privacy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/privacy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Housing</title>
+      <link>https://lazyprompt.vercel.app/categories/housing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/housing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Food</title>
+      <link>https://lazyprompt.vercel.app/categories/food/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/food/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Freelancing</title>
+      <link>https://lazyprompt.vercel.app/categories/freelancing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/freelancing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Entertainment</title>
+      <link>https://lazyprompt.vercel.app/categories/entertainment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/entertainment/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Community</title>
+      <link>https://lazyprompt.vercel.app/categories/community/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/community/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Philosophy</title>
+      <link>https://lazyprompt.vercel.app/categories/philosophy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/philosophy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Organization</title>
+      <link>https://lazyprompt.vercel.app/categories/organization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/organization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Minimalism</title>
+      <link>https://lazyprompt.vercel.app/categories/minimalism/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/minimalism/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Automotive</title>
+      <link>https://lazyprompt.vercel.app/categories/automotive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/automotive/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Psychology</title>
+      <link>https://lazyprompt.vercel.app/categories/psychology/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/psychology/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fashion</title>
+      <link>https://lazyprompt.vercel.app/categories/fashion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/fashion/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Culture</title>
+      <link>https://lazyprompt.vercel.app/categories/culture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/culture/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fitness</title>
+      <link>https://lazyprompt.vercel.app/categories/fitness/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/fitness/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Homesteading</title>
+      <link>https://lazyprompt.vercel.app/categories/homesteading/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/homesteading/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Living</title>
+      <link>https://lazyprompt.vercel.app/categories/living/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/living/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Preparedness</title>
+      <link>https://lazyprompt.vercel.app/categories/preparedness/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/preparedness/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Self-Improvement</title>
+      <link>https://lazyprompt.vercel.app/categories/self-improvement/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/self-improvement/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kitchen</title>
+      <link>https://lazyprompt.vercel.app/categories/kitchen/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/kitchen/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mental Health</title>
+      <link>https://lazyprompt.vercel.app/categories/mental-health/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/mental-health/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hobby</title>
+      <link>https://lazyprompt.vercel.app/categories/hobby/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/hobby/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Coding</title>
+      <link>https://lazyprompt.vercel.app/categories/coding/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/coding/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Marketing</title>
+      <link>https://lazyprompt.vercel.app/categories/marketing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/marketing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Category</title>
+      <link>https://lazyprompt.vercel.app/categories/category/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/category/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Technology</title>
+      <link>https://lazyprompt.vercel.app/categories/technology/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/technology/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Society</title>
+      <link>https://lazyprompt.vercel.app/categories/society/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/society/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Legal</title>
+      <link>https://lazyprompt.vercel.app/categories/legal/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://lazyprompt.vercel.app/categories/legal/</guid>
       <description></description>
     </item>
   </channel>

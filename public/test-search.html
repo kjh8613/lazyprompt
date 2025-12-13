@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Search Test</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        #searchInput {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #results {
+            margin-top: 20px;
+        }
+
+        .post {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        #status {
+            margin-top: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Search Test Page</h1>
+    <input type="text" id="searchInput" placeholder="Type to search...">
+    <div id="status"></div>
+    <div id="results"></div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const resultsDiv = document.getElementById('results');
+        const statusDiv = document.getElementById('status');
+
+        let posts = [];
+
+        // Load index
+        statusDiv.innerText = "Loading...";
+        statusDiv.style.color = "blue";
+
+        fetch('/index.json')
+            .then(res => {
+                statusDiv.innerText = `Fetch response: ${res.status}`;
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.json();
+            })
+            .then(data => {
+                posts = data;
+                statusDiv.style.color = "green";
+                statusDiv.innerText = `SUCCESS: Loaded ${posts.length} posts`;
+                console.log("Posts loaded:", posts);
+            })
+            .catch(e => {
+                statusDiv.style.color = "red";
+                statusDiv.innerText = `ERROR: ${e.message}`;
+                console.error("Error:", e);
+            });
+
+        // Search function
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.trim().toLowerCase();
+
+            if (query.length === 0) {
+                resultsDiv.innerHTML = '<p>Type something to search</p>';
+                return;
+            }
+
+            const results = posts.filter(post =>
+                post.title.toLowerCase().includes(query) ||
+                post.summary.toLowerCase().includes(query)
+            );
+
+            if (results.length === 0) {
+                resultsDiv.innerHTML = '<p>No results found</p>';
+            } else {
+                resultsDiv.innerHTML = results.map(post => `
+                    <div class="post">
+                        <h3>${post.title}</h3>
+                        <p>${post.summary}</p>
+                    </div>
+                `).join('');
+            }
+
+            console.log(`Search for "${query}": ${results.length} results`);
+        });
+    </script>
+</body>
+
+</html>

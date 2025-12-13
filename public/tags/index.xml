@@ -1,103 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Lazy Prompt</title>
     <link>https://lazyprompt.vercel.app/tags/</link>
     <description>Recent content in Tags on Lazy Prompt</description>
-    <generator>Hugo -- 0.152.2</generator>
-    <language>ko-kr</language>
-    <lastBuildDate>Sat, 13 Dec 2025 17:30:41 +0900</lastBuildDate>
+    <generator>Hugo</generator>
+    <language>en-us</language>
     <atom:link href="https://lazyprompt.vercel.app/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AI</title>
-      <link>https://lazyprompt.vercel.app/tags/ai/</link>
-      <pubDate>Sat, 13 Dec 2025 17:30:41 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/tags/ai/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Lazyprompt</title>
-      <link>https://lazyprompt.vercel.app/tags/lazyprompt/</link>
-      <pubDate>Sat, 13 Dec 2025 17:30:41 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/tags/lazyprompt/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>파이썬 업무 자동화 코드 예시</title>
-      <link>https://lazyprompt.vercel.app/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%97%85%EB%AC%B4-%EC%9E%90%EB%8F%99%ED%99%94-%EC%BD%94%EB%93%9C-%EC%98%88%EC%8B%9C/</link>
-      <pubDate>Sat, 13 Dec 2025 17:30:41 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%97%85%EB%AC%B4-%EC%9E%90%EB%8F%99%ED%99%94-%EC%BD%94%EB%93%9C-%EC%98%88%EC%8B%9C/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>프롬프트</title>
-      <link>https://lazyprompt.vercel.app/tags/%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/</link>
-      <pubDate>Sat, 13 Dec 2025 17:30:41 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/tags/%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>인스타그램 감성 글귀 생성 프롬프트</title>
-      <link>https://lazyprompt.vercel.app/tags/%EC%9D%B8%EC%8A%A4%ED%83%80%EA%B7%B8%EB%9E%A8-%EA%B0%90%EC%84%B1-%EA%B8%80%EA%B7%80-%EC%83%9D%EC%84%B1-%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/</link>
-      <pubDate>Sat, 13 Dec 2025 17:30:33 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/tags/%EC%9D%B8%EC%8A%A4%ED%83%80%EA%B7%B8%EB%9E%A8-%EA%B0%90%EC%84%B1-%EA%B8%80%EA%B7%80-%EC%83%9D%EC%84%B1-%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>블로그 글쓰기 자동화 프롬프트</title>
-      <link>https://lazyprompt.vercel.app/tags/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B8%80%EC%93%B0%EA%B8%B0-%EC%9E%90%EB%8F%99%ED%99%94-%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/</link>
-      <pubDate>Sat, 13 Dec 2025 17:30:24 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/tags/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B8%80%EC%93%B0%EA%B8%B0-%EC%9E%90%EB%8F%99%ED%99%94-%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>AI 로고 디자인 무료 사이트 추천</title>
-      <link>https://lazyprompt.vercel.app/tags/ai-%EB%A1%9C%EA%B3%A0-%EB%94%94%EC%9E%90%EC%9D%B8-%EB%AC%B4%EB%A3%8C-%EC%82%AC%EC%9D%B4%ED%8A%B8-%EC%B6%94%EC%B2%9C/</link>
-      <pubDate>Sat, 13 Dec 2025 17:30:17 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/tags/ai-%EB%A1%9C%EA%B3%A0-%EB%94%94%EC%9E%90%EC%9D%B8-%EB%AC%B4%EB%A3%8C-%EC%82%AC%EC%9D%B4%ED%8A%B8-%EC%B6%94%EC%B2%9C/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>노션으로 독서 기록 템플릿 만들기</title>
-      <link>https://lazyprompt.vercel.app/tags/%EB%85%B8%EC%85%98%EC%9C%BC%EB%A1%9C-%EB%8F%85%EC%84%9C-%EA%B8%B0%EB%A1%9D-%ED%85%9C%ED%94%8C%EB%A6%BF-%EB%A7%8C%EB%93%A4%EA%B8%B0/</link>
-      <pubDate>Sat, 13 Dec 2025 17:30:05 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/tags/%EB%85%B8%EC%85%98%EC%9C%BC%EB%A1%9C-%EB%8F%85%EC%84%9C-%EA%B8%B0%EB%A1%9D-%ED%85%9C%ED%94%8C%EB%A6%BF-%EB%A7%8C%EB%93%A4%EA%B8%B0/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>스테이블 디퓨전 3D 캐릭터 모델 추천</title>
-      <link>https://lazyprompt.vercel.app/tags/%EC%8A%A4%ED%85%8C%EC%9D%B4%EB%B8%94-%EB%94%94%ED%93%A8%EC%A0%84-3d-%EC%BA%90%EB%A6%AD%ED%84%B0-%EB%AA%A8%EB%8D%B8-%EC%B6%94%EC%B2%9C/</link>
-      <pubDate>Sat, 13 Dec 2025 17:29:55 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/tags/%EC%8A%A4%ED%85%8C%EC%9D%B4%EB%B8%94-%EB%94%94%ED%93%A8%EC%A0%84-3d-%EC%BA%90%EB%A6%AD%ED%84%B0-%EB%AA%A8%EB%8D%B8-%EC%B6%94%EC%B2%9C/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>ChatGPT 영어 비즈니스 이메일 작성법</title>
-      <link>https://lazyprompt.vercel.app/tags/chatgpt-%EC%98%81%EC%96%B4-%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4-%EC%9D%B4%EB%A9%94%EC%9D%BC-%EC%9E%91%EC%84%B1%EB%B2%95/</link>
-      <pubDate>Sat, 13 Dec 2025 17:29:45 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/tags/chatgpt-%EC%98%81%EC%96%B4-%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4-%EC%9D%B4%EB%A9%94%EC%9D%BC-%EC%9E%91%EC%84%B1%EB%B2%95/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>유튜브 쇼츠 공포 썰 대본 예시</title>
-      <link>https://lazyprompt.vercel.app/tags/%EC%9C%A0%ED%8A%9C%EB%B8%8C-%EC%87%BC%EC%B8%A0-%EA%B3%B5%ED%8F%AC-%EC%8D%B0-%EB%8C%80%EB%B3%B8-%EC%98%88%EC%8B%9C/</link>
-      <pubDate>Sat, 13 Dec 2025 17:29:34 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/tags/%EC%9C%A0%ED%8A%9C%EB%B8%8C-%EC%87%BC%EC%B8%A0-%EA%B3%B5%ED%8F%AC-%EC%8D%B0-%EB%8C%80%EB%B3%B8-%EC%98%88%EC%8B%9C/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>미드저니 실사 고양이 프롬프트</title>
-      <link>https://lazyprompt.vercel.app/tags/%EB%AF%B8%EB%93%9C%EC%A0%80%EB%8B%88-%EC%8B%A4%EC%82%AC-%EA%B3%A0%EC%96%91%EC%9D%B4-%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/</link>
-      <pubDate>Sat, 13 Dec 2025 17:29:26 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/tags/%EB%AF%B8%EB%93%9C%EC%A0%80%EB%8B%88-%EC%8B%A4%EC%82%AC-%EA%B3%A0%EC%96%91%EC%9D%B4-%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>스마트스토어 상세페이지 카피라이팅</title>
-      <link>https://lazyprompt.vercel.app/tags/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4-%EC%83%81%EC%84%B8%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%B9%B4%ED%94%BC%EB%9D%BC%EC%9D%B4%ED%8C%85/</link>
-      <pubDate>Fri, 26 Jan 2024 17:30:51 +0900</pubDate>
-      <guid>https://lazyprompt.vercel.app/tags/%EC%8A%A4%EB%A7%88%ED%8A%B8%EC%8A%A4%ED%86%A0%EC%96%B4-%EC%83%81%EC%84%B8%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%B9%B4%ED%94%BC%EB%9D%BC%EC%9D%B4%ED%8C%85/</guid>
-      <description></description>
-    </item>
   </channel>
 </rss>
