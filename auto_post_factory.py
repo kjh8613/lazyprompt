@@ -45,6 +45,10 @@ def run_factory():
             filename = f"{datetime.now().strftime('%Y-%m-%d')}-{safe_topic}.md"
             filepath = os.path.join(output_dir, filename)
             
+            # 카테고리 처리 (없으면 'General')
+            category = row.get('category', 'General')
+            if pd.isna(category): category = 'General'
+            
             # Picsum 랜덤 이미지 (무제한)
             image_url = f"https://picsum.photos/seed/{safe_topic}{random.randint(1,100)}/800/400"
             summary = response.text[:80].replace('\n', ' ') + "..."
@@ -53,6 +57,7 @@ def run_factory():
 title: "{topic}"
 date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 summary: "{summary}"
+categories: ["{category}"]
 cover:
     image: "{image_url}"
     alt: "{topic}"

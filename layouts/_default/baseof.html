@@ -11,12 +11,52 @@
 </head>
 
 <body>
-    <div class="container">
-        {{ block "main" . }}{{ end }}
+    <div class="app-layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="/">
+                    <img src="{{ .Site.Params.profileMode.imageUrl }}" alt="Logo" class="sidebar-logo">
+                    <h2 class="sidebar-title">{{ .Site.Title }}</h2>
+                </a>
+                <p class="sidebar-subtitle">{{ .Site.Params.profileMode.subtitle }}</p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <h3>Menu</h3>
+                <ul>
+                    <li><a href="/" class="active">🏠 Home</a></li>
+                    <li><a href="#" id="sidebarSearchTrigger">🔍 Search</a></li>
+                </ul>
+
+                <h3>Genres & Optimization</h3>
+                <ul>
+                    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+                    <li><a href="{{ " /categories/" | relLangURL }}{{ $name | urlize }}">📂 {{ $name | humanize }}</a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>© 2025 Lazy Prompt</p>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- Mobile Header (Visible only on mobile) -->
+            <div class="mobile-header">
+                <span class="menu-toggle">☰</span>
+                <span class="mobile-title">{{ .Site.Title }}</span>
+            </div>
+
+            <div class="container">
+                {{ block "main" . }}{{ end }}
+            </div>
+        </main>
     </div>
-    <footer>
-        <p>© 2025 Lazy Prompt. Powered by AI.</p>
-    </footer>
+
     <script src="/js/copy.js"></script>
     <script src="/js/search.js"></script>
 </body>
