@@ -41,7 +41,25 @@ def run_factory():
         max_retries = 3
         for attempt in range(max_retries):
             try:
-                full_prompt = f"주제: {topic}\n요청: {user_prompt}\n형식: 마크다운 블로그 글. 서론-본론-결론.\n조건: 풍부한 내용, 2000자 내외."
+                full_prompt = f"""
+                주제: {topic}
+                요청: {user_prompt}
+                
+                역할: 당신은 최고의 프롬프트 엔지니어입니다.
+                목표: 사용자가 바로 복사해서 ChatGPT나 Gemini에 사용할 수 있는 "고성능 프롬프트"를 작성하세요.
+                
+                형식 (마크다운):
+                ## 🎯 프롬프트 설명
+                (이 프롬프트가 무엇을 하는지 1-2문장 요약)
+                
+                ## 📋 프롬프트 내용 (복사해서 사용하세요)
+                ```markdown
+                (여기에 실제 AI에게 명령할 프롬프트 내용을 작성. 구체적이고 전문적인 지시사항 포함)
+                ```
+                
+                ## 💡 사용 팁
+                (이 프롬프트를 더 잘 쓰기 위한 팁 3가지)
+                """
                 response = model.generate_content(full_prompt)
                 ai_text = response.text
                 if ai_text: break
