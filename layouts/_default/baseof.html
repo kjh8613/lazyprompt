@@ -37,7 +37,8 @@
             <nav class="sidebar-nav">
                 <h3>Menu</h3>
                 <ul>
-                    <li><a href="/" class="active">🏠 Home</a></li>
+                    <li><a href="/" class="active">🏠 Home <span class="count-badge">{{ len .Site.RegularPages
+                                }}</span></a></li>
                     <li><a href="#" id="sidebarSearchTrigger">🔍 Search</a></li>
                 </ul>
 
