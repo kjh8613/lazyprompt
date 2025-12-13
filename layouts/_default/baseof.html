@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Title }} | {{ .Site.Title }}</title>
-
-    <!-- SEO & Meta -->
     <meta name="description"
         content="{{ if .IsHome }}The world's best collection of Copy-Paste AI Prompts for ChatGPT, Claude, and Midjourney.{{ else }}{{ .Summary }}{{ end }}">
     <meta name="keywords" content="AI Prompts, ChatGPT Prompts, Midjourney, Coding, Marketing, Productivity, AI Tools">
@@ -16,7 +14,6 @@
     <meta property="og:image"
         content="{{ if .Params.cover.image }}{{ .Params.cover.image }}{{ else }}{{ .Site.Params.profileMode.imageUrl }}{{ end }}">
     <meta property="og:type" content="website">
-
     <link rel="stylesheet" href="/css/style.css?v=final2">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6793290562583440"
         crossorigin="anonymous"></script>
@@ -24,7 +21,6 @@
 
 <body>
     <div class="app-layout">
-        <!-- SIDEBAR -->
         <aside class="sidebar">
             <div class="sidebar-header">
                 <a href="/">
@@ -33,7 +29,6 @@
                 </a>
                 <p class="sidebar-subtitle">{{ .Site.Params.profileMode.subtitle }}</p>
             </div>
-
             <nav class="sidebar-nav">
                 <h3>Menu</h3>
                 <ul>
@@ -41,67 +36,39 @@
                                 }}</span></a></li>
                     <li><a href="#" id="sidebarSearchTrigger">🔍 Search</a></li>
                 </ul>
-
                 <h3>Categories</h3>
                 <ul class="category-list">
                     {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
                     <li>
                         {{ $termPage := $.Site.GetPage (printf "categories/%s" $name) }}
                         {{ if $termPage }}
-                        <a href="{{ $termPage.RelPermalink }}">
-                            {{ $name | humanize }} <span class="count-badge">{{ $taxonomy.Count }}</span>
-                        </a>
+                        <a href="{{ $termPage.RelPermalink }}">{{ $name | humanize }} <span class="count-badge">{{
+                                $taxonomy.Count }}</span></a>
                         {{ else }}
-                        <!-- Fallback if GetPage fails (e.g. strict case mismatch) -->
-                        <a href="{{ printf " /categories/%s/" ($name | urlize) | relLangURL }}">
-                            {{ $name | humanize }} <span class="count-badge">{{ $taxonomy.Count }}</span>
-                        </a>
+                        <a href="{{ printf " /categories/%s/" ($name | urlize) | relLangURL }}">{{ $name | humanize }}
+                            <span class="count-badge">{{ $taxonomy.Count }}</span></a>
                         {{ end }}
                     </li>
                     {{ end }}
                 </ul>
             </nav>
-
             <div class="sidebar-footer">
                 <p>© 2025 Lazy Prompt</p>
                 <p style="margin-top:5px; font-size: 0.6rem;">Designed for Builders</p>
             </div>
         </aside>
-
-        <!-- MAIN CONTENT -->
         <main class="main-content">
-            <!-- Mobile Header (Visible only on mobile) -->
             <div class="mobile-header">
                 <span class="menu-toggle">☰</span>
                 <span class="mobile-title">{{ .Site.Title }}</span>
             </div>
-
             <div class="container">
                 {{ block "main" . }}{{ end }}
             </div>
         </main>
     </div>
-
     <script src="/js/copy.js"></script>
-
-    <!-- EMBEDDED SEARCH INDEX (Direct Print Strategy) -->
-    <script>
-        window.searchIndex = [
-            {{- range $index, $element := site.RegularPages -}}
-            {{- if $index -}}, { { - end -} }
-        {
-            "title": { { .Title | jsonify } },
-            "summary": { { .Summary | plainify | jsonify } },
-            "permalink": { { .RelPermalink | jsonify } },
-            "date": { { .Date.Format "Jan 02, 2006" | jsonify } },
-            "image": { { if .Params.cover.image } } { { .Params.cover.image | jsonify } } { { else } } ""{ { end } }
-        }
-        { { - end -} }
-        ];
-        console.log("System: Embedded Index Loaded (Direct):", window.searchIndex.length, "items");
-    </script>
-
-    <script src="/js/search.js?v=embedded_v1"></script>
+    <script src="/js/search.js?v=fetch_only"></script>
 </body>
 
 </html>
