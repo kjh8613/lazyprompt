@@ -29,14 +29,37 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (res.ok) posts = await res.json();
         } catch (e) { console.error("Search Index Error", e); }
 
-        globalInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
+        // Function: Perform Search
+        const performSearch = () => {
+            const query = globalInput.value.toLowerCase();
             const filtered = posts.filter(post =>
                 post.title.toLowerCase().includes(query) ||
                 post.summary.toLowerCase().includes(query)
             );
             renderGlobalPosts(filtered, postGrid);
+
+            // Scroll to results if query exists
+            if (query.length > 0) {
+                postGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        };
+
+        // Event: Typing (Real-time)
+        globalInput.addEventListener('input', performSearch);
+
+        // Event: Enter Key
+        globalInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+                globalInput.blur(); // Dismiss keyboard on mobile
+            }
         });
+
+        // Event: Click Search Icon
+        const searchBtn = document.querySelector('.search-icon-btn');
+        if (searchBtn) {
+            searchBtn.addEventListener('click', performSearch);
+        }
     }
 
     // 3. Scoped Search (Category Pages) - Client Side Filtering of rendered cards
