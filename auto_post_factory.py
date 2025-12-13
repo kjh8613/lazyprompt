@@ -37,8 +37,17 @@ def run_factory():
             print(f"📝 생성 중: {topic} ... ", end='')
             
             # 🚀 AI 글쓰기 요청
-            full_prompt = f"주제: {topic}\n요청: {user_prompt}\n형식: 마크다운 블로그 글. 서론-본론-결론."
-            response = model.generate_content(full_prompt)
+            # 🚀 AI 글쓰기 요청
+            ai_text = ""
+            try:
+                full_prompt = f"주제: {topic}\n요청: {user_prompt}\n형식: 마크다운 블로그 글. 서론-본론-결론."
+                response = model.generate_content(full_prompt)
+                ai_text = response.text
+            except Exception as e:
+                print(f"⚠️ API Limit/Error: {e}. Using fallback content.")
+                ai_text = f"### {topic}\n\n*Content generation is pending due to high traffic.*\n\nThis prompt will be available shortly. Please check back later!\n\n**Category**: {row.get('category', 'General')}"
+            
+            summary = ai_text[:80].replace('\n', ' ') + "..."
             
             # 🎨 이미지 및 파일 저장 로직
             safe_topic = "".join([c if c.isalnum() or c in (' ', '-') else '' for c in topic]).strip().replace(' ', '-')
@@ -63,14 +72,21 @@ cover:
     alt: "{topic}"
     relative: false
 ---
-{response.text}"""
+cover:
+    image: "{image_url}"
+    alt: "{topic}"
+    relative: false
+---
+{ai_text}"""
 
             with open(filepath, 'w', encoding='utf-8') as f:
                 f.write(post_content)
-            print("✅ 완료")
-            time.sleep(0.5)
+            print(f"✅ 완료: {os.path.abspath(filepath)}")
+            time.sleep(3)
         except Exception as e:
-            print(f"❌ 에러: {e}")
+            print(f"❌ 에러 발생 ({topic}): {e}")
+            import traceback
+            traceback.print_exc()
 
 if __name__ == "__main__":
     run_factory()
