@@ -45,9 +45,17 @@
                 <ul class="category-list">
                     {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
                     <li>
+                        {{ $termPage := $.Site.GetPage (printf "categories/%s" $name) }}
+                        {{ if $termPage }}
+                        <a href="{{ $termPage.RelPermalink }}">
+                            {{ $name | humanize }} <span class="count-badge">{{ $taxonomy.Count }}</span>
+                        </a>
+                        {{ else }}
+                        <!-- Fallback if GetPage fails (e.g. strict case mismatch) -->
                         <a href="{{ printf " /categories/%s/" ($name | urlize) | relLangURL }}">
                             {{ $name | humanize }} <span class="count-badge">{{ $taxonomy.Count }}</span>
                         </a>
+                        {{ end }}
                     </li>
                     {{ end }}
                 </ul>
