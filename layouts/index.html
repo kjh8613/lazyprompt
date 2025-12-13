@@ -60,5 +60,72 @@
         {{ end }}
     </div>
     {{ end }}
+    {{ end }}
+
+    <script>
+        // Inline search for homepage
+        (function () {
+            const searchInput = document.getElementById('globalSearchInput');
+            const searchBtn = document.getElementById('globalSearchBtn');
+            const postGrid = document.querySelector('.grid');
+
+            if (!searchInput || !postGrid) return;
+
+            const initialHTML = postGrid.innerHTML;
+            const initialPagination = document.querySelector('.pagination');
+
+            let posts = [];
+
+            fetch('/index.json')
+                .then(res => res.json())
+                .then(data => {
+                    posts = data;
+                    console.log('Loaded', posts.length, 'posts');
+                })
+                .catch(e => console.error('Error:', e));
+
+            function performSearch() {
+                const query = searchInput.value.trim().toLowerCase();
+
+                if (query.length === 0) {
+                    postGrid.innerHTML = initialHTML;
+                    if (initialPagination) initialPagination.style.display = 'flex';
+                    return;
+                }
+
+                if (initialPagination) initialPagination.style.display = 'none';
+
+                const results = posts.filter(p =>
+                    p.title.toLowerCase().includes(query) ||
+                    p.summary.toLowerCase().includes(query)
+                );
+
+                if (results.length === 0) {
+                    postGrid.innerHTML = '<p style="text-align:center;color:#777;">No results found</p>';
+                } else {
+                    postGrid.innerHTML = results.map(p => `
+                    <article class="card">
+                        <a href="${p.permalink}">
+                            ${p.image ? `<div class="card-image" style="background-image: url('${p.image}');"></div>` : ''}
+                            <div class="card-content">
+                                <h3>${p.title}</h3>
+                                <p>${p.summary}</p>
+                                <span class="date">${p.date}</span>
+                            </div>
+                        </a>
+                    </article>
+                `).join('');
+                }
+            }
+
+            searchInput.addEventListener('input', performSearch);
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') performSearch();
+            });
+            if (searchBtn) {
+                searchBtn.addEventListener('click', performSearch);
+            }
+        })();
+    </script>
 </main>
 {{ end }}
