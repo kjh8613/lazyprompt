@@ -23,23 +23,49 @@ document.addEventListener('DOMContentLoaded', async () => {
     const postGrid = document.getElementById('postGrid');
 
     if (globalInput && postGrid) {
+        // 1. Capture Original State (for "Restore on Clear")
+        const initialGridHTML = postGrid.innerHTML;
+        const initialPagination = document.querySelector('.pagination');
+
+        // Hide pagination during search, restore on clear
+        const togglePagination = (show) => {
+            if (initialPagination) initialPagination.style.display = show ? 'flex' : 'none';
+        }
+
         let posts = [];
         try {
             const res = await fetch('/index.json');
-            if (res.ok) posts = await res.json();
+            if (res.ok) {
+                posts = await res.json();
+                console.log(`Loaded ${posts.length} posts for search.`);
+            } else {
+                console.error("Failed to load search index:", res.status);
+            }
         } catch (e) { console.error("Search Index Error", e); }
 
         // Function: Perform Search
         const performSearch = (shouldScroll = false) => {
-            const query = globalInput.value.toLowerCase();
+            const query = globalInput.value.trim().toLowerCase();
+
+            // A. If Empty -> Restore Original
+            if (query.length === 0) {
+                postGrid.innerHTML = initialGridHTML;
+                togglePagination(true);
+                return;
+            }
+
+            // B. If Search -> Hide Pagination & Filter
+            togglePagination(false);
+
             const filtered = posts.filter(post =>
-                post.title.toLowerCase().includes(query) ||
-                post.summary.toLowerCase().includes(query)
+                (post.title && post.title.toLowerCase().includes(query)) ||
+                (post.summary && post.summary.toLowerCase().includes(query))
             );
+
             renderGlobalPosts(filtered, postGrid);
 
             // Scroll to results ONLY if explicitly requested (e.g. Enter pressed)
-            if (shouldScroll && query.length > 0) {
+            if (shouldScroll && filtered.length > 0) {
                 postGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         };
