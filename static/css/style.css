@@ -1,13 +1,20 @@
-/* Global & Reset */
+/* Existing Styles... (Preserve and Update) */
+
+/* Global & Reset (Updated for Premium/Casual) */
 :root {
     --bg: #121212;
     --sidebar-bg: #1a1a1a;
     --card-bg: #1e1e1e;
     --text: #e0e0e0;
     --accent: #bb86fc;
+    --accent-glow: rgba(187, 134, 252, 0.4);
     --sidebar-width: 260px;
-    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    --font: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    /* Cleaner Font Idea */
 }
+
+/* Import Font if possible via CSS Import (Standard Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
 
 body {
     background-color: var(--bg);
@@ -54,13 +61,19 @@ a {
     height: 80px;
     border-radius: 20px;
     margin-bottom: 10px;
-    box-shadow: 0 4px 15px rgba(187, 134, 252, 0.3);
+    box-shadow: 0 4px 15px var(--accent-glow);
+    transition: transform 0.3s;
+}
+
+.sidebar-logo:hover {
+    transform: rotate(5deg);
 }
 
 .sidebar-title {
     font-size: 1.2rem;
     margin: 0;
     color: var(--accent);
+    font-weight: 600;
 }
 
 .sidebar-subtitle {
@@ -76,6 +89,7 @@ a {
     margin-top: 20px;
     margin-bottom: 10px;
     padding-left: 10px;
+    letter-spacing: 1px;
 }
 
 .sidebar-nav ul {
@@ -86,17 +100,19 @@ a {
 
 .sidebar-nav li a {
     display: block;
-    padding: 10px 15px;
-    border-radius: 10px;
+    padding: 12px 15px;
+    border-radius: 12px;
     color: #ccc;
     font-weight: 500;
     transition: all 0.2s;
+    margin-bottom: 5px;
 }
 
 .sidebar-nav li a:hover,
 .sidebar-nav li a.active {
     background-color: rgba(187, 134, 252, 0.1);
     color: var(--accent);
+    transform: translateX(5px);
 }
 
 .sidebar-footer {
@@ -111,7 +127,7 @@ a {
 .main-content {
     flex-grow: 1;
     margin-left: var(--sidebar-width);
-    padding: 30px;
+    padding: 40px;
     width: calc(100% - var(--sidebar-width));
 }
 
@@ -120,7 +136,7 @@ a {
     margin: 0 auto;
 }
 
-/* Mobile Header (Hidden on Desktop) */
+/* Mobile Header */
 .mobile-header {
     display: none;
     padding: 15px;
@@ -132,7 +148,6 @@ a {
     border-bottom: 1px solid #333;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .sidebar {
         transform: translateX(-100%);
@@ -142,7 +157,7 @@ a {
     .main-content {
         margin-left: 0;
         width: 100%;
-        padding: 15px;
+        padding: 20px;
     }
 
     .mobile-header {
@@ -155,80 +170,153 @@ a {
     }
 }
 
-/* Existing Components (Cards, Buttons, etc) - Adapted */
-.profile-header {
-    display: none;
+/* SEARCH HERO SECTION (New) */
+.search-hero {
+    text-align: center;
+    margin-bottom: 30px;
+    animation: fadeIn 0.8s ease;
 }
 
-/* Hide old profile header as it's in sidebar now */
+.search-hero h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    background: linear-gradient(90deg, #fff, #aaa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.search-container {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 18px 60px 18px 25px;
+    /* Right padding for icon */
+    background-color: #252525;
+    border: 2px solid #333;
+    border-radius: 50px;
+    /* Pill shape */
+    color: #fff;
+    font-size: 1.1rem;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+#searchInput:focus {
+    border-color: var(--accent);
+    background-color: #2a2a2a;
+    box-shadow: 0 0 25px var(--accent-glow);
+    transform: translateY(-2px);
+}
+
+#searchInput::placeholder {
+    color: #777;
+    font-weight: 300;
+}
+
+.search-icon-btn {
+    position: absolute;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    filter: grayscale(1);
+    transition: 0.3s;
+}
+
+#searchInput:focus+.search-icon-btn {
+    filter: grayscale(0);
+    transform: scale(1.1);
+}
+
+
+/* Post Grid */
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--accent);
+    padding-left: 15px;
+}
 
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    gap: 25px;
 }
 
 .card {
     background: var(--card-bg);
-    border-radius: 15px;
+    border-radius: 20px;
+    /* Softer Curve */
     overflow: hidden;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    border-color: rgba(187, 134, 252, 0.3);
 }
 
 .card-image {
-    height: 160px;
+    height: 180px;
     background-size: cover;
     background-position: center;
+    transition: transform 0.5s;
+}
+
+.card:hover .card-image {
+    transform: scale(1.05);
 }
 
 .card-content {
-    padding: 15px;
+    padding: 20px;
 }
 
 .card h3 {
     margin: 0 0 10px 0;
     color: var(--accent);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .date {
     font-size: 0.8rem;
     color: #666;
+    display: block;
+    margin-top: 15px;
 }
 
-/* Search Bar (Updated for Main Content) */
-.search-container {
-    margin: 0 0 30px 0;
-    text-align: left;
-}
-
-#searchInput {
-    background-color: #1e1e1e;
-    border: 1px solid #333;
-}
 
 /* Single Post */
 .post-single {
     background: var(--card-bg);
-    padding: 30px;
-    border-radius: 20px;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
-img {
-    max-width: 100%;
-    border-radius: 8px;
+.featured-image {
+    width: 100%;
+    border-radius: 16px;
+    margin: 20px 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Copy Button & Pre */
 pre {
     background-color: #252525;
-    padding: 15px;
-    border-radius: 8px;
+    padding: 20px;
+    border-radius: 12px;
     overflow-x: auto;
     position: relative;
     border: 1px solid #333;
@@ -236,18 +324,38 @@ pre {
 
 code {
     color: #e0e0e0;
-    font-family: monospace;
+    font-family: 'Consolas', monospace;
 }
 
 .copy-btn {
     position: absolute;
-    top: 5px;
-    right: 5px;
-    background: rgba(255, 255, 255, 0.1);
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.05);
     color: #aaa;
-    border: none;
-    padding: 4px 8px;
-    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
     cursor: pointer;
     font-size: 12px;
+    transition: 0.2s;
+}
+
+.copy-btn:hover {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

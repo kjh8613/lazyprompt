@@ -28,6 +28,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderPosts(filtered);
     });
 
+    // Sidebar Search Trigger
+    const sidebarTrigger = document.getElementById('sidebarSearchTrigger');
+    if (sidebarTrigger) {
+        sidebarTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            // If on homepage, focus input
+            if (searchInput) {
+                searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => searchInput.focus(), 500); // Wait for scroll
+            } else {
+                // If on another page, redirect to home (simple)
+                window.location.href = '/#searchInput';
+            }
+        });
+    }
+
     // Render function
     function renderPosts(results) {
         postGrid.innerHTML = ''; // Clear current
