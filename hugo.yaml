@@ -1,7 +1,12 @@
-baseURL: "https://lazyprompt.me"
+baseURL: "https://lazyprompt.vercel.app/"
 languageCode: "ko-kr"
-title: "Lazyprompt"
+title: "Lazy Prompt"
 theme: "PaperMod"
+
+module:
+  hugoVersion:
+    extended: true
+    min: "0.110.0"
 
 enableRobotsTXT: true
 production: true
