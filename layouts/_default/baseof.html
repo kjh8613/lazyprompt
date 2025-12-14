@@ -70,6 +70,9 @@
                     {{ end }}
                 </ul>
             </div>
+
+            <!-- Swipe Handle for Mobile -->
+            <div class="sidebar-swipe-handle"></div>
         </aside>
 
         <!-- Main Content Wrapper -->
@@ -104,11 +107,53 @@
         (function () {
             const sidebarToggle = document.getElementById('sidebarToggle');
             const sidebar = document.getElementById('sidebar');
+            let touchStartX = 0;
+            let touchEndX = 0;
 
             if (sidebarToggle && sidebar) {
+                // Click toggle
                 sidebarToggle.addEventListener('click', function () {
                     sidebar.classList.toggle('open');
                 });
+
+                // Touch/Swipe events for sidebar
+                sidebar.addEventListener('touchstart', function (e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+
+                sidebar.addEventListener('touchend', function (e) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, { passive: true });
+
+                // Screen edge swipe to open (from left edge)
+                document.addEventListener('touchstart', function (e) {
+                    if (e.touches[0].clientX < 30 && window.innerWidth <= 968) {
+                        touchStartX = e.touches[0].clientX;
+                    }
+                }, { passive: true });
+
+                document.addEventListener('touchend', function (e) {
+                    if (touchStartX < 30 && window.innerWidth <= 968) {
+                        touchEndX = e.changedTouches[0].clientX;
+                        if (touchEndX - touchStartX > 50) {
+                            sidebar.classList.add('open');
+                        }
+                        touchStartX = 0;
+                    }
+                }, { passive: true });
+
+                function handleSwipe() {
+                    const swipeDistance = touchEndX - touchStartX;
+
+                    if (swipeDistance < -50 && sidebar.classList.contains('open')) {
+                        // Swipe left to close
+                        sidebar.classList.remove('open');
+                    } else if (swipeDistance > 50 && !sidebar.classList.contains('open')) {
+                        // Swipe right to open
+                        sidebar.classList.add('open');
+                    }
+                }
 
                 // Close sidebar when clicking outside on mobile
                 document.addEventListener('click', function (e) {
