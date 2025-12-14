@@ -56,6 +56,12 @@
                 </ul>
             </div>
 
+            <!-- Search Section -->
+            <div class="sidebar-section sidebar-search">
+                <input type="text" id="sidebarSearchInput" class="sidebar-search-input" placeholder="🔍 Search posts..."
+                    autocomplete="off">
+            </div>
+
             <!-- Categories Section -->
             <div class="sidebar-section">
                 <h3 class="sidebar-section-title">Categories</h3>
@@ -162,6 +168,20 @@
                         !sidebarToggle.contains(e.target) &&
                         sidebar.classList.contains('open')) {
                         sidebar.classList.remove('open');
+                    }
+                });
+            }
+
+            // Sidebar search functionality
+            const sidebarSearchInput = document.getElementById('sidebarSearchInput');
+            if (sidebarSearchInput) {
+                sidebarSearchInput.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter') {
+                        const query = sidebarSearchInput.value.trim();
+                        if (query) {
+                            // Redirect to home with search query in URL
+                            window.location.href = '/?q=' + encodeURIComponent(query);
+                        }
                     }
                 });
             }

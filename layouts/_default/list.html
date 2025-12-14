@@ -40,6 +40,12 @@
                 </ul>
             </div>
 
+            <!-- Search Section -->
+            <div class="sidebar-section sidebar-search">
+                <input type="text" id="sidebarSearchInput" class="sidebar-search-input" placeholder="🔍 Search posts..."
+                    autocomplete="off">
+            </div>
+
             <!-- Categories Section -->
             <div class="sidebar-section">
                 <h3 class="sidebar-section-title">Categories</h3>
@@ -325,6 +331,20 @@
             function truncate(text, length) {
                 if (text.length <= length) return text;
                 return text.substr(0, length) + '...';
+            }
+
+            // Sidebar search functionality
+            const sidebarSearchInput = document.getElementById('sidebarSearchInput');
+            if (sidebarSearchInput) {
+                sidebarSearchInput.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter') {
+                        const query = sidebarSearchInput.value.trim();
+                        if (query) {
+                            searchInput.value = query;
+                            performSearch();
+                        }
+                    }
+                });
             }
 
             let searchTimeout;
