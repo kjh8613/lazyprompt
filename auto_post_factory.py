@@ -183,7 +183,7 @@ cover:
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(post_content)
         
-        time.sleep(20)  # RPM 150 준수 (분당 3개 생성, 안전)
+        time.sleep(40)  # RPM 150 완전 준수 (분당 1.5개 생성, 매우 안전)
 
 def shorten_path(path):
     return os.path.basename(path)
