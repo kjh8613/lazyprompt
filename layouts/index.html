@@ -269,6 +269,16 @@
                     searchStatus.textContent = `✓ ${allPosts.length} prompts ready`;
                     searchStatus.className = 'search-status success';
                     setTimeout(() => searchStatus.textContent = '', 3000);
+
+                    // Check for URL parameter 'q' and auto-search (after data is loaded)
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const queryParam = urlParams.get('q');
+                    if (queryParam) {
+                        searchInput.value = queryParam;
+                        const sidebarSearchInput = document.getElementById('sidebarSearchInput');
+                        if (sidebarSearchInput) sidebarSearchInput.value = queryParam;
+                        performSearch();
+                    }
                 })
                 .catch(error => {
                     console.error('Search index error:', error);
@@ -362,15 +372,6 @@
                         }
                     }
                 });
-            }
-
-            // Check for URL parameter 'q' and auto-search
-            const urlParams = new URLSearchParams(window.location.search);
-            const queryParam = urlParams.get('q');
-            if (queryParam) {
-                searchInput.value = queryParam;
-                if (sidebarSearchInput) sidebarSearchInput.value = queryParam;
-                performSearch();
             }
 
             let searchTimeout;
