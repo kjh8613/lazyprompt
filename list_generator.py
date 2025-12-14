@@ -156,9 +156,9 @@ def generate_list(total_count):
         else:
             print(f"❌ Failed")
         
-        # Rate limiting
+        # Rate limiting (RPM 제한 방지)
         if batch_num < batches_needed - 1:
-            time.sleep(2)
+            time.sleep(6)  # 6초 대기 (RPM 제한 방지)
     
     return all_topics
 
