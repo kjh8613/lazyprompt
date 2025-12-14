@@ -23,9 +23,9 @@ if not API_KEYS:
 
 print(f"✅ Loaded {len(API_KEYS)} API key(s)")
 
-# 2. 모델 설정 (gemini-2.5-pro: 프리미엄 모델)
+# 2. 모델 설정 (gemini-2.0-flash-lite: 무료 무제한)
 MODEL_PRIORITY = [
-    'gemini-2.5-pro',  # RPD 10K, RPM 150 - 최고 품질 프리미엄 모델
+    'gemini-2.0-flash-lite',  # RPM/RPD 무제한 - 빠른 대량 생성
 ]
 
 def get_model_response(prompt, max_total_retries=3):
@@ -183,7 +183,7 @@ cover:
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(post_content)
         
-        time.sleep(40)  # RPM 150 완전 준수 (분당 1.5개 생성, 매우 안전)
+        time.sleep(3)  # 무제한 모델이므로 빠른 대기
 
 def shorten_path(path):
     return os.path.basename(path)
