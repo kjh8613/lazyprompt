@@ -1,36 +1,31 @@
 import pandas as pd
 import os
-import google.generativeai as genai
-from dotenv import load_dotenv
+from openai import OpenAI
 import time
 import json
 
-# Load environment variables
-load_dotenv()
+# Load API keys from environment variables (set by bat file)
 API_KEYS = [
-    os.getenv("GOOGLE_API_KEY"),
-    os.getenv("GOOGLE_API_KEY_2"),
-    os.getenv("GOOGLE_API_KEY_3")
+    os.getenv("OPENAI_API_KEY"),
+    os.getenv("OPENAI_API_KEY_2"),
+    os.getenv("OPENAI_API_KEY_3")
 ]
 # Remove None values
 API_KEYS = [key for key in API_KEYS if key]
 
 if not API_KEYS:
-    print("❌ ERROR: No valid API keys found in .env file")
+    print("❌ ERROR: No API keys provided. Please run this script using the bat file.")
     exit(1)
 
 print(f"✅ Loaded {len(API_KEYS)} API key(s)")
 
-# Configure Gemini AI (will be reconfigured per request)
-genai.configure(api_key=API_KEYS[0])
-
-# Use gemini-2.5-flash-lite (무료 무제한 모델: RPM/RPD 무제한)
+# Use gpt-4o-mini (가성비 최고 모델: 저렴하면서 정확도 높음)
 MODEL_PRIORITY = [
-    'gemini-2.5-flash-lite',  # RPM/RPD 무제한, 빠른 대량 생성
+    'gpt-4o-mini',  # 가장 가성비 좋은 모델
 ]
 
 def generate_topics_batch(batch_size=5, existing_topics=None):
-    """Generate a batch of blog topics using Gemini AI with multi-API-key fallback"""
+    """Generate a batch of blog topics using OpenAI API with multi-API-key fallback"""
     
     if existing_topics is None:
         existing_topics = []
@@ -69,7 +64,7 @@ Generate {batch_size} completely NEW topics following all rules above.
 
     # Try each API key
     for key_idx, api_key in enumerate(API_KEYS):
-        genai.configure(api_key=api_key)
+        client = OpenAI(api_key=api_key)
         key_name = f"Key#{key_idx+1}"
         
         # Try models in priority order with current API key
@@ -77,9 +72,17 @@ Generate {batch_size} completely NEW topics following all rules above.
             max_retries = 2
             for attempt in range(max_retries):
                 try:
-                    model = genai.GenerativeModel(model_name)
-                    response = model.generate_content(prompt)
-                    text = response.text.strip()
+                    response = client.chat.completions.create(
+                        model=model_name,
+                        messages=[
+                            {"role": "system", "content": "You are a helpful AI assistant specialized in generating blog topics."},
+                            {"role": "user", "content": prompt}
+                        ],
+                        temperature=0.8,
+                        max_tokens=2000
+                    )
+                    
+                    text = response.choices[0].message.content.strip()
                     
                     # Remove markdown code blocks if present
                     if text.startswith("```"):
@@ -108,7 +111,7 @@ Generate {batch_size} completely NEW topics following all rules above.
                         continue
                 except Exception as e:
                     error_msg = str(e)
-                    if "429" in error_msg or "quota" in error_msg.lower():
+                    if "rate_limit" in error_msg.lower() or "quota" in error_msg.lower():
                         break  # Try next model with this key
                     elif attempt < max_retries - 1:
                         time.sleep(2)

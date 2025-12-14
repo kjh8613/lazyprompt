@@ -1,31 +1,29 @@
 import pandas as pd
 import os
-import google.generativeai as genai
+from openai import OpenAI
 from datetime import datetime
-from dotenv import load_dotenv
 import time
 import random
 import traceback
 
 # 1. 환경변수 로드 (다중 API 키 지원)
-load_dotenv()
 API_KEYS = [
-    os.getenv("GOOGLE_API_KEY"),
-    os.getenv("GOOGLE_API_KEY_2"),
-    os.getenv("GOOGLE_API_KEY_3")
+    os.getenv("OPENAI_API_KEY"),
+    os.getenv("OPENAI_API_KEY_2"),
+    os.getenv("OPENAI_API_KEY_3")
 ]
 # None 값 제거
 API_KEYS = [key for key in API_KEYS if key]
 
 if not API_KEYS:
-    print("❌ ERROR: No valid API keys found in .env file")
+    print("❌ ERROR: No API keys provided. Please run this script using the bat file.")
     exit(1)
 
 print(f"✅ Loaded {len(API_KEYS)} API key(s)")
 
-# 2. 모델 설정 (gemini-2.5-flash-lite: 무료 무제한)
+# 2. 모델 설정 (gpt-4o-mini: 가성비 최고 모델)
 MODEL_PRIORITY = [
-    'gemini-2.5-flash-lite',  # RPM/RPD 무제한 - 빠른 대량 생성
+    'gpt-4o-mini',  # 가장 가성비 좋은 모델
 ]
 
 def get_model_response(prompt, max_total_retries=3):
@@ -33,19 +31,26 @@ def get_model_response(prompt, max_total_retries=3):
     
     # Try each API key
     for key_idx, api_key in enumerate(API_KEYS):
-        genai.configure(api_key=api_key)
+        client = OpenAI(api_key=api_key)
         key_name = f"Key#{key_idx+1}"
         
         # Try each model with current API key
         for model_name in MODEL_PRIORITY:
             try:
-                model = genai.GenerativeModel(model_name)
-                response = model.generate_content(prompt)
-                if response.text:
-                    return response.text, f"{model_name} ({key_name})"
+                response = client.chat.completions.create(
+                    model=model_name,
+                    messages=[
+                        {"role": "system", "content": "You are a World-Class Prompt Engineer in the top 0.1%."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    temperature=0.7,
+                    max_tokens=4000
+                )
+                if response.choices[0].message.content:
+                    return response.choices[0].message.content, f"{model_name} ({key_name})"
             except Exception as e:
                 error_msg = str(e)
-                if "429" in error_msg or "quota" in error_msg.lower():
+                if "rate_limit" in error_msg.lower() or "quota" in error_msg.lower():
                     continue  # Try next model
                 else:
                     time.sleep(1)
