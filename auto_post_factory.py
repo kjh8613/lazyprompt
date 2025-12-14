@@ -190,7 +190,7 @@ cover:
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(post_content)
         
-        time.sleep(3)  # RPM 제한 방지 (분당 최대 20개 생성)
+        time.sleep(10)  # RPM 제한 완전 방지 (분당 6개 생성)
 
 def shorten_path(path):
     return os.path.basename(path)
