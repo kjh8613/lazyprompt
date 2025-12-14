@@ -23,9 +23,9 @@ if not API_KEYS:
 
 print(f"✅ Loaded {len(API_KEYS)} API key(s)")
 
-# 2. 모델 설정 (gemini-2.0-flash-lite: 무료 무제한)
+# 2. 모델 설정 (gemini-2.5-flash-lite: 무료 무제한)
 MODEL_PRIORITY = [
-    'gemini-2.0-flash-lite',  # RPM/RPD 무제한 - 빠른 대량 생성
+    'gemini-2.5-flash-lite',  # RPM/RPD 무제한 - 빠른 대량 생성
 ]
 
 def get_model_response(prompt, max_total_retries=3):
