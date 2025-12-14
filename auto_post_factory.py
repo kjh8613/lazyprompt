@@ -149,12 +149,14 @@ def run_factory():
                     print(f"✅ ({used_model})")
                     break
                 else:
-                    print(f"⚠️ 시도 {attempt+1}/{max_retries} 실패")
-                    time.sleep(5)
+                    print(f"⚠️ 시도 {attempt+1}/{max_retries} 실패 - 60초 대기 중 (RPM 리셋)...")
+                    time.sleep(60)  # RPM 카운터 리셋 대기
                     
             except Exception as e:
                 print(f"⚠️ 시도 {attempt+1}/{max_retries} 실패: {e}")
-                time.sleep(2)
+                if attempt < max_retries - 1:
+                    print(f"   → 60초 대기 중 (RPM 리셋)...")
+                    time.sleep(60)  # RPM 카운터 리셋 대기
         
         if not ai_text:
              print(f"❌ 최종 실패: {topic}. Fallback 사용.")
