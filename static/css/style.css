@@ -248,34 +248,93 @@ img {
 
 @media (max-width: 968px) {
     .sidebar {
-        transform: translateX(-260px);
-        /* 20px visible */
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        width: 180px;
+        /* Narrower for mobile */
+        padding: var(--spacing-md);
+        transform: translateX(0);
+        /* Always visible */
+        box-shadow: none;
     }
 
-    .sidebar.open {
-        transform: translateX(0);
+    .sidebar-logo {
+        font-size: 1.125rem;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .sidebar-subtitle {
+        font-size: 0.75rem;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .sidebar-section {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .sidebar-section-title {
+        font-size: 0.625rem;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .sidebar-nav a {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 0.8125rem;
+    }
+
+    .sidebar-count {
+        font-size: 0.625rem;
+        padding: 0.0625rem 0.375rem;
     }
 
     .sidebar-swipe-handle {
-        display: flex;
-    }
-
-    .sidebar.open .sidebar-swipe-handle {
-        opacity: 0;
+        display: none;
+        /* Hide swipe handle */
     }
 
     .sidebar-toggle {
-        display: block;
+        display: none;
+        /* Hide toggle button */
     }
 
     .main-with-sidebar {
-        margin-left: 0;
-        width: 100%;
+        margin-left: 180px;
+        width: calc(100% - 180px);
     }
 
     .site-header {
-        padding-left: 4rem;
+        padding-left: var(--spacing-lg);
+    }
+
+    .header-container {
+        padding: var(--spacing-md) var(--spacing-md);
+    }
+
+    .site-logo {
+        font-size: 1.125rem;
+    }
+
+    .header-nav {
+        display: none;
+        /* Hide top nav on mobile to save space */
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 140px;
+        /* Even narrower for small phones */
+    }
+
+    .main-with-sidebar {
+        margin-left: 140px;
+        width: calc(100% - 140px);
+    }
+
+    .sidebar-logo {
+        font-size: 1rem;
+    }
+
+    .sidebar-nav a {
+        font-size: 0.75rem;
     }
 }
 
