@@ -34,28 +34,94 @@
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="site-header">
-        <div class="header-container">
-            <a href="/" class="site-logo">{{ .Site.Title }}</a>
-            <nav class="header-nav">
-                <a href="/" class="nav-link">Home</a>
-                {{ range .Site.Menus.main }}
-                <a href="{{ .URL }}" class="nav-link">{{ .Name }}</a>
-                {{ end }}
-            </nav>
-        </div>
-    </header>
+    <!-- Mobile Sidebar Toggle -->
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle Menu">☰</button>
 
-    <!-- Main Content -->
-    {{ block "main" . }}{{ end }}
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <a href="/" class="sidebar-logo">{{ .Site.Title }}</a>
+            <p class="sidebar-subtitle">{{ .Site.Params.profileMode.subtitle }}</p>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <p>&copy; {{ now.Year }} {{ .Site.Title }}. Designed for Builders & Creators.</p>
+            <!-- Home Section -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-section-title">Navigation</h3>
+                <ul class="sidebar-nav">
+                    <li>
+                        <a href="/">
+                            <span>🏠 Home</span>
+                            <span class="sidebar-count">{{ len .Site.RegularPages }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Categories Section -->
+            <div class="sidebar-section">
+                <h3 class="sidebar-section-title">Categories</h3>
+                <ul class="sidebar-nav">
+                    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+                    <li>
+                        <a href="/categories/{{ $name | urlize }}/">
+                            <span>{{ $name | humanize }}</span>
+                            <span class="sidebar-count">{{ $taxonomy.Count }}</span>
+                        </a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content Wrapper -->
+        <div class="main-with-sidebar">
+            <!-- Header -->
+            <header class="site-header">
+                <div class="header-container">
+                    <a href="/" class="site-logo">{{ .Site.Title }}</a>
+                    <nav class="header-nav">
+                        <a href="/" class="nav-link">Home</a>
+                        {{ range .Site.Menus.main }}
+                        <a href="{{ .URL }}" class="nav-link">{{ .Name }}</a>
+                        {{ end }}
+                    </nav>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            {{ block "main" . }}{{ end }}
+
+            <!-- Footer -->
+            <footer class="site-footer">
+                <div class="footer-content">
+                    <p>&copy; {{ now.Year }} {{ .Site.Title }}. Designed for Builders & Creators.</p>
+                </div>
+            </footer>
         </div>
-    </footer>
+    </div>
+
+    <!-- Sidebar Toggle Script -->
+    <script>
+        (function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('sidebar');
+
+            if (sidebarToggle && sidebar) {
+                sidebarToggle.addEventListener('click', function () {
+                    sidebar.classList.toggle('open');
+                });
+
+                // Close sidebar when clicking outside on mobile
+                document.addEventListener('click', function (e) {
+                    if (window.innerWidth <= 968 &&
+                        !sidebar.contains(e.target) &&
+                        !sidebarToggle.contains(e.target) &&
+                        sidebar.classList.contains('open')) {
+                        sidebar.classList.remove('open');
+                    }
+                });
+            }
+        })();
+    </script>
 
     <!-- Copy Button Script (for code blocks) -->
     <script src="/js/copy.js"></script>
