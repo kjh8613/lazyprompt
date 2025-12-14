@@ -98,65 +98,58 @@ def run_factory():
         progress = (processed / total_count) * 100
         print(f"[{progress:.1f}%] 📝 생성 중: {topic[:60]}... ", end='')
         
-        # 🚀 AI 글쓰기 요청 (Smart Model Fallback)
+        # 🚀 AI 글쓰기 요청 (재시도 없음, 빠른 실패)
         ai_text = ""
-        max_retries = 3
-        for attempt in range(max_retries):
-            try:
-                full_prompt = f"""
-                주제: {topic}
-                요청: {user_prompt}
-                
-                역할: You are a World-Class 'Prompt Engineer' in the top 0.1%.
-                목표: Design "High-Performance Prompts" that users can simply copy and paste into AI (ChatGPT, Claude, Gemini) to get the best results. All output must be in ENGLISH.
-                
-                [Core Instructions]
-                1. The generated prompt must be a **Structured Prompt**.
-                2. It MUST include **Role, Context, Task, Constraints, and Output Format**.
-                3. Minimize user input requirements by making the prompt specific and complete.
+        try:
+            full_prompt = f"""
+            주제: {topic}
+            요청: {user_prompt}
+            
+            역할: You are a World-Class 'Prompt Engineer' in the top 0.1%.
+            목표: Design "High-Performance Prompts" that users can simply copy and paste into AI (ChatGPT, Claude, Gemini) to get the best results. All output must be in ENGLISH.
+            
+            [Core Instructions]
+            1. The generated prompt must be a **Structured Prompt**.
+            2. It MUST include **Role, Context, Task, Constraints, and Output Format**.
+            3. Minimize user input requirements by making the prompt specific and complete.
 
-                Format (Markdown):
-                ## 🎯 Prompt Description
-                (A 2-sentence hook explaining what problem this prompt solves and its benefits)
-                
-                ## 📋 Copy This Prompt
-                ```markdown
-                # Role
-                (Assign a top-tier persona. e.g., "Senior Copywriter", "10x Developer")
+            Format (Markdown):
+            ## 🎯 Prompt Description
+            (A 2-sentence hook explaining what problem this prompt solves and its benefits)
+            
+            ## 📋 Copy This Prompt
+            ```markdown
+            # Role
+            (Assign a top-tier persona. e.g., "Senior Copywriter", "10x Developer")
 
-                # Context
-                (Describe the situation and background where this task is needed)
+            # Context
+            (Describe the situation and background where this task is needed)
 
-                # Task
-                (Clear, step-by-step instructions for the AI)
+            # Task
+            (Clear, step-by-step instructions for the AI)
 
-                # Constraints
-                (3-5 specific rules to ensure quality. Tone, layout, prohibitions, etc.)
+            # Constraints
+            (3-5 specific rules to ensure quality. Tone, layout, prohibitions, etc.)
 
-                # Output Format
-                (Specify the desired format: Table, Markdown List, Code Block, etc.)
-                ```
+            # Output Format
+            (Specify the desired format: Table, Markdown List, Code Block, etc.)
+            ```
+            
+            ## 💡 Pro Tips
+            1. (Tip on how to customize the [ ] placeholders)
+            2. (Additional info to provide for better results)
+            3. (Recommended model: GPT-4o, Claude 3.5 Sonnet, etc.)
+            """
+            
+            ai_text, used_model = get_model_response(full_prompt)
+            
+            if ai_text:
+                print(f"✅ ({used_model})")
+            else:
+                print(f"❌ 생성 실패")
                 
-                ## 💡 Pro Tips
-                1. (Tip on how to customize the [ ] placeholders)
-                2. (Additional info to provide for better results)
-                3. (Recommended model: GPT-4o, Claude 3.5 Sonnet, etc.)
-                """
-                
-                ai_text, used_model = get_model_response(full_prompt)
-                
-                if ai_text:
-                    print(f"✅ ({used_model})")
-                    break
-                else:
-                    print(f"⚠️ 시도 {attempt+1}/{max_retries} 실패 - 60초 대기 중 (RPM 리셋)...")
-                    time.sleep(60)  # RPM 카운터 리셋 대기
-                    
-            except Exception as e:
-                print(f"⚠️ 시도 {attempt+1}/{max_retries} 실패: {e}")
-                if attempt < max_retries - 1:
-                    print(f"   → 60초 대기 중 (RPM 리셋)...")
-                    time.sleep(60)  # RPM 카운터 리셋 대기
+        except Exception as e:
+            print(f"❌ 에러: {e}")
         
         if not ai_text:
              print(f"❌ 최종 실패: {topic}. Fallback 사용.")
