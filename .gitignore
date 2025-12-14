@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Environment variables (IMPORTANT: Keep API keys secure!)
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Excel temp files
+~$*.xlsx
+
+# Hugo
+/public/
+/resources/
+.hugo_build.lock
