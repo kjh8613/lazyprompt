@@ -24,9 +24,9 @@ print(f"✅ Loaded {len(API_KEYS)} API key(s)")
 # Configure Gemini AI (will be reconfigured per request)
 genai.configure(api_key=API_KEYS[0])
 
-# Use gemini-2.5-flash (가장 저렴한 유료 모델: RPD 10K, RPM 1K)
+# Use gemini-2.5-pro (프리미엄 모델: RPD 10K, RPM 150)
 MODEL_PRIORITY = [
-    'gemini-2.5-flash',  # RPD 10K, 안정적인 유료 모델
+    'gemini-2.5-pro',  # RPD 10K, 최고 품질 프리미엄 모델
 ]
 
 def generate_topics_batch(batch_size=5, existing_topics=None):
