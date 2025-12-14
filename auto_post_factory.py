@@ -23,13 +23,9 @@ if not API_KEYS:
 
 print(f"✅ Loaded {len(API_KEYS)} API key(s)")
 
-# 2. 모델 설정 (Smart Fallback: 무제한 쿼터 모델 우선)
+# 2. 모델 설정 (gemini-2.5-flash: 가장 저렴한 유료 모델)
 MODEL_PRIORITY = [
-    'gemini-2.5-flash-lite',   # 1순위: RPD 무제한, RPM 4K
-    'gemini-2.0-flash',         # 2순위: RPD 무제한, RPM 2K
-    'gemini-2.0-flash-lite',    # 3순위: RPD 무제한, RPM 4K (새로 추가!)
-    'gemini-2.5-flash',         # 4순위: RPD 10K, RPM 1K
-    'gemini-2.5-pro'            # 5순위: RPD 10K, RPM 150 (최종 fallback)
+    'gemini-2.5-flash',  # RPD 10K, RPM 1K - 안정적인 유료 모델
 ]
 
 def get_model_response(prompt, max_total_retries=3):

@@ -24,13 +24,9 @@ print(f"✅ Loaded {len(API_KEYS)} API key(s)")
 # Configure Gemini AI (will be reconfigured per request)
 genai.configure(api_key=API_KEYS[0])
 
-# Smart Model Fallback Chain (무료 무제한 쿼터 우선)
+# Use gemini-2.5-flash (가장 저렴한 유료 모델: RPD 10K, RPM 1K)
 MODEL_PRIORITY = [
-    'gemini-2.5-flash-lite',   # 1순위: RPD 무제한, RPM 4K
-    'gemini-2.0-flash',         # 2순위: RPD 무제한, RPM 2K
-    'gemini-2.0-flash-lite',    # 3순위: RPD 무제한, RPM 4K (새로 추가!)
-    'gemini-2.5-flash',         # 4순위: RPD 10K, RPM 1K
-    'gemini-2.5-pro'            # 5순위: RPD 10K, RPM 150 (최종 fallback)
+    'gemini-2.5-flash',  # RPD 10K, 안정적인 유료 모델
 ]
 
 def generate_topics_batch(batch_size=5, existing_topics=None):
